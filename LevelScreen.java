@@ -6,7 +6,7 @@ import com.badlogic.gdx.Input.Keys;
 
 public class LevelScreen extends BaseScreen
 {
-    Hero sara;
+    Hero hero;
     public void initialize() 
     {
 
@@ -20,7 +20,7 @@ public class LevelScreen extends BaseScreen
         }
         MapObject startPoint = tma.getRectangleList("start").get(0);
         MapProperties startProps = startPoint.getProperties();
-        sara = new Hero( (float)startProps.get("x"), (float)startProps.get("y"), mainStage);
+        hero = new Hero( (float)startProps.get("x"), (float)startProps.get("y"), mainStage);
         
     }
 
@@ -28,16 +28,16 @@ public class LevelScreen extends BaseScreen
     {
         // hero movement controls
         if (Gdx.input.isKeyPressed(Keys.LEFT))
-            sara.accelerateAtAngle(180);
+            hero.accelerateAtAngle(180);
         if (Gdx.input.isKeyPressed(Keys.RIGHT))
-            sara.accelerateAtAngle(0);
+            hero.accelerateAtAngle(0);
         if (Gdx.input.isKeyPressed(Keys.UP))
-            sara.accelerateAtAngle(90);
+            hero.accelerateAtAngle(90);
         if (Gdx.input.isKeyPressed(Keys.DOWN))
-            sara.accelerateAtAngle(270);
+            hero.accelerateAtAngle(270);
         for (BaseActor solid : BaseActor.getList(mainStage, "Solid"))
         {
-            sara.preventOverlap(solid);
+            hero.preventOverlap(solid);
         }
        
     }
