@@ -22,7 +22,7 @@ public class LevelScreen extends BaseScreen
         MapProperties startProps = startPoint.getProperties();
         hero = new Hero( (float)startProps.get("x"), (float)startProps.get("y"), mainStage);
         
-    }
+    } // pla
 
     public void update(float dt)
     {
