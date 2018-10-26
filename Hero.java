@@ -16,6 +16,7 @@ public class Hero extends BaseActor{
        // int rows = 4;
         //int cols = 4;
         Texture texture = new Texture(Gdx.files.internal(fileName), true);
+
         /**int frameWidth = texture.getWidth() / cols;
         int frameHeight = texture.getHeight() / rows;
         float frameDuration = 0.2f;
