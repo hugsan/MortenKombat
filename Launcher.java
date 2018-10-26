@@ -5,7 +5,7 @@ public class Launcher
 {
     public static void main (String[] args)
     {
-        Game myGame = new CustomGame(); 
-        LwjglApplication launcher = new LwjglApplication( myGame, "Game Title", 800, 600 );
+        Game myGame = new MortenCombat();
+        LwjglApplication launcher = new LwjglApplication( myGame, "Morten Combat", 800, 600 );
     }
 }

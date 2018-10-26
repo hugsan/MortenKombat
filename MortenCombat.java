@@ -1,4 +1,4 @@
-public class CustomGame extends BaseGame
+public class MortenCombat extends BaseGame
 {
     public void create() 
     {        
