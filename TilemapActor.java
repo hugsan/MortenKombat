@@ -45,7 +45,7 @@ public class TilemapActor extends Actor
         int mapWidth  = tileWidth  * numTilesHorizontal;
         int mapHeight = tileHeight * numTilesVertical;
 
-        tiledMapRenderer = new OrthoCachedTiledMapRenderer(tiledMap);
+        tiledMapRenderer = new OrthoCachedTiledMapRenderer(tiledMap, 1.0F, 5000);
         tiledMapRenderer.setBlending(true);
         tiledCamera = new OrthographicCamera();
         tiledCamera.setToOrtho(false, windowWidth, windowHeight);
