@@ -4,14 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 
 
-public class LevelScreen extends BaseScreen
+public class SecondLevel extends BaseScreen
 {
     Hero hero;
-    public void initialize() 
+    public void initialize()
     {
 
-       TilemapActor tma = new TilemapActor("assets/map.tmx", mainStage);
-       for (MapObject obj : tma.getRectangleList("Solid") )
+        TilemapActor tma = new TilemapActor("assets/map.tmx", mainStage);
+        for (MapObject obj : tma.getRectangleList("Solid") )
         {
             MapProperties props = obj.getProperties();
             new Solid( (float)props.get("x"), (float)props.get("y"),
@@ -22,7 +22,7 @@ public class LevelScreen extends BaseScreen
         MapProperties startProps = startPoint.getProperties();
         hero = new Hero( (float)startProps.get("x"), (float)startProps.get("y"), mainStage);
 
-        
+
     }
 
     public void update(float dt)
@@ -44,8 +44,6 @@ public class LevelScreen extends BaseScreen
         {
             hero.preventOverlap(solid);
         }
-        if (Gdx.input.isKeyPressed(Keys.S))
-            MortenCombat.setActiveScreen( new SecondLevel() );
 
     }
 
