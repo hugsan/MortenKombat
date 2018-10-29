@@ -10,7 +10,7 @@ public class SecondLevel extends BaseScreen
     public void initialize()
     {
 
-        TilemapActor tma = new TilemapActor("assets/map.tmx", mainStage);
+        TilemapActor tma = new TilemapActor("assets/secondmap.tmx", mainStage);
         for (MapObject obj : tma.getRectangleList("Solid") )
         {
             MapProperties props = obj.getProperties();
@@ -18,6 +18,18 @@ public class SecondLevel extends BaseScreen
                     (float)props.get("width"), (float)props.get("height"),
                     mainStage );
         }
+
+        for (MapObject obj : tma.getRectangleList("Exit") )
+        {
+            MapProperties props = obj.getProperties();
+            new Exit( (float)props.get("x"), (float)props.get("y"), mainStage );
+        }
+        for (MapObject obj : tma.getRectangleList("previousmap") )
+        {
+            MapProperties props = obj.getProperties();
+            new PreviousMap( (float)props.get("x"), (float)props.get("y"), mainStage );
+        }
+
         MapObject startPoint = tma.getRectangleList("start").get(0);
         MapProperties startProps = startPoint.getProperties();
         hero = new Hero( (float)startProps.get("x"), (float)startProps.get("y"), mainStage);
@@ -44,7 +56,10 @@ public class SecondLevel extends BaseScreen
         {
             hero.preventOverlap(solid);
         }
-
+        for (BaseActor exit : BaseActor.getList(mainStage, "PreviousMap")) {
+            if (hero.overlaps(exit))
+                MortenCombat.setActiveScreen(new LevelScreen());
+        }
     }
 
 

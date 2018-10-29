@@ -10,7 +10,8 @@ public class LevelScreen extends BaseScreen
     public void initialize() 
     {
 
-       TilemapActor tma = new TilemapActor("assets/map.tmx", mainStage);
+       TilemapActor tma = new TilemapActor("assets/firstmap.tmx", mainStage);
+       //create the Solid object from our tilemap
        for (MapObject obj : tma.getRectangleList("Solid") )
         {
             MapProperties props = obj.getProperties();
@@ -18,9 +19,18 @@ public class LevelScreen extends BaseScreen
                     (float)props.get("width"), (float)props.get("height"),
                     mainStage );
         }
+
+        //create our exit from our map, used to move to another map
+        for (MapObject obj : tma.getRectangleList("Exit") )
+        {
+            MapProperties props = obj.getProperties();
+            new Exit( (float)props.get("x"), (float)props.get("y"), mainStage );
+        }
+
         MapObject startPoint = tma.getRectangleList("start").get(0);
         MapProperties startProps = startPoint.getProperties();
         hero = new Hero( (float)startProps.get("x"), (float)startProps.get("y"), mainStage);
+
 
         
     }
@@ -40,12 +50,10 @@ public class LevelScreen extends BaseScreen
         {
             hero.preventOverlap(solid);
         }
-        for (BaseActor solid : BaseActor.getList(mainStage, "Solid"))
-        {
-            hero.preventOverlap(solid);
+        for (BaseActor exit : BaseActor.getList(mainStage, "Exit")) {
+            if (hero.overlaps(exit))
+                MortenCombat.setActiveScreen(new SecondLevel());
         }
-        if (Gdx.input.isKeyPressed(Keys.S))
-            MortenCombat.setActiveScreen( new SecondLevel() );
 
     }
 
