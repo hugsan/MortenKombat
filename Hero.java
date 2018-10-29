@@ -44,7 +44,7 @@ public class Hero extends BaseActor
         facingAngle = 270;
         setBoundaryPolygon(8);
         setAcceleration(400);
-        setMaxSpeed(100);
+        setMaxSpeed(250);
         setDeceleration(400);
     }
     public void act(float dt)
