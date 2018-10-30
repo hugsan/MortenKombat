@@ -1,8 +1,18 @@
 public class MortenCombat extends BaseGame
 {
-    public void create() 
-    {        
+
+    public void create() {
         super.create();
-        setActiveScreen( new LevelScreen() );
+        System.out.println("MortenCombat - create()");
+
+        LevelScreen.mapName = "firstmap";
+        LevelScreen m1 = new LevelScreen();
+
+        LevelScreen.mapName = "secondmap";
+        LevelScreen m2 = new LevelScreen();
+
+        // initialize all the maps in the same way until m7
+
+        setActiveScreen( m2 );
     }
 }
