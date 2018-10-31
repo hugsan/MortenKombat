@@ -49,7 +49,7 @@ public class LevelScreen extends BaseScreen {
         }
 
         //create the starting point for our hero.
-        MapObject startPoint = tma.getRectangleList("start").get(0);
+        MapObject startPoint = tma.getRectangleList("Start").get(0);
         MapProperties startProps = startPoint.getProperties();
         hero = new Hero((float) startProps.get("x"), (float) startProps.get("y"), mainStage);
 
