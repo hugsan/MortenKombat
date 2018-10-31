@@ -1,29 +1,22 @@
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
+package core.framework;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.utils.Array; 
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
 import com.badlogic.gdx.graphics.g2d.Batch;
-
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.MathUtils;
-
-import com.badlogic.gdx.math.Polygon;
-import com.badlogic.gdx.math.Intersector;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.*;
 import com.badlogic.gdx.math.Intersector.MinimumTranslationVector;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.ArrayList;
-import com.badlogic.gdx.math.Rectangle;
-
-import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import com.badlogic.gdx.scenes.scene2d.Group;
 
 /**
  * Extends functionality of the LibGDX Actor class.
@@ -104,9 +97,9 @@ public class BaseActor extends Group
     }
 
     /** 
-     *  Repositions this BaseActor so its center is aligned
-     *  with center of other BaseActor. Useful when one BaseActor spawns another.
-     *  @param other BaseActor to align this BaseActor with
+     *  Repositions this core.framework.BaseActor so its center is aligned
+     *  with center of other core.framework.BaseActor. Useful when one core.framework.BaseActor spawns another.
+     *  @param other core.framework.BaseActor to align this srcxcc.core.framework.BaseActor with
      */
     public void centerAtActor(BaseActor other)
     {
@@ -432,8 +425,8 @@ public class BaseActor extends Group
     }
 
     /**
-     *  Returns bounding polygon for this BaseActor, adjusted by Actor's current position and rotation.
-     *  @return bounding polygon for this BaseActor
+     *  Returns bounding polygon for this core.framework.BaseActor, adjusted by Actor's current position and rotation.
+     *  @return bounding polygon for this core.framework.BaseActor
      */
     public Polygon getBoundaryPolygon()
     {
@@ -445,9 +438,9 @@ public class BaseActor extends Group
     }
 
     /**
-     *  Determine if this BaseActor overlaps other BaseActor (according to collision polygons).
-     *  @param other BaseActor to check for overlap
-     *  @return true if collision polygons of this and other BaseActor overlap
+     *  Determine if this srcxcc.core.framework.BaseActor overlaps other srcxcc.core.framework.BaseActor (according to collision polygons).
+     *  @param other srcxcc.core.framework.BaseActor to check for overlap
+     *  @return true if collision polygons of this and other srcxcc.core.framework.BaseActor overlap
      *  @see #setBoundaryRectangle
      *  @see #setBoundaryPolygon
      */
@@ -465,9 +458,9 @@ public class BaseActor extends Group
 
     /**
      *  Implement a "solid"-like behavior:
-     *  when there is overlap, move this BaseActor away from other BaseActor
+     *  when there is overlap, move this srcxcc.core.framework.BaseActor away from other srcxcc.core.framework.BaseActor
      *  along minimum translation vector until there is no overlap.
-     *  @param other BaseActor to check for overlap
+     *  @param other srcxcc.core.framework.BaseActor to check for overlap
      *  @return direction vector by which actor was translated, null if no overlap
      */
     public Vector2 preventOverlap(BaseActor other)
@@ -490,10 +483,10 @@ public class BaseActor extends Group
     }
 
     /**
-     *  Determine if this BaseActor is near other BaseActor (according to collision polygons).
+     *  Determine if this srcxcc.core.framework.BaseActor is near other srcxcc.core.framework.BaseActor (according to collision polygons).
      *  @param distance amount (pixels) by which to enlarge collision polygon width and height 
-     *  @param other BaseActor to check if nearby
-     *  @return true if collision polygons of this (enlarged) and other BaseActor overlap
+     *  @param other srcxcc.core.framework.BaseActor to check if nearby
+     *  @return true if collision polygons of this (enlarged) and other srcxcc.core.framework.BaseActor overlap
      *  @see #setBoundaryRectangle
      *  @see #setBoundaryPolygon
      */
@@ -584,8 +577,8 @@ public class BaseActor extends Group
      *      or whose class extends the class with the given name.
      *  If no instances exist, returns an empty list.
      *  Useful when coding interactions between different types of game objects in update method.
-     *  @param stage Stage containing BaseActor instances
-     *  @param className name of a class that extends the BaseActor class
+     *  @param stage Stage containing srcxcc.core.framework.BaseActor instances
+     *  @param className name of a class that extends the srcxcc.core.framework.BaseActor class
      *  @return list of instances of the object in stage which extend with the given class name 
      */
     public static ArrayList<BaseActor> getList(Stage stage, String className)
@@ -608,8 +601,8 @@ public class BaseActor extends Group
     }
 
     /**
-     *  Returns number of instances of a given class (that extends BaseActor).
-     *  @param className name of a class that extends the BaseActor class
+     *  Returns number of instances of a given class (that extends core.framework.BaseActor).
+     *  @param className name of a class that extends the core.framework.BaseActor class
      *  @return number of instances of the class
      */
     public static int count(Stage stage, String className)

@@ -1,10 +1,15 @@
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapProperties;
+package core.screen;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
-import com.sun.corba.se.spi.servicecontext.ServiceContextData;
-
-import java.util.logging.Level;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapProperties;
+import core.MortenCombat;
+import core.actors.*;
+import core.actors.Solid;
+import core.framework.BaseActor;
+import core.framework.BaseScreen;
+import core.framework.TilemapActor;
 
 
 public class LevelScreen extends BaseScreen {
@@ -35,7 +40,6 @@ public class LevelScreen extends BaseScreen {
 
 
     public void initialize() {
-        System.out.println(mapName);
         TilemapActor tma = new TilemapActor("assets/" + mapName + ".tmx", mainStage);
         //create the Solid object from our tilemap
         for (MapObject obj : tma.getRectangleList("Solid")) {
@@ -97,13 +101,14 @@ public class LevelScreen extends BaseScreen {
             hero.accelerateAtAngle(90);
         if (Gdx.input.isKeyPressed(Keys.DOWN))
             hero.accelerateAtAngle(270);
+
         //prevent the hero to colide with any solid
-        for (BaseActor solid : BaseActor.getList(mainStage, "Solid")) {
+        for (BaseActor solid : BaseActor.getList(mainStage, "core.actors.Solid")) {
             hero.preventOverlap(solid);
         }
         //check when the hero hit the gate "Exit" and changes the map
         if (nextMap != null){
-        for (BaseActor a : BaseActor.getList(mainStage, "Exit")) {
+        for (BaseActor a : BaseActor.getList(mainStage, "core.actors.Exit")) {
             if (hero.overlaps(a))
             {
                 hero.setPosition( getX(),getY() );
@@ -113,7 +118,7 @@ public class LevelScreen extends BaseScreen {
         }
         }
         if (nextMap2 != null) {
-            for (BaseActor a : BaseActor.getList(mainStage, "ExitTwo")) {
+            for (BaseActor a : BaseActor.getList(mainStage, "core.actors.ExitTwo")) {
                 if (hero.overlaps(a)){
                     hero.setPosition( getX(),getY() );
                     hero.setSpeed(0);
@@ -122,7 +127,7 @@ public class LevelScreen extends BaseScreen {
             }
         }
         if (previousMap != null){
-            for (BaseActor a : BaseActor.getList(mainStage, "GoBack")) {
+            for (BaseActor a : BaseActor.getList(mainStage, "core.actors.GoBack")) {
                 if (hero.overlaps(a)) {
                     hero.setPosition( getZ(), getW());
                     hero.setSpeed(0);

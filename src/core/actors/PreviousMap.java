@@ -1,4 +1,7 @@
+package core.actors;
+
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import core.framework.BaseActor;
 
 public class PreviousMap extends BaseActor
 {

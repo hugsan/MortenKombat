@@ -1,8 +1,11 @@
-import com.badlogic.gdx.scenes.scene2d.Stage;
+package core.actors;
 
-public class GoBack extends BaseActor
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import core.framework.BaseActor;
+
+public class Exit extends BaseActor
 {
-    public GoBack(float x, float y, Stage s)
+    public Exit(float x, float y, Stage s)
     {
         super(x,y,s);
         loadTexture("assets/cavernopening.png");

@@ -1,3 +1,5 @@
+package core.screen;
+
 public enum MapLayout {
 //previous map starting at 0 to n-1
     //if previousMap 0, then there is no previous map

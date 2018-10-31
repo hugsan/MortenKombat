@@ -1,5 +1,5 @@
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
+package core.framework;
+
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -8,10 +8,13 @@ import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.objects.TiledMapTileMapObject;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -61,7 +64,7 @@ public class TilemapActor extends Actor
 
     /**
      *  Search the map layers for Rectangle Objects that contain a property (key) called "name" with associated value propertyName;
-     *  typically used to store non-actor information such as spawn point locations or dimensions of Solid objects.
+     *  typically used to store non-actor information such as spawn point locations or dimensions of srcxcc.core.actors.Solid objects.
      *  Retrieve data as object, then cast to desired type: for example, float w = (float)obj.getProperties().get("width").
      */
     public ArrayList<MapObject> getRectangleList(String propertyName)

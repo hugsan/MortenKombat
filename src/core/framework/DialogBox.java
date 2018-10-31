@@ -1,6 +1,8 @@
+package core.framework;
+
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.Align;
 
 public class DialogBox extends BaseActor

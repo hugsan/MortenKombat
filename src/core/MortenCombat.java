@@ -1,3 +1,9 @@
+package core;
+
+import core.framework.BaseGame;
+import core.screen.LevelScreen;
+import core.screen.MapLayout;
+
 public class MortenCombat extends BaseGame
 {
 
@@ -6,11 +12,11 @@ public class MortenCombat extends BaseGame
         LevelScreen[] layout = new LevelScreen[MapLayout.values().length];
         int i = 0;
 
-        /**LevelScreen.mapName = "firstmap";
-        LevelScreen m1 = new LevelScreen();
+        /**srcxcc.core.screen.LevelScreen.mapName = "firstmap";
+        srcxcc.core.screen.LevelScreen m1 = new srcxcc.core.screen.LevelScreen();
 
-        LevelScreen.mapName = "secondmap";
-        LevelScreen m2 = new LevelScreen(m1);*/
+        srcxcc.core.screen.LevelScreen.mapName = "secondmap";
+        srcxcc.core.screen.LevelScreen m2 = new srcxcc.core.screen.LevelScreen(m1);*/
         for (MapLayout map : MapLayout.values()){
             LevelScreen.mapName = map.getTmx();
             if (map.getLevel() == 0){
