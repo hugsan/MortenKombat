@@ -11,19 +11,16 @@ import core.framework.BaseActor;
 import core.framework.BaseScreen;
 import core.framework.TilemapActor;
 
-
 public class LevelScreen extends BaseScreen {
     public static String mapName ;
     private LevelScreen previousMap;
     private LevelScreen nextMap = null;
     private LevelScreen nextMap2 = null;
 
+    Hero hero;
 
     private float x,y;
-    private float z;
-
-
-    private float w;
+    private float z, w;
 
     public LevelScreen() {
         this.previousMap = null;
@@ -35,9 +32,6 @@ public class LevelScreen extends BaseScreen {
         else previousMap.setNextMap(this);
         this.previousMap = previousMap;
     }
-
-    Hero hero;
-
 
     public void initialize() {
         TilemapActor tma = new TilemapActor("assets/" + mapName + ".tmx", mainStage);
@@ -88,7 +82,6 @@ public class LevelScreen extends BaseScreen {
         x = (float) previousProp.get("x");
         y = (float) previousProp.get("y");
 
-
     }
 
     public void update(float dt) {
@@ -138,6 +131,7 @@ public class LevelScreen extends BaseScreen {
         }
 
     }
+
     public void setNextMap(LevelScreen nextMap) {
         this.nextMap = nextMap;
     }
@@ -153,6 +147,7 @@ public class LevelScreen extends BaseScreen {
     public void setNextMap2(LevelScreen nextMap2) {
         this.nextMap2 = nextMap2;
     }
+
     public float getX() {
         return x;
     }
@@ -160,14 +155,11 @@ public class LevelScreen extends BaseScreen {
     public float getY() {
         return y;
     }
-    public float getZ() {
-        return z;
-    }
+
+    public float getZ() { return z; }
 
     public float getW() {
         return w;
     }
-
-
 
 }
