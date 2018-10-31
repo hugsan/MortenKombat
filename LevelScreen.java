@@ -17,11 +17,11 @@ public class LevelScreen extends BaseScreen {
         this.previousMap = null;
     }
 
-    public LevelScreen(String mapName, LevelScreen previous) {
-        this.previousMap = previous;
+    public LevelScreen( LevelScreen previousMap) {
         if (previousMap.getNextMap() != null)
             previousMap.setNextMap2(this);
         else previousMap.setNextMap(this);
+        this.previousMap = previousMap;
     }
 
     Hero hero;
@@ -87,9 +87,11 @@ public class LevelScreen extends BaseScreen {
     public void setNextMap(LevelScreen nextMap) {
         this.nextMap = nextMap;
     }
+
     public LevelScreen getNextMap() {
         return nextMap;
     }
+
     public LevelScreen getNextMap2() {
         return nextMap2;
     }

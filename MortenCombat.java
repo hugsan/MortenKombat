@@ -9,7 +9,7 @@ public class MortenCombat extends BaseGame
         LevelScreen m1 = new LevelScreen();
 
         LevelScreen.mapName = "secondmap";
-        LevelScreen m2 = new LevelScreen();
+        LevelScreen m2 = new LevelScreen(m1);
 
         // initialize all the maps in the same way until m7
 
