@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="11">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="13">
  <tileset firstgid="1" name="grass-tiles-2-small" tilewidth="32" tileheight="32" tilecount="72" columns="12">
   <image source="grass-tiles-2-small.png" width="384" height="192"/>
  </tileset>
@@ -259,9 +259,19 @@
     <property name="name" value="Exit2"/>
    </properties>
   </object>
-  <object id="10" x="552.667" y="964" width="36.6667" height="24">
+  <object id="10" x="640" y="960" width="36.6667" height="24">
    <properties>
     <property name="name" value="Start"/>
+   </properties>
+  </object>
+  <object id="11" x="544" y="960" width="32" height="32">
+   <properties>
+    <property name="name" value="GoBack"/>
+   </properties>
+  </object>
+  <object id="12" x="832" y="960" width="32" height="32">
+   <properties>
+    <property name="name" value="PreviousHeroPoint"/>
    </properties>
   </object>
  </objectgroup>
