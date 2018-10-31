@@ -33,6 +33,7 @@ public class LevelScreen extends BaseScreen {
 
     Hero hero;
 
+
     public void initialize() {
         System.out.println(mapName);
         TilemapActor tma = new TilemapActor("assets/" + mapName + ".tmx", mainStage);
