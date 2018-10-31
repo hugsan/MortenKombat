@@ -4,10 +4,10 @@ public enum MapLayout {
     MAP1(0, "map1"),
     MAP2(1,"map2"),
     MAP3(2,"map3"),
-    MAP4(0,"map4"),
-    MAP5(0,"map5"),
-    MAP6(0,"map6"),
-    MAP7(0,"map7");
+    MAP4(3,"map4"),
+    MAP5(2,"map5"),
+    MAP6(5,"map6"),
+    MAP7(5,"map7");
 
 
 
