@@ -13,10 +13,11 @@ public class MortenCombat extends BaseGame
         LevelScreen m2 = new LevelScreen(m1);*/
         for (MapLayout map : MapLayout.values()){
             LevelScreen.mapName = map.getTmx();
-            if (map.getLevel() == null){
+            if (map.getLevel() == 0){
                 layout[i] = new LevelScreen();
             }else {
-                layout[i] = new LevelScreen(map.getLevel());
+                System.out.println("we got it!");
+                layout[i] = new LevelScreen(layout[map.getLevel() -1]);
             }
             i++;
         }
