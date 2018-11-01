@@ -53,13 +53,15 @@ public class Hero extends BaseActor
     public void act(float dt)
     {
         super.act(dt);
-// pause animation when character not moving
+
+        // pause animation when character not moving
         if ( getSpeed() == 0 )
             setAnimationPaused(true);
         else
         {
             setAnimationPaused(false);
-// set direction animation
+
+            // set direction animation
             float angle = getMotionAngle();
             if (angle >= 45 && angle <= 135)
             {
