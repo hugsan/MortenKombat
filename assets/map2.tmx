@@ -211,7 +211,7 @@
 </data>
  </layer>
  <objectgroup id="4" name="Object Layer 1">
-  <object id="2" x="512" y="1056" width="51" height="49">
+  <object id="2" x="512" y="992" width="51" height="49">
    <properties>
     <property name="name" value="Start"/>
    </properties>
@@ -271,7 +271,7 @@
     <property name="name" value="GoBack"/>
    </properties>
   </object>
-  <object id="16" x="1024" y="1088" width="32" height="32">
+  <object id="16" x="896" y="992" width="32" height="32">
    <properties>
     <property name="name" value="PreviousHeroPoint"/>
    </properties>

@@ -24,7 +24,7 @@ public class LevelScreen extends BaseScreen {
 
 
     private float w;
-
+//look at this
     public LevelScreen() {
         this.previousMap = null;
     }
@@ -49,21 +49,25 @@ public class LevelScreen extends BaseScreen {
                     mainStage);
         }
 
-        //create our exit from our map, used to move to another map
-        for (MapObject obj : tma.getRectangleList("Exit")) {
-            MapProperties props = obj.getProperties();
-            new Exit((float) props.get("x"), (float) props.get("y"), mainStage);
-        }
-        //create our exit2 from our map, used to move to another map
-        for (MapObject obj : tma.getRectangleList("Exit2")) {
-            MapProperties props = obj.getProperties();
-            new ExitTwo((float) props.get("x"), (float) props.get("y"), mainStage);
-        }
+            createMapObjects(tma,"Exit");
+            createMapObjects(tma,"Exit2");
+            createMapObjects(tma,"GoBack");
 
-        for (MapObject obj : tma.getRectangleList("GoBack")) {
-            MapProperties props = obj.getProperties();
-            new GoBack((float) props.get("x"), (float) props.get("y"), mainStage);
-        }
+//        //create our exit from our map, used to move to another map
+//        for (MapObject obj : tma.getRectangleList("Exit")) {
+//            MapProperties props = obj.getProperties();
+//            new Exit((float) props.get("x"), (float) props.get("y"), mainStage);
+//        }
+//        //create our exit2 from our map, used to move to another map
+//        for (MapObject obj : tma.getRectangleList("Exit2")) {
+//            MapProperties props = obj.getProperties();
+//            new ExitTwo((float) props.get("x"), (float) props.get("y"), mainStage);
+//        }
+//
+//        for (MapObject obj : tma.getRectangleList("GoBack")) {
+//            MapProperties props = obj.getProperties();
+//            new GoBack((float) props.get("x"), (float) props.get("y"), mainStage);
+//        }
 
         //create the starting point for our hero.
         MapObject startPoint = tma.getRectangleList("Start").get(0);
@@ -83,10 +87,13 @@ public class LevelScreen extends BaseScreen {
         z = (float) startProps.get("x");
         w = (float) startProps.get("y");
         //setting the starting point, when we go back to the previous map
-        MapObject previousPoint = tma.getRectangleList("PreviousHeroPoint").get(0);
-        MapProperties previousProp = previousPoint.getProperties();
-        x = (float) previousProp.get("x");
-        y = (float) previousProp.get("y");
+        if (tma.getRectangleList("PreviousHeroPoint").size() !=0){
+            MapObject previousPoint = tma.getRectangleList("PreviousHeroPoint").get(0);
+            MapProperties previousProp = previousPoint.getProperties();
+            x = (float) previousProp.get("x");
+            y = (float) previousProp.get("y");
+        }
+
 
 
     }
@@ -111,6 +118,7 @@ public class LevelScreen extends BaseScreen {
         for (BaseActor a : BaseActor.getList(mainStage, "core.actors.Exit")) {
             if (hero.overlaps(a))
             {
+
                 hero.setPosition( getX(),getY() );
                 hero.setSpeed(0);
                 MortenCombat.setActiveScreen(nextMap);
@@ -168,6 +176,29 @@ public class LevelScreen extends BaseScreen {
         return w;
     }
 
+    public void createMapObjects(TilemapActor tma, String mapattributes){
+        if (tma.getRectangleList(mapattributes).size() !=0) {
+            MapObject obj = tma.getRectangleList(mapattributes).get(0);
+
+            MapProperties props = obj.getProperties();
+
+            switch (mapattributes) {
+                case "Exit":
+                    new Exit((float) props.get("x"), (float) props.get("y"), mainStage);
+                    break;
+                case "Exit2":
+                    new ExitTwo((float) props.get("x"), (float) props.get("y"), mainStage);
+                    break;
+                case "GoBack":
+                    new GoBack((float) props.get("x"), (float) props.get("y"), mainStage);
+                    break;
+                default:
+                    System.out.println("Something went really wrong, contact ITCOM5");
+
+            }
+        }
+
+    }
 
 
 }

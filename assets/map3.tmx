@@ -219,14 +219,9 @@
     <property name="name" value="Exit"/>
    </properties>
   </object>
-  <object id="2" x="512" y="864" width="41" height="43">
+  <object id="2" x="448" y="864" width="41" height="43">
    <properties>
     <property name="name" value="Start"/>
-   </properties>
-  </object>
-  <object id="3" x="564" y="555" width="73" height="62">
-   <properties>
-    <property name="name" value="Exit2"/>
    </properties>
   </object>
   <object id="4" x="541" y="475" width="127" height="32">
@@ -254,7 +249,7 @@
     <property name="name" value="GoBack"/>
    </properties>
   </object>
-  <object id="9" x="736" y="800" width="32" height="32">
+  <object id="9" x="928" y="896" width="32" height="32">
    <properties>
     <property name="name" value="PreviousHeroPoint"/>
    </properties>

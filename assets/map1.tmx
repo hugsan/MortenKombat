@@ -483,7 +483,7 @@
 </data>
  </layer>
  <objectgroup id="6" name="Start&amp;Solid">
-  <object id="16" x="320" y="1888" width="41" height="37">
+  <object id="16" x="1664" y="1728" width="41" height="37">
    <properties>
     <property name="name" value="Start"/>
    </properties>
@@ -578,7 +578,7 @@
     <property name="name" value="Solid"/>
    </properties>
   </object>
-  <object id="45" x="1230" y="1492" width="32" height="556">
+  <object id="45" x="1229" y="1492" width="32" height="556">
    <properties>
     <property name="name" value="Solid"/>
    </properties>
@@ -613,7 +613,7 @@
     <property name="name" value="Solid"/>
    </properties>
   </object>
-  <object id="52" x="1345.33" y="1798.67" width="27.3333" height="16.6667">
+  <object id="52" x="1344.33" y="1798.67" width="27.3333" height="16.6667">
    <properties>
     <property name="name" value="Solid"/>
    </properties>
@@ -1166,11 +1166,6 @@
   <object id="170" x="2014" y="1697.33" width="34.6667" height="64">
    <properties>
     <property name="name" value="Exit"/>
-   </properties>
-  </object>
-  <object id="171" x="936.364" y="51.5152" width="54.5455" height="63.6364">
-   <properties>
-    <property name="name" value="Exit2"/>
    </properties>
   </object>
   <object id="175" x="1920" y="1728">

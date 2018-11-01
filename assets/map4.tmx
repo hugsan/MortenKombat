@@ -254,11 +254,6 @@
     <property name="name" value="Exit"/>
    </properties>
   </object>
-  <object id="9" x="537.333" y="785.333" width="40.6667" height="30.6667">
-   <properties>
-    <property name="name" value="Exit2"/>
-   </properties>
-  </object>
   <object id="10" x="640" y="960" width="36.6667" height="24">
    <properties>
     <property name="name" value="Start"/>
