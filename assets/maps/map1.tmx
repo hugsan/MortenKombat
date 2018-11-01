@@ -483,7 +483,7 @@
 </data>
  </layer>
  <objectgroup id="6" name="Start&amp;Solid">
-  <object id="16" x="1664" y="1728" width="41" height="37">
+  <object id="16" x="288" y="1856" width="41" height="37">
    <properties>
     <property name="name" value="Start"/>
    </properties>
