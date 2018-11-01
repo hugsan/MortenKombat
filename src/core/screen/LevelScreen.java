@@ -49,7 +49,7 @@ public class LevelScreen extends BaseScreen {
 
 
     public void initialize() {
-        TilemapActor tma = new TilemapActor("assets/" + mapName + ".tmx", mainStage);
+        TilemapActor tma = new TilemapActor("assets/maps/" + mapName + ".tmx", mainStage);
 
         //Creates all the objects of our Tilemaps
         createMapObjects(tma,"Solid");
@@ -80,7 +80,6 @@ public class LevelScreen extends BaseScreen {
             x = (float) previousProp.get("x");
             y = (float) previousProp.get("y");
         }
-
     }
 
     public void update(float dt) {
