@@ -94,8 +94,6 @@ public class LevelScreen extends BaseScreen {
             y = (float) previousProp.get("y");
         }
 
-
-
     }
 
     public void update(float dt) {
