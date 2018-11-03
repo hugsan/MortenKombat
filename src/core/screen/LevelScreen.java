@@ -178,7 +178,7 @@ public class LevelScreen extends BaseScreen {
                             }
 
                         }
-
+                        break;
                     case "core.actors.Exit":
                         if (hero.overlaps(a)){
                         hero.setPosition( getX(),getY() );
