@@ -17,6 +17,7 @@ public class LevelScreen extends BaseScreen {
     private LevelScreen previousMap;
     private LevelScreen nextMap = null;
     private LevelScreen nextMap2 = null;
+    Hero hero;
 
     // X Y position of the hero when the hero travels to next map
     private float x,y;
@@ -45,7 +46,7 @@ public class LevelScreen extends BaseScreen {
         this.previousMap = previousMap;
     }
 
-    Hero hero;
+
 
 
     public void initialize() {
@@ -56,6 +57,7 @@ public class LevelScreen extends BaseScreen {
         createMapObjects(tma,"Exit");
         createMapObjects(tma,"Exit2");
         createMapObjects(tma,"GoBack");
+        createMapObjects(tma, "Bat");
 
         //create the starting point for our hero.
         MapObject startPoint = tma.getRectangleList("Start").get(0);
@@ -84,6 +86,7 @@ public class LevelScreen extends BaseScreen {
 
     public void update(float dt) {
         // hero movement controls
+
         if (Gdx.input.isKeyPressed(Keys.LEFT))
             hero.accelerateAtAngle(180);
         if (Gdx.input.isKeyPressed(Keys.RIGHT))
@@ -93,10 +96,14 @@ public class LevelScreen extends BaseScreen {
         if (Gdx.input.isKeyPressed(Keys.DOWN))
             hero.accelerateAtAngle(270);
 
-        actorObjectInteraction("core.actors.Solid");
-        actorObjectInteraction("core.actors.Exit");
-        actorObjectInteraction("core.actors.ExitTwo");
-        actorObjectInteraction("core.actors.GoBack");
+
+        heroObjectInteraction("core.actors.Solid");
+        heroObjectInteraction("core.actors.Exit");
+        heroObjectInteraction("core.actors.ExitTwo");
+        heroObjectInteraction("core.actors.GoBack");
+        heroObjectInteraction("core.actors.Bat");
+
+
     }
 
     public void setNextMap(LevelScreen nextMap) {
@@ -147,38 +154,55 @@ public class LevelScreen extends BaseScreen {
                             (float) props.get("width"), (float) props.get("height"),
                             mainStage);
                     break;
+                case "Bat":
+                    new Bat( (float) props.get("x"), (float) props.get("y"), mainStage);
+                    break;
                 default:
                     System.out.println("Something went really wrong, contact ITCOM5");
             }
         }
     }
-    public void actorObjectInteraction(String className){
+    public void heroObjectInteraction(String className){
         for (BaseActor a : BaseActor.getList(mainStage, className)) {
-            if (hero.overlaps(a))
-            {
+
                 switch(className){
                     case "core.actors.Solid":
-                        hero.preventOverlap(a);
+                        if (hero.overlaps(a)){
+                        hero.preventOverlap(a);}
                         break;
+                    case "core.actors.Bat":
+                        for (BaseActor s: BaseActor.getList(mainStage, "core.actors.Solid")){
+                            if (a.overlaps(s)){
+                                a.preventOverlap(s);
+                                a.setMotionAngle( a.getMotionAngle() + 180);
+                            }
+
+                        }
+
                     case "core.actors.Exit":
+                        if (hero.overlaps(a)){
                         hero.setPosition( getX(),getY() );
                         hero.setSpeed(0);
-                        MortenCombat.setActiveScreen(nextMap);
+                        MortenCombat.setActiveScreen(nextMap);}
                         break;
                     case "core.actors.ExitTwo":
+                        if (hero.overlaps(a)){
                         hero.setPosition( getX(),getY() );
                         hero.setSpeed(0);
-                        MortenCombat.setActiveScreen(nextMap2);
+                        MortenCombat.setActiveScreen(nextMap2);}
                         break;
                     case "core.actors.GoBack":
+                        if (hero.overlaps(a)){
                         hero.setPosition( getZ(),getW() );
                         hero.setSpeed(0);
-                        MortenCombat.setActiveScreen(previousMap);
+                        MortenCombat.setActiveScreen(previousMap);}
                         break;
                     default:
-                        System.out.println("Contact ITCOM5");
+                        System.out.println("Contact with ITCOM5 group, something went wrong.");
+
                 }
-            }
+
+
         }
     }
 }

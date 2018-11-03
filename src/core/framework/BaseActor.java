@@ -38,6 +38,7 @@ public class BaseActor extends Group
     private float maxSpeed;
     private float deceleration;
 
+
     private Polygon boundaryPolygon;
 
     // stores size of game world for all actors
