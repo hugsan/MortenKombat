@@ -8,7 +8,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import core.framework.BaseActor;
 
-
+/**
+ * Class hero that is being used to navigate in our mapdungeon.
+ * The hero uses a animation to simulate movement, and the animation will change if the direction of our hero changes
+ * Hero is being initialize with MaxSpeed = 300 and Acceleration = 10000.
+ */
 public class Hero extends BaseActor
 {
     Animation north;
@@ -88,6 +92,11 @@ public class Hero extends BaseActor
         boundToWorld();
         applyPhysics(dt);
     }
+
+    /**
+     *
+     * @return facing angle of our hero.
+     */
     public float getFacingAngle()
     {
         return facingAngle;

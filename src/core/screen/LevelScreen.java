@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapProperties;
+import com.badlogic.gdx.math.MathUtils;
 import core.MortenCombat;
 import core.actors.*;
 import core.actors.Solid;
@@ -18,7 +19,7 @@ public class LevelScreen extends BaseScreen {
     private LevelScreen previousMap;
     private LevelScreen nextMap = null;
     private LevelScreen nextMap2 = null;
-    Hero hero;
+    private Hero hero;
     private Music backgroundMusic;
 
     // X Y position of the hero when the hero travels to next map
@@ -103,12 +104,12 @@ public class LevelScreen extends BaseScreen {
         if (Gdx.input.isKeyPressed(Keys.DOWN))
             hero.accelerateAtAngle(270);
 
-
-        heroObjectInteraction("core.actors.Solid");
-        heroObjectInteraction("core.actors.Exit");
-        heroObjectInteraction("core.actors.ExitTwo");
-        heroObjectInteraction("core.actors.GoBack");
-        heroObjectInteraction("core.actors.Bat");
+        //Checks if our object interact with each other. If they interact their functionality is executed.
+        actorObjectInteraction("core.actors.Solid");
+        actorObjectInteraction("core.actors.Exit");
+        actorObjectInteraction("core.actors.ExitTwo");
+        actorObjectInteraction("core.actors.GoBack");
+        actorObjectInteraction("core.actors.Bat");
 
 
     }
@@ -143,6 +144,14 @@ public class LevelScreen extends BaseScreen {
         return w;
     }
 
+    /**
+     * Method used to create our object from our tile maps.
+     *
+     * The method reads all the object created in the tile maps. If their object name matc hwith the argument
+     * String then they create that specific object.
+     * @param tma TileMapActor where you want to create the object.
+     * @param mapattributes Name attribute of our object in the TileMap
+     */
     public void createMapObjects(TilemapActor tma, String mapattributes) {
         for (MapObject obj : tma.getRectangleList(mapattributes)) {
             MapProperties props = obj.getProperties();
@@ -169,7 +178,12 @@ public class LevelScreen extends BaseScreen {
             }
         }
     }
-    public void heroObjectInteraction(String className){
+
+    /**
+     * Method used to execute the interactions between the object in our TileMapActor.
+     * @param className Name of the class that we want to check of any interaction.
+     */
+    public void actorObjectInteraction(String className){
         for (BaseActor a : BaseActor.getList(mainStage, className)) {
 
                 switch(className){
@@ -181,7 +195,7 @@ public class LevelScreen extends BaseScreen {
                         for (BaseActor s: BaseActor.getList(mainStage, "core.actors.Solid")){
                             if (a.overlaps(s)){
                                 a.preventOverlap(s);
-                                a.setMotionAngle( a.getMotionAngle() + 180);
+                                a.setMotionAngle( MathUtils.random(0,360));
                             }
 
                         }

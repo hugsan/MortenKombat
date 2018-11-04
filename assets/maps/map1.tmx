@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="193">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="203">
  <tileset firstgid="1" name="grass-tiles-2-small" tilewidth="32" tileheight="32" tilecount="72" columns="12">
   <image source="grass-tiles-2-small.png" width="384" height="192"/>
  </tileset>
@@ -1191,62 +1191,57 @@
     <property name="name" value="Solid"/>
    </properties>
   </object>
-  <object id="179" x="1504" y="1760">
+  <object id="182" x="416" y="864">
    <properties>
     <property name="name" value="Bat"/>
    </properties>
   </object>
-  <object id="182" x="416" y="1472">
+  <object id="193" x="832" y="768">
    <properties>
     <property name="name" value="Bat"/>
    </properties>
   </object>
-  <object id="183" x="704" y="1184">
+  <object id="194" x="576" y="608">
    <properties>
     <property name="name" value="Bat"/>
    </properties>
   </object>
-  <object id="184" x="256" y="896">
+  <object id="195" x="928" y="384">
    <properties>
     <property name="name" value="Bat"/>
    </properties>
   </object>
-  <object id="185" x="576" y="640">
+  <object id="196" x="1280" y="512">
    <properties>
     <property name="name" value="Bat"/>
    </properties>
   </object>
-  <object id="186" x="1280" y="608">
+  <object id="197" x="1344" y="768">
    <properties>
     <property name="name" value="Bat"/>
    </properties>
   </object>
-  <object id="187" x="1088" y="1152">
+  <object id="198" x="1152" y="992">
    <properties>
     <property name="name" value="Bat"/>
    </properties>
   </object>
-  <object id="188" x="1664" y="768">
+  <object id="199" x="1248" y="1408">
    <properties>
     <property name="name" value="Bat"/>
    </properties>
   </object>
-  <object id="189" x="1760" y="1120">
+  <object id="200" x="1696" y="768">
    <properties>
     <property name="name" value="Bat"/>
    </properties>
   </object>
-  <object id="190" x="1568" y="1440">
+  <object id="201" x="1696" y="1440">
    <properties>
     <property name="name" value="Bat"/>
    </properties>
   </object>
-  <object id="191" x="1856" y="384">
-   <properties>
-    <property name="name" value="Bat"/>
-   </properties>
-  </object>
-  <object id="192" x="1088" y="352">
+  <object id="202" x="1664" y="1728">
    <properties>
     <property name="name" value="Bat"/>
    </properties>

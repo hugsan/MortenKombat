@@ -16,7 +16,8 @@ public class Bat extends BaseActor
     Animation south;
     Animation east;
     Animation west;
-    float facingAngle;
+    private float facingAngle;
+
     public Bat(float x, float y, Stage s)
     {
         super(x,y,s);
@@ -26,7 +27,7 @@ public class Bat extends BaseActor
         Texture texture = new Texture(Gdx.files.internal(fileName), true);
         int frameWidth = texture.getWidth() / cols;
         int frameHeight = texture.getHeight() / rows;
-        float frameDuration = 0.15f;
+        float frameDuration = 0.18f;
         TextureRegion[][] temp = TextureRegion.split(texture, frameWidth, frameHeight);
         Array<TextureRegion> textureArray = new Array<TextureRegion>();
         for (int c = 0; c < cols; c++)
@@ -35,23 +36,22 @@ public class Bat extends BaseActor
         textureArray.clear();
         for (int c = 0; c < cols; c++)
             textureArray.add( temp[1][c] );
-        west = new Animation(frameDuration, textureArray, Animation.PlayMode.LOOP_PINGPONG);
-        textureArray.clear();
-        for (int c = 0; c < cols; c++)
-            textureArray.add( temp[2][c] );
         east = new Animation(frameDuration, textureArray, Animation.PlayMode.LOOP_PINGPONG);
         textureArray.clear();
         for (int c = 0; c < cols; c++)
-            textureArray.add( temp[3][c] );
+            textureArray.add( temp[2][c] );
         north = new Animation(frameDuration, textureArray, Animation.PlayMode.LOOP_PINGPONG);
+        textureArray.clear();
+        for (int c = 0; c < cols; c++)
+            textureArray.add( temp[3][c] );
+        west = new Animation(frameDuration, textureArray, Animation.PlayMode.LOOP_PINGPONG);
         setAnimation(south);
         facingAngle = 270;
         setBoundaryPolygon(8);
         setScale(2);
-        setSpeed(MathUtils.random(50,80));
-
+        boundToWorld();
+        setSpeed(MathUtils.random(80,110));
         setMotionAngle( MathUtils.random(0,360));
-
     }
     public void act(float dt)
     {

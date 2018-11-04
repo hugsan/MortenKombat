@@ -1,5 +1,11 @@
 package core.screen;
 
+/**
+ * Enum that saves the the layout of our map. Each map contains as the first argument what is their previousMap
+ * and the second argument is the name of the file that has to read in assets/maps
+ * To create more complex map layout, just keep adding more lines into the ENUM, and connect them by previousmap.
+ * The same map (tmx) can be used in different maps.
+ */
 public enum MapLayout {
     //previous map starting at 0 to n-1
     //if previousMap 0, then there is no previous map
