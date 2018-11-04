@@ -2,6 +2,7 @@ package core.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapProperties;
 import core.MortenCombat;
@@ -18,6 +19,7 @@ public class LevelScreen extends BaseScreen {
     private LevelScreen nextMap = null;
     private LevelScreen nextMap2 = null;
     Hero hero;
+    private Music backgroundMusic;
 
     // X Y position of the hero when the hero travels to next map
     private float x,y;
@@ -51,6 +53,11 @@ public class LevelScreen extends BaseScreen {
 
     public void initialize() {
         TilemapActor tma = new TilemapActor("assets/maps/" + mapName + ".tmx", mainStage);
+
+        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/backgroundmusic.mp3"));
+        backgroundMusic.setVolume(0.5f);
+        backgroundMusic.setLooping(true);
+        backgroundMusic.play();
 
         //Creates all the objects of our Tilemaps
         createMapObjects(tma,"Solid");
