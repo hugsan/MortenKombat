@@ -60,12 +60,14 @@ public class LevelScreen extends BaseScreen {
         backgroundMusic.setLooping(true);
         backgroundMusic.play();
 
+
         //Creates all the objects of our Tilemaps
         createMapObjects(tma,"Solid");
         createMapObjects(tma,"Exit");
         createMapObjects(tma,"Exit2");
         createMapObjects(tma,"GoBack");
         createMapObjects(tma, "Bat");
+        createMapObjects(tma, "Torch");
 
         //create the starting point for our hero.
         MapObject startPoint = tma.getRectangleList("Start").get(0);
@@ -172,6 +174,9 @@ public class LevelScreen extends BaseScreen {
                     break;
                 case "Bat":
                     new Bat( (float) props.get("x"), (float) props.get("y"), mainStage);
+                    break;
+                case "Torch":
+                    new Torch ( (float) props.get("x"), (float) props.get("y"), mainStage);
                     break;
                 default:
                     System.out.println("Something went really wrong, contact ITCOM5");
