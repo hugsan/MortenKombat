@@ -16,6 +16,9 @@ import core.framework.TilemapActor;
 
 public class LevelScreen extends BaseScreen {
     public static String mapName ;
+    public static int windTimer = 0;
+    public static String mapEffect = "normal";
+    private String currentMapEffect;
     private LevelScreen previousMap;
     private LevelScreen nextMap = null;
     private LevelScreen nextMap2 = null;
@@ -42,7 +45,7 @@ public class LevelScreen extends BaseScreen {
      * This constructor implements a Map data structure as a tree with next and next1 being their branches
      * @param previousMap LevelScreen object, where the current map is connected to.
      */
-    public LevelScreen( LevelScreen previousMap) {
+    public LevelScreen( LevelScreen previousMap ) {
         if (previousMap.getNextMap() != null)
             previousMap.setNextMap2(this);
         else previousMap.setNextMap(this);
@@ -60,14 +63,15 @@ public class LevelScreen extends BaseScreen {
         backgroundMusic.setLooping(true);
         backgroundMusic.play();
 
+        currentMapEffect = mapEffect;
 
         //Creates all the objects of our Tilemaps
         createMapObjects(tma,"Solid");
         createMapObjects(tma,"Exit");
         createMapObjects(tma,"Exit2");
         createMapObjects(tma,"GoBack");
-        createMapObjects(tma, "Bat");
-        createMapObjects(tma, "Torch");
+        createMapObjects(tma,"Bat");
+        createMapObjects(tma,"Torch");
 
         //create the starting point for our hero.
         MapObject startPoint = tma.getRectangleList("Start").get(0);
@@ -76,12 +80,20 @@ public class LevelScreen extends BaseScreen {
         //Create our hero, taking the generated starting point before.
         hero = new Hero( (float) startProps.get("x"), (float) startProps.get("y"), mainStage);
 
-        //create acceleration for ice map
-        if (mapName.equals("map4"))
-        {
+        //System.out.println(mapEffect);
+
+        if (currentMapEffect.equals("wind")) {
+            System.out.println("test wind effect");
+            windBlow();
+        }
+        if (currentMapEffect.equals("ice")) {
             hero.setAcceleration(200);
             hero.setDeceleration(100);
         }
+        if (currentMapEffect.equals("dark")) {
+
+        }
+
         // running this way because new Hero is probably being run in a threat, and execute before giving values to Z, W
         z = (float) startProps.get("x");
         w = (float) startProps.get("y");
@@ -96,7 +108,6 @@ public class LevelScreen extends BaseScreen {
 
     public void update(float dt) {
         // hero movement controls
-
         if (Gdx.input.isKeyPressed(Keys.LEFT))
             hero.accelerateAtAngle(180);
         if (Gdx.input.isKeyPressed(Keys.RIGHT))
@@ -113,6 +124,17 @@ public class LevelScreen extends BaseScreen {
         actorObjectInteraction("core.actors.GoBack");
         actorObjectInteraction("core.actors.Bat");
 
+        System.out.println(mapEffect);
+
+        //Checks if the current map is windy. if it is blows the hero every 1 sec.
+        if (currentMapEffect.equals("wind")) {
+            windTimer++;
+            System.out.println(windTimer);
+            if (windTimer%60 == 0){
+                windBlow();
+                System.out.println("blow");
+            }
+        }
 
     }
 
@@ -134,16 +156,21 @@ public class LevelScreen extends BaseScreen {
     public float getX() {
         return x;
     }
-
     public float getY() {
         return y;
     }
     public float getZ() {
         return z;
     }
-
     public float getW() {
         return w;
+    }
+
+    private void windBlow() {
+
+        hero.setMotionAngle( MathUtils.random(0,360));
+        hero.setSpeed(MathUtils.random(10000,20000));
+
     }
 
     /**
