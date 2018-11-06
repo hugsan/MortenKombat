@@ -231,6 +231,11 @@ public class LevelScreen extends BaseScreen {
                             }
 
                         }
+                        if (a.overlaps(hero)){
+
+                            MortenCombat.setActiveScreen(new FightScreen(this));
+                            a.remove();
+                        }
                         break;
                     case "core.actors.Exit":
                         if (hero.overlaps(a)){
