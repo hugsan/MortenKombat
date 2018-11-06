@@ -54,11 +54,13 @@ public class LevelScreen extends BaseScreen {
 
     public void initialize() {
         TilemapActor tma = new TilemapActor("assets/maps/" + mapName + ".tmx", mainStage);
-
+        //load music only for the first map
+        if (mapName.equals("map1")){
         backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/backgroundmusic.mp3"));
         backgroundMusic.setVolume(0.5f);
         backgroundMusic.setLooping(true);
         backgroundMusic.play();
+        }
 
 
         //Creates all the objects of our Tilemaps

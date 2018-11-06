@@ -469,7 +469,7 @@
     <property name="name" value="Start"/>
    </properties>
   </object>
-  <object id="5" x="1793" y="1" width="60" height="32">
+  <object id="5" x="1795" y="64" width="60" height="32">
    <properties>
     <property name="name" value="Exit"/>
    </properties>
@@ -484,7 +484,7 @@
     <property name="name" value="GoBack"/>
    </properties>
   </object>
-  <object id="16" x="1805.09" y="119.273" width="32" height="32">
+  <object id="16" x="1800.59" y="230.773" width="32" height="32">
    <properties>
     <property name="name" value="PreviousHeroPoint"/>
    </properties>
