@@ -16,6 +16,7 @@ public class MortenCombat extends BaseGame {
 
         for (MapLayout map : MapLayout.values()){
             LevelScreen.mapName = map.getTmx();
+            LevelScreen.mapEffect = map.getMapEffect();
             if (map.getLevel() == 0){
                 layout[i] = new LevelScreen();
             }else {
@@ -24,7 +25,6 @@ public class MortenCombat extends BaseGame {
             i++;
         }
         // initialize all the maps in the same way until m7
-
         setActiveScreen( layout[0] );
 
     }
