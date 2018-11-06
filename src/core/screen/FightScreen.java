@@ -63,7 +63,7 @@ public class FightScreen extends BaseScreen {
                         return false;
                     if (!(turn))
                         return false;
-                    System.out.println("I have attack the enemy");
+                    System.out.println("I have attack the enemy, enemy current HP: "+enemyOne.getHp());
                     enemyOne.setHp(enemyOne.getHp() - fighterOne.attackOne());
                     turn = !(turn);
                     return true;
@@ -95,6 +95,7 @@ public class FightScreen extends BaseScreen {
                         return false;
 
                     fighterOne.attachTwo();
+                    System.out.println("I have healed my hero, Current HP: "+fighterOne.getHp());
                     turn = !(turn);
                     return true;
                 }
@@ -128,7 +129,6 @@ public class FightScreen extends BaseScreen {
         if (!(turn)){
             long enemyThinking = MathUtils.random(1200,2800);
             long startThinking = System.nanoTime();
-            System.out.println(System.nanoTime());
             while (enemyThinking > ((System.nanoTime() - startThinking) / 1000000)){
                 //waiting time to emulate the enemy movement
                 //cant use sleep method as the game is been run on threads.
@@ -136,6 +136,7 @@ public class FightScreen extends BaseScreen {
             fighterOne.setHp(fighterOne.getHp() - enemyOne.attackOne());
             turn = !(turn);
             System.out.println("we got attacked by enemy");
+            System.out.println("Our hero health is: "+ fighterOne.getHp());
 
         }
 
