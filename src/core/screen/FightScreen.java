@@ -129,6 +129,7 @@ public class FightScreen extends BaseScreen {
         if (!(turn)){
             long enemyThinking = MathUtils.random(1200,2800);
             long startThinking = System.nanoTime();
+            enemyThinking = 0;
             while (enemyThinking > ((System.nanoTime() - startThinking) / 1000000)){
                 //waiting time to emulate the enemy movement
                 //cant use sleep method as the game is been run on threads.
@@ -139,20 +140,6 @@ public class FightScreen extends BaseScreen {
             System.out.println("Our hero health is: "+ fighterOne.getHp());
 
         }
-
-        /**
-        if (Gdx.input.isKeyJustPressed(Keys.Q)){
-            System.out.println("I have attack the enemy");
-            enemyOne.setHp(enemyOne.getHp() - fighterOne.attackOne());
-        }
-        if (Gdx.input.isKeyJustPressed(Keys.A)){
-            fighterOne.attachTwo();
-
-        }
-        if (Gdx.input.isKeyJustPressed(Keys.E)){
-            fighterOne.setHp(fighterOne.getHp() - enemyOne.attackOne());
-        }*/
-
 
         if (enemyOne.getHp() <= 0){
             MortenCombat.setActiveScreen(previousMap);

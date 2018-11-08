@@ -126,7 +126,6 @@ public class LevelScreen extends BaseScreen {
         actorObjectInteraction("core.actors.GoBack");
         actorObjectInteraction("core.actors.Bat");
 
-        System.out.println(mapEffect);
 
         //Checks if the current map is windy. if it is blows the hero every 1 sec.
         if (currentMapEffect.equals("wind")) {
@@ -243,6 +242,7 @@ public class LevelScreen extends BaseScreen {
                         if (hero.overlaps(a)){
                         hero.setPosition( getX(),getY() );
                         hero.setSpeed(0);
+                        //instead of using this, call LoadingScreen
                         MortenCombat.setActiveScreen(nextMap);}
                         break;
                     case "core.actors.ExitTwo":
