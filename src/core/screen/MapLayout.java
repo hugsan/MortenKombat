@@ -21,6 +21,7 @@ public enum MapLayout {
     private final String mapEffect;
     private final String tmx;
 
+
     private MapLayout (int previousMap, String mapEffect, String tmx){
         this.previousMap = previousMap;
         this.mapEffect = mapEffect;

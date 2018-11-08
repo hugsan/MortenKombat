@@ -74,6 +74,7 @@ public class LevelScreen extends BaseScreen {
         createMapObjects(tma,"GoBack");
         createMapObjects(tma,"Bat");
         createMapObjects(tma,"Torch");
+        createMapObjects(tma, "Chest");
 
         //create the starting point for our hero.
         MapObject startPoint = tma.getRectangleList("Start").get(0);
@@ -125,6 +126,7 @@ public class LevelScreen extends BaseScreen {
         actorObjectInteraction("core.actors.ExitTwo");
         actorObjectInteraction("core.actors.GoBack");
         actorObjectInteraction("core.actors.Bat");
+        actorObjectInteraction("core.actors.Chest");
 
 
         //Checks if the current map is windy. if it is blows the hero every 1 sec.
@@ -206,6 +208,9 @@ public class LevelScreen extends BaseScreen {
                 case "Torch":
                     new Torch ( (float) props.get("x"), (float) props.get("y"), mainStage);
                     break;
+                case "Chest":
+                    new Chest ( (float) props.get("x"), (float) props.get("y"), mainStage);
+                    break;
                 default:
                     System.out.println("Something went really wrong, contact ITCOM5");
             }
@@ -256,6 +261,12 @@ public class LevelScreen extends BaseScreen {
                         hero.setPosition( getZ(),getW() );
                         hero.setSpeed(0);
                         MortenCombat.setActiveScreen(previousMap);}
+                        break;
+
+                    case "core.actors.Chest":
+                        if(hero.overlaps(a)){
+                        //System.out.println("Chest opened");
+                        }
                         break;
                     default:
                         System.out.println("Contact with ITCOM5 group, something went wrong.");
