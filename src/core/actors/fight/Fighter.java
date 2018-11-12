@@ -10,7 +10,9 @@ public class Fighter {
         return 20;
     }
     public void attachTwo(){
-        hp = hp + 10;
+        hp = hp + 30;
+        if (hp >= 100)
+            hp = 100;
     }
     public int getHp() { return hp;
     }

@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import core.MortenCombat;
@@ -37,9 +38,9 @@ public class FightScreen extends BaseScreen {
         BaseActor fightBackground = new BaseActor(0,0, mainStage);
         fightBackground.loadTexture( "assets/img/dungeonbackground.jpg" );
         fightBackground.setSize(800,600);
-        fighterOne = new Fighter();
         enemyOne = new Enemy();
-        System.out.println("champion skill 1: q \n champion skill 2: a \n enemy skill 1: e");
+
+        fighterOne = MortenCombat.getFigther();
 
 
         Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
@@ -65,6 +66,7 @@ public class FightScreen extends BaseScreen {
                         return false;
                     System.out.println("I have attack the enemy, enemy current HP: "+enemyOne.getHp());
                     enemyOne.setHp(enemyOne.getHp() - fighterOne.attackOne());
+                    //method of launching questions;
                     turn = !(turn);
                     return true;
                 }
@@ -101,39 +103,24 @@ public class FightScreen extends BaseScreen {
                 }
         );
 
-        /** /// start of button
-         TextButton startButton = new TextButton( "Attack One", BaseGame.textButtonStyle );
-          startButton.setPosition(150,300);
-          uiStage.addActor(startButton);
-
-         startButton.addListener(
-                 (Event e) ->
-                 {
-                     if ( !(e instanceof InputEvent) )
-                         return false;
-
-                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
-                         return false;
-
-                     System.out.println("First Figther attacks enemy");
-                     return true;
-                 }
-         );
-         // of button*/
-
 
     }
 
     public void update(float dt) {
         // hero movement controls
+        // makes the enemy wait 1.3s-2.2 randomly before making a decision.
         if (!(turn)){
-            long enemyThinking = MathUtils.random(1200,2800);
-            long startThinking = System.nanoTime();
-            enemyThinking = 0;
-            while (enemyThinking > ((System.nanoTime() - startThinking) / 1000000)){
-                //waiting time to emulate the enemy movement
-                //cant use sleep method as the game is been run on threads.
+            long startThinking = MathUtils.random(1300,2200);
+
+            try
+            {
+                Thread.sleep(startThinking);
             }
+            catch(InterruptedException ex)
+            {
+                Thread.currentThread().interrupt();
+            }
+
             fighterOne.setHp(fighterOne.getHp() - enemyOne.attackOne());
             turn = !(turn);
             System.out.println("we got attacked by enemy");
@@ -142,6 +129,7 @@ public class FightScreen extends BaseScreen {
         }
 
         if (enemyOne.getHp() <= 0){
+            this.dispose();
             MortenCombat.setActiveScreen(previousMap);
         }
         // make if our figther hp <= 0 go to Game over -Screen

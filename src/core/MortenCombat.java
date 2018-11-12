@@ -3,11 +3,14 @@ package core;
  *
  */
 
+import core.actors.fight.Fighter;
 import core.framework.BaseGame;
 import core.screen.LevelScreen;
 import core.screen.MapLayout;
 
 public class MortenCombat extends BaseGame {
+    static private Fighter figther = new Fighter();
+
 
     public void create() {
         super.create();
@@ -27,5 +30,11 @@ public class MortenCombat extends BaseGame {
         // initialize all the maps in the same way until m7
         setActiveScreen( layout[0] );
 
+
+        // initialize our fighting character
+
+    }
+    public static Fighter getFigther(){
+        return figther;
     }
 }
