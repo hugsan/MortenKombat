@@ -54,7 +54,6 @@ public class LevelScreen extends BaseScreen {
 
 
 
-
     public void initialize() {
         TilemapActor tma = new TilemapActor("assets/maps/" + mapName + ".tmx", mainStage);
         //load music only for the first map
@@ -264,10 +263,12 @@ public class LevelScreen extends BaseScreen {
                         break;
 
                     case "core.actors.Chest":
-                        if(hero.overlaps(a)){
-                        //System.out.println("Chest opened");
+                        if (hero.overlaps(a)){
+
                         }
+                        //System.out.println("Chest opened");
                         break;
+
                     default:
                         System.out.println("Contact with ITCOM5 group, something went wrong.");
 

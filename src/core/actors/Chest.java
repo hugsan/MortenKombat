@@ -14,4 +14,8 @@ public class Chest extends BaseActor
 
     }
 
+    public void chestOpen() {
+        loadTexture("assets.img.ChestOpen.png");
+    }
+
 }
