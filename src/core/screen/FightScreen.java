@@ -1,7 +1,6 @@
 package core.screen;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -10,20 +9,16 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import core.MortenCombat;
-import core.actors.fight.*;
+import core.actors.fightingactors.*;
 import core.framework.BaseActor;
-import core.framework.BaseGame;
 import core.framework.BaseScreen;
-import java.lang.Thread;
-import java.util.concurrent.TimeUnit;
 
 
 public class FightScreen extends BaseScreen {
     LevelScreen previousMap;
-    Fighter fighterOne;
+    testingFigther fighterOne;
     Enemy enemyOne;
     boolean turn = true; //variable to set the turn of the player, if true is players turn, otherwise enemy turn
 
@@ -37,7 +32,7 @@ public class FightScreen extends BaseScreen {
         BaseActor fightBackground = new BaseActor(0,0, mainStage);
         fightBackground.loadTexture( "assets/img/dungeonbackground.jpg" );
         fightBackground.setSize(800,600);
-        fighterOne = new Fighter();
+        fighterOne = new testingFigther();
         enemyOne = new Enemy();
         System.out.println("champion skill 1: q \n champion skill 2: a \n enemy skill 1: e");
 

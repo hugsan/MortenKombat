@@ -25,7 +25,7 @@ public class MortenCombat extends BaseGame {
             i++;
         }
         // initialize all the maps in the same way until m7
-        setActiveScreen( layout[0] );
+        setActiveScreen( layout[3] );
 
     }
 }
