@@ -2,17 +2,13 @@ package core;
 /**
  *
  */
-
+import core.actors.fightingactors.testingFigther;
 import core.framework.BaseGame;
 import core.screen.LevelScreen;
-import core.screen.MainMenuScreen;
 import core.screen.MapLayout;
-import core.screen.OptionsMenuScreen;
 
 public class MortenCombat extends BaseGame {
-
-    static LevelScreen[] layout = new LevelScreen[MapLayout.values().length];
-//    static OptionsMenuScreen optionsMenu = new OptionsMenuScreen();
+    static private testingFigther fighter = new testingFigther();
 
 
     public void create() {
@@ -30,15 +26,14 @@ public class MortenCombat extends BaseGame {
             }
             i++;
         }
-        MainMenuScreen menu = new MainMenuScreen();
-
         // initialize all the maps in the same way until m7
-        setActiveScreen( menu );
+        setActiveScreen( layout[3] );
+
+
+        // initialize our fighting character
 
     }
-
-    public static void startGame(){
-        setActiveScreen( layout[0] );
+    public static testingFigther getFigther(){
+        return fighter;
     }
-
 }
