@@ -31,15 +31,15 @@ public class ImportQandA {
 
                 dataReader.nextLine();
                 this.question = dataReader.nextLine();
-                System.out.println(question);
+//                System.out.println(question);
                 this.correctAnswer = dataReader.nextLine();
-                System.out.println(correctAnswer);
+//                System.out.println(correctAnswer);
                 this.wrongAnswer1 = dataReader.nextLine();
-                System.out.println(wrongAnswer1);
+//                System.out.println(wrongAnswer1);
                 this.wrongAnswer2 = dataReader.nextLine();
-                System.out.println(wrongAnswer2);
+//                System.out.println(wrongAnswer2);
                 this.wrongAnswer3 = dataReader.nextLine();
-                System.out.println(wrongAnswer3);
+//                System.out.println(wrongAnswer3);
 
             }
 

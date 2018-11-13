@@ -38,7 +38,7 @@ public class MortenCombat extends BaseGame {
         ImportQandA.filler(5,listQScience,data2);
 
         ImportQandA a = listQScience.get(2);
-        System.out.println(a.question);
+//        System.out.println(a.question);
     }
 
     public void create() {
