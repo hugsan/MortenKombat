@@ -15,24 +15,28 @@ import core.framework.TilemapActor;
 public class LoadingScreen extends BaseScreen {
 
     //variable of the next LevelScreen
-    LevelScreen previousMap;
+    LevelScreen nextScreen;
+    double startTime;
+    double currentTime;
+
+    public LoadingScreen (LevelScreen nextScreen){
+        super();
+        this.nextScreen = nextScreen;
+        startTime = System.currentTimeMillis();
+    }
 
     public void initialize()
     {
-        //initialize the map with the black screen or loading picture
-        BaseActor fightBackground = new BaseActor(0,0, mainStage);
-        fightBackground.loadTexture( "assets/img/loadingscreen.jpg" );
-        fightBackground.setSize(800,600);
+        BaseActor loadingScreen = new BaseActor(0,0, mainStage);
+        loadingScreen.loadTexture( "assets/img/loadingscreen.jpg" );
+        loadingScreen.setSize(800,600);
     }
 
     public void update(float dt)
     {
-        //make something so when 1.5s has past you call to the next map from LevelScreen
+        currentTime = System.currentTimeMillis();
+        if ((currentTime - startTime) > 1500)
+        MortenCombat.setActiveScreen(nextScreen);
+    }
 
-        //dispose, delete this screen from memory befor
-    }
-    //setter of the previous map
-    public void setPreviousMap(LevelScreen previousMap){
-        this.previousMap = previousMap;
-    }
 }

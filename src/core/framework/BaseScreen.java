@@ -26,7 +26,10 @@ public abstract class BaseScreen implements Screen, InputProcessor
         uiTable.setFillParent(true);
         uiStage.addActor(uiTable);
 
+
+        // do not call overridable methods in the constructor
         initialize();
+
     }
 
     public abstract void initialize();

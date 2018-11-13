@@ -15,7 +15,7 @@ import core.framework.TilemapActor;
 
 
 public class LevelScreen extends BaseScreen {
-    public static String mapName ;
+    public static String mapName;
     public static int windTimer = 0;
     public static String mapEffect = "normal";
     private String currentMapEffect;
@@ -26,9 +26,9 @@ public class LevelScreen extends BaseScreen {
     private Music backgroundMusic;
 
     // X Y position of the hero when the hero travels to next map
-    private float x,y;
+    private float x, y;
     // Z W position of the hero when the hero travels to previous map
-    private float z,w;
+    private float z, w;
 
     /**
      * Constructor for LevelScreen. Initialize the map withprevious map
@@ -43,9 +43,10 @@ public class LevelScreen extends BaseScreen {
      * set to null. Also changes the value of previous map, so the previous map value of nextmap points to the
      * generated map in this constructor
      * This constructor implements a Map data structure as a tree with next and next1 being their branches
+     *
      * @param previousMap LevelScreen object, where the current map is connected to.
      */
-    public LevelScreen( LevelScreen previousMap ) {
+    public LevelScreen(LevelScreen previousMap) {
         if (previousMap.getNextMap() != null)
             previousMap.setNextMap2(this);
         else previousMap.setNextMap(this);
@@ -53,27 +54,25 @@ public class LevelScreen extends BaseScreen {
     }
 
 
-
-
     public void initialize() {
         TilemapActor tma = new TilemapActor("assets/maps/" + mapName + ".tmx", mainStage);
         //load music only for the first map
-        if (mapName.equals("map1")){
-        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/backgroundmusic.mp3"));
-        backgroundMusic.setVolume(0.5f);
-        backgroundMusic.setLooping(true);
-        backgroundMusic.play();
+        if (mapName.equals("map1")) {
+            backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/backgroundmusic.mp3"));
+            backgroundMusic.setVolume(0.5f);
+            backgroundMusic.setLooping(true);
+            backgroundMusic.play();
         }
 
         currentMapEffect = mapEffect;
 
         //Creates all the objects of our Tilemaps
-        createMapObjects(tma,"Solid");
-        createMapObjects(tma,"Exit");
-        createMapObjects(tma,"Exit2");
-        createMapObjects(tma,"GoBack");
-        createMapObjects(tma,"Bat");
-        createMapObjects(tma,"Torch");
+        createMapObjects(tma, "Solid");
+        createMapObjects(tma, "Exit");
+        createMapObjects(tma, "Exit2");
+        createMapObjects(tma, "GoBack");
+        createMapObjects(tma, "Bat");
+        createMapObjects(tma, "Torch");
         createMapObjects(tma, "Chest");
 
         //create the starting point for our hero.
@@ -81,7 +80,7 @@ public class LevelScreen extends BaseScreen {
         MapProperties startProps = startPoint.getProperties();
 
         //Create our hero, taking the generated starting point before.
-        hero = new Hero( (float) startProps.get("x"), (float) startProps.get("y"), mainStage);
+        hero = new Hero((float) startProps.get("x"), (float) startProps.get("y"), mainStage);
 
         //System.out.println(mapEffect);
 
@@ -101,7 +100,7 @@ public class LevelScreen extends BaseScreen {
         z = (float) startProps.get("x");
         w = (float) startProps.get("y");
         //setting the starting point, when we go back to the previous map
-        if (tma.getRectangleList("PreviousHeroPoint").size() !=0){
+        if (tma.getRectangleList("PreviousHeroPoint").size() != 0) {
             MapObject previousPoint = tma.getRectangleList("PreviousHeroPoint").get(0);
             MapProperties previousProp = previousPoint.getProperties();
             x = (float) previousProp.get("x");
@@ -133,7 +132,7 @@ public class LevelScreen extends BaseScreen {
         if (currentMapEffect.equals("wind")) {
             windTimer++;
             System.out.println(windTimer);
-            if (windTimer%60 == 0){
+            if (windTimer % 60 == 0) {
                 windBlow();
                 System.out.println("blow");
             }
@@ -156,35 +155,40 @@ public class LevelScreen extends BaseScreen {
     public void setNextMap2(LevelScreen nextMap2) {
         this.nextMap2 = nextMap2;
     }
+
     public float getX() {
         return x;
     }
+
     public float getY() {
         return y;
     }
+
     public float getZ() {
         return z;
     }
+
     public float getW() {
         return w;
     }
 
     private void windBlow() {
 
-        hero.setMotionAngle( MathUtils.random(0,360));
-        hero.setSpeed(MathUtils.random(10000,20000));
+        hero.setMotionAngle(MathUtils.random(0, 360));
+        hero.setSpeed(MathUtils.random(10000, 20000));
 
     }
 
     /**
      * Method used to create our object from our tile maps.
-     *
+     * <p>
      * The method reads all the object created in the tile maps. If their object name matc hwith the argument
      * String then they create that specific object.
-     * @param tma TileMapActor where you want to create the object.
+     *
+     * @param tma           TileMapActor where you want to create the object.
      * @param mapattributes Name attribute of our object in the TileMap
      */
-    public void createMapObjects(TilemapActor tma, String mapattributes) {
+    private void createMapObjects(TilemapActor tma, String mapattributes) {
         for (MapObject obj : tma.getRectangleList(mapattributes)) {
             MapProperties props = obj.getProperties();
             switch (mapattributes) {
@@ -203,13 +207,13 @@ public class LevelScreen extends BaseScreen {
                             mainStage);
                     break;
                 case "Bat":
-                    new Bat( (float) props.get("x"), (float) props.get("y"), mainStage);
+                    new Bat((float) props.get("x"), (float) props.get("y"), mainStage);
                     break;
                 case "Torch":
-                    new Torch ( (float) props.get("x"), (float) props.get("y"), mainStage);
+                    new Torch((float) props.get("x"), (float) props.get("y"), mainStage);
                     break;
                 case "Chest":
-                    new Chest ( (float) props.get("x"), (float) props.get("y"), mainStage);
+                    new Chest((float) props.get("x"), (float) props.get("y"), mainStage);
                     break;
                 default:
                     System.out.println("Something went really wrong, contact ITCOM5");
@@ -219,59 +223,64 @@ public class LevelScreen extends BaseScreen {
 
     /**
      * Method used to execute the interactions between the object in our TileMapActor.
+     *
      * @param className Name of the class that we want to check of any interaction.
      */
-    public void actorObjectInteraction(String className){
+    private void actorObjectInteraction(String className) {
         for (BaseActor a : BaseActor.getList(mainStage, className)) {
 
-                switch(className){
-                    case "core.actors.Solid":
-                        if (hero.overlaps(a)){
-                        hero.preventOverlap(a);}
-                        break;
-                    case "core.actors.Bat":
-                        for (BaseActor s: BaseActor.getList(mainStage, "core.actors.Solid")){
-                            if (a.overlaps(s)){
-                                a.preventOverlap(s);
-                                a.setMotionAngle( MathUtils.random(0,360));
-                            }
-
+            switch (className) {
+                case "core.actors.Solid":
+                    if (hero.overlaps(a)) {
+                        hero.preventOverlap(a);
+                    }
+                    break;
+                case "core.actors.Bat":
+                    for (BaseActor s : BaseActor.getList(mainStage, "core.actors.Solid")) {
+                        if (a.overlaps(s)) {
+                            a.preventOverlap(s);
+                            a.setMotionAngle(MathUtils.random(0, 360));
                         }
-                        if (a.overlaps(hero)){
 
-                            MortenCombat.setActiveScreen(new FightScreen(this));
-                            a.remove();
-                        }
-                        break;
-                    case "core.actors.Exit":
-                        if (hero.overlaps(a)){
-                        hero.setPosition( getX(),getY() );
+                    }
+                    if (a.overlaps(hero)) {
+
+                        MortenCombat.setActiveScreen(new FightScreen(this));
+                        a.remove();
+                    }
+                    break;
+                case "core.actors.Exit":
+                    if (hero.overlaps(a)) {
+                        hero.setPosition(getX(), getY());
                         hero.setSpeed(0);
                         //instead of using this, call LoadingScreen
-                        MortenCombat.setActiveScreen(nextMap);}
-                        break;
-                    case "core.actors.ExitTwo":
-                        if (hero.overlaps(a)){
-                        hero.setPosition( getX(),getY() );
-                        hero.setSpeed(0);
-                        MortenCombat.setActiveScreen(nextMap2);}
-                        break;
-                    case "core.actors.GoBack":
-                        if (hero.overlaps(a)){
-                        hero.setPosition( getZ(),getW() );
-                        hero.setSpeed(0);
-                        MortenCombat.setActiveScreen(previousMap);}
-                        break;
 
-                    case "core.actors.Chest":
-                        if(hero.overlaps(a)){
+                        MortenCombat.setActiveScreen(new LoadingScreen(nextMap));
+                    }
+                    break;
+                case "core.actors.ExitTwo":
+                    if (hero.overlaps(a)) {
+                        hero.setPosition(getX(), getY());
+                        hero.setSpeed(0);
+                        MortenCombat.setActiveScreen(new LoadingScreen(nextMap2));
+                    }
+                    break;
+                case "core.actors.GoBack":
+                    if (hero.overlaps(a)) {
+                        hero.setPosition(getZ(), getW());
+                        hero.setSpeed(0);
+                        MortenCombat.setActiveScreen(new LoadingScreen(previousMap));                    }
+                    break;
+
+                case "core.actors.Chest":
+                    if (hero.overlaps(a)) {
                         //System.out.println("Chest opened");
-                        }
-                        break;
-                    default:
-                        System.out.println("Contact with ITCOM5 group, something went wrong.");
+                    }
+                    break;
+                default:
+                    System.out.println("Contact with ITCOM5 group, something went wrong.");
 
-                }
+            }
 
 
         }
