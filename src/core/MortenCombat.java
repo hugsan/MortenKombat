@@ -17,7 +17,7 @@ public class MortenCombat extends BaseGame {
 
     public void create() {
         super.create();
-
+        LevelScreen[] layout = new LevelScreen[MapLayout.values().length];
         int i = 0;
 
         for (MapLayout map : MapLayout.values()){
@@ -40,5 +40,4 @@ public class MortenCombat extends BaseGame {
     public static void startGame(){
         setActiveScreen( layout[0] );
     }
-
 }
