@@ -142,10 +142,10 @@ public class FightScreen extends BaseScreen {
         }
 
         if (enemyOne.getHp() <= 0){
+            this.dispose();
             MortenCombat.setActiveScreen(previousMap);
         }
         // make if our figther hp <= 0 go to Game over -Screen
-
 
     }
 
