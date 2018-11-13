@@ -1,0 +1,108 @@
+p001
+What year did the Titanic sink?
+1912
+b
+c
+d
+p002
+How many people died in the Munich massacre of 1972?
+17
+b
+c
+d
+p003
+What city was divided in two after the Second World War?
+Berlin
+b
+c
+d
+p004
+What did ancient Egyptians use to write?
+Papyrus
+b
+c
+d
+p005
+What year did the Berlin wall fall?
+1989
+b
+c
+d
+p006
+When did men first travel to space?
+1961
+b
+c
+d
+p007
+Who founded Playboy magazine?
+Hugh Hefner
+b
+c
+d
+p008
+Which two countries reunited in 1976 after 22 years of separation?
+North and South Vietnam
+b
+c
+d
+p009
+Which countries were part of the Grand Alliance during Second World War?
+Great Britain, USA and Russia
+b
+c
+d
+p0010
+ln which year did the first man walk on the moon?
+1969
+b
+c
+d
+p0011
+Who was defeated in the Battle of Waterloo?
+Napoleon Bonaparte
+b
+c
+d
+p0012
+What army did the 300 represent?
+Spartan army
+b
+c
+d
+p0013
+Where was the first astronaut in history from?
+Soviet Union
+b
+c
+d
+p0014
+Which civilization constructed the Machu Picchu?
+Incas
+b
+c
+d
+p0015
+What were the names given to the atomic bombs of Hiroshima and Nagasaki?
+Little Boy and Fat Man
+b
+c
+d
+p0016
+Who was the first president of the United States?
+George Washington
+b
+c
+d
+p0017
+In Greek mythology, how was Achilles heel injured?
+An arrow
+b
+c
+d
+end
+
+
+
+
+
