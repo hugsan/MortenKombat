@@ -32,4 +32,7 @@ public class LoadingScreen extends BaseScreen {
         //dispose, delete this screen from memory befor
     }
     //setter of the previous map
+    public void setPreviousMap(LevelScreen previousMap){
+        this.previousMap = previousMap;
+    }
 }
