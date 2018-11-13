@@ -40,4 +40,5 @@ public class MortenCombat extends BaseGame {
     public static void startGame(){
         setActiveScreen( layout[0] );
     }
+
 }
