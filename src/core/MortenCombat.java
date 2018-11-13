@@ -5,15 +5,16 @@ package core;
 import core.actors.fightingactors.testingFigther;
 import core.framework.BaseGame;
 import core.screen.LevelScreen;
+import core.screen.MainMenuScreen;
 import core.screen.MapLayout;
 
 public class MortenCombat extends BaseGame {
     static private testingFigther fighter = new testingFigther();
-
+    static LevelScreen[] layout = new LevelScreen[MapLayout.values().length];
 
     public void create() {
         super.create();
-        LevelScreen[] layout = new LevelScreen[MapLayout.values().length];
+
         int i = 0;
 
         for (MapLayout map : MapLayout.values()){
@@ -26,13 +27,15 @@ public class MortenCombat extends BaseGame {
             }
             i++;
         }
-        // initialize all the maps in the same way until m7
-        setActiveScreen( layout[3] );
 
-
-        // initialize our fighting character
-
+        MainMenuScreen menu = new MainMenuScreen();
+        setActiveScreen( menu );
     }
+
+    public static void startGame(){
+        setActiveScreen( layout[0] );
+    }
+
     public static testingFigther getFigther(){
         return fighter;
     }
