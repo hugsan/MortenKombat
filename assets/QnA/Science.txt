@@ -1,0 +1,229 @@
+p001
+If you mix all light colours, what color do you get?
+White
+Black
+Rainbow
+Brown
+p002
+How do you increase an object's potential energy?
+Increasing its temperature.
+Lifting it high up in the air.
+Rolling it down a hill giving it speed.
+Add electricity to the object.
+p003
+What is the most effective way to increase an object’s kinetic energy?
+Increasing its temperature.
+Lifting it high up in the air.
+Rolling it down a hill giving it speed.
+Add electricity to the object.
+p004
+What chemical process do plants create?
+Combustion
+b
+c
+d
+p005
+What kind of energy does an unlit match have?
+Thermal energy
+Chemical energy
+Kinetic energy
+c
+p006
+What is it called when light changes direction after leaving a lens?
+Reflection
+Refraction
+Diffraction
+c
+p007
+When x = 4, what is the value of 5(2x-3)?
+15
+20
+25
+30
+p008
+What is the word for an animal that is active at dawn and dusk?
+Diurnal
+Crepuscular
+Nocturnal
+Matutinal
+p009
+Which of these is NOT found in an animal cell?
+Mitochondria
+Nucleus
+Chloroplasts
+Endoplasmic reticulum
+p0010
+Which kind of waves are used to make and receive cellphone calls?
+Radio waves
+Visible light waves
+Sound waves
+Gravity waves
+p0011
+Which of these is the main way that ocean tides are created?
+The rotation of the Earth on its axis
+The gravitational pull of the moon
+The gravitational pull of the sun
+c
+p0012
+Which is the range of the pH scale?
+0 to 14
+b
+c
+d
+p0013
+What are two divisions in the nervous system?
+Central and Peripheral
+b
+c
+d
+P0014
+Hydrogen is the first element in the periodic table. What’s the second?
+Helium
+b
+c
+d
+p0015
+What Apollo first arrived to the Moon?
+Apollo 11
+b
+c
+d
+p0016
+What’s the name of the science that studies ecosystems?
+Ecology
+b
+c
+d
+p0017
+What’s the biggest mammal?
+Whale
+b
+c
+d
+p0018
+Who made the Pea plant experiment?
+Gregor Mendel
+b
+c
+d
+p0019
+Who envisioned wireless technology in the 1800’s?
+Nikola Tesla
+b
+c
+d
+p0020
+How are the holes of Swiss cheese made?
+Carbon dioxide
+b
+c
+d
+p0021
+What do you measure with a hygrometer?
+Humidity
+b
+c
+d
+p0022
+What is the lobe located at the front of the brain?
+Frontal lobe
+b
+c
+d
+p0023
+What two ingredients are used to make science fair volcanoes?
+Baking soda and vinegar
+b
+c
+d
+p0024
+What are the building blocks of proteins?
+Amino Acids
+b
+c
+d
+p0025
+Which is organ is responsible for filtration?
+Kidney
+b
+c
+d
+p0026
+Which of the following is a liver disease?
+Hepatitis
+b
+c
+d
+p0027
+Which of the following is forbidden in a vegan diet?
+Eggs
+b
+c
+d
+p0028
+Tectonic plates interact through what?
+Borders
+b
+c
+d
+p0029
+How many seconds is one hour?
+3600 seconds
+b
+c
+d
+p0030
+What color is perceived by cone cells with less sensitivity?
+Blue
+b
+c
+d
+p0031
+What animal skin is similar to ours?
+Pigs skin
+b
+c
+d
+p0032
+How is the natural hallucinogenic substance ayahuasca consumed?
+It is ingested
+b
+c
+d
+p0033
+What is the function of molar teeth?
+Cutting
+b
+c
+d
+p0034
+What initials are given to lysergic acid?
+LSD
+b
+c
+d
+p0035
+How many degrees does a circle have?
+360 degrees
+b
+c
+d
+p0036
+What is Linux?
+An operating system
+b
+c
+d
+p0037
+How many stomachs do cows have?
+4
+b
+c
+d
+p0038
+What did Newton discover?
+The gravity law
+b
+c
+d
+end

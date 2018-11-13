@@ -15,13 +15,5 @@ public class Launcher
         LwjglApplication launcher = new LwjglApplication( myGame, "Morten Combat", 800, 600 );
 
 
-        ArrayList<ImportQandA> listQ=new ArrayList<ImportQandA>();
-
-        for (int i = 1; i <=5 ; i++) {
-
-            listQ.add(new ImportQandA(i));
-        }
-        ImportQandA a=listQ.get(2);
-        System.out.println(a.question);
     }
 }

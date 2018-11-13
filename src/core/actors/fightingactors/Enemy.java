@@ -1,4 +1,4 @@
-package core.actors.fight;
+package core.actors.fightingactors;
 
 public class Enemy {
 

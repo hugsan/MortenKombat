@@ -2,19 +2,53 @@ package core;
 /**
  *
  */
-
-import core.actors.fight.Fighter;
+import core.actors.fightingactors.testingFigther;
 import core.framework.BaseGame;
 import core.screen.LevelScreen;
+import core.screen.MainMenuScreen;
 import core.screen.MapLayout;
 
-public class MortenCombat extends BaseGame {
-    static private Fighter figther = new Fighter();
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
+public class MortenCombat extends BaseGame {
+    static private testingFigther fighter = new testingFigther();
+    static LevelScreen[] layout = new LevelScreen[MapLayout.values().length];
+
+    public void importing() throws FileNotFoundException {
+
+
+        File data = new File("assets\\QnA\\QnAData.txt");
+        File data2 = new File("assets\\QnA\\Science.txt");
+        File data3 = new File("assets\\QnA\\Geography.txt");
+        File data4 = new File("assets\\QnA\\History.txt");
+        File data5 = new File("assets\\QnA\\Art.txt");
+        File data6 = new File("assets\\QnA\\Sport.txt");
+        File data7 = new File("assets\\QnA\\Entertainment.txt");
+
+
+        ArrayList<ImportQandA> listQScience = new ArrayList<ImportQandA>();
+        ArrayList<ImportQandA> listQGeography = new ArrayList<ImportQandA>();
+        ArrayList<ImportQandA> listQHistory = new ArrayList<ImportQandA>();
+        ArrayList<ImportQandA> listQArt = new ArrayList<ImportQandA>();
+        ArrayList<ImportQandA> listQSport = new ArrayList<ImportQandA>();
+        ArrayList<ImportQandA> listQEntertainment = new ArrayList<ImportQandA>();
+
+        ImportQandA.filler(5,listQScience,data2);
+
+        ImportQandA a = listQScience.get(2);
+//        System.out.println(a.question);
+    }
 
     public void create() {
         super.create();
-        LevelScreen[] layout = new LevelScreen[MapLayout.values().length];
+        try {
+            importing();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
         int i = 0;
 
         for (MapLayout map : MapLayout.values()){
@@ -27,14 +61,16 @@ public class MortenCombat extends BaseGame {
             }
             i++;
         }
-        // initialize all the maps in the same way until m7
-        setActiveScreen( layout[0] );
 
-
-        // initialize our fighting character
-
+        MainMenuScreen menu = new MainMenuScreen();
+        setActiveScreen( menu );
     }
-    public static Fighter getFigther(){
-        return figther;
+
+    public static void startGame(){
+        setActiveScreen( layout[0] );
+    }
+
+    public static testingFigther getFigther(){
+        return fighter;
     }
 }
