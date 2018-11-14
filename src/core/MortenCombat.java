@@ -13,7 +13,10 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class MortenCombat extends BaseGame {
-    static private testingFigther fighter = new testingFigther();
+    static private testingFigther fighter;
+    //figther 1
+    //figther 2
+    //figther 3
     static LevelScreen[] layout = new LevelScreen[MapLayout.values().length];
 
     public void importing() throws FileNotFoundException {
@@ -42,6 +45,9 @@ public class MortenCombat extends BaseGame {
     }
 
     public void create() {
+        fighter = new testingFigther();
+        //idea is that we have 3 figther choosen by the player
+
         super.create();
         try {
             importing();

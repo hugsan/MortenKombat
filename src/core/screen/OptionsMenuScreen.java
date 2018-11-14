@@ -20,10 +20,14 @@ public class OptionsMenuScreen extends BaseScreen {
         mainMenuBackground.loadTexture("assets/img/menubackground.png");
         mainMenuBackground.setSize(800,600);
 
+        BaseActor title = new BaseActor(100,400, mainStage);
+        title.loadTexture("assets/img/MortanKombatLogo.png");
+        title.setSize(600,150);
+
         //back button
         Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
 
-        Texture buttonTex = new Texture( Gdx.files.internal("assets/img/newGame.png") );
+        Texture buttonTex = new Texture( Gdx.files.internal("assets/img/buttons/Start.png") );
         TextureRegion buttonRegion = new TextureRegion(buttonTex);
         buttonStyle.up = new TextureRegionDrawable( buttonRegion );
         Button back = new Button( buttonStyle );
@@ -49,7 +53,7 @@ public class OptionsMenuScreen extends BaseScreen {
 
         //volumen button
 
-        Texture buttonTex2 = new Texture( Gdx.files.internal("assets/img/newGame.png") );
+        Texture buttonTex2 = new Texture( Gdx.files.internal("assets/img/buttons/Start.png") );
         TextureRegion buttonRegion2 = new TextureRegion(buttonTex2);
         buttonStyle.up = new TextureRegionDrawable( buttonRegion2 );
         Button volumenUp = new Button( buttonStyle );
@@ -71,7 +75,7 @@ public class OptionsMenuScreen extends BaseScreen {
                 }
         );
 
-        Texture buttonTex3 = new Texture( Gdx.files.internal("assets/img/newGame.png") );
+        Texture buttonTex3 = new Texture( Gdx.files.internal("assets/img/buttons/Start.png") );
         TextureRegion buttonRegion3 = new TextureRegion(buttonTex3);
         buttonStyle.up = new TextureRegionDrawable( buttonRegion3 );
         Button volumenDown = new Button( buttonStyle );
@@ -114,7 +118,7 @@ public class OptionsMenuScreen extends BaseScreen {
                     return false;
                 }
         );
-        Texture buttonTex5 = new Texture( Gdx.files.internal("assets/img/newGame.png") );
+        Texture buttonTex5 = new Texture( Gdx.files.internal("assets/img/buttons/Start.png") );
         TextureRegion buttonRegion5 = new TextureRegion(buttonTex5);
         buttonStyle.up = new TextureRegionDrawable( buttonRegion5 );
         Button hard = new Button( buttonStyle );

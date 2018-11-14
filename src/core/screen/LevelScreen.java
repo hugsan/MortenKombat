@@ -52,8 +52,6 @@ public class LevelScreen extends BaseScreen {
         this.previousMap = previousMap;
     }
 
-
-
     public void initialize() {
         TilemapActor tma = new TilemapActor("assets/maps/" + mapName + ".tmx", mainStage);
         //load music only for the first map
@@ -85,6 +83,7 @@ public class LevelScreen extends BaseScreen {
         //System.out.println(mapEffect);
 
         if (currentMapEffect.equals("wind")) {
+            hero.setDeceleration(600);
             System.out.println("test wind effect");
             windBlow();
         }
@@ -136,6 +135,9 @@ public class LevelScreen extends BaseScreen {
                 windBlow();
                 System.out.println("blow");
             }
+            if (windTimer%60 == 20) {
+                hero.setDeceleration(1000);
+            }
         }
 
     }
@@ -172,6 +174,7 @@ public class LevelScreen extends BaseScreen {
 
         hero.setMotionAngle( MathUtils.random(0,360));
         hero.setSpeed(MathUtils.random(10000,20000));
+        hero.setDeceleration(0);
 
     }
 
