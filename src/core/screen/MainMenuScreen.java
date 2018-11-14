@@ -24,7 +24,7 @@ public class MainMenuScreen extends BaseScreen {
 
         Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
 
-        Texture buttonTex = new Texture( Gdx.files.internal("assets/img/newGame.png") );
+        Texture buttonTex = new Texture( Gdx.files.internal("assets/img/buttons/Start.png") );
         TextureRegion buttonRegion = new TextureRegion(buttonTex);
         buttonStyle.up = new TextureRegionDrawable( buttonRegion );
         Button newGame = new Button( buttonStyle );
