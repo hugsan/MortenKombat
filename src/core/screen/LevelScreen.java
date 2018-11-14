@@ -85,7 +85,6 @@ public class LevelScreen extends BaseScreen {
         //System.out.println(mapEffect);
 
         if (currentMapEffect.equals("wind")) {
-            System.out.println("test wind effect");
             windBlow();
         }
         if (currentMapEffect.equals("ice")) {
