@@ -19,8 +19,8 @@ public class Hero extends BaseActor
     Animation south;
     Animation east;
     Animation west;
-    float facingAngle;
-    Stage s;
+    private float facingAngle;
+    private Stage s;
     private Shield shield;
 
     public Hero(float x, float y, Stage s)
