@@ -17,18 +17,31 @@ public class OptionsMenuScreen extends BaseScreen {
     public void initialize() {
 
         BaseActor mainMenuBackground = new BaseActor(0,0, mainStage);
-        mainMenuBackground.loadTexture("assets/img/menubackground.png");
+        mainMenuBackground.loadTexture("assets/img/SettingsBackground.png");
         mainMenuBackground.setSize(800,600);
 
+        // The text for difficulty
+
+        BaseActor title = new BaseActor(200,475, mainStage);
+        title.loadTexture("assets/img/buttons/DifficultyText.png");
+        title.setSize(400,100);
+
+        // The text for the volume
+
+        BaseActor title1 = new BaseActor(250,100, mainStage);
+        title1.loadTexture("assets/img/buttons/Volume.png");
+        title1.setSize(300,70);
+
         //back button
-        Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
 
-        Texture buttonTex = new Texture( Gdx.files.internal("assets/img/newGame.png") );
+        Button.ButtonStyle buttonStyle1 = new Button.ButtonStyle();
+
+        Texture buttonTex = new Texture( Gdx.files.internal("assets/img/buttons/Back.png") );
         TextureRegion buttonRegion = new TextureRegion(buttonTex);
-        buttonStyle.up = new TextureRegionDrawable( buttonRegion );
-        Button back = new Button( buttonStyle );
+        buttonStyle1.up = new TextureRegionDrawable( buttonRegion );
+        Button back = new Button( buttonStyle1 );
 
-        back.setPosition(335, 100);
+        back.setPosition(25, 25);
         uiStage.addActor(back);
 
         back.addListener(
@@ -47,14 +60,16 @@ public class OptionsMenuScreen extends BaseScreen {
                 }
         );
 
-        //volumen button
+        // Volume button
 
-        Texture buttonTex2 = new Texture( Gdx.files.internal("assets/img/newGame.png") );
+        Button.ButtonStyle buttonStyle2 = new Button.ButtonStyle();
+
+        Texture buttonTex2 = new Texture( Gdx.files.internal("assets/img/buttons/VolumeUp.png") );
         TextureRegion buttonRegion2 = new TextureRegion(buttonTex2);
-        buttonStyle.up = new TextureRegionDrawable( buttonRegion2 );
-        Button volumenUp = new Button( buttonStyle );
+        buttonStyle2.up = new TextureRegionDrawable( buttonRegion2 );
+        Button volumenUp = new Button( buttonStyle2 );
 
-        volumenUp.setPosition(235, 300);
+        volumenUp.setPosition(525, 115);
         uiStage.addActor(volumenUp);
 
         volumenUp.addListener(
@@ -71,12 +86,14 @@ public class OptionsMenuScreen extends BaseScreen {
                 }
         );
 
-        Texture buttonTex3 = new Texture( Gdx.files.internal("assets/img/newGame.png") );
-        TextureRegion buttonRegion3 = new TextureRegion(buttonTex3);
-        buttonStyle.up = new TextureRegionDrawable( buttonRegion3 );
-        Button volumenDown = new Button( buttonStyle );
+        Button.ButtonStyle buttonStyle3 = new Button.ButtonStyle();
 
-        volumenDown.setPosition(435, 300);
+        Texture buttonTex3 = new Texture( Gdx.files.internal("assets/img/buttons/VolumeDown.png") );
+        TextureRegion buttonRegion3 = new TextureRegion(buttonTex3);
+        buttonStyle3.up = new TextureRegionDrawable( buttonRegion3 );
+        Button volumenDown = new Button( buttonStyle3 );
+
+        volumenDown.setPosition(525, 55);
         uiStage.addActor(volumenDown);
 
         volumenDown.addListener(
@@ -92,13 +109,17 @@ public class OptionsMenuScreen extends BaseScreen {
                     return false;
                 }
         );
-        //difficulty button
-        Texture buttonTex4 = new Texture( Gdx.files.internal("assets/img/newGame.png") );
-        TextureRegion buttonRegion4 = new TextureRegion(buttonTex4);
-        buttonStyle.up = new TextureRegionDrawable( buttonRegion4 );
-        Button easy = new Button( buttonStyle );
 
-        easy.setPosition(435, 250);
+        // Difficulty button 12-16
+
+        Button.ButtonStyle buttonStyle4 = new Button.ButtonStyle();
+
+        Texture buttonTex4 = new Texture( Gdx.files.internal("assets/img/buttons/AgeYoung.png") );
+        TextureRegion buttonRegion4 = new TextureRegion(buttonTex4);
+        buttonStyle4.up = new TextureRegionDrawable( buttonRegion4 );
+        Button easy = new Button( buttonStyle4 );
+
+        easy.setPosition(250, 350);
         uiStage.addActor(easy);
 
         easy.addListener(
@@ -114,12 +135,17 @@ public class OptionsMenuScreen extends BaseScreen {
                     return false;
                 }
         );
-        Texture buttonTex5 = new Texture( Gdx.files.internal("assets/img/newGame.png") );
-        TextureRegion buttonRegion5 = new TextureRegion(buttonTex5);
-        buttonStyle.up = new TextureRegionDrawable( buttonRegion5 );
-        Button hard = new Button( buttonStyle );
 
-        hard.setPosition(235, 250);
+        // Difficulty button 16+
+
+        Button.ButtonStyle buttonStyle5 = new Button.ButtonStyle();
+
+        Texture buttonTex5 = new Texture( Gdx.files.internal("assets/img/buttons/AgeOlder.png") );
+        TextureRegion buttonRegion5 = new TextureRegion(buttonTex5);
+        buttonStyle5.up = new TextureRegionDrawable( buttonRegion5 );
+        Button hard = new Button( buttonStyle5 );
+
+        hard.setPosition(250, 270);
         uiStage.addActor(hard);
 
         hard.addListener(

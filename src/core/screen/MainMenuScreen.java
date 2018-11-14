@@ -20,16 +20,18 @@ public class MainMenuScreen extends BaseScreen {
         mainMenuBackground.loadTexture("assets/img/menubackground.png");
         mainMenuBackground.setSize(800,600);
 
-
+        BaseActor title = new BaseActor(100,400, mainStage);
+        title.loadTexture("assets/img/MortenKombatLogo.png");
+        title.setSize(600,150);
 
         Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
 
-        Texture buttonTex = new Texture( Gdx.files.internal("assets/img/newGame.png") );
+        Texture buttonTex = new Texture( Gdx.files.internal("assets/img/buttons/Start.png") );
         TextureRegion buttonRegion = new TextureRegion(buttonTex);
         buttonStyle.up = new TextureRegionDrawable( buttonRegion );
         Button newGame = new Button( buttonStyle );
 
-        newGame.setPosition(335, 300);
+        newGame.setPosition(450, 180);
         uiStage.addActor(newGame);
 
         newGame.addListener(
@@ -40,17 +42,23 @@ public class MainMenuScreen extends BaseScreen {
                     //mouseover
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
+                    SelectionScreen charSelect = new SelectionScreen();
+                    this.dispose();
+                    //MortenCombat.setActiveScreen(charSelect);
                     MortenCombat.startGame();
                     return false;
                 }
         );
 
-        Texture buttonTex2 = new Texture( Gdx.files.internal("assets/img/options.png") );
-        TextureRegion buttonRegion2 = new TextureRegion(buttonTex2);
-        buttonStyle.up = new TextureRegionDrawable( buttonRegion2 );
-        Button options = new Button( buttonStyle );
+        Button.ButtonStyle buttonStyle2 = new Button.ButtonStyle();
 
-        options.setPosition(335, 250);
+
+        Texture buttonTex2 = new Texture( Gdx.files.internal("assets/img/buttons/Settings.png") );
+        TextureRegion buttonRegion2 = new TextureRegion(buttonTex2);
+        buttonStyle2.up = new TextureRegionDrawable( buttonRegion2 );
+        Button options = new Button( buttonStyle2 );
+
+        options.setPosition(450, 100);
         uiStage.addActor(options);
 
         options.addListener(
@@ -71,12 +79,15 @@ public class MainMenuScreen extends BaseScreen {
                 }
         );
 
-        Texture buttonTex3 = new Texture( Gdx.files.internal("assets/img/newGame.png") );
-        TextureRegion buttonRegion3 = new TextureRegion( buttonTex3 );
-        buttonStyle.up = new TextureRegionDrawable( buttonRegion3 );
-        Button exit = new Button( buttonStyle );
+        Button.ButtonStyle buttonStyle3 = new Button.ButtonStyle();
 
-        exit.setPosition(335, 180);
+
+        Texture buttonTex3 = new Texture( Gdx.files.internal("assets/img/buttons/Exit.png") );
+        TextureRegion buttonRegion3 = new TextureRegion( buttonTex3 );
+        buttonStyle3.up = new TextureRegionDrawable( buttonRegion3 );
+        Button exit = new Button( buttonStyle3 );
+
+        exit.setPosition(450, 20);
         uiStage.addActor(exit);
 
         exit.addListener(
