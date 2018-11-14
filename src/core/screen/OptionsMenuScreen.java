@@ -60,7 +60,7 @@ public class OptionsMenuScreen extends BaseScreen {
                 }
         );
 
-        //volumen button
+        // Volume button
 
         Button.ButtonStyle buttonStyle2 = new Button.ButtonStyle();
 
@@ -110,7 +110,7 @@ public class OptionsMenuScreen extends BaseScreen {
                 }
         );
 
-        //difficulty button 12-16
+        // Difficulty button 12-16
 
         Button.ButtonStyle buttonStyle4 = new Button.ButtonStyle();
 
