@@ -20,12 +20,13 @@ public class Hero extends BaseActor
     Animation east;
     Animation west;
     float facingAngle;
-
+    Stage s;
     private Shield shield;
 
     public Hero(float x, float y, Stage s)
     {
         super(x,y,s);
+        this.s = s;
         String fileName = "assets/img/hero.png";
         int rows = 4;
         int cols = 4;
@@ -56,11 +57,6 @@ public class Hero extends BaseActor
         setAcceleration(1000);
         setMaxSpeed(300);
         setDeceleration(1000);
-
-        shield = new Shield(0,0, s);
-        addActor(shield);
-        shield.centerAtPosition( getWidth()/2, getHeight()/2 );
-
 
     }
     public void act(float dt)
@@ -109,5 +105,10 @@ public class Hero extends BaseActor
     public float getFacingAngle()
     {
         return facingAngle;
+    }
+    public void createLight(){
+        shield = new Shield(0,0, this.s);
+        addActor(shield);
+        shield.centerAtPosition( getWidth()/2, getHeight()/2 );
     }
 }

@@ -93,7 +93,7 @@ public class LevelScreen extends BaseScreen {
             hero.setDeceleration(100);
         }
         if (currentMapEffect.equals("dark")) {
-
+            hero.createLight();
         }
 
         // running this way because new Hero is probably being run in a threat, and execute before giving values to Z, W

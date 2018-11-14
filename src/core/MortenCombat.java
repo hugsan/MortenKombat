@@ -73,7 +73,7 @@ public class MortenCombat extends BaseGame {
     }
 
     public static void startGame(){
-        setActiveScreen( layout[0] );
+        setActiveScreen( layout[6] );
     }
 
     public static testingFigther getFigther(){
