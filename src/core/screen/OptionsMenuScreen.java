@@ -17,7 +17,7 @@ public class OptionsMenuScreen extends BaseScreen {
     public void initialize() {
 
         BaseActor mainMenuBackground = new BaseActor(0,0, mainStage);
-        mainMenuBackground.loadTexture("assets/img/menubackground.png");
+        mainMenuBackground.loadTexture("assets/img/SettingsBackground.png");
         mainMenuBackground.setSize(800,600);
 
         // The text for difficulty
