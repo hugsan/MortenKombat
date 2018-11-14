@@ -21,7 +21,7 @@ public class MainMenuScreen extends BaseScreen {
         mainMenuBackground.setSize(800,600);
 
         BaseActor title = new BaseActor(100,400, mainStage);
-        title.loadTexture("assets/img/MortanKombatLogo.png");
+        title.loadTexture("assets/img/MortenKombatLogo.png");
         title.setSize(600,150);
 
         Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
