@@ -20,6 +20,9 @@ public class Hero extends BaseActor
     Animation east;
     Animation west;
     float facingAngle;
+
+    private Shield shield;
+
     public Hero(float x, float y, Stage s)
     {
         super(x,y,s);
@@ -53,6 +56,12 @@ public class Hero extends BaseActor
         setAcceleration(1000);
         setMaxSpeed(300);
         setDeceleration(1000);
+
+        shield = new Shield(0,0, s);
+        addActor(shield);
+        shield.centerAtPosition( getWidth()/2, getHeight()/2 );
+
+
     }
     public void act(float dt)
     {
