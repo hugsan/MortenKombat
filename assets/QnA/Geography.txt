@@ -79,9 +79,9 @@ d
 p0014
 What is the biggest city in Hungary?
 Budapest
-b
-c
-d
+Debrecen
+Miskolc
+Szeged
 p0015
 How many countries are in the United Kingdom?
 4

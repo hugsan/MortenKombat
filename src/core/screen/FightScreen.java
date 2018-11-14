@@ -16,6 +16,13 @@ import core.framework.BaseActor;
 import core.framework.BaseScreen;
 
 
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputEvent.Type;
+
+
 public class FightScreen extends BaseScreen {
     LevelScreen previousMap;
     testingFigther fighterOne;
