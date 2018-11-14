@@ -117,10 +117,20 @@ public class FightScreen extends BaseScreen {
         uiTable.add().height(440).width(25);
         //next column for abilities and items.
         uiTable.row();
-        uiTable.add().width(25).expandY();
-        uiTable.add().width(116).expandY(); // ability section for hero 3
-        uiTable.add().width(116).expandY(); // ability section for hero 2
-        uiTable.add(attackOneButton).width(116).expandY(); // ability section for hero 1
+        uiTable.add().width(25);
+        uiTable.add().width(116); // ability 1 section for hero 3
+        uiTable.add().width(116); // ability 1 section for hero 2
+        uiTable.add(attackOneButton).width(116);// ability 1 section for hero 1
+        uiTable.row();
+        uiTable.add().width(25);
+        uiTable.add().width(116); // ability 2 section for hero 3
+        uiTable.add().width(116); // ability 2 section for hero 2
+        uiTable.add(attackTwoButton).width(116);// ability 2 section for hero 1
+        uiTable.row();
+        uiTable.add().width(25);
+        uiTable.add().width(116); // ability 3 section for hero 3
+        uiTable.add().width(116); // ability 3 section for hero 2
+        uiTable.add().width(116);// ability 3 section for hero 1
 
 
 
@@ -154,7 +164,12 @@ public class FightScreen extends BaseScreen {
         // make if our figther hp <= 0 go to Game over -Screen
 
     }
+    /**
+    private Button  buttonGenerator(String imagePath){
 
+
+        return ourButton;
+    }*/
 
 }
 
