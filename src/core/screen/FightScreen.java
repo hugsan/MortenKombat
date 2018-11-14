@@ -32,19 +32,19 @@ public class FightScreen extends BaseScreen {
     public FightScreen(LevelScreen prev){
         super();
         previousMap = prev;
-initialize();
     }
 
 
     public void initialize() {
+        //initialize the mapbackground
         BaseActor fightBackground = new BaseActor(0,0, mainStage);
-        fightBackground.loadTexture( "assets/img/dungeonbackground.jpg" );
+        fightBackground.loadTexture( "assets/img/dungeon.png" );
         fightBackground.setSize(800,600);
-        fighterOne = new testingFigther();
+        //intialize the actors at the screen
+        fighterOne = MortenCombat.getFigther();
         enemyOne = new Enemy();
-        System.out.println("champion skill 1: q \n champion skill 2: a \n enemy skill 1: e");
 
-
+        //create the buttons
         Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
 
         Texture buttonTex = new Texture( Gdx.files.internal("assets/img/button_attack-one.png") );
@@ -53,7 +53,7 @@ initialize();
 
         Button attackOneButton = new Button( buttonStyle );
         attackOneButton.setColor( Color.CYAN );
-        attackOneButton.setPosition(120 ,80);
+        //attackOneButton.setPosition(120 ,80);
         uiStage.addActor(attackOneButton);
 
         attackOneButton.addListener(
@@ -83,7 +83,7 @@ initialize();
 
         Button attackTwoButton = new Button( buttonStyle2 );
         attackTwoButton.setColor( Color.CYAN );
-        attackTwoButton.setPosition(120 ,45);
+        //attackTwoButton.setPosition(120 ,45);
         uiStage.addActor(attackTwoButton);
 
         attackTwoButton.addListener(
@@ -104,38 +104,41 @@ initialize();
                 }
         );
 
-        /** /// start of button
-         TextButton startButton = new TextButton( "Attack One", BaseGame.textButtonStyle );
-          startButton.setPosition(150,300);
-          uiStage.addActor(startButton);
+        //put the buttons in the table.
+        uiTable.pad(10); // add 10 pixel corner to the screen.
+        uiTable.add().height(440).width(25);
+        uiTable.add().height(440).width(116); //hero 3 position
+        uiTable.add().height(440).width(116); //hero 2 position
+        uiTable.add().height(440).width(116); //hero 1 possition
+        uiTable.add().height(440).width(56); //space between hero and enemy
+        uiTable.add().height(440).width(116); //enemy 1 position
+        uiTable.add().height(440).width(116); //enemy 2 position
+        uiTable.add().height(440).width(116); //enemy 3 position
+        uiTable.add().height(440).width(25);
+        //next column for abilities and items.
+        uiTable.row();
+        uiTable.add().width(25).expandY();
+        uiTable.add().width(116).expandY(); // ability section for hero 3
+        uiTable.add().width(116).expandY(); // ability section for hero 2
+        uiTable.add(attackOneButton).width(116).expandY(); // ability section for hero 1
 
-         startButton.addListener(
-                 (Event e) ->
-                 {
-                     if ( !(e instanceof InputEvent) )
-                         return false;
 
-                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
-                         return false;
 
-                     System.out.println("First Figther attacks enemy");
-                     return true;
-                 }
-         );
-         // of button*/
+
 
 
     }
 
     public void update(float dt) {
         // hero movement controls
+        int enemyThinking = MathUtils.random(1200,2200);
         if (!(turn)){
-            long enemyThinking = MathUtils.random(1200,2800);
-            long startThinking = System.nanoTime();
-            enemyThinking = 0;
-            while (enemyThinking > ((System.nanoTime() - startThinking) / 1000000)){
-                //waiting time to emulate the enemy movement
-                //cant use sleep method as the game is been run on threads.
+            try
+            {
+                Thread.sleep(enemyThinking);
+            }
+            catch (InterruptedException e)
+            {
             }
             fighterOne.setHp(fighterOne.getHp() - enemyOne.attackOne());
             turn = !(turn);
@@ -151,6 +154,7 @@ initialize();
         // make if our figther hp <= 0 go to Game over -Screen
 
     }
+
 
 }
 
