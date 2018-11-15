@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class MortenCombat extends BaseGame {
+    public  static float volume = 0.5f;
     static private testingFigther fighter;
     //figther 1
     //figther 2
@@ -73,6 +74,7 @@ public class MortenCombat extends BaseGame {
     }
 
     public static void startGame(){
+        LevelScreen.playMusic();
         setActiveScreen( layout[0] );
     }
 

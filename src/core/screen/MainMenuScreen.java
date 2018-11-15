@@ -12,12 +12,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import core.MortenCombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
-import sun.applet.Main;
+import core.MortenCombat;
 
 public class MainMenuScreen extends BaseScreen {
     private LevelScreen playableMap;
     private static Music menuMusic;
-    private static float volume = 0.5f;
+
 
 
     public void initialize() {
@@ -30,7 +30,7 @@ public class MainMenuScreen extends BaseScreen {
         title.setSize(600,150);
         //starting music
         menuMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/TheWitcherSpikeroog.mp3"));
-        menuMusic.setVolume(volume);
+        menuMusic.setVolume(MortenCombat.volume);
         menuMusic.setLooping(true);
         menuMusic.play();
 
@@ -121,16 +121,16 @@ public class MainMenuScreen extends BaseScreen {
 
     }
     protected static void volumeUp(){
-        volume = volume + 0.1f;
-        if ( volume > 1)
-            volume = 1;
-        menuMusic.setVolume(volume);
+        MortenCombat.volume = MortenCombat.volume + 0.1f;
+        if ( MortenCombat.volume > 1)
+            MortenCombat.volume = 1;
+        menuMusic.setVolume(MortenCombat.volume);
     }
     protected static void volumeDown() {
-        volume = volume - 0.1f;
-        if (volume < 0 )
-            volume = 0;
-        menuMusic.setVolume(volume);
+        MortenCombat.volume = MortenCombat.volume - 0.1f;
+        if (MortenCombat.volume < 0 )
+            MortenCombat.volume = 0;
+        menuMusic.setVolume(MortenCombat.volume);
     }
 
 }

@@ -23,7 +23,7 @@ public class LevelScreen extends BaseScreen {
     private LevelScreen nextMap = null;
     private LevelScreen nextMap2 = null;
     private Hero hero;
-    private Music backgroundMusic;
+    public static Music backgroundMusic;
 
     // X Y position of the hero when the hero travels to next map
     private float x, y;
@@ -59,9 +59,7 @@ public class LevelScreen extends BaseScreen {
         //load music only for the first map
         if (mapName.equals("map1")) {
             backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/backgroundmusic.mp3"));
-            backgroundMusic.setVolume(0.5f);
             backgroundMusic.setLooping(true);
-            //backgroundMusic.play();
         }
 
         currentMapEffect = mapEffect;
@@ -118,6 +116,8 @@ public class LevelScreen extends BaseScreen {
         if (Gdx.input.isKeyPressed(Keys.DOWN))
             hero.accelerateAtAngle(270);
 
+        //update the volume for the game
+        backgroundMusic.setVolume(MortenCombat.volume);
         //Checks if our object interact with each other. If they interact their functionality is executed.
         actorObjectInteraction("core.actors.Solid");
         actorObjectInteraction("core.actors.Exit");
@@ -283,6 +283,13 @@ public class LevelScreen extends BaseScreen {
 
 
         }
+    }
+    public static void playMusic(){
+        backgroundMusic.play();
+    }
+
+    public static void stopMusic(){
+        backgroundMusic.stop();
     }
 }
 
