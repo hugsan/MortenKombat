@@ -15,9 +15,9 @@ import java.util.ArrayList;
 public class MortenCombat extends BaseGame {
     public  static float volume = 0.5f;
     static private testingFigther fighter;
-    //figther 1
-    //figther 2
-    //figther 3
+    //fighter 1
+    //fighter 2
+    //fighter 3
     static LevelScreen[] layout = new LevelScreen[MapLayout.values().length];
 
     public void importing() throws FileNotFoundException {
@@ -76,6 +76,7 @@ public class MortenCombat extends BaseGame {
     public static void startGame(){
         LevelScreen.playMusic();
         setActiveScreen( layout[0] );
+        setActiveScreen( layout[5] );
     }
 
     public static testingFigther getFigther(){

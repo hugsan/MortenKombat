@@ -1,50 +1,50 @@
 p001
-If you mix all light colours, what color do you get?
+If you mix all colours, what color do you get?
+Black --
 White
-Black
 Rainbow
 Brown
 p002
 How do you increase an object's potential energy?
-Increasing its temperature.
 Lifting it high up in the air.
+Increasing its temperature.
 Rolling it down a hill giving it speed.
 Add electricity to the object.
 p003
 What is the most effective way to increase an object’s kinetic energy?
+Rolling it down a hill giving it speed.
 Increasing its temperature.
 Lifting it high up in the air.
-Rolling it down a hill giving it speed.
 Add electricity to the object.
 p004
 What chemical process do plants create?
+Photosynthesis
 Combustion
-b
 c
 d
 p005
 What kind of energy does an unlit match have?
-Thermal energy
 Chemical energy
+Thermal energy
 Kinetic energy
-c
+Potential energy
 p006
 What is it called when light changes direction after leaving a lens?
-Reflection
 Refraction
+Reflection
 Diffraction
-c
+d
 p007
 When x = 4, what is the value of 5(2x-3)?
+25
 15
 20
-25
 30
 p008
 What is the word for an animal that is active at dawn and dusk?
+Nocturnal
 Diurnal
 Crepuscular
-Nocturnal
 Matutinal
 p009
 Which of these is NOT found in an animal cell?
@@ -60,52 +60,40 @@ Sound waves
 Gravity waves
 p0011
 Which of these is the main way that ocean tides are created?
-The rotation of the Earth on its axis
 The gravitational pull of the moon
+The rotation of the Earth on its axis
 The gravitational pull of the sun
-c
+The weather with rain and evaporation
 p0012
 Which is the range of the pH scale?
 0 to 14
-b
-c
-d
-p0013
-What are two divisions in the nervous system?
-Central and Peripheral
-b
-c
-d
+1 to 5
+0 to 10
+5 to 15
 P0014
 Hydrogen is the first element in the periodic table. What’s the second?
 Helium
-b
-c
-d
+Nitrogen
+Magnesium
+Lithium
 p0015
 What Apollo first arrived to the Moon?
 Apollo 11
-b
-c
-d
+Apollo 8
+Apollo 12
+Apollo 10
 p0016
 What’s the name of the science that studies ecosystems?
 Ecology
-b
-c
-d
+Biology
+Paleonthology
+Geology
 p0017
 What’s the biggest mammal?
-Whale
-b
-c
-d
-p0018
-Who made the Pea plant experiment?
-Gregor Mendel
-b
-c
-d
+Blue Whale
+Elephant
+Giraffe
+Rhino
 p0019
 Who envisioned wireless technology in the 1800’s?
 Nikola Tesla
@@ -115,21 +103,19 @@ d
 p0020
 How are the holes of Swiss cheese made?
 Carbon dioxide
-b
 c
 d
 p0021
 What do you measure with a hygrometer?
 Humidity
-b
-c
-d
+Pressure
+Oxygen
 p0022
 What is the lobe located at the front of the brain?
 Frontal lobe
-b
-c
-d
+Main lobe
+Vision lobe
+Genetic lobe
 p0023
 What two ingredients are used to make science fair volcanoes?
 Baking soda and vinegar
@@ -157,7 +143,7 @@ d
 p0027
 Which of the following is forbidden in a vegan diet?
 Eggs
-b
+
 c
 d
 p0028
@@ -169,9 +155,9 @@ d
 p0029
 How many seconds is one hour?
 3600 seconds
-b
-c
-d
+2600
+3200
+4600
 p0030
 What color is perceived by cone cells with less sensitivity?
 Blue
@@ -181,9 +167,8 @@ d
 p0031
 What animal skin is similar to ours?
 Pigs skin
-b
-c
-d
+Monkey skin
+Cow skin
 p0032
 How is the natural hallucinogenic substance ayahuasca consumed?
 It is ingested
@@ -205,25 +190,25 @@ d
 p0035
 How many degrees does a circle have?
 360 degrees
-b
-c
-d
+180
+90
+270
 p0036
 What is Linux?
 An operating system
-b
-c
-d
+An internet browser
+A phone brand
+A educational website
 p0037
 How many stomachs do cows have?
 4
-b
-c
-d
+2
+3
+1
 p0038
 What did Newton discover?
 The gravity law
-b
-c
-d
+Electricity
+Evolution
+Energy equation
 end
