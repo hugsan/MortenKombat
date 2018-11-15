@@ -7,21 +7,21 @@ d
 p002
 In what Disney movie could you listen to the song ‘A Whole New World’?
 Aladdin
-b
-c
-d
+Pochahontas
+Bear Brothers
+Toy Story
 p003
 Where is the band ABBA from?
 Sweden
-b
-c
-d
+Norway
+Denmark
+Finland
 p004
 Who portrayed Hannibal the Cannibal in the movies?
 Anthony Hopkins
-b
-c
-d
+George Clooney
+Johnny Depp
+Jack Nicholson
 p005
 How long did the TV series Bonanza last?
 14 years
@@ -31,15 +31,15 @@ d
 p006
 What year did ‘Thriller’ come out?
 1982
-b
-c
-d
+1979
+1985
+1990
 p007
 Who said the phrase ‘I am your father’?
 Darth Vader
-b
-c
-d
+Indiana Jones
+Jack Sparrow
+Han Solo
 p008
 In what Indiana Jones movie is revealed that he has a son?
 The Kingdom of Crystal Skull
@@ -49,9 +49,9 @@ d
 p009
 What is the last name of the family in the TV series ‘Family Guy’?
 Griffin
-b
-c
-d
+Gefferson
+Gregsons
+Gary
 p0010
 Who forms the couple nicknamed ‘Brangelina’?
 Brad Pitt and Angelina Jolie
@@ -61,51 +61,40 @@ d
 p0011
 What is the real name of the American supersoldier, Captain America?
 Steve Rogers
-b
-c
-d
+Michael Morrison
+George Smith
+Jack Dench
 p0012
 Who was famous for the phrase ‘What’s up doc’?
 Bugs Bunny
-b
-c
-d
+Donald Duck
+Goofy
+Daffy Duck
 p0013
 Who is Tim Burton?
 Director
-b
-c
-d
+Artist
+Actor
+President
 p0014
 How old was Michael Jackson when he died?
 50
-b
-c
-d
+45
+55
+40
 p0015
 Which is the name of the bird in the movie UP?
 Kevin
 b
 c
 d
-p0016
-What shape is SpongeBob’s pants?
-Square
-b
-c
-d
 p0017
-Who was the first Mexican director to win an Oscar for Best Director?
-Alfonso Cuaron
-b
-c
-d
 p0018
 What is the name of the princess in Mario Bros?
 Peach
-b
-c
-d
+Pamela
+Puffy
+Pernille
 p0019
 What actor who played Superman was paralyzed from the neck down after falling of a horse?
 Christopher Reeves
@@ -115,25 +104,25 @@ d
 p0020
 Which of the following is not a scene for CSI?
 Washington
-b
-c
-d
+Miami
+New York
+Las Vegas
 p0021
 Who is the Snow Queen in the Walt Disney’s animated movie Frozen?
 Elsa
-b
-c
-d
+Anna
+Lisa
+Angela
 p0022
 Which rapper has won more Grammy Awards?
 Eminem
-b
-c
-d
+Ice Cube
+Snoop Dogg
+50cent
 p0023
 Which movie won the Oscar for Best Animated Movie in the year 2014?
 Frozen
-b
-c
-d
+Big Hero 6
+Up
+Inside Out
 end
