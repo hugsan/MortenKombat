@@ -2,6 +2,7 @@ package core;
 /**
  *
  */
+
 import core.actors.fightingactors.testingFigther;
 import core.framework.BaseGame;
 import core.screen.LevelScreen;
