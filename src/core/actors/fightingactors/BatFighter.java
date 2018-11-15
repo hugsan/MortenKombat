@@ -2,7 +2,7 @@ package core.actors.fightingactors;
 
 import com.badlogic.gdx.math.MathUtils;
 
-public class BatFighter extends Figther {
+public class BatFighter extends Fighter {
 
     public BatFighter(){
         super();
@@ -17,7 +17,7 @@ public class BatFighter extends Figther {
      * @param fighter target fighter we will attack.
      */
     @Override
-    public boolean attackOne(Figther fighter){
+    public boolean attackOne(Fighter fighter){
         int damage = MathUtils.random(8,13);
         fighter.setHP(fighter.getHP()-damage);
         return true;
@@ -25,11 +25,11 @@ public class BatFighter extends Figther {
 
     /**
      * Attack two makes 35% damage of target current HP
-     * @param figther target figther we will attack.
+     * @param fighter target fighter we will attack.
      */
     @Override
-    public boolean attackTwo(Figther figther){
-        figther.setHP(figther.getHP()*(65/100));
+    public boolean attackTwo(Fighter fighter){
+        fighter.setHP(fighter.getHP()*(65/100));
         return true;
     }
 }

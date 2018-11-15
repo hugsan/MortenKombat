@@ -1,6 +1,6 @@
 package core.actors.fightingactors;
 
-public abstract class Champion extends Figther {
+public abstract class Champion extends Fighter {
 
     /**
      * return 1 if the ability is possible
@@ -8,6 +8,6 @@ public abstract class Champion extends Figther {
      * @param fighter target for the attack
      * @return 1: if possible; -1: if not possible.
      */
-    abstract boolean attackThree (Figther fighter);
+    public abstract boolean attackThree (Fighter fighter);
 
 }

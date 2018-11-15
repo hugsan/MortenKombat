@@ -1,7 +1,6 @@
 package core.screen;
 
 import com.badlogic.gdx.Gdx;
-
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -11,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import core.MortenCombat;
+
 import core.actors.fightingactors.*;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
@@ -18,9 +18,12 @@ import core.framework.BaseScreen;
 
 public class FightScreen extends BaseScreen {
     LevelScreen previousMap;
-    testingFigther fighterOne;
+    Fighter fighterOne;
     testingEnemy testingEnemyOne;
     boolean turn = true; //variable to set the turn of the player, if true is players turn, otherwise enemy turn
+    Fighter enemyOne;
+    Fighter enemyTwo;
+    Fighter enemyThree;
 
     public FightScreen(LevelScreen prev){
         super();
@@ -35,7 +38,9 @@ public class FightScreen extends BaseScreen {
         fightBackground.setSize(800,600);
         //initialize the actors at the screen
         fighterOne = MortenCombat.getFigther();
-        testingEnemyOne = new testingEnemy();
+        enemyOne = new BatFighter();
+        enemyTwo = new SkeletonFighter();
+        enemyThree = new ZombieFighter();
 
         //create the buttons
         Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
@@ -59,8 +64,10 @@ public class FightScreen extends BaseScreen {
                         return false;
                     if (!(turn))
                         return false;
-                    System.out.println("I have attack the enemy, enemy current HP: "+ testingEnemyOne.getHp());
-                    testingEnemyOne.setHp(testingEnemyOne.getHp() - fighterOne.attackOne());
+                    fighterOne.attackOne(enemyOne);
+                    System.out.println("I have attack the enemy, enemy current HP: "+ enemyOne.getHP());
+
+                    //testingEnemyOne.setHp(testingEnemyOne.getHp() - fighterOne.attackOne());
                     turn = !(turn);
                     return true;
                 }
@@ -89,9 +96,8 @@ public class FightScreen extends BaseScreen {
                         return false;
                     if (!(turn))
                         return false;
-
-                    fighterOne.attachTwo();
-                    System.out.println("I have healed my hero, Current HP: "+fighterOne.getHp());
+                    fighterOne.attackTwo(enemyOne);
+                    System.out.println("I have healed my hero, Current HP: "+fighterOne.getHP());
                     turn = !(turn);
                     return true;
                 }
@@ -143,14 +149,14 @@ public class FightScreen extends BaseScreen {
             catch (InterruptedException e)
             {
             }
-            fighterOne.setHp(fighterOne.getHp() - testingEnemyOne.attackOne());
+            enemyOne.attackOne(fighterOne);
             turn = !(turn);
             System.out.println("we got attacked by enemy");
-            System.out.println("Our hero health is: "+ fighterOne.getHp());
+            System.out.println("Our hero health is: "+ fighterOne.getHP());
 
         }
 
-        if (testingEnemyOne.getHp() <= 0){
+        if (enemyOne.getHP() <= 0){
             this.dispose();
             MortenCombat.setActiveScreen(previousMap);
         }
