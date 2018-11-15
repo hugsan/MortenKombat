@@ -11,32 +11,32 @@ public class WarriorOne extends Champion {
 
     /**
      * does 8-23 damage to enemy
-     * @param figther enemy target
+     * @param fighter enemy target
      */
     @Override
-    public boolean attackOne(Figther figther){
-        figther.setHP(figther.getHP()-MathUtils.random(8,23));
+    public boolean attackOne(Fighter fighter){
+        fighter.setHP(fighter.getHP()-MathUtils.random(8,23));
         return true;
     }
 
     /**
      * Makes 40% of missing target life
-     * @param figther enemy target
+     * @param fighter enemy target
      */
     @Override
-    public boolean attackTwo (Figther figther){
-        figther.setHP((int)0.40*(figther.getMaxHP()-figther.getHP()));
+    public boolean attackTwo (Fighter fighter){
+        fighter.setHP((int)0.40*(fighter.getMaxHP()- fighter.getHP()));
         return true;
     }
 
     /**
      * Deals 3-15 Damage. If the champion kills the target, he heals for 20% of his life.
-     * @param figther
+     * @param fighter
      */
     @Override
-    public boolean attackThree (Figther figther){
-        figther.setHP(figther.getHP()-MathUtils.random(3,15));
-        if (figther.getHP()<= 0 ){
+    public boolean attackThree (Fighter fighter, Fighter nonAttackedOne, Fighter nonAttackedTwo){
+        fighter.setHP(fighter.getHP()-MathUtils.random(3,15));
+        if (fighter.getHP()<= 0 ){
             this.setHP((int)(this.getHP()+ 0.20*this.getMaxHP()));
             if (this.getHP() >= this.getMaxHP())
                 this.setHP(this.getHP());

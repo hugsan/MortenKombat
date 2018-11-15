@@ -1,6 +1,6 @@
 package core.actors.fightingactors;
 
-public abstract class Figther {
+public abstract class Fighter {
 
     private String fighterName;
     private int HP;
@@ -12,8 +12,8 @@ public abstract class Figther {
      * @param fighter target for the attack
      * @return 1: if possible; -1: if not possible.
      */
-    abstract boolean attackOne (Figther fighter);
-    abstract boolean attackTwo (Figther figther);
+    public abstract boolean attackOne (Fighter fighter);
+    public abstract boolean attackTwo (Fighter fighter);
 
     public String getFighterName() {
         return fighterName;

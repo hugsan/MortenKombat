@@ -3,7 +3,7 @@ package core;
  *
  */
 
-import core.actors.fightingactors.testingFigther;
+import core.actors.fightingactors.*;
 import core.framework.BaseGame;
 import core.screen.LevelScreen;
 import core.screen.MainMenuScreen;
@@ -15,10 +15,12 @@ import java.util.ArrayList;
 
 public class MortenCombat extends BaseGame {
     public  static float volume = 0.5f;
-    static private testingFigther fighter;
-    //fighter 1
-    //fighter 2
-    //fighter 3
+    static private Champion fighterWarrior;
+    static private Champion fighterMage;
+    static private Champion fighterSupport;
+    //fighterWarrior 1
+    //fighterWarrior 2
+    //fighterWarrior 3
     static LevelScreen[] layout = new LevelScreen[MapLayout.values().length];
 
     public void importing() throws FileNotFoundException {
@@ -47,7 +49,9 @@ public class MortenCombat extends BaseGame {
     }
 
     public void create() {
-        fighter = new testingFigther();
+        fighterWarrior = new WarriorOne();
+        fighterMage = new MageOne();
+        fighterSupport = new SupportOne();
         //idea is that we have 3 figther choosen by the player
 
         super.create();
@@ -79,7 +83,13 @@ public class MortenCombat extends BaseGame {
         setActiveScreen( layout[0] );
     }
 
-    public static testingFigther getFigther(){
-        return fighter;
+    public static Champion getFigtherWarrior(){
+        return fighterWarrior;
+    }
+    public static Champion getFigtherMage(){
+        return fighterMage;
+    }
+    public static Champion getFigtherSupport(){
+        return fighterSupport;
     }
 }

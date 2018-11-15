@@ -1,6 +1,6 @@
 package core.actors.fightingactors;
 
 public interface AreaDamageAbility {
-    public boolean attackThree(Figther figther, Figther figther2);
-    public boolean attackThree(Figther figther, Figther figther2, Figther figther3);
+    public boolean attackThree(Fighter fighter, Fighter fighter2);
+    public boolean attackThree(Fighter fighter, Fighter fighter2, Fighter fighter3);
 }
