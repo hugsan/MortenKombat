@@ -14,7 +14,7 @@ import core.framework.TilemapActor;
 
 public class LoadingScreen extends BaseScreen {
 
-    //variable of the next LevelScreen
+    // Variable of the next LevelScreen
     LevelScreen nextScreen;
     double startTime;
     double currentTime;

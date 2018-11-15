@@ -47,7 +47,7 @@ public class MortenCombat extends BaseGame {
 
     public void create() {
         fighter = new testingFigther();
-        //idea is that we have 3 figther choosen by the player
+        // Idea is that we have 3 fighters chosen by the player
 
         super.create();
         try {

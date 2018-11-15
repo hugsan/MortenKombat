@@ -33,7 +33,7 @@ public class FightScreen extends BaseScreen {
         BaseActor fightBackground = new BaseActor(0,0, mainStage);
         fightBackground.loadTexture( "assets/img/dungeon.png" );
         fightBackground.setSize(800,600);
-        //intialize the actors at the screen
+        //initialize the actors at the screen
         fighterOne = MortenCombat.getFigther();
         testingEnemyOne = new testingEnemy();
 
