@@ -1,6 +1,7 @@
 package core.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -11,9 +12,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import core.MortenCombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
+import sun.applet.Main;
 
 public class MainMenuScreen extends BaseScreen {
     private LevelScreen playableMap;
+    private static Music menuMusic;
+    private static float volume = 0.5f;
+
 
     public void initialize() {
         BaseActor mainMenuBackground = new BaseActor(0,0, mainStage);
@@ -23,6 +28,11 @@ public class MainMenuScreen extends BaseScreen {
         BaseActor title = new BaseActor(100,400, mainStage);
         title.loadTexture("assets/img/MortenKombatLogo.png");
         title.setSize(600,150);
+        //starting music
+        menuMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/TheWitcherSpikeroog.mp3"));
+        menuMusic.setVolume(volume);
+        menuMusic.setLooping(true);
+        menuMusic.play();
 
         Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
 
@@ -45,6 +55,7 @@ public class MainMenuScreen extends BaseScreen {
                     SelectionScreen charSelect = new SelectionScreen();
                     this.dispose();
                     //MortenCombat.setActiveScreen(charSelect);
+                    menuMusic.stop();
                     MortenCombat.startGame();
                     return false;
                 }
@@ -70,7 +81,7 @@ public class MainMenuScreen extends BaseScreen {
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
                     System.out.println("options pressed");
-                    OptionsMenuScreen optionsScreen = new OptionsMenuScreen();
+                    OptionsMenuScreen optionsScreen = new OptionsMenuScreen(this);
                     this.dispose();
                     MortenCombat.setActiveScreen(optionsScreen);
 
@@ -107,5 +118,19 @@ public class MainMenuScreen extends BaseScreen {
 
     public void update(float dt) {
 
+
     }
+    protected static void volumeUp(){
+        volume = volume + 0.1f;
+        if ( volume > 1)
+            volume = 1;
+        menuMusic.setVolume(volume);
+    }
+    protected static void volumeDown() {
+        volume = volume - 0.1f;
+        if (volume < 0 )
+            volume = 0;
+        menuMusic.setVolume(volume);
+    }
+
 }

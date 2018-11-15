@@ -12,7 +12,12 @@ import core.framework.BaseActor;
 import core.framework.BaseScreen;
 
 public class OptionsMenuScreen extends BaseScreen {
+    BaseScreen menu;
 
+    public OptionsMenuScreen(BaseScreen menu){
+        super();
+        this.menu = menu;
+    }
     @Override
     public void initialize() {
 
@@ -53,7 +58,6 @@ public class OptionsMenuScreen extends BaseScreen {
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
 
-                    MainMenuScreen menu = new MainMenuScreen();
                     this.dispose();
                     MortenCombat.setActiveScreen(menu);
                     return false;
@@ -81,8 +85,9 @@ public class OptionsMenuScreen extends BaseScreen {
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
 
-                    System.out.println("volumen up");
+                    MainMenuScreen.volumeUp();
                     return false;
+
                 }
         );
 
@@ -105,7 +110,7 @@ public class OptionsMenuScreen extends BaseScreen {
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
 
-                    System.out.println("volumen down");
+                    MainMenuScreen.volumeDown();
                     return false;
                 }
         );

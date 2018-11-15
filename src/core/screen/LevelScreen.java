@@ -61,7 +61,7 @@ public class LevelScreen extends BaseScreen {
             backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/backgroundmusic.mp3"));
             backgroundMusic.setVolume(0.5f);
             backgroundMusic.setLooping(true);
-            backgroundMusic.play();
+            //backgroundMusic.play();
         }
 
         currentMapEffect = mapEffect;
