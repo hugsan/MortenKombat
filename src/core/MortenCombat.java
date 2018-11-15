@@ -76,7 +76,6 @@ public class MortenCombat extends BaseGame {
     public static void startGame(){
         LevelScreen.playMusic();
         setActiveScreen( layout[0] );
-        setActiveScreen( layout[5] );
     }
 
     public static testingFigther getFigther(){
