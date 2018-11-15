@@ -1,6 +1,6 @@
 package core.actors.fightingactors;
 
-public class Enemy {
+public class testingEnemy {
 
 
     int hp = 75;

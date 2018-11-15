@@ -17,17 +17,19 @@ public class BatFighter extends Figther {
      * @param fighter target fighter we will attack.
      */
     @Override
-    public void attackOne(Figther fighter){
+    public boolean attackOne(Figther fighter){
         int damage = MathUtils.random(8,13);
         fighter.setHP(fighter.getHP()-damage);
+        return true;
     }
 
     /**
-     * Attack two, makes percentage damage of the target 35% of current
+     * Attack two makes 35% damage of target current HP
      * @param figther target figther we will attack.
      */
     @Override
-    public void attackTwo(Figther figther){
+    public boolean attackTwo(Figther figther){
         figther.setHP(figther.getHP()*(65/100));
+        return true;
     }
 }

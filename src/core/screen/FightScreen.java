@@ -16,17 +16,10 @@ import core.framework.BaseActor;
 import core.framework.BaseScreen;
 
 
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.Event;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputEvent.Type;
-
-
 public class FightScreen extends BaseScreen {
     LevelScreen previousMap;
     testingFigther fighterOne;
-    Enemy enemyOne;
+    testingEnemy testingEnemyOne;
     boolean turn = true; //variable to set the turn of the player, if true is players turn, otherwise enemy turn
 
     public FightScreen(LevelScreen prev){
@@ -42,7 +35,7 @@ public class FightScreen extends BaseScreen {
         fightBackground.setSize(800,600);
         //intialize the actors at the screen
         fighterOne = MortenCombat.getFigther();
-        enemyOne = new Enemy();
+        testingEnemyOne = new testingEnemy();
 
         //create the buttons
         Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
@@ -66,8 +59,8 @@ public class FightScreen extends BaseScreen {
                         return false;
                     if (!(turn))
                         return false;
-                    System.out.println("I have attack the enemy, enemy current HP: "+enemyOne.getHp());
-                    enemyOne.setHp(enemyOne.getHp() - fighterOne.attackOne());
+                    System.out.println("I have attack the enemy, enemy current HP: "+ testingEnemyOne.getHp());
+                    testingEnemyOne.setHp(testingEnemyOne.getHp() - fighterOne.attackOne());
                     turn = !(turn);
                     return true;
                 }
@@ -107,7 +100,7 @@ public class FightScreen extends BaseScreen {
         //put the buttons in the table.
         uiTable.pad(10); // add 10 pixel corner to the screen.
         uiTable.add().height(440).width(25);
-        uiTable.add().height(440).width(116); //hero 3 position
+        uiTable.add().height(440).width(116).top(); //hero 3 position
         uiTable.add().height(440).width(116); //hero 2 position
         uiTable.add().height(440).width(116); //hero 1 possition
         uiTable.add().height(440).width(56); //space between hero and enemy
@@ -150,14 +143,14 @@ public class FightScreen extends BaseScreen {
             catch (InterruptedException e)
             {
             }
-            fighterOne.setHp(fighterOne.getHp() - enemyOne.attackOne());
+            fighterOne.setHp(fighterOne.getHp() - testingEnemyOne.attackOne());
             turn = !(turn);
             System.out.println("we got attacked by enemy");
             System.out.println("Our hero health is: "+ fighterOne.getHp());
 
         }
 
-        if (enemyOne.getHp() <= 0){
+        if (testingEnemyOne.getHp() <= 0){
             this.dispose();
             MortenCombat.setActiveScreen(previousMap);
         }
