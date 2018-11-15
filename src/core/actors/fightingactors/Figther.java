@@ -6,8 +6,14 @@ public abstract class Figther {
     private int HP;
     private int maxHP;
 
-    abstract void attackOne (Figther fighter);
-    abstract void attackTwo (Figther figther);
+    /**
+     * return 1 if the ability is possible
+     * return -1 if there is missing resources to make the ability
+     * @param fighter target for the attack
+     * @return 1: if possible; -1: if not possible.
+     */
+    abstract boolean attackOne (Figther fighter);
+    abstract boolean attackTwo (Figther figther);
 
     public String getFighterName() {
         return fighterName;
@@ -20,7 +26,6 @@ public abstract class Figther {
     public int getHP() {
         return HP;
     }
-
     public void setHP(int HP) {
         this.HP = HP;
     }
@@ -28,7 +33,6 @@ public abstract class Figther {
     public int getMaxHP() {
         return maxHP;
     }
-
     public void setMaxHP(int maxHP) {
         this.maxHP = maxHP;
     }
