@@ -61,9 +61,10 @@ public class DragAndDropActor extends BaseActor {
                     // keep track of distance to closest object
                     float closestDistance = Float.MAX_VALUE;
 
-                    for ( BaseActor actor : BaseActor.getList(self.getStage(), "DropTargetActor") )
+                    /*
+                    for ( BaseActor actor : BaseActor.getList(self.getStage(), "SelectionArea") )
                     {
-                        DropTargetActor target = (DropTargetActor)actor;
+                        SelectionArea target = (SelectionArea)actor;
                         if ( target.isTargetable() && self.overlaps(target) )
                         {
                             float currentDistance = Vector2.dst(self.getX(),self.getY(), target.getX(),target.getY());
@@ -77,6 +78,7 @@ public class DragAndDropActor extends BaseActor {
                             }
                         }
                     }
+                    */
                     //?????? where p 214
                     self.addAction( Actions.scaleTo(1.00f, 1.00f, 0.25f) );
 
@@ -98,7 +100,7 @@ public class DragAndDropActor extends BaseActor {
         addAction( Actions.moveTo(startPositionX, startPositionY, 0.50f, Interpolation.pow3) );
     }
 
-    public void act(float dt) { super.act(dt); }
+    public void act(float dt) { super.act(dt); boundToWorld(); }
     public void onDrop() {    }
     public void onDragStart() {    }
     public boolean hasDropTarget() {  return (dropTarget != null);  }
