@@ -13,9 +13,9 @@ d
 p003
 What actor portrayed the pirate Jack Sparrow?
 Johnny Depp
-b
-c
-d
+Chris Evans
+Leonardo DiCaprio
+Nicolas Cage
 p004
 Where did medieval theatre originate?
 Churches
@@ -25,9 +25,9 @@ d
 p005
 How many letters are in the English Alphabet?
 26 letters
-b
-c
-d
+28
+24
+22
 p006
 What was the name of Don Quixote’s horse?
 Rocinante

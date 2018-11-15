@@ -7,15 +7,9 @@ d
 p002
 How many players per team are there in court in handball?
 7 players
-b
-c
-d
-p003
-In racewalking, athletes’
-Walk
-b
-c
-d
+9
+11
+5
 p004
 What’s the name of the field hockey move when the ball is lifted with the stick?
 Flick
@@ -31,15 +25,15 @@ d
 p006
 Which baseball player is behind the batter?
 Catcher
-b
-c
-d
+Getter
+Support
+Spotter
 p007
 How many squares are there on a chess board?
 64 squares
-b
-c
-d
+48
+32
+80
 p008
 How long is a basketball game international and in the NBA?
 40 and 48 minutes long
@@ -55,14 +49,13 @@ d
 p0010
 Which team did Alex Ferguson manage?
 Manchester United
-b
-c
-d
+Liverpool
+Arsenal
+Chelsea
 p0011
 Which of the following types of hockey does not exist?
 Asphalt hockey
-b
-c
+Ice hockey
 d
 p0012
 The tiger Hodori was the mascot of which Olympic Games?
