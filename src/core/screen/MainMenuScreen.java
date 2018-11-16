@@ -19,21 +19,24 @@ public class MainMenuScreen extends BaseScreen {
     private static Music menuMusic;
 
 
-
+        // This is the background picture
     public void initialize() {
         BaseActor mainMenuBackground = new BaseActor(0,0, mainStage);
         mainMenuBackground.loadTexture("assets/img/menubackground.png");
         mainMenuBackground.setSize(800,600);
 
+        // This is the headline in the menu screen
         BaseActor title = new BaseActor(100,400, mainStage);
         title.loadTexture("assets/img/MortenKombatLogo.png");
         title.setSize(600,150);
-        //starting music
+
+        // Starting music
         menuMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/TheWitcherSpikeroog.mp3"));
         menuMusic.setVolume(MortenCombat.volume);
         menuMusic.setLooping(true);
         menuMusic.play();
 
+        // Button to start the game
         Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
 
         Texture buttonTex = new Texture( Gdx.files.internal("assets/img/buttons/Start.png") );
@@ -61,6 +64,7 @@ public class MainMenuScreen extends BaseScreen {
                 }
         );
 
+        // Button for the settings
         Button.ButtonStyle buttonStyle2 = new Button.ButtonStyle();
 
 
@@ -90,8 +94,8 @@ public class MainMenuScreen extends BaseScreen {
                 }
         );
 
+        // Button to exit the game
         Button.ButtonStyle buttonStyle3 = new Button.ButtonStyle();
-
 
         Texture buttonTex3 = new Texture( Gdx.files.internal("assets/img/buttons/Exit.png") );
         TextureRegion buttonRegion3 = new TextureRegion( buttonTex3 );
@@ -118,7 +122,7 @@ public class MainMenuScreen extends BaseScreen {
 
     public void update(float dt) {
 
-
+        // This changes the volume when you press the volume button
     }
     protected static void volumeUp(){
         MortenCombat.volume = MortenCombat.volume + 0.1f;

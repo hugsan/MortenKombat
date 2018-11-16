@@ -2,7 +2,7 @@ package core.actors.fightingactors;
 
 import com.badlogic.gdx.math.MathUtils;
 
-public class MageOne extends SpellCaster{
+public class MageOne extends SpellCaster implements AreaDamageAbility{
 
     public MageOne(){
         super();
@@ -38,20 +38,21 @@ public class MageOne extends SpellCaster{
         }
     }
 
-
+    /**
+     * Attacks that deal 20 dmg to all enemies for 35 mana.
+     * @param fighter
+     * @return
+     */
     @Override
-    public boolean attackThree(Fighter fighterOne, Fighter fighterTwo, Fighter fighterThree){
+    public boolean attackThree(Fighter fighter){
         if (this.getMana()<35)
             return false;
         else{
-            fighterOne.setHP(fighterOne.getHP()-20);
-            fighterTwo.setHP(fighterTwo.getHP()-20);
-            fighterThree.setHP(fighterThree.getHP()-20);
+            fighter.setHP(fighter.getHP()-20);
             this.setMana(this.getMana() - 35);
             return true;
         }
     }
-    /**
     @Override
     public boolean attackThree(Fighter fighter, Fighter fighter2) {
         if (this.getMana()<35)
@@ -75,7 +76,7 @@ public class MageOne extends SpellCaster{
             return true;
         }
 
-    }*/
+    }
 
 
     }

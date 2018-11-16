@@ -1,7 +1,6 @@
 package core.screen;
 
 import com.badlogic.gdx.Gdx;
-
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -11,20 +10,21 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import core.MortenCombat;
+
 import core.actors.fightingactors.*;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
 
 
-
 public class FightScreen extends BaseScreen {
     LevelScreen previousMap;
-    Champion fighterWarrior;
-    Champion fighterMage;
-    Champion fighterSupport;
+    Fighter fighterOne;
     testingEnemy testingEnemyOne;
-    boolean turn = true;//variable to set the turn of the player, if true is players turn, otherwise enemy turn
-    ButtonCreator freshCreatedButton;
+    boolean turn = true; //variable to set the turn of the player, if true is players turn, otherwise enemy turn
+    Fighter enemyOne;
+    Fighter enemyTwo;
+    Fighter enemyThree;
+
     public FightScreen(LevelScreen prev){
         super();
         previousMap = prev;
@@ -36,20 +36,24 @@ public class FightScreen extends BaseScreen {
         BaseActor fightBackground = new BaseActor(0,0, mainStage);
         fightBackground.loadTexture( "assets/img/dungeon.png" );
         fightBackground.setSize(800,600);
-
-        //intialize the actors at the screen
-        fighterWarrior = MortenCombat.getFigtherWarrior();
-        fighterMage = MortenCombat.getFigtherWarrior();
-        fighterSupport = MortenCombat.getFigtherWarrior();
-
-        testingEnemyOne = new testingEnemy();
-
+        //initialize the actors at the screen
+        fighterOne = MortenCombat.getFigther();
+        enemyOne = new BatFighter();
+        enemyTwo = new SkeletonFighter();
+        enemyThree = new ZombieFighter();
 
         //create the buttons
-        freshCreatedButton = new ButtonCreator(uiStage, "assets/img/button_attack-one.png");
-        Button attackOneButton = freshCreatedButton.getCreatedButton();
+        Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
 
+        Texture buttonTex = new Texture( Gdx.files.internal("assets/img/button_attack-one.png") );
+        TextureRegion buttonRegion =  new TextureRegion(buttonTex);
+        buttonStyle.up = new TextureRegionDrawable( buttonRegion );
+
+        Button attackOneButton = new Button( buttonStyle );
+        attackOneButton.setColor( Color.CYAN );
+        //attackOneButton.setPosition(120 ,80);
         uiStage.addActor(attackOneButton);
+
         attackOneButton.addListener(
                 (Event e) ->
                 {
@@ -60,16 +64,28 @@ public class FightScreen extends BaseScreen {
                         return false;
                     if (!(turn))
                         return false;
-                    System.out.println("I have attack the enemy, enemy current HP: "+ testingEnemyOne.getHp());
+                    fighterOne.attackOne(enemyOne);
+                    System.out.println("I have attack the enemy, enemy current HP: "+ enemyOne.getHP());
+
+                    //testingEnemyOne.setHp(testingEnemyOne.getHp() - fighterOne.attackOne());
                     turn = !(turn);
                     return true;
                 }
         );
 
-        freshCreatedButton = new ButtonCreator(uiStage, "assets/img/button_attack-one.png");
-        Button attackTwoButton = freshCreatedButton.getCreatedButton();
 
+        Button.ButtonStyle buttonStyle2 = new Button.ButtonStyle();
+
+
+        Texture buttonTex2 = new Texture( Gdx.files.internal("assets/img/button_attack-two.png") );
+        TextureRegion buttonRegion2 =  new TextureRegion(buttonTex2);
+        buttonStyle2.up = new TextureRegionDrawable( buttonRegion2 );
+
+        Button attackTwoButton = new Button( buttonStyle2 );
+        attackTwoButton.setColor( Color.CYAN );
+        //attackTwoButton.setPosition(120 ,45);
         uiStage.addActor(attackTwoButton);
+
         attackTwoButton.addListener(
                 (Event e) ->
                 {
@@ -80,8 +96,8 @@ public class FightScreen extends BaseScreen {
                         return false;
                     if (!(turn))
                         return false;
-
-                    System.out.println("I have healed my hero, Current HP: "+ fighterWarrior.getHP());
+                    fighterOne.attackTwo(enemyOne);
+                    System.out.println("I have healed my hero, Current HP: "+fighterOne.getHP());
                     turn = !(turn);
                     return true;
                 }
@@ -114,25 +130,46 @@ public class FightScreen extends BaseScreen {
         uiTable.add().width(116); // ability 3 section for hero 3
         uiTable.add().width(116); // ability 3 section for hero 2
         uiTable.add().width(116);// ability 3 section for hero 1
+
+
+
+
+
+
     }
 
     public void update(float dt) {
-        //int enemyThinking = MathUtils.random(1200,2200);
+        // hero movement controls
+        int enemyThinking = MathUtils.random(1200,2200);
         if (!(turn)){
-            fighterWarrior.setHP(fighterWarrior.getHP() - testingEnemyOne.attackOne());
+            try
+            {
+                Thread.sleep(enemyThinking);
+            }
+            catch (InterruptedException e)
+            {
+            }
+            enemyOne.attackOne(fighterOne);
             turn = !(turn);
             System.out.println("we got attacked by enemy");
-            System.out.println("Our hero health is: "+ fighterWarrior.getHP());
+            System.out.println("Our hero health is: "+ fighterOne.getHP());
 
         }
 
-        if (testingEnemyOne.getHp() <= 0){
+        if (enemyOne.getHP() <= 0){
             this.dispose();
             MortenCombat.setActiveScreen(previousMap);
         }
         // make if our figther hp <= 0 go to Game over -Screen
 
     }
+    /**
+    private Button  buttonGenerator(String imagePath){
+
+
+        return ourButton;
+    }*/
+
 }
 
 
