@@ -19,7 +19,7 @@ public class SelectionScreen extends BaseScreen {
         BaseActor background = new BaseActor(0,0, mainStage);
         background.loadTexture("assets/img/SelectionBackground.png");
         background.setSize(800,600);
-        BaseActor.setWorldBounds(background);
+      //  BaseActor.setWorldBounds(background);
 
         for ( int i = 1 ; i < 4 ; i++ ) {
             int pixelX = i * 200 - 50;
