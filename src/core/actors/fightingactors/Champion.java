@@ -8,6 +8,6 @@ public abstract class Champion extends Fighter {
      * @param fighter target for the attack
      * @return 1: if possible; -1: if not possible.
      */
-    abstract boolean attackThree (Fighter fighter, Fighter fighter2, Fighter fighter3);
+    public abstract boolean attackThree (Fighter fighter);
 
 }

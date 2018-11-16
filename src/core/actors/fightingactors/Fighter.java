@@ -12,8 +12,8 @@ public abstract class Fighter {
      * @param fighter target for the attack
      * @return 1: if possible; -1: if not possible.
      */
-    public abstract boolean attackOne (Fighter fighter);
-    public abstract boolean attackTwo (Fighter fighter);
+    abstract public boolean attackOne (Fighter fighter);
+    abstract public boolean attackTwo (Fighter fighter);
 
     public String getFighterName() {
         return fighterName;

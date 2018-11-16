@@ -21,6 +21,7 @@ public class OptionsMenuScreen extends BaseScreen {
     @Override
     public void initialize() {
 
+        // Background picture for the settings screen
         BaseActor mainMenuBackground = new BaseActor(0,0, mainStage);
         mainMenuBackground.loadTexture("assets/img/SettingsBackground.png");
         mainMenuBackground.setSize(800,600);
@@ -37,7 +38,7 @@ public class OptionsMenuScreen extends BaseScreen {
         title1.loadTexture("assets/img/buttons/Volume.png");
         title1.setSize(300,70);
 
-        //back button
+        // Back button
 
         Button.ButtonStyle buttonStyle1 = new Button.ButtonStyle();
 
@@ -64,7 +65,7 @@ public class OptionsMenuScreen extends BaseScreen {
                 }
         );
 
-        // Volume button
+        // Volume button for turning the volume up
 
         Button.ButtonStyle buttonStyle2 = new Button.ButtonStyle();
 
@@ -91,6 +92,7 @@ public class OptionsMenuScreen extends BaseScreen {
                 }
         );
 
+        // The volume button for turning the volume down
         Button.ButtonStyle buttonStyle3 = new Button.ButtonStyle();
 
         Texture buttonTex3 = new Texture( Gdx.files.internal("assets/img/buttons/VolumeDown.png") );
@@ -115,7 +117,7 @@ public class OptionsMenuScreen extends BaseScreen {
                 }
         );
 
-        // Difficulty button 12-16
+        // Difficulty button age 12-16
 
         Button.ButtonStyle buttonStyle4 = new Button.ButtonStyle();
 
@@ -141,7 +143,7 @@ public class OptionsMenuScreen extends BaseScreen {
                 }
         );
 
-        // Difficulty button 16+
+        // Difficulty button age 16+
 
         Button.ButtonStyle buttonStyle5 = new Button.ButtonStyle();
 

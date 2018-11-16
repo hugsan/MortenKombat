@@ -7,8 +7,8 @@ package core.screen;
  * The same map (tmx) can be used in different maps.
  */
 public enum MapLayout {
-    //previous map starting at 0 to n-1
-    //if previousMap 0, then there is no previous map
+    // Previous map starting at 0 to n-1
+    // If previousMap 0, then there is no previous map
     MAP1(0,"normal","map1"),
     MAP2(1,"normal","map2"),
     MAP3(2,"wind","map3"),

@@ -20,12 +20,12 @@ public class WarriorOne extends Champion {
     }
 
     /**
-     * Makes 40% of missing target life
+     * Makes 30% of target maximun life.
      * @param fighter enemy target
      */
     @Override
     public boolean attackTwo (Fighter fighter){
-        fighter.setHP((int)0.40*(fighter.getMaxHP()- fighter.getHP()));
+        fighter.setHP(fighter.getHP()-((int)(0.40*(fighter.getMaxHP()- fighter.getHP()))));
         return true;
     }
 
@@ -34,7 +34,7 @@ public class WarriorOne extends Champion {
      * @param fighter
      */
     @Override
-    public boolean attackThree (Fighter fighter, Fighter nonAttackedOne, Fighter nonAttackedTwo){
+    public boolean attackThree (Fighter fighter){
         fighter.setHP(fighter.getHP()-MathUtils.random(3,15));
         if (fighter.getHP()<= 0 ){
             this.setHP((int)(this.getHP()+ 0.20*this.getMaxHP()));
