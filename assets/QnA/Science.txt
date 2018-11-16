@@ -135,17 +135,13 @@ b
 c
 d
 p0026
-Which of the following is a liver disease?
-Hepatitis
-b
-c
-d
-p0027
-Which of the following is forbidden in a vegan diet?
-Eggs
 
-c
-d
+p0027
+What is the H in H2O
+Hydrogen
+Helium
+Heavy
+Hexagon
 p0028
 Tectonic plates interact through what?
 Borders

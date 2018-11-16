@@ -95,23 +95,23 @@ b
 c
 d
 p0017
-Where is Honduras located?
-Central America
-b
-c
-d
+On what continent is Maldives
+Asia
+Africa
+Australia
+Europe
 p0018
-Where is the island of Margarita situated?
-Venezuela
-b
-c
-d
+In which Chinese city would you find the Forbidden City?
+Beijing
+Shanghai
+Tianjin 
+Guangzhou
 p0019
 How many countries share borders with Germany?
 9
-b
-c
-d
+3
+4
+6
 p0020
 What are the colors of the Philippines flag?
 Blue, red, yellow and white
