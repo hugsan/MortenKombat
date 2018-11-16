@@ -1,13 +1,25 @@
 package core.actors.fightingactors;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+
+import java.awt.*;
 
 public class WarriorOne extends Champion {
+
     public WarriorOne(){
         setFighterName("Paul");
         setHP(200);
         setMaxHP(200);
+
+
     }
+
 
     /**
      * does 8-23 damage to enemy
@@ -43,4 +55,5 @@ public class WarriorOne extends Champion {
         }
         return true;
     }
+
 }

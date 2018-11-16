@@ -18,7 +18,7 @@ import core.framework.BaseScreen;
 
 public class FightScreen extends BaseScreen {
     LevelScreen previousMap;
-    Fighter fighterOne;
+    Champion fighterOne;
     testingEnemy testingEnemyOne;
     boolean turn = true; //variable to set the turn of the player, if true is players turn, otherwise enemy turn
     Fighter enemyOne;
@@ -37,24 +37,15 @@ public class FightScreen extends BaseScreen {
         fightBackground.loadTexture( "assets/img/dungeon.png" );
         fightBackground.setSize(800,600);
         //initialize the actors at the screen
-        fighterOne = MortenCombat.getFigther();
+        fighterOne = MortenCombat.getFigtherOne();
         enemyOne = new BatFighter();
         enemyTwo = new SkeletonFighter();
         enemyThree = new ZombieFighter();
 
         //create the buttons
-        Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
+        uiStage.addActor(fighterOne.getFirstButton());
 
-        Texture buttonTex = new Texture( Gdx.files.internal("assets/img/button_attack-one.png") );
-        TextureRegion buttonRegion =  new TextureRegion(buttonTex);
-        buttonStyle.up = new TextureRegionDrawable( buttonRegion );
-
-        Button attackOneButton = new Button( buttonStyle );
-        attackOneButton.setColor( Color.CYAN );
-        //attackOneButton.setPosition(120 ,80);
-        uiStage.addActor(attackOneButton);
-
-        attackOneButton.addListener(
+        fighterOne.getFirstButton().addListener(
                 (Event e) ->
                 {
                     if ( !(e instanceof InputEvent) )
@@ -74,19 +65,29 @@ public class FightScreen extends BaseScreen {
         );
 
 
-        Button.ButtonStyle buttonStyle2 = new Button.ButtonStyle();
-
-
-        Texture buttonTex2 = new Texture( Gdx.files.internal("assets/img/button_attack-two.png") );
-        TextureRegion buttonRegion2 =  new TextureRegion(buttonTex2);
-        buttonStyle2.up = new TextureRegionDrawable( buttonRegion2 );
-
-        Button attackTwoButton = new Button( buttonStyle2 );
-        attackTwoButton.setColor( Color.CYAN );
         //attackTwoButton.setPosition(120 ,45);
-        uiStage.addActor(attackTwoButton);
+        uiStage.addActor(fighterOne.getSecondButton());
 
-        attackTwoButton.addListener(
+        fighterOne.getSecondButton().addListener(
+                (Event e) ->
+                {
+                    if ( !(e instanceof InputEvent) )
+                        return false;
+
+                    if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
+                        return false;
+                    if (!(turn))
+                        return false;
+                    fighterOne.attackTwo(enemyOne);
+                    System.out.println("I have healed my hero, Current HP: "+fighterOne.getHP());
+                    turn = !(turn);
+                    return true;
+                }
+        );
+
+        uiStage.addActor(fighterOne.getThirdButton());
+
+        fighterOne.getThirdButton().addListener(
                 (Event e) ->
                 {
                     if ( !(e instanceof InputEvent) )
@@ -119,17 +120,17 @@ public class FightScreen extends BaseScreen {
         uiTable.add().width(25);
         uiTable.add().width(116); // ability 1 section for hero 3
         uiTable.add().width(116); // ability 1 section for hero 2
-        uiTable.add(attackOneButton).width(116);// ability 1 section for hero 1
+        uiTable.add(fighterOne.getFirstButton()).width(116);// ability 1 section for hero 1
         uiTable.row();
         uiTable.add().width(25);
         uiTable.add().width(116); // ability 2 section for hero 3
         uiTable.add().width(116); // ability 2 section for hero 2
-        uiTable.add(attackTwoButton).width(116);// ability 2 section for hero 1
+        uiTable.add(fighterOne.getSecondButton()).width(116);// ability 2 section for hero 1
         uiTable.row();
         uiTable.add().width(25);
         uiTable.add().width(116); // ability 3 section for hero 3
         uiTable.add().width(116); // ability 3 section for hero 2
-        uiTable.add().width(116);// ability 3 section for hero 1
+        uiTable.add(fighterOne.getThirdButton()).width(116);// ability 3 section for hero 1
 
 
 

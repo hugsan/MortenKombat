@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class MortenCombat extends BaseGame {
     public static float volume = 0.5f;
-    static private Fighter fighter;
+    static private Champion fighterOne;
 
     //fighter 1
     //fighter 2
@@ -48,7 +48,7 @@ public class MortenCombat extends BaseGame {
     }
 
     public void create() {
-        fighter = new WarriorOne();
+        fighterOne = new WarriorOne();
         //idea is that we have 3 figther choosen by the player
 
         super.create();
@@ -79,7 +79,7 @@ public class MortenCombat extends BaseGame {
         setActiveScreen( layout[0] );
     }
 
-    public static Fighter getFigther(){
-        return fighter;
+    public static Champion getFigtherOne(){
+        return fighterOne;
     }
 }
