@@ -13,9 +13,9 @@ Dunkirk
 p003
 What city was divided in two after the Second World War?
 Berlin
-b
-c
-d
+Paris
+Hamburg
+Frankfurt
 p004
 Who is the current prime minister of the United Kingdom?
 Theresa May
@@ -68,8 +68,8 @@ p0012
 What army did the 300 represent?
 Spartan army
 Roman army
-
-d
+Aztec army
+German army
 p0013
 Where was the first man on the moon from?
 USA
@@ -80,14 +80,8 @@ p0014
 Which civilization constructed the Machu Picchu?
 Incas
 Mayans
-
-d
-p0015
-What were the names given to the atomic bombs of Hiroshima and Nagasaki?
-Little Boy and Fat Man
-
-c
-d
+Aztecs
+Romans
 p0016
 Who was the first president of the United States?
 George Washington
@@ -100,7 +94,25 @@ An arrow
 A sword
 A spear
 An accident by falling
-end
+p0018
+When did the Vietnam War end?
+1975
+1960
+1968
+1977
+p0019
+Who said: "Ich bin ein berliner" at a speech in 1963?
+John F. Kennedy
+Richard Nixon
+Winston Churchill
+Lyndon B. Johnson
+p0020
+Which of these countries were not occupied by the Nazis in World War 2?
+Sweden
+Italy
+Norway
+Denmark
+
 
 
 
