@@ -54,7 +54,7 @@ public class CharacterCard extends DragAndDropActor {
 
     public void setFighterNumber(int fighterNumber)
     {
-        loadTexture("assets/img/creeperEyesGreen.png");
+        loadTexture("assets/img/FighterOne.png");
         this.fighterNumber = fighterNumber;
     }
 
