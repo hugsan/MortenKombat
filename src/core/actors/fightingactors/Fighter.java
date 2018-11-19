@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import core.framework.BaseActor;
@@ -24,11 +23,12 @@ public abstract class Fighter extends BaseActor {
     private float elapsedTime;
     private boolean animationPaused;
 
-
+    //healthbar
 
     public Fighter( Stage s)
     {
             super(s);
+
     }
 
     public void setAnimation(Animation<TextureRegion> anim)

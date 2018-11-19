@@ -1,9 +1,12 @@
 package core.actors.fightingactors;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public abstract class SpellCaster extends Champion {
 
+    public Sound missingMana = Gdx.audio.newSound(Gdx.files.internal("assets/audio/sound/outmana.mp3"));
     public SpellCaster(Stage s){
         super(s);
 
@@ -36,11 +39,14 @@ public abstract class SpellCaster extends Champion {
     public void spendMana(int amount){
         this.setMana(this.getMana() - amount);
     }
+
     public boolean enoughMana(int amount){
         if (this.getMana() >= amount)
             return true;
-        else
+        else {
+            missingMana.play();
             return false;
+        }
     }
 
 }

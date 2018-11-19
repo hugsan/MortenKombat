@@ -30,12 +30,13 @@ public class MageOne extends SpellCaster {
      */
     @Override
     public boolean attackTwo(Fighter fighter){
-        if (this.enoughMana(55))
-            return false;
-        else{
+        if (this.enoughMana(55)){
             fighter.setHP(fighter.getHP()-50);
             this.spendMana(55);
             return true;
+        }
+        else{
+            return false;
         }
     }
 
