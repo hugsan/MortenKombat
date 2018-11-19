@@ -1,6 +1,8 @@
-package core.framework;
+package core.actors;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import core.actors.SelectionArea;
+import core.framework.DragAndDropActor;
 
 public class CharacterCard extends DragAndDropActor {
 
@@ -8,7 +10,6 @@ public class CharacterCard extends DragAndDropActor {
 
     private int fighterNumber;
     private int fighterType;
-
 
     private SelectionArea selectionArea;
 
@@ -20,7 +21,7 @@ public class CharacterCard extends DragAndDropActor {
     public void act(float dt)
     {
         super.act(dt);
-        boundToWorld();
+
     }
     public void onDragStart()
     {
@@ -37,10 +38,13 @@ public class CharacterCard extends DragAndDropActor {
         {
             SelectionArea sa = (SelectionArea) getDropTarget();
 
-
-            moveToActor(sa);
-            setSelectionArea(sa);
-            sa.setTargetable(false);
+            if (getFighterType() == sa.getHeroType()) {
+                moveToActor(sa);
+                setSelectionArea(sa);
+                sa.setTargetable(false);
+            } else {
+                moveToStart();
+            }
         }
     }
 

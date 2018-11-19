@@ -12,20 +12,23 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 public class DragAndDropActor extends BaseActor {
 
     private DragAndDropActor self;
+
     private float grabOffsetX;
     private float grabOffsetY;
+
     private float startPositionX;
     private float startPositionY;
-    private DropTargetActor dropTarget;
-    private boolean draggable;
 
+    private DropTargetActor dropTarget;
+
+    private boolean draggable;
 
     public DragAndDropActor(float x, float y, Stage s)
     {
         super(x, y, s);
 
-        self = this;
         draggable = true;
+        self = this;
 
         addListener(
                 new InputListener()
@@ -33,16 +36,18 @@ public class DragAndDropActor extends BaseActor {
 
                 public boolean touchDown(InputEvent event, float offsetX, float offsetY, int pointer, int button)
                 {
-                    if ( !self.isDraggable() )
-                        return false;
+
+                    if ( !self.isDraggable() ) return false;
+
                     self.grabOffsetX = offsetX;
                     self.grabOffsetY = offsetY;
+
                     self.startPositionX = self.getX();
                     self.startPositionY = self.getY();
 
                     self.toFront();
-                    self.addAction( Actions.scaleTo(1.1f, 1.1f, 0.25f) );
 
+                    self.addAction( Actions.scaleTo(1.1f, 1.1f, 0.25f) );
                     self.onDragStart();
 
                     return true;
@@ -52,39 +57,33 @@ public class DragAndDropActor extends BaseActor {
                 {
                     float deltaX = offsetX - self.grabOffsetX;
                     float deltaY = offsetY - self.grabOffsetY;
+
                     self.moveBy(deltaX, deltaY);
                 }
 
                 public void touchUp(InputEvent event, float offsetX, float offsetY, int pointer, int button)
                 {
                     self.setDropTarget(null);
-                    // keep track of distance to closest object
-                    float closestDistance = Float.MAX_VALUE;
 
-                    /*
-                    for ( BaseActor actor : BaseActor.getList(self.getStage(), "SelectionArea") )
+                    float closetsDistance = Float.MAX_VALUE;
+
+                    for ( BaseActor actor : BaseActor.getList(self.getStage(), "core.framework.DropTargetActor") )
                     {
-                        SelectionArea target = (SelectionArea)actor;
+                        DropTargetActor target = (DropTargetActor)actor;
+
                         if ( target.isTargetable() && self.overlaps(target) )
                         {
                             float currentDistance = Vector2.dst(self.getX(),self.getY(), target.getX(),target.getY());
 
-                            // check if this target is even closer
-                            if (currentDistance < closestDistance)
+                            if (currentDistance < closetsDistance)
                             {
                                 self.setDropTarget(target);
-                                closestDistance = currentDistance;
-
+                                closetsDistance = currentDistance;
                             }
                         }
                     }
-                    */
-                    //?????? where p 214
                     self.addAction( Actions.scaleTo(1.00f, 1.00f, 0.25f) );
-
                     self.onDrop();
-
-
                 }
             }
         );
