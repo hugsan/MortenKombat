@@ -3,6 +3,7 @@ package core.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -20,6 +21,8 @@ public class FightScreen extends BaseScreen {
     EnemyFighters enemyTwo;
     EnemyFighters enemyThree;
     boolean firstAttack = false;
+    private Pixmap defaultMouse;
+    private Pixmap spellMouse;
 
 
     public FightScreen(LevelScreen prev){
@@ -39,7 +42,11 @@ public class FightScreen extends BaseScreen {
         enemyTwo = new SkeletonFighter(mainStage);
         enemyThree = new ZombieFighter(mainStage);
 
-
+        //initialize the mouses
+        defaultMouse = new Pixmap (Gdx.files.internal("assets/img/NormalMouse.png"));
+        spellMouse = new Pixmap (Gdx.files.internal("assets/img/SpellMouse.png"));
+        activateDefaultMouse ();
+        //activateDefaultMouse ();
         //create the buttons
         uiStage.addActor(fighterOne.getFirstButton());
 
@@ -55,7 +62,9 @@ public class FightScreen extends BaseScreen {
                     if (!(turn))
                         return false;
                     firstAttack = true;
+                    activateSpellMouse ();
                     System.out.println("we need a target please!");
+
                     return true;
                 }
         );
@@ -75,6 +84,7 @@ public class FightScreen extends BaseScreen {
                         firstAttack = false;
                         System.out.println("we delivered the attack! viva");
                         turn = !turn;
+                        activateDefaultMouse ();
                     }else
                         return false;
 
@@ -170,6 +180,7 @@ public class FightScreen extends BaseScreen {
         }
         if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT)){
             System.out.println("setting attack to false");
+            activateDefaultMouse ();
             firstAttack = false;
         }
 
@@ -182,7 +193,13 @@ public class FightScreen extends BaseScreen {
     }
 
 
+private void activateDefaultMouse(){
+    Gdx.graphics.setCursor(Gdx.graphics.newCursor(defaultMouse, 0, 0));
+}
 
+private void activateSpellMouse(){
+    Gdx.graphics.setCursor(Gdx.graphics.newCursor(spellMouse, 0, 0));
+}
 
 }
 
