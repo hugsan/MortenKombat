@@ -1,16 +1,7 @@
 package core.screen;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapProperties;
-import com.badlogic.gdx.math.MathUtils;
 import core.MortenCombat;
-import core.actors.*;
-import core.actors.Solid;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
-import core.framework.TilemapActor;
 
 public class LoadingScreen extends BaseScreen {
 

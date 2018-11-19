@@ -48,8 +48,6 @@ public class MortenCombat extends BaseGame {
     }
 
     public void create() {
-        fighterOne = new WarriorOne();
-        //idea is that we have 3 figther choosen by the player
 
         super.create();
         try {

@@ -1,10 +1,11 @@
 package core.actors.fightingactors;
 
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class SupportOne extends SpellCaster{
-    public SupportOne(){
-        super();
+    public SupportOne(Stage s){
+        super(s);
         this.setFighterName("Nami");
         this.setHP(125);
         this.setMaxHP(125);

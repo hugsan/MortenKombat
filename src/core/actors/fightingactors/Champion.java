@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
@@ -12,8 +13,8 @@ public abstract class Champion extends Fighter {
     private Button secondButton;
     private Button thirdButton;
 
-    public Champion(){
-        super();
+    public Champion(Stage s){
+        super(s);
         Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
         Texture buttonTex = new Texture( Gdx.files.internal("assets/img/button_attack-one.png") );
         TextureRegion buttonRegion =  new TextureRegion(buttonTex);

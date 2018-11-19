@@ -1,11 +1,12 @@
 package core.actors.fightingactors;
 
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class MageOne extends SpellCaster implements AreaDamageAbility{
+public class MageOne extends SpellCaster {
 
-    public MageOne(){
-        super();
+    public MageOne(Stage s){
+        super(s);
         this.setFighterName("Dimitrova");
         this.setHP(150);
         this.setMaxHP(150);
@@ -53,30 +54,9 @@ public class MageOne extends SpellCaster implements AreaDamageAbility{
             return true;
         }
     }
-    @Override
-    public boolean attackThree(Fighter fighter, Fighter fighter2) {
-        if (this.getMana()<35)
-            return false;
-        else{
-            fighter.setHP(fighter.getHP()-20);
-            fighter2.setHP(fighter2.getHP()-20);
-            this.setMana(this.getMana() - 35);
-            return true;
-        }
-    }
-    @Override
-    public boolean attackThree(Fighter fighter, Fighter fighter2, Fighter fighter3) {
-        if (this.getMana()<35)
-            return false;
-        else{
-            fighter.setHP(fighter.getHP()-20);
-            fighter2.setHP(fighter2.getHP()-20);
-            fighter3.setHP(fighter3.getHP()-20);
-            this.setMana(this.getMana() - 35);
-            return true;
-        }
-
-    }
 
 
-    }
+
+
+
+}

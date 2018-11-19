@@ -1,11 +1,12 @@
 package core.actors.fightingactors;
 
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class BatFighter extends Fighter {
+public class BatFighter extends EnemyFighters {
 
-    public BatFighter(){
-        super();
+    public BatFighter(Stage s){
+        super(s);
         this.setHP(60);
         this.setMaxHP(60);
         this.setFighterName("Bat");

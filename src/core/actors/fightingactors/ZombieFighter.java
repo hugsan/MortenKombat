@@ -1,12 +1,13 @@
 package core.actors.fightingactors;
 
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class ZombieFighter extends Fighter {
+public class ZombieFighter extends EnemyFighters {
 
-    public ZombieFighter () {
+    public ZombieFighter (Stage s) {
 
-        super();
+        super(s);
         this.setHP(120);
         this.setMaxHP(120);
         this.setFighterName("Zombie");

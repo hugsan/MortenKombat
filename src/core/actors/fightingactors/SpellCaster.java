@@ -1,8 +1,13 @@
 package core.actors.fightingactors;
 
+import com.badlogic.gdx.scenes.scene2d.Stage;
+
 public abstract class SpellCaster extends Champion {
 
+    public SpellCaster(Stage s){
+        super(s);
 
+    }
     private final int maxMana = 100;
     private int mana = 100;
 

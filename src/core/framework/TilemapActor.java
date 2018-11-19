@@ -64,7 +64,7 @@ public class TilemapActor extends Actor
 
     /**
      *  Search the map layers for Rectangle Objects that contain a property (key) called "name" with associated value propertyName;
-     *  typically used to store non-actor information such as spawn point locations or dimensions of srcxcc.core.actors.Solid objects.
+     *  typically used to store non-actor information such as spawn point locations or dimensions of srcxcc.core.actors.exploringactors.Solid objects.
      *  Retrieve data as object, then cast to desired type: for example, float w = (float)obj.getProperties().get("width").
      */
     public ArrayList<MapObject> getRectangleList(String propertyName)

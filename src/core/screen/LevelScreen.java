@@ -7,8 +7,7 @@ import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.MathUtils;
 import core.MortenCombat;
-import core.actors.*;
-import core.actors.Solid;
+import core.actors.exploringactors.*;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
 import core.framework.TilemapActor;
@@ -119,12 +118,12 @@ public class LevelScreen extends BaseScreen {
         //update the volume for the game
         backgroundMusic.setVolume(MortenCombat.volume);
         //Checks if our object interact with each other. If they interact their functionality is executed.
-        actorObjectInteraction("core.actors.Solid");
-        actorObjectInteraction("core.actors.Exit");
-        actorObjectInteraction("core.actors.ExitTwo");
-        actorObjectInteraction("core.actors.GoBack");
-        actorObjectInteraction("core.actors.Bat");
-        actorObjectInteraction("core.actors.Chest");
+        actorObjectInteraction("core.actors.exploringactors.Solid");
+        actorObjectInteraction("core.actors.exploringactors.Exit");
+        actorObjectInteraction("core.actors.exploringactors.ExitTwo");
+        actorObjectInteraction("core.actors.exploringactors.GoBack");
+        actorObjectInteraction("core.actors.exploringactors.Bat");
+        actorObjectInteraction("core.actors.exploringactors.Chest");
 
 
         //Checks if the current map is windy. if it is blows the hero every 1 sec.
@@ -229,13 +228,13 @@ public class LevelScreen extends BaseScreen {
         for (BaseActor a : BaseActor.getList(mainStage, className)) {
 
             switch (className) {
-                case "core.actors.Solid":
+                case "core.actors.exploringactors.Solid":
                     if (hero.overlaps(a)) {
                         hero.preventOverlap(a);
                     }
                     break;
-                case "core.actors.Bat":
-                    for (BaseActor s : BaseActor.getList(mainStage, "core.actors.Solid")) {
+                case "core.actors.exploringactors.Bat":
+                    for (BaseActor s : BaseActor.getList(mainStage, "core.actors.exploringactors.Solid")) {
                         if (a.overlaps(s)) {
                             a.preventOverlap(s);
                             a.setMotionAngle(MathUtils.random(0, 360));
@@ -248,7 +247,7 @@ public class LevelScreen extends BaseScreen {
                         a.remove();
                     }
                     break;
-                case "core.actors.Exit":
+                case "core.actors.exploringactors.Exit":
                     if (hero.overlaps(a)) {
                         hero.setPosition(getX(), getY());
                         hero.setSpeed(0);
@@ -257,21 +256,21 @@ public class LevelScreen extends BaseScreen {
                         MortenCombat.setActiveScreen(new LoadingScreen(nextMap));
                     }
                     break;
-                case "core.actors.ExitTwo":
+                case "core.actors.exploringactors.ExitTwo":
                     if (hero.overlaps(a)) {
                         hero.setPosition(getX(), getY());
                         hero.setSpeed(0);
                         MortenCombat.setActiveScreen(new LoadingScreen(nextMap2));
                     }
                     break;
-                case "core.actors.GoBack":
+                case "core.actors.exploringactors.GoBack":
                     if (hero.overlaps(a)) {
                         hero.setPosition(getZ(), getW());
                         hero.setSpeed(0);
                         MortenCombat.setActiveScreen(new LoadingScreen(previousMap));                    }
                     break;
 
-                case "core.actors.Chest":
+                case "core.actors.exploringactors.Chest":
                     if (hero.overlaps(a)) {
                         //System.out.println("Chest opened");
                     }
