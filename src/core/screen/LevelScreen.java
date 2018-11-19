@@ -24,6 +24,7 @@ public class LevelScreen extends BaseScreen {
     private LevelScreen nextMap2 = null;
     private Hero hero;
     public static Music backgroundMusic;
+    private boolean isPlaying = true;
 
     // X Y position of the hero when the hero travels to next map
     private float x, y;
@@ -103,6 +104,22 @@ public class LevelScreen extends BaseScreen {
             x = (float) previousProp.get("x");
             y = (float) previousProp.get("y");
         }
+
+        PauseScreen pauseS = new PauseScreen();
+
+        if (isPlaying = true){
+            if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)){
+                isPlaying = false;
+                // PauseScreen to front
+            }
+        }
+        if (isPlaying = false) {
+            if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)){
+                isPlaying = true;
+                // PauseScreen to back
+            }
+        }
+
     }
 
     public void update(float dt) {

@@ -12,8 +12,8 @@ public class SelectionArea extends DropTargetActor {
 
         super(x, y, s);
         isTargetable();
-        loadTexture("assets/img/buttons/back.png");
-        setSize(100,100);
+        loadTexture("assets/img/CharacterCardEmpty.png");
+        setSize(125,200);
         setBoundaryRectangle();
 
     }

@@ -12,13 +12,13 @@ public class SelectionScreen extends BaseScreen {
     public void initialize() {
 
         BaseActor background = new BaseActor(0,0, mainStage);
-        background.loadTexture("assets/img/SelectionBackground.png");
+        background.loadTexture("assets/img/WoodBackground.png");
         background.setSize(800,600);
 
 
         for ( int i = 1 ; i < 4 ; i++ ) {
             int pixelX = i * 200 - 50;
-            int pixelY = 450;
+            int pixelY = 350;
 
             SelectionArea selectedHero = new SelectionArea(pixelX,pixelY,mainStage);
             selectedHero.setHeroType(i);
