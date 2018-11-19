@@ -1,6 +1,7 @@
 package core.actors.fightingactors;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -12,6 +13,7 @@ public abstract class Champion extends Fighter {
     private Button firstButton;
     private Button secondButton;
     private Button thirdButton;
+    public Sound cantclick = Gdx.audio.newSound(Gdx.files.internal("assets/audio/sound/cantclick.mp3"));
 
     public Champion(Stage s){
         super(s);
@@ -59,6 +61,6 @@ public abstract class Champion extends Fighter {
      * @param fighter target for the attack
      * @return 1: if possible; -1: if not possible.
      */
-    public abstract boolean attackThree (Fighter fighter);
+    public abstract boolean attackThree (Fighter fighterOne, Fighter fighterTwo, Fighter fighterThree );
 
 }

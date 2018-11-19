@@ -18,9 +18,12 @@ public class SupportOne extends SpellCaster{
      */
     @Override
     public boolean attackOne(Fighter fighter) {
+        if(fighter instanceof EnemyFighters){
         fighter.setHP(fighter.getHP() - MathUtils.random(3,11));
         this.gainMana(20);
-        return true;
+        return true;}
+        cantclick.play();
+        return false;
     }
 
     /**
@@ -36,21 +39,32 @@ public class SupportOne extends SpellCaster{
                 fighter.setHP(fighter.getMaxHP());
             return true;
         }
-        else return false;
-
-
+        cantclick.play();
+        return false;
     }
 
     /**
-     * temporal
-     * @param fighter
+     * Heals all our champions for 30 at for exchange of 50 mana.
+     * @param fighterOne
+     * @param fighterTwo
+     * @param fighterThree
      * @return
      */
+
     @Override
-    public boolean attackThree(Fighter fighter) {
-        fighter.setHP(fighter.getHP() - MathUtils.random(2,7));
-        this.gainMana(15);
-        return true;
+    public boolean attackThree(Fighter fighterOne, Fighter fighterTwo, Fighter fighterThree) {
+        if (fighterOne instanceof Champion || fighterTwo instanceof Champion || fighterThree instanceof Champion)
+        {
+            if (enoughMana(50)){
+                fighterOne.setHP( Math.max( (fighterOne.getHP()+30),fighterOne.getMaxHP() ) );
+                fighterTwo.setHP( Math.max( (fighterTwo.getHP()+30),fighterTwo.getMaxHP() ) );
+                fighterThree.setHP( Math.max( (fighterThree.getHP()+30),fighterThree.getMaxHP() ) );
+                this.spendMana(35);
+            }else
+                return false;
+        }
+        cantclick.play();
+        return false;
     }
 
 

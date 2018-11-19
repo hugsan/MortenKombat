@@ -18,9 +18,12 @@ public class MageOne extends SpellCaster {
      */
     @Override
     public boolean attackOne(Fighter fighter){
+        if (fighter instanceof EnemyFighters){
         fighter.setHP(fighter.getHP()- MathUtils.random(3,8));
         this.gainMana(15);
-        return true;
+        return true;}
+        cantclick.play();
+        return false;
 
     }
 
@@ -30,6 +33,7 @@ public class MageOne extends SpellCaster {
      */
     @Override
     public boolean attackTwo(Fighter fighter){
+        if (fighter instanceof EnemyFighters){
         if (this.enoughMana(55)){
             fighter.setHP(fighter.getHP()-50);
             this.spendMana(55);
@@ -37,23 +41,34 @@ public class MageOne extends SpellCaster {
         }
         else{
             return false;
-        }
+        }}
+        cantclick.play();
+        return false;
     }
 
     /**
-     * Attacks that deal 20 dmg to all enemies for 35 mana.
-     * @param fighter
-     * @return
+     * Deas 20 damage to all enemies for 35 mana
+     * @param fighterOne deals damage to fighterOne
+     * @param fighterTwo deals damage to fighterTwo
+     * @param fighterThree deals damage to fighterThree
+     * @return true if ability can be used, false if can not.
      */
     @Override
-    public boolean attackThree(Fighter fighter){
-        if (this.getMana()<35)
-            return false;
-        else{
-            fighter.setHP(fighter.getHP()-20);
-            this.setMana(this.getMana() - 35);
-            return true;
+    public boolean attackThree(Fighter fighterOne,Fighter fighterTwo, Fighter fighterThree ){
+        if (fighterOne instanceof EnemyFighters || fighterTwo instanceof EnemyFighters ||
+                fighterThree instanceof EnemyFighters){
+            if (this.enoughMana(35)){
+                fighterOne.setHP(fighterOne.getHP()-20);
+                fighterTwo.setHP(fighterTwo.getHP()-20);
+                fighterThree.setHP(fighterThree.getHP()-20);
+                this.spendMana(35);
+                return true;
+            }else{
+                return false;
         }
+        }
+        cantclick.play();
+        return false;
     }
 
 

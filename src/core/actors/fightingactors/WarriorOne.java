@@ -29,8 +29,11 @@ public class WarriorOne extends Champion {
      */
     @Override
     public boolean attackOne(Fighter fighter){
+        if (fighter instanceof EnemyFighters){
         fighter.setHP(fighter.getHP()-MathUtils.random(8,23));
-        return true;
+        return true;}
+        cantclick.play();
+        return false;
     }
 
     /**
@@ -39,23 +42,30 @@ public class WarriorOne extends Champion {
      */
     @Override
     public boolean attackTwo (Fighter fighter){
+        if (fighter instanceof EnemyFighters){
         fighter.setHP(fighter.getHP()-((int)(0.40*(fighter.getMaxHP()- fighter.getHP()))));
-        return true;
+        return true;}
+        cantclick.play();
+        return false;
     }
 
     /**
      * Deals 3-15 Damage. If the champion kills the target, he heals for 20% of his life.
-     * @param fighter
+     * @param fighterOne
      */
     @Override
-    public boolean attackThree (Fighter fighter){
-        fighter.setHP(fighter.getHP()-MathUtils.random(3,15));
-        if (fighter.getHP()<= 0 ){
-            this.setHP((int)(this.getHP()+ 0.20*this.getMaxHP()));
-            if (this.getHP() >= this.getMaxHP())
+    public boolean attackThree (Fighter fighterOne, Fighter fighterTwo, Fighter fighterThree){
+        if (fighterOne instanceof EnemyFighters){
+            fighterOne.setHP(fighterOne.getHP()-MathUtils.random(3,15));
+            if (fighterOne.getHP()<= 0 ){
+                this.setHP((int)(this.getHP()+ 0.20*this.getMaxHP()));
+                if (this.getHP() >= this.getMaxHP())
                 this.setHP(this.getHP());
+            }
+            return true;
         }
-        return true;
+        cantclick.play();
+        return false;
     }
 
 }

@@ -141,21 +141,47 @@ public class FightScreen extends BaseScreen {
                         }
                         if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT))
                             return false;
+
                         if (firstAttack && abilityUser.attackOne((Fighter)o.getTarget ())) {
                             firstAttack = false;
                             System.out.println ( abilityUser + " we delivered the first attack! target: " + o.getTarget ( ) );
                             turn = !turn;
                             activateDefaultMouse ( );
+
                         }else if ( abilityUser.attackTwo ( (Fighter)o.getTarget () ) && secondAttack){
                             secondAttack = false;
                             System.out.println(abilityUser+" we delivered the second attack! target: "+o.getTarget ());
                             turn = !turn;
                             activateDefaultMouse ();
-                        }else if (thirdAttack && abilityUser.attackThree ( (Fighter)o.getTarget () )){
-                            thirdAttack = false;
-                            System.out.println(abilityUser+" we delivered the third attack! target: "+o.getTarget ());
-                            turn = !turn;
-                            activateDefaultMouse ();
+
+                        }else if (thirdAttack ){
+                            if (o.getTarget() instanceof Champion){
+                                if(abilityUser.attackThree(championOne, championTwo, championThree)) {
+                                    thirdAttack = false;
+                                    turn =! turn;
+                                    activateDefaultMouse ();
+                                }
+                            }else if (o.getTarget () instanceof EnemyFighters){
+                                if (o.getTarget () == enemyOne )
+                                    if (abilityUser.attackThree(enemyOne,enemyTwo,enemyThree)){
+                                        System.out.println ("hitting third enemy with third ability" );
+                                        thirdAttack = false;
+                                        turn =! turn;
+                                        activateDefaultMouse ();
+                                    }
+                                if (o.getTarget () == enemyTwo )
+                                    if (abilityUser.attackThree(enemyTwo,enemyOne,enemyThree)){
+                                        thirdAttack = false;
+                                        turn =! turn;
+                                        activateDefaultMouse ();
+                                    }
+                                if (o.getTarget () == enemyThree )
+                                    if (abilityUser.attackThree(enemyThree,enemyOne,enemyTwo)){
+                                        thirdAttack = false;
+                                        turn =! turn;
+                                        activateDefaultMouse ();
+                                    }
+                            }
                         }
                         else return false;
                         return true;
