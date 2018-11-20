@@ -13,17 +13,17 @@ public class MageOne extends SpellCaster {
     }
 
     /**
-     * Attack for 3-8 damage, and restore 15 mana
+     * Attack for 10-18 damage, and restore 15 mana
      * @param fighter
      */
     @Override
     public boolean attackOne(Fighter fighter){
         if (fighter instanceof EnemyFighters){
-        fighter.setHP(fighter.getHP()- MathUtils.random(3,8));
-        this.gainMana(15);
-        return true;}
-        cantclick.play();
-        return false;
+            fighter.setHP(fighter.getHP()- MathUtils.random(10,18));
+            this.gainMana(15);
+            return true;}
+            cantclick.play();
+            return false;
 
     }
 
