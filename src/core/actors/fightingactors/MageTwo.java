@@ -38,9 +38,9 @@ public class MageTwo extends SpellCaster {
     @Override
     public boolean attackTwo (Fighter fighter){
         if (fighter instanceof EnemyFighters){
-        if (this.enoughMana(80)){
-            fighter.setHP(fighter.getHP()-70);
-            this.spendMana(80);
+        if (this.enoughMana(75)){
+            fighter.setHP(fighter.getHP()-60);
+            this.spendMana(75);
             return true;
         }
         else {
@@ -51,15 +51,24 @@ public class MageTwo extends SpellCaster {
 
 }
 
+    /**
+     * Deals 30 damage to all enemies for 40 mana
+     * @param fighterOne
+     * @param fighterTwo
+     * @param fighterThree
+     * @return
+     */
+
+
     @Override
     public boolean attackThree (Fighter fighterOne,Fighter fighterTwo, Fighter fighterThree ) {
         if (fighterOne instanceof EnemyFighters || fighterTwo instanceof EnemyFighters ||
                 fighterThree instanceof EnemyFighters) {
-            if (this.enoughMana(30)) {
-                fighterOne.setHP(fighterOne.getHP() - 20);
-                fighterTwo.setHP(fighterTwo.getHP() - 20);
-                fighterThree.setHP(fighterThree.getHP() - 20);
-                this.spendMana(30);
+            if (this.enoughMana(40)) {
+                fighterOne.setHP(fighterOne.getHP() - 30);
+                fighterTwo.setHP(fighterTwo.getHP() - 30);
+                fighterThree.setHP(fighterThree.getHP() - 30);
+                this.spendMana(40);
                 return true;
             } else {
                 return false;
