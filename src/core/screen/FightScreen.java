@@ -57,8 +57,8 @@ public class FightScreen extends BaseScreen {
 
 
         enemyOne = new SkeletonFighter(mainStage);
-        enemyTwo = new SkeletonFighter(mainStage);
-        enemyThree = new SkeletonFighter(mainStage);
+        enemyTwo = new BatFighter ( mainStage );
+        enemyThree = new ZombieFighter ( mainStage );
 
         enemies = new ArrayList<EnemyFighters>();
         enemies.add(enemyOne);
@@ -204,9 +204,9 @@ public class FightScreen extends BaseScreen {
         uiTable.add ( ).height ( 200 ).width ( 116 );
         uiTable.add ( ).height ( 200 ).width ( 25 );
         uiTable.row ();
-        uiTable.add ( ).height ( 200 ).width ( 116 ).top ( ); //hero 3 position
-        uiTable.add ( ).height ( 200 ).width ( 116 ); //hero 2 position
-        uiTable.add ( ).height ( 200 ).width ( 116 ); //hero 1 possition
+        uiTable.add (championOne ).height ( 200 ).width ( 116 ).top ( ); //hero 3 position
+        uiTable.add (championTwo ).height ( 200 ).width ( 116 ); //hero 2 position
+        uiTable.add (championThree ).height ( 200 ).width ( 116 ); //hero 1 possition
         uiTable.add ( ).height ( 200 ).width ( 56 ); //space between hero and enemy
         uiTable.add ( enemyOne ).height ( 200 ).width ( 116 ); //enemy 1 position
         uiTable.add ( enemyTwo ).height ( 200 ).width ( 116 ); //enemy 2 position
@@ -264,7 +264,6 @@ public class FightScreen extends BaseScreen {
 
     }
 
-
 private void activateDefaultMouse(){
     Gdx.graphics.setCursor(Gdx.graphics.newCursor(defaultMouse, 0, 0));
 }
@@ -274,5 +273,3 @@ private void activateSpellMouse(){
 }
 
 }
-
-

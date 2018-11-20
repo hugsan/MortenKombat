@@ -10,6 +10,14 @@ public class BatFighter extends EnemyFighters {
         this.setHP(60);
         this.setMaxHP(60);
         this.setFighterName("Bat");
+
+        attack = AnimationCreator.createAnimation("assets/fightscreen/Bat_Sprite_Sheet1.png", 0.14f,1,5);
+        iddle = AnimationCreator.createAnimation("assets/fightscreen/Bat_Sprite_Sheet2.png", 0.14f, 1, 5);
+        dead = AnimationCreator.createAnimation("assets/fightscreen/Bat_Sprite_Sheet3.png", 0.14f, 1, 5);
+
+        setAnimation(iddle);
+
+
     }
 
 
