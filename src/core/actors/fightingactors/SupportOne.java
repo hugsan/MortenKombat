@@ -9,7 +9,7 @@ public class SupportOne extends SpellCaster{
         this.setFighterName("Nami");
         this.setHP(125);
         this.setMaxHP(125);
-        iddle = AnimationCreator.createAnimation("assets/fightscreen/Skeleton Idle.png", 0.14f,1,18);
+        iddle = AnimationCreator.createAnimation("assets/fightscreen/Skeleton Idle.png", 0.14f,1,11);
         setAnimation ( iddle );
     }
 
