@@ -275,8 +275,13 @@ public class FightScreen extends BaseScreen {
             activateDefaultMouse ();
             firstAttack = false;
         }
-
-        if (enemyOne.getHP() <= 0){
+        boolean enemyAlive = true;
+        for (Fighter f : aliveFighters){
+            if (f instanceof EnemyFighters)
+                enemyAlive = false;
+        }
+        if (enemyAlive){//if all enemys are dead go back to exploring map
+            //implement HP and MANA exporting of our characters before leaving the screen
             this.dispose();
             MortenCombat.setActiveScreen(previousMap);
         }
