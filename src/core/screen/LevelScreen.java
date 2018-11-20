@@ -15,7 +15,7 @@ import core.framework.TilemapActor;
 
 public class LevelScreen extends BaseScreen {
     public static String mapName;
-    public static int windTimer = 0;
+    private static int windTimer = 0;
     public static String mapEffect = "normal";
     private String currentMapEffect;
     private LevelScreen previousMap;
@@ -151,6 +151,8 @@ public class LevelScreen extends BaseScreen {
                 windBlow();
                 System.out.println("blow");
             }
+        } else {
+            windTimer = 0;
         }
 
     }
@@ -289,7 +291,7 @@ public class LevelScreen extends BaseScreen {
 
                 case "core.actors.exploringactors.Chest":
                     if (hero.overlaps(a)) {
-                        //System.out.println("Chest opened");
+                        System.out.println("Chest opened");
                     }
                     break;
                 default:

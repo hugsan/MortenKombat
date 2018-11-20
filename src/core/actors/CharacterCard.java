@@ -1,7 +1,6 @@
 package core.actors;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import core.actors.SelectionArea;
 import core.framework.DragAndDropActor;
 
 public class CharacterCard extends DragAndDropActor {
@@ -47,22 +46,36 @@ public class CharacterCard extends DragAndDropActor {
             }
         }
     }
+    public void createCard(int fighterNumber, int fighterType) {
 
-    public static String[] getFighterTypeString() {        return fighterTypeString;    }
-
-    public int getFighterNumber() {        return fighterNumber;    }
-
-    public void setFighterNumber(int fighterNumber)
-    {
-        loadTexture("assets/img/FighterOne.png");
         this.fighterNumber = fighterNumber;
+        this.fighterType = fighterType;
+        loadTexture("assets/img/FighterOne.png");
+
+        if (fighterType == 1 && fighterNumber == 1) {
+            //loadTexture("assets/img/FighterOne.png");
+        }
+        if (fighterType == 1 && fighterNumber == 2) {
+
+        }
+        if (fighterType == 2 && fighterNumber == 1) {
+
+        }
+        if (fighterType == 2 && fighterNumber == 2) {
+
+        }
+        if (fighterType == 3 && fighterNumber == 3) {
+
+        }
+        if (fighterType == 3 && fighterNumber == 3) {
+
+        }
+
     }
 
+    public static String[] getFighterTypeString() {        return fighterTypeString;    }
+    public int getFighterNumber() {        return fighterNumber;    }
     public int getFighterType() {        return fighterType;    }
-
-    public void setFighterType(int fighterType) {        this.fighterType = fighterType;    }
-
-
     public void setSelectionArea(SelectionArea sa)    {  selectionArea = sa;  }
     public SelectionArea getSelectionArea()    {  return selectionArea;  }
     public void clearSelectionArea()    {  selectionArea = null;  }

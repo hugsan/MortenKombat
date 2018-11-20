@@ -12,7 +12,8 @@ import core.framework.BaseActor;
 import core.framework.BaseScreen;
 
 public class OptionsMenuScreen extends BaseScreen {
-    BaseScreen menu;
+
+    private BaseScreen menu;
 
     public OptionsMenuScreen(BaseScreen menu){
         super();
@@ -59,6 +60,7 @@ public class OptionsMenuScreen extends BaseScreen {
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
 
+                    System.out.println("Exit Settings");
                     this.dispose();
                     MortenCombat.setActiveScreen(menu);
                     return false;

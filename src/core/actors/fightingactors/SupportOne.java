@@ -42,6 +42,7 @@ public class SupportOne extends SpellCaster{
     public boolean attackTwo(Fighter fighter) {
         if (this.enoughMana(30) && fighter instanceof Champion){
             fighter.setHP(fighter.getHP()+20);
+            spendMana(30);
             if (fighter.getHP()>= fighter.getMaxHP())
                 fighter.setHP(fighter.getMaxHP());
             return true;

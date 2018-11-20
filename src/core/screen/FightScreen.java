@@ -48,11 +48,13 @@ public class FightScreen extends BaseScreen {
         championTwo = new MageOne(mainStage);
         championThree = new SupportOne(mainStage);
 
+
         champions = new ArrayList<Champion>();
 
         champions.add(championOne);
         champions.add(championTwo);
         champions.add(championThree);
+
 
         enemyOne = new SkeletonFighter(mainStage);
         enemyTwo = new BatFighter ( mainStage );
