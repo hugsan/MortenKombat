@@ -53,18 +53,14 @@ public class MainMenuScreen extends BaseScreen {
                     //mouseover
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
-                    SelectionScreen charSelect = new SelectionScreen();
-                    this.dispose();
+                    SelectionScreen charSelect = new SelectionScreen(this);
                     MortenCombat.setActiveScreen(charSelect);
-                    menuMusic.stop();
-                    //MortenCombat.startGame();
                     return false;
                 }
         );
 
         // Button for the settings
         Button.ButtonStyle buttonStyle2 = new Button.ButtonStyle();
-
 
         Texture buttonTex2 = new Texture( Gdx.files.internal("assets/img/buttons/Settings.png") );
         TextureRegion buttonRegion2 = new TextureRegion(buttonTex2);
@@ -133,6 +129,9 @@ public class MainMenuScreen extends BaseScreen {
         if (MortenCombat.volume < 0 )
             MortenCombat.volume = 0;
         menuMusic.setVolume(MortenCombat.volume);
+    }
+    public static void menuMusicStop() {
+        menuMusic.stop();
     }
 
 }

@@ -15,6 +15,12 @@ import core.actors.SelectionArea;
 
 public class SelectionScreen extends BaseScreen {
 
+    BaseScreen menu;
+
+    public SelectionScreen(BaseScreen menu){
+        super();
+        this.menu = menu;
+    }
 
     @Override
     public void initialize() {
@@ -50,8 +56,8 @@ public class SelectionScreen extends BaseScreen {
         {
             for ( int n = 1 ; n < 3 ; n++)
             {
-                int x = (n * 100 - 100) + (t * 150);
-                int y = 50;
+                int x = (n * 120 - 100) + (t * 240 - 220);
+                int y = 80;
 
                 CharacterCard card = new CharacterCard( x, y, mainStage);
                 card.createCard(n,t);
@@ -77,8 +83,35 @@ public class SelectionScreen extends BaseScreen {
                     //mouseover
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
+                    MainMenuScreen.menuMusicStop();
+                    menu.dispose();
                     this.dispose();
                     MortenCombat.startGame();
+                    return false;
+                }
+        );
+
+        Button.ButtonStyle buttonStyle1 = new Button.ButtonStyle();
+
+        Texture buttonTex1 = new Texture( Gdx.files.internal("assets/img/buttons/Back.png") );
+        TextureRegion buttonRegion1 = new TextureRegion(buttonTex1);
+        buttonStyle1.up = new TextureRegionDrawable( buttonRegion1 );
+        Button back1 = new Button( buttonStyle1 );
+
+        back1.setPosition(10, 10);
+        uiStage.addActor(back1);
+        back1.setSize(60,60);
+
+        back1.addListener(
+                (Event e) ->
+                {
+                    if ( !(e instanceof InputEvent) )
+                        return false;
+
+                    if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
+                        return false;
+                    this.dispose();
+                    MortenCombat.setActiveScreen( menu );
                     return false;
                 }
         );

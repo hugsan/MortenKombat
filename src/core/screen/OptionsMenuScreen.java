@@ -59,6 +59,7 @@ public class OptionsMenuScreen extends BaseScreen {
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
 
+                    System.out.println("Exit Settings");
                     this.dispose();
                     MortenCombat.setActiveScreen(menu);
                     return false;
