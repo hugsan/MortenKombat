@@ -23,12 +23,15 @@ public abstract class Fighter extends BaseActor {
     private float elapsedTime;
     private boolean animationPaused;
 
-    //healthbar
+    //Animation iddle, attack, dead
+    Animation attack;
+    Animation iddle;
+    Animation dead;
+
 
     public Fighter( Stage s)
     {
             super(s);
-
     }
 
     public void setAnimation(Animation<TextureRegion> anim)
@@ -145,6 +148,15 @@ public abstract class Fighter extends BaseActor {
     }
     public void setMaxHP(int maxHP) {
         this.maxHP = maxHP;
+    }
+    public Animation getAnimationAttack(){
+        return attack;
+    }
+    public Animation getAnimationIddle(){
+        return iddle;
+    }
+    public Animation getAnimationDead(){
+        return dead;
     }
 
 }

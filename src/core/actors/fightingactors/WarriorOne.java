@@ -1,15 +1,9 @@
 package core.actors.fightingactors;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
-import java.awt.*;
 
 public class WarriorOne extends Champion {
 
@@ -18,7 +12,8 @@ public class WarriorOne extends Champion {
         setFighterName("Paul");
         setHP(200);
         setMaxHP(200);
-
+        attack = AnimationCreator.createAnimation("assets/fightscreen/Skeleton Attack.png", 0.14f,1,18);
+        setAnimation(attack);
 
     }
 

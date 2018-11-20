@@ -10,6 +10,8 @@ public class MageOne extends SpellCaster {
         this.setFighterName("Dimitrova");
         this.setHP(150);
         this.setMaxHP(150);
+        dead = AnimationCreator.createAnimation("assets/fightscreen/Skeleton Dead.png", 0.14f,1,18);
+        setAnimation ( dead );
     }
 
     /**
