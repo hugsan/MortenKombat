@@ -5,6 +5,7 @@ package core;
 import core.actors.fightingactors.*;
 import core.framework.BaseGame;
 import core.screen.LevelScreen;
+import core.screen.LoadingScreen;
 import core.screen.MainMenuScreen;
 import core.screen.MapLayout;
 import java.io.File;
@@ -73,7 +74,7 @@ public class MortenCombat extends BaseGame {
     }
 
     public static void startGame(){
-        setActiveScreen( layout[0] );
+        setActiveScreen( new LoadingScreen(layout[0]) );
     }
 
     public static Champion getFigtherOne(){

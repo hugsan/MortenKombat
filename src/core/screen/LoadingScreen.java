@@ -6,9 +6,9 @@ import core.framework.BaseScreen;
 public class LoadingScreen extends BaseScreen {
 
     // Variable of the next LevelScreen
-    LevelScreen nextScreen;
-    double startTime;
-    double currentTime;
+    private LevelScreen nextScreen;
+    private double startTime;
+    private double currentTime;
 
     public LoadingScreen (LevelScreen nextScreen){
         super();

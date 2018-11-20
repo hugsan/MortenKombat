@@ -12,7 +12,8 @@ import core.framework.BaseActor;
 import core.framework.BaseScreen;
 
 public class OptionsMenuScreen extends BaseScreen {
-    BaseScreen menu;
+
+    private BaseScreen menu;
 
     public OptionsMenuScreen(BaseScreen menu){
         super();

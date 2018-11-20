@@ -15,7 +15,7 @@ import core.actors.SelectionArea;
 
 public class SelectionScreen extends BaseScreen {
 
-    BaseScreen menu;
+    private BaseScreen menu;
 
     public SelectionScreen(BaseScreen menu){
         super();

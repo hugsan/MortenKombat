@@ -22,7 +22,7 @@ public enum MapLayout {
     private final String tmx;
 
 
-    private MapLayout (int previousMap, String mapEffect, String tmx){
+    MapLayout (int previousMap, String mapEffect, String tmx){
         this.previousMap = previousMap;
         this.mapEffect = mapEffect;
         this.tmx = tmx;
