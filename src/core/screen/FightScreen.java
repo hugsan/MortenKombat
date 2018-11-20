@@ -55,8 +55,8 @@ public class FightScreen extends BaseScreen {
         champions.add(championThree);
 
         enemyOne = new SkeletonFighter(mainStage);
-        enemyTwo = new SkeletonFighter(mainStage);
-        enemyThree = new SkeletonFighter(mainStage);
+        enemyTwo = new BatFighter ( mainStage );
+        enemyThree = new ZombieFighter ( mainStage );
 
         enemies = new ArrayList<EnemyFighters>();
         enemies.add(enemyOne);

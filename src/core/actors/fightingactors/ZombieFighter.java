@@ -11,6 +11,12 @@ public class ZombieFighter extends EnemyFighters {
         this.setHP(120);
         this.setMaxHP(120);
         this.setFighterName("Zombie");
+
+        attack = AnimationCreator.createAnimation("assets/fightscreen/Zombie Attack.png", 0.14f,1,8);
+        iddle = AnimationCreator.createAnimation("assets/fightscreen/Zombie Iddle.png", 0.14f, 1, 15);
+        dead = AnimationCreator.createAnimation("assets/fightscreen/Zombie Dead.png", 0.14f, 1, 12);
+
+        setAnimation(iddle);
     }
     /**
      * AttackOne from bat deal 8 to 13 damage to another figther.
