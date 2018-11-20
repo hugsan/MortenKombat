@@ -2,7 +2,6 @@ package core.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Event;
@@ -12,15 +11,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import core.MortenCombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
-import core.MortenCombat;
 
 public class MainMenuScreen extends BaseScreen {
     private LevelScreen playableMap;
     private static Music menuMusic;
 
+    public void initialize() {
 
         // This is the background picture
-    public void initialize() {
         BaseActor mainMenuBackground = new BaseActor(0,0, mainStage);
         mainMenuBackground.loadTexture("assets/img/menubackground.png");
         mainMenuBackground.setSize(800,600);
@@ -57,9 +55,9 @@ public class MainMenuScreen extends BaseScreen {
                         return false;
                     SelectionScreen charSelect = new SelectionScreen();
                     this.dispose();
-                    //MortenCombat.setActiveScreen(charSelect);
+                    MortenCombat.setActiveScreen(charSelect);
                     menuMusic.stop();
-                    MortenCombat.startGame();
+                    //MortenCombat.startGame();
                     return false;
                 }
         );
