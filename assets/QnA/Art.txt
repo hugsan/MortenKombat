@@ -29,11 +29,11 @@ How many letters are in the English Alphabet?
 24
 22
 p006
-What was the name of Don Quixote’s horse?
-Rocinante
-b
-c
-d
+Which artist painted 'The Scream'?
+Edvard Munch
+Pablo Picasso
+Claude Monet
+Vincent van Gogh
 p007
 In what novel is Holden Caulfield the main character?
 The Catcher in the Rye

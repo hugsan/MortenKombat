@@ -7,7 +7,6 @@ import core.framework.BaseGame;
 import core.screen.LevelScreen;
 import core.screen.MainMenuScreen;
 import core.screen.MapLayout;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
