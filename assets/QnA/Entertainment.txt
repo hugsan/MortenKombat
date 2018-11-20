@@ -1,9 +1,9 @@
 p001
-Who played guitar for Led Zeppelin?
-Jimmy Page
-b
-c
-d
+Sheldon Cooper is a character in which TV show?
+Big Bang Theory
+Simpsons
+Futurama
+Friends
 p002
 In what Disney movie could you listen to the song ‘A Whole New World’?
 Aladdin
@@ -23,11 +23,11 @@ George Clooney
 Johnny Depp
 Jack Nicholson
 p005
-How long did the TV series Bonanza last?
-14 years
-b
-c
-d
+Mick Jagger is in which band?
+The Rolling Stones
+The Beatles
+The Clash
+Pink FLoyd
 p006
 What year did ‘Thriller’ come out?
 1982
@@ -83,11 +83,11 @@ How old was Michael Jackson when he died?
 55
 40
 p0015
-Which is the name of the bird in the movie UP?
-Kevin
-b
-c
-d
+Which actor has won the most Golden Globe awards?
+Meryl Streep
+Tom Hanks
+Julia Roberts
+Leonardo DiCpario
 p0017
 p0018
 What is the name of the princess in Mario Bros?
@@ -96,11 +96,11 @@ Pamela
 Puffy
 Pernille
 p0019
-What actor who played Superman was paralyzed from the neck down after falling of a horse?
-Christopher Reeves
-b
-c
-d
+To which TV show does the catchphrase 'respect my authoritah' belong?
+South Park
+Futurama
+Family Guy
+The Simpsons
 p0020
 Which of the following is not a scene for CSI?
 Washington
@@ -126,3 +126,9 @@ Big Hero 6
 Up
 Inside Out
 end
+p0024
+'Bruce Banner' is the alter-ego of which superhero?
+Captain America
+Spider-Man
+Batman
+Hulk

@@ -7,33 +7,33 @@ d
 p002
 Where is the Capoeira dance from?
 Brazil
-b
-c
-d
+Argentina
+Spain
+Portugal
 p003
-Monrovia is the capital of what country?
+Tripoli is the capital of what country?
+Libyen
 Liberia
-b
-c
-d
+Tunesien
+Algeriet
 p004
 Which is the most populated city in Turkey?
 Istanbul
-b
-c
-d
+Bursa
+Antalya
+Ankara
 p005
 Where is whisky from?
 Ireland
-b
-c
-d
+Scotland
+Germany
+Norway
 p006
 Where is the island of Malta located?
 Mediterranean Sea
-b
-c
-d
+Carribean sea
+Mexican Gulf
+Guinea Bay
 p007
 Yerevan is the capital of what country?
 Armenia
@@ -49,9 +49,9 @@ d
 p009
 Which is the only country who borders with Portugal?
 Spain
-b
-c
-d
+France
+Italy
+Germany
 p0010
 Which of these countries has a pink lake?
 Australia
@@ -67,15 +67,15 @@ d
 p0012
 What’s the most populated city in Scotland?
 Glasgow
-b
-c
-d
+Edinburgh
+Inverness
+Dundee
 p0013
 Where are hamburgers originally from?
 Germany
-b
-c
-d
+USA
+France
+Great Britain
 p0014
 What is the biggest city in Hungary?
 Budapest
@@ -85,33 +85,33 @@ Szeged
 p0015
 How many countries are in the United Kingdom?
 4
-b
-c
-d
+6
+2
+3
 p0016
 Which country is Mount Everest located in?
 Nepal
-b
-c
-d
+China
+India
+Bangladesh
 p0017
-Where is Honduras located?
-Central America
-b
-c
-d
+On what continent is Maldives
+Asia
+Africa
+Australia
+Europe
 p0018
-Where is the island of Margarita situated?
-Venezuela
-b
-c
-d
+In which Chinese city would you find the Forbidden City?
+Beijing
+Shanghai
+Tianjin 
+Guangzhou
 p0019
 How many countries share borders with Germany?
 9
-b
-c
-d
+3
+4
+6
 p0020
 What are the colors of the Philippines flag?
 Blue, red, yellow and white

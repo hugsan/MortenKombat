@@ -1,7 +1,7 @@
 package core.framework;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import core.framework.BaseActor;
+
 
 public class DropTargetActor extends BaseActor {
 

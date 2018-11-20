@@ -94,12 +94,12 @@ Blue Whale
 Elephant
 Giraffe
 Rhino
-p0019
-Who envisioned wireless technology in the 1800’s?
-Nikola Tesla
-b
-c
-d
+p0018
+When x = 6, what is the value of x+(2x-3)?
+15
+12
+20
+16
 p0020
 How are the holes of Swiss cheese made?
 Carbon dioxide
@@ -116,12 +116,6 @@ Frontal lobe
 Main lobe
 Vision lobe
 Genetic lobe
-p0023
-What two ingredients are used to make science fair volcanoes?
-Baking soda and vinegar
-b
-c
-d
 p0024
 What are the building blocks of proteins?
 Amino Acids
@@ -131,27 +125,15 @@ d
 p0025
 Which is organ is responsible for filtration?
 Kidney
-b
-c
-d
-p0026
-Which of the following is a liver disease?
-Hepatitis
-b
-c
-d
+Liver
+Stomach
+Gallibladder
 p0027
-Which of the following is forbidden in a vegan diet?
-Eggs
-
-c
-d
-p0028
-Tectonic plates interact through what?
-Borders
-b
-c
-d
+What is the H in H2O
+Hydrogen
+Helium
+Heavy
+Hexagon
 p0029
 How many seconds is one hour?
 3600 seconds
@@ -176,10 +158,11 @@ b
 c
 d
 p0033
-What is the function of molar teeth?
-Cutting
-b
-c
+The hardest substance available on earth is
+Diamond
+Gold
+Iron
+Platinum
 d
 p0034
 What initials are given to lysergic acid?
