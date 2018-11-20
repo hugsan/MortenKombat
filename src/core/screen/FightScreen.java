@@ -204,6 +204,7 @@ public class FightScreen extends BaseScreen {
         uiTable.add ( ).height ( 200 ).width ( 116 );
         uiTable.add ( ).height ( 200 ).width ( 25 );
         uiTable.row ();
+        uiTable.add().height ( 200 ).width ( 25 );
         uiTable.add (championOne ).height ( 200 ).width ( 116 ).top ( ); //hero 3 position
         uiTable.add (championTwo ).height ( 200 ).width ( 116 ); //hero 2 position
         uiTable.add (championThree ).height ( 200 ).width ( 116 ); //hero 1 possition
