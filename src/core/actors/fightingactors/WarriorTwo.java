@@ -10,6 +10,13 @@ public class WarriorTwo extends Champion{
         setName("Jens");
         setHP(250);
         setMaxHP(250);
+
+
+        attack = AnimationCreator.createAnimation("assets/fightscreen/Ninja Attack.png", 0.14f,1,10);
+        iddle = AnimationCreator.createAnimation("assets/fightscreen/Ninja Iddle.png", 0.14f, 1, 10);
+        dead = AnimationCreator.createAnimation("assets/fightscreen/Ninja Dead.png", 0.14f, 1, 10);
+
+        setAnimation(iddle);
     }
 
 

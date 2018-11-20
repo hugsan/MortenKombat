@@ -9,6 +9,13 @@ public class SupportTwo extends SpellCaster {
         this.setFighterName("Onagi");
         this.setHP(125);
         this.setMaxHP(125);
+
+
+        attack = AnimationCreator.createAnimation("assets/fightscreen/Knight Sup Attack.png", 0.14f,1,10);
+        iddle = AnimationCreator.createAnimation("assets/fightscreen/Knight Sup Iddle.png", 0.14f, 1, 10);
+        dead = AnimationCreator.createAnimation("assets/fightscreen/Knight Sup Dead.png", 0.14f, 1, 10);
+
+        setAnimation(iddle);
     }
 
     /**

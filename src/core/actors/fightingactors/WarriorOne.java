@@ -12,8 +12,12 @@ public class WarriorOne extends Champion {
         setFighterName("Paul");
         setHP(200);
         setMaxHP(200);
-        attack = AnimationCreator.createAnimation("assets/fightscreen/Skeleton Attack.png", 0.14f,1,18);
-        setAnimation(attack);
+
+        attack = AnimationCreator.createAnimation("assets/fightscreen/Knight Attack.png", 0.14f,1,7);
+        iddle = AnimationCreator.createAnimation("assets/fightscreen/Knight Iddle.png", 0.14f, 1, 7);
+        dead = AnimationCreator.createAnimation("assets/fightscreen/Knight Dead.png", 0.14f, 1, 7);
+
+        setAnimation(iddle);
 
     }
 
