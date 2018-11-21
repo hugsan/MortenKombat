@@ -2,6 +2,7 @@ package core;
 /**
  *
  */
+import core.actors.fightingactors.*;
 import core.framework.BaseGame;
 import core.screen.LevelScreen;
 import core.screen.LoadingScreen;
@@ -72,6 +73,7 @@ public class MortenCombat extends BaseGame {
     public static void startGame(){
         setActiveScreen( new LoadingScreen(layout[0]) );
         System.out.println(fighterN +" "+ mageN +" "+ supportN);
+        LevelScreen.musicPlay();
     }
 
 }
