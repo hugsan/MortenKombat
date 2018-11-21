@@ -30,6 +30,7 @@ public abstract class Fighter extends BaseActor {
     Animation dead;
 
     //healthbar
+    /*
     int percentageHP = HP / maxHP;
     int HPBarWidth = 140 * percentageHP;
     int HPBarWidthBase = 140;
@@ -40,7 +41,7 @@ public abstract class Fighter extends BaseActor {
         int width = 146;
 
 
-    }
+    }*/
 
     public Fighter( Stage s)
     {
