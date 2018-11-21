@@ -15,11 +15,11 @@ import java.util.ArrayList;
 
 public class MortenCombat extends BaseGame {
     public static float volume = 0.5f;
-    static private Champion fighterOne;
+    private static Champion fighterOne;
+    public static int fighterN = 0;
+    public static int mageN = 0;
+    public static int supportN = 0;
 
-    //fighter 1
-    //fighter 2
-    //fighter 3
     static LevelScreen[] layout = new LevelScreen[MapLayout.values().length];
 
     public void importing() throws FileNotFoundException {
@@ -73,6 +73,7 @@ public class MortenCombat extends BaseGame {
 
     public static void startGame(){
         setActiveScreen( new LoadingScreen(layout[0]) );
+        System.out.println(fighterN +" "+ mageN +" "+ supportN);
     }
 
     public static Champion getFigtherOne(){

@@ -29,6 +29,7 @@ public class CharacterCard extends DragAndDropActor {
             SelectionArea sa = getSelectionArea();
             sa.setTargetable(true);
             clearSelectionArea();
+            sa.setHeroNumber(0);
         }
     }
     public void onDrop()

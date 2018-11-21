@@ -70,7 +70,7 @@ public class SelectionScreen extends BaseScreen {
             }
         }
 
-        // Buttons
+        // Buttons -----------------------------------------------------------------------------
         Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
 
         Texture buttonTex = new Texture( Gdx.files.internal("assets/img/buttons/Start.png") );
@@ -90,10 +90,17 @@ public class SelectionScreen extends BaseScreen {
                     //mouseover
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
-                    MainMenuScreen.menuMusicStop();
-                    menu.dispose();
-                    this.dispose();
-                    MortenCombat.startGame();
+                        if (selectedHeroes[0].getHeroNumber() != 0 &&
+                            selectedHeroes[1].getHeroNumber() != 0 &&
+                            selectedHeroes[2].getHeroNumber() != 0) {
+                            MainMenuScreen.menuMusicStop();
+                            MortenCombat.fighterN = selectedHeroes[0].getHeroNumber();
+                            MortenCombat.mageN = selectedHeroes[1].getHeroNumber();
+                            MortenCombat.supportN = selectedHeroes[2].getHeroNumber();
+                            menu.dispose();
+                            this.dispose();
+                            MortenCombat.startGame();
+                        }
                     return false;
                 }
         );
