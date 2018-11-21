@@ -50,6 +50,7 @@ public class OptionsMenuScreen extends BaseScreen {
 
         back.setPosition(25, 25);
         uiStage.addActor(back);
+        back.setSize(60,60);
 
         back.addListener(
                 (Event e) ->

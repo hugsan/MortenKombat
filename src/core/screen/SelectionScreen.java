@@ -16,6 +16,9 @@ import core.actors.SelectionArea;
 public class SelectionScreen extends BaseScreen {
 
     private BaseScreen menu;
+    private int totalHeroes = 0;
+    private static SelectionArea[] selectedHeroes = new SelectionArea[3];
+    private static CharacterCard[] heroCards = new CharacterCard[6];
 
     public SelectionScreen(BaseScreen menu){
         super();
@@ -42,11 +45,13 @@ public class SelectionScreen extends BaseScreen {
             int pixelX = i * 200 - 50;
             int pixelY = 350;
 
-            SelectionArea selectedHero = new SelectionArea(pixelX,pixelY,mainStage);
-            selectedHero.setHeroType(i);
-            selectedHero.setTargetable(true);
+            selectedHeroes[i-1] = new SelectionArea(pixelX,pixelY,mainStage);
+            System.out.println(i);
+            selectedHeroes[i-1].setHeroType(i);
+            selectedHeroes[i-1].setTargetable(true);
+
         }
-        // make a label for names
+
         fighterTitle.toFront();
         mageTitle.toFront();
         supportTitle.toFront();
@@ -59,11 +64,13 @@ public class SelectionScreen extends BaseScreen {
                 int x = (n * 120 - 100) + (t * 240 - 220);
                 int y = 80;
 
-                CharacterCard card = new CharacterCard( x, y, mainStage);
-                card.createCard(n,t);
+                heroCards[totalHeroes] = new CharacterCard( x, y, mainStage);
+                heroCards[totalHeroes].createCard(n,t);
+                totalHeroes++;
             }
         }
 
+        // Buttons -----------------------------------------------------------------------------
         Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
 
         Texture buttonTex = new Texture( Gdx.files.internal("assets/img/buttons/Start.png") );
@@ -83,10 +90,17 @@ public class SelectionScreen extends BaseScreen {
                     //mouseover
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
-                    MainMenuScreen.menuMusicStop();
-                    menu.dispose();
-                    this.dispose();
-                    MortenCombat.startGame();
+                        if (selectedHeroes[0].getHeroNumber() != 0 &&
+                            selectedHeroes[1].getHeroNumber() != 0 &&
+                            selectedHeroes[2].getHeroNumber() != 0) {
+                            MainMenuScreen.menuMusicStop();
+                            MortenCombat.fighterN = selectedHeroes[0].getHeroNumber();
+                            MortenCombat.mageN = selectedHeroes[1].getHeroNumber();
+                            MortenCombat.supportN = selectedHeroes[2].getHeroNumber();
+                            menu.dispose();
+                            this.dispose();
+                            MortenCombat.startGame();
+                        }
                     return false;
                 }
         );

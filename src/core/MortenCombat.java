@@ -2,7 +2,6 @@ package core;
 /**
  *
  */
-import core.actors.fightingactors.*;
 import core.framework.BaseGame;
 import core.screen.LevelScreen;
 import core.screen.LoadingScreen;
@@ -15,15 +14,13 @@ import java.util.ArrayList;
 
 public class MortenCombat extends BaseGame {
     public static float volume = 0.5f;
-    static private Champion fighterOne;
+    public static int fighterN = 0;
+    public static int mageN = 0;
+    public static int supportN = 0;
 
-    //fighter 1
-    //fighter 2
-    //fighter 3
     static LevelScreen[] layout = new LevelScreen[MapLayout.values().length];
 
     public void importing() throws FileNotFoundException {
-
 
         File data = new File("assets\\QnA\\QnAData.txt");
         File data2 = new File("assets\\QnA\\Science.txt");
@@ -32,7 +29,6 @@ public class MortenCombat extends BaseGame {
         File data5 = new File("assets\\QnA\\Art.txt");
         File data6 = new File("assets\\QnA\\Sport.txt");
         File data7 = new File("assets\\QnA\\Entertainment.txt");
-
 
         ArrayList<ImportQandA> listQScience = new ArrayList<ImportQandA>();
         ArrayList<ImportQandA> listQGeography = new ArrayList<ImportQandA>();
@@ -75,9 +71,7 @@ public class MortenCombat extends BaseGame {
 
     public static void startGame(){
         setActiveScreen( new LoadingScreen(layout[0]) );
+        System.out.println(fighterN +" "+ mageN +" "+ supportN);
     }
 
-    public static Champion getFigtherOne(){
-        return fighterOne;
-    }
 }

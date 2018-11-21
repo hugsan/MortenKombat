@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.Array;
 import core.framework.BaseActor;
 
 
+
 public abstract class Fighter extends BaseActor {
 
     private String fighterName;
@@ -28,11 +29,26 @@ public abstract class Fighter extends BaseActor {
     Animation iddle;
     Animation dead;
 
+    //healthbar
+    /*
+    int percentageHP = HP / maxHP;
+    int HPBarWidth = 140 * percentageHP;
+    int HPBarWidthBase = 140;
+
+    public void healthBar() {
+
+        int height = 40;
+        int width = 146;
+
+
+    }*/
 
     public Fighter( Stage s)
     {
             super(s);
     }
+
+
 
     public void setAnimation(Animation<TextureRegion> anim)
     {

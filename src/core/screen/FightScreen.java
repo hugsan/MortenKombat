@@ -39,6 +39,10 @@ public class FightScreen extends BaseScreen {
     long startTime;
     int turn = 0;
 
+    static private int championOneHP= 666;
+    static private int championThreeHP = 666;
+    static private int championTwoHP = 666;
+
 
     public FightScreen(LevelScreen prev){
         super();
@@ -51,9 +55,19 @@ public class FightScreen extends BaseScreen {
         fightBackground.loadTexture( "assets/img/dungeon.png" );
         fightBackground.setSize(800,600);
         //initialize the actors at the screen
-        championOne = new WarriorTwo (mainStage);
-        championTwo = new MageTwo (mainStage ) ;
-        championThree = new SupportTwo (mainStage ) ;
+        if (MortenCombat.fighterN == 1)
+            championOne = new WarriorOne(mainStage);
+        else
+            championOne = new WarriorTwo(mainStage);
+        if (MortenCombat.mageN == 1)
+            championTwo = new MageOne(mainStage);
+        else
+            championTwo = new MageTwo(mainStage);
+        if (MortenCombat.supportN == 1)
+            championThree = new SupportOne(mainStage);
+        else
+            championThree = new SupportTwo(mainStage);
+        importHP();
 
         champions = new ArrayList<Champion>();
 
@@ -62,8 +76,8 @@ public class FightScreen extends BaseScreen {
         champions.add(championThree);
 
         enemyOne = new SkeletonFighter(mainStage);
-        enemyTwo = new BatFighter (mainStage);
-        enemyThree = new ZombieFighter (mainStage);
+        enemyTwo = new SkeletonFighter(mainStage);
+        enemyThree = new SkeletonFighter(mainStage);
 
         enemies = new ArrayList<EnemyFighters>();
         enemies.add(enemyOne);
@@ -160,8 +174,7 @@ public class FightScreen extends BaseScreen {
                         if (firstAttack && abilityUser.attackOne((Fighter)o.getTarget ())) {
                             System.out.println ( abilityUser + " we delivered the first attack! target: " + o.getTarget ( ) );
                             abilitySuccess ();
-                        }else if ( abilityUser.attackTwo ( (Fighter)o.getTarget () ) && secondAttack){
-
+                        }else if (  secondAttack && abilityUser.attackTwo ( (Fighter)o.getTarget () )){
                             System.out.println(abilityUser+" we delivered the second attack! target: "+o.getTarget ());
                             abilitySuccess ();
                         }else if (thirdAttack ){
@@ -282,6 +295,7 @@ public class FightScreen extends BaseScreen {
         }
         if (enemyAlive){//if all enemys are dead go back to exploring map
             //implement HP and MANA exporting of our characters before leaving the screen
+            exportHP();
             this.dispose();
             MortenCombat.setActiveScreen(previousMap);
         }
@@ -315,5 +329,17 @@ private void theEnemyAttacks(EnemyFighters enemy,Fighter fighter){
         enemy.attackOne(fighter);//60% chance to attack with attack1
     else
         enemy.attackTwo(fighter);//40% chance to attack with attack2
+}
+private void exportHP(){
+        championOneHP = championOne.getHP();
+        championTwoHP = championTwo.getHP();
+        championThreeHP = championThree.getHP();
+}
+private void importHP(){
+        if (championOneHP != 666 && championTwoHP != 666 && championThreeHP != 666){
+            championOne.setHP(championOneHP);
+            championTwo.setHP(championTwoHP);
+            championThree.setHP(championThreeHP);
+        }
 }
 }
