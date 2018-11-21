@@ -55,10 +55,19 @@ public class FightScreen extends BaseScreen {
         fightBackground.loadTexture( "assets/img/dungeon.png" );
         fightBackground.setSize(800,600);
         //initialize the actors at the screen
-        championOne = new WarriorOne(mainStage);
-        championTwo = new WarriorOne(mainStage);
-        championThree = new WarriorOne(mainStage);
-        importHPAndMAna();
+        if (MortenCombat.fighterN == 1)
+            championOne = new WarriorOne(mainStage);
+        else
+            championOne = new WarriorTwo(mainStage);
+        if (MortenCombat.mageN == 1)
+            championTwo = new MageOne(mainStage);
+        else
+            championTwo = new MageTwo(mainStage);
+        if (MortenCombat.supportN == 1)
+            championThree = new SupportOne(mainStage);
+        else
+            championThree = new SupportTwo(mainStage);
+        importHP();
 
         champions = new ArrayList<Champion>();
 
@@ -286,7 +295,7 @@ public class FightScreen extends BaseScreen {
         }
         if (enemyAlive){//if all enemys are dead go back to exploring map
             //implement HP and MANA exporting of our characters before leaving the screen
-            exportHPAndMana();
+            exportHP();
             this.dispose();
             MortenCombat.setActiveScreen(previousMap);
         }
@@ -321,12 +330,12 @@ private void theEnemyAttacks(EnemyFighters enemy,Fighter fighter){
     else
         enemy.attackTwo(fighter);//40% chance to attack with attack2
 }
-private void exportHPAndMana(){
+private void exportHP(){
         championOneHP = championOne.getHP();
         championTwoHP = championTwo.getHP();
         championThreeHP = championThree.getHP();
 }
-private void importHPAndMAna(){
+private void importHP(){
         if (championOneHP != 666 && championTwoHP != 666 && championThreeHP != 666){
             championOne.setHP(championOneHP);
             championTwo.setHP(championTwoHP);
