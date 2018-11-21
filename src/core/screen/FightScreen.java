@@ -39,6 +39,10 @@ public class FightScreen extends BaseScreen {
     long startTime;
     int turn = 0;
 
+    static private int championOneHP= 666;
+    static private int championThreeHP = 666;
+    static private int championTwoHP = 666;
+
 
     public FightScreen(LevelScreen prev){
         super();
@@ -52,8 +56,9 @@ public class FightScreen extends BaseScreen {
         fightBackground.setSize(800,600);
         //initialize the actors at the screen
         championOne = new WarriorOne(mainStage);
-        championTwo = new MageOne(mainStage);
-        championThree = new SupportOne(mainStage);
+        championTwo = new WarriorOne(mainStage);
+        championThree = new WarriorOne(mainStage);
+        importHPAndMAna();
 
         champions = new ArrayList<Champion>();
 
@@ -160,8 +165,7 @@ public class FightScreen extends BaseScreen {
                         if (firstAttack && abilityUser.attackOne((Fighter)o.getTarget ())) {
                             System.out.println ( abilityUser + " we delivered the first attack! target: " + o.getTarget ( ) );
                             abilitySuccess ();
-                        }else if ( abilityUser.attackTwo ( (Fighter)o.getTarget () ) && secondAttack){
-
+                        }else if (  secondAttack && abilityUser.attackTwo ( (Fighter)o.getTarget () )){
                             System.out.println(abilityUser+" we delivered the second attack! target: "+o.getTarget ());
                             abilitySuccess ();
                         }else if (thirdAttack ){
@@ -282,6 +286,7 @@ public class FightScreen extends BaseScreen {
         }
         if (enemyAlive){//if all enemys are dead go back to exploring map
             //implement HP and MANA exporting of our characters before leaving the screen
+            exportHPAndMana();
             this.dispose();
             MortenCombat.setActiveScreen(previousMap);
         }
@@ -315,5 +320,17 @@ private void theEnemyAttacks(EnemyFighters enemy,Fighter fighter){
         enemy.attackOne(fighter);//60% chance to attack with attack1
     else
         enemy.attackTwo(fighter);//40% chance to attack with attack2
+}
+private void exportHPAndMana(){
+        championOneHP = championOne.getHP();
+        championTwoHP = championTwo.getHP();
+        championThreeHP = championThree.getHP();
+}
+private void importHPAndMAna(){
+        if (championOneHP != 666 && championTwoHP != 666 && championThreeHP != 666){
+            championOne.setHP(championOneHP);
+            championTwo.setHP(championTwoHP);
+            championThree.setHP(championThreeHP);
+        }
 }
 }

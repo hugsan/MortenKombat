@@ -76,7 +76,4 @@ public class MortenCombat extends BaseGame {
         System.out.println(fighterN +" "+ mageN +" "+ supportN);
     }
 
-    public static Champion getFigtherOne(){
-        return fighterOne;
-    }
 }
