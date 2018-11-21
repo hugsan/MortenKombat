@@ -14,9 +14,9 @@ public class SkeletonFighter extends EnemyFighters {
         this.setHP(100);
         this.setMaxHP(100);
         this.setFighterName("Skeleton");
-        attack = AnimationCreator.createAnimation("assets/fightscreen/Troll Attack.png", 0.14f,1,7);
-        iddle = AnimationCreator.createAnimation("assets/fightscreen/Troll Iddle.png", 0.14f, 1, 7);
-        dead = AnimationCreator.createAnimation("assets/fightscreen/Troll Dead.png", 0.14f, 1, 7);
+        attack = AnimationCreator.createAnimation("assets/fightscreen/Troll Attack-min.png", 0.14f,1,7);
+        iddle = AnimationCreator.createAnimation("assets/fightscreen/Troll Iddle-min.png", 0.14f, 1, 7);
+        dead = AnimationCreator.createAnimation("assets/fightscreen/Troll Dead-min.png", 0.14f, 1, 7);
 
         setAnimation(iddle);
 

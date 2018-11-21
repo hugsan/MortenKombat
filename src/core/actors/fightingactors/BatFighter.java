@@ -11,9 +11,9 @@ public class BatFighter extends EnemyFighters {
         this.setMaxHP(60);
         this.setFighterName("Bat");
 
-        attack = AnimationCreator.createAnimation("assets/fightscreen/Pumpkin Attack.png", 0.14f,1,10);
-        iddle = AnimationCreator.createAnimation("assets/fightscreen/Pumpkin Iddle.png", 0.14f, 1, 10);
-        dead = AnimationCreator.createAnimation("assets/fightscreen/Pumpkin Dead.png", 0.14f, 1, 10);
+        attack = AnimationCreator.createAnimation("assets/fightscreen/Pumpkin Attack-min.png", 0.14f,1,10);
+        iddle = AnimationCreator.createAnimation("assets/fightscreen/Pumpkin Iddle-min.png", 0.14f, 1, 10);
+        dead = AnimationCreator.createAnimation("assets/fightscreen/Pumpkin Dead-min.png", 0.14f, 1, 10);
 
         setAnimation(iddle);
 
