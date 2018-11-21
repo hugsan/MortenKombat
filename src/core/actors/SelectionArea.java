@@ -11,7 +11,6 @@ public class SelectionArea extends DropTargetActor {
     public SelectionArea(float x, float y, Stage s) {
 
         super(x, y, s);
-        isTargetable();
         loadTexture("assets/img/CharacterCardEmpty.png");
         setSize(125,200);
         setBoundaryRectangle();

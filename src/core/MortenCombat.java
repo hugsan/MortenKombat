@@ -20,7 +20,6 @@ public class MortenCombat extends BaseGame {
 
     public void importing() throws FileNotFoundException {
 
-
         File data = new File("assets\\QnA\\QnAData.txt");
         File data2 = new File("assets\\QnA\\Science.txt");
         File data3 = new File("assets\\QnA\\Geography.txt");
@@ -28,7 +27,6 @@ public class MortenCombat extends BaseGame {
         File data5 = new File("assets\\QnA\\Art.txt");
         File data6 = new File("assets\\QnA\\Sport.txt");
         File data7 = new File("assets\\QnA\\Entertainment.txt");
-
 
         ArrayList<ImportQandA> listQScience = new ArrayList<ImportQandA>();
         ArrayList<ImportQandA> listQGeography = new ArrayList<ImportQandA>();
