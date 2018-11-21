@@ -32,7 +32,6 @@ public class MortenCombat extends BaseGame {
         File data6 = new File("assets\\QnA\\Sport.txt");
         File data7 = new File("assets\\QnA\\Entertainment.txt");
 
-
         ArrayList<ImportQandA> listQScience = new ArrayList<ImportQandA>();
         ArrayList<ImportQandA> listQGeography = new ArrayList<ImportQandA>();
         ArrayList<ImportQandA> listQHistory = new ArrayList<ImportQandA>();

@@ -67,7 +67,6 @@ public class SelectionScreen extends BaseScreen {
                 heroCards[totalHeroes] = new CharacterCard( x, y, mainStage);
                 heroCards[totalHeroes].createCard(n,t);
                 totalHeroes++;
-
             }
         }
 
