@@ -301,6 +301,7 @@ private void activateDefaultMouse(){
 private void activateSpellMouse(){
     Gdx.graphics.setCursor(Gdx.graphics.newCursor(spellMouse, 0, 0));
 }
+//method that is been used every ability that has been done by our Champions
 private void abilitySuccess(){
     activateDefaultMouse ();
     fightingTurn.pop();
