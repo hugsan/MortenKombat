@@ -2,7 +2,6 @@ package core;
 /**
  *
  */
-import core.actors.fightingactors.*;
 import core.framework.BaseGame;
 import core.screen.LevelScreen;
 import core.screen.LoadingScreen;
@@ -15,7 +14,6 @@ import java.util.ArrayList;
 
 public class MortenCombat extends BaseGame {
     public static float volume = 0.5f;
-    private static Champion fighterOne;
     public static int fighterN = 0;
     public static int mageN = 0;
     public static int supportN = 0;
