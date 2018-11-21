@@ -41,6 +41,7 @@ public class CharacterCard extends DragAndDropActor {
                 moveToActor(sa);
                 setSelectionArea(sa);
                 sa.setTargetable(false);
+                sa.setHeroNumber(fighterNumber);
             } else {
                 moveToStart();
             }

@@ -24,7 +24,6 @@ public class MortenCombat extends BaseGame {
 
     public void importing() throws FileNotFoundException {
 
-
         File data = new File("assets\\QnA\\QnAData.txt");
         File data2 = new File("assets\\QnA\\Science.txt");
         File data3 = new File("assets\\QnA\\Geography.txt");
