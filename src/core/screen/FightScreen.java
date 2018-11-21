@@ -10,8 +10,11 @@ import core.MortenCombat;
 import core.actors.fightingactors.*;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Stack;
 
 
 public class FightScreen extends BaseScreen {
@@ -22,7 +25,6 @@ public class FightScreen extends BaseScreen {
     ArrayList<Champion> champions;
     ArrayList<EnemyFighters> enemies;
     Champion abilityUser;
-    boolean turn = true; //variable to set the turn of the player, if true is players turn, otherwise enemy turn
     EnemyFighters enemyOne;
     EnemyFighters enemyTwo;
     EnemyFighters enemyThree;
@@ -31,6 +33,11 @@ public class FightScreen extends BaseScreen {
     boolean thirdAttack = false;
     private Pixmap defaultMouse;
     private Pixmap spellMouse;
+    CopyOnWriteArrayList<Fighter> aliveFighters;
+    Stack<Fighter> fightingTurn;
+    long currentTime;
+    long startTime;
+    int turn = 0;
 
 
     public FightScreen(LevelScreen prev){
@@ -48,22 +55,31 @@ public class FightScreen extends BaseScreen {
         championTwo = new MageOne(mainStage);
         championThree = new SupportOne(mainStage);
 
-
         champions = new ArrayList<Champion>();
 
         champions.add(championOne);
         champions.add(championTwo);
         champions.add(championThree);
 
-
         enemyOne = new SkeletonFighter(mainStage);
-        enemyTwo = new BatFighter ( mainStage );
-        enemyThree = new ZombieFighter ( mainStage );
+        enemyTwo = new SkeletonFighter(mainStage);
+        enemyThree = new SkeletonFighter(mainStage);
 
         enemies = new ArrayList<EnemyFighters>();
         enemies.add(enemyOne);
         enemies.add(enemyTwo);
         enemies.add(enemyThree);
+
+        fightingTurn = new Stack<> ( );
+        fightingTurn.addAll ( champions );
+        fightingTurn.addAll ( enemies );
+        //fightingTurn is a ArrayList of fighters, randomize every turn.
+        Collections.shuffle ( fightingTurn );
+
+            System.out.println (fightingTurn.size () );
+        //aliveFighters is a arrayList of all the remaining Fighters in our screen.
+        aliveFighters = new CopyOnWriteArrayList<> (  );
+        aliveFighters.addAll ( fightingTurn );
 
         //initialize the mouses
         defaultMouse = new Pixmap (Gdx.files.internal("assets/img/NormalMouse.png"));
@@ -72,16 +88,17 @@ public class FightScreen extends BaseScreen {
         //create the buttons
         uiStage.addActor( championOne.getFirstButton());
 
+        //creating listeners for buttons, activate the spell selector.
         for (Champion c : champions){
             c.getFirstButton().addListener(
                     (Event e) ->
                     {
                         if ( !(e instanceof InputEvent) )
                             return false;
-
                         if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                             return false;
-                        if (!(turn))
+                        if (c != fightingTurn.peek ())
+                            //implement not my turn sound
                             return false;
                         firstAttack = true;
                         secondAttack = false;
@@ -92,8 +109,6 @@ public class FightScreen extends BaseScreen {
                         return true;
                     }
             );
-        }
-        for (Champion c : champions){
             c.getSecondButton ().addListener(
                     (Event e) ->
                     {
@@ -101,7 +116,7 @@ public class FightScreen extends BaseScreen {
                             return false;
                         if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                             return false;
-                        if (!(turn))
+                        if (c != fightingTurn.peek ())
                             return false;
                         secondAttack = true;
                         firstAttack = false;
@@ -111,8 +126,6 @@ public class FightScreen extends BaseScreen {
                         return true;
                     }
             );
-        }
-        for (Champion c : champions){
             c.getThirdButton ().addListener(
                     (Event e) ->
                     {
@@ -120,7 +133,7 @@ public class FightScreen extends BaseScreen {
                             return false;
                         if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                             return false;
-                        if (!(turn))
+                        if (c != fightingTurn.peek ())
                             return false;
                         thirdAttack = true;
                         firstAttack = false;
@@ -130,9 +143,9 @@ public class FightScreen extends BaseScreen {
                         return true;
                     }
             );
-
         }
-        for (EnemyFighters e : enemies){
+        //creating the listeners of all the actors. Will be the target of ours spells.
+        for (Fighter e : fightingTurn){
             e.addListener(
                     (Event o) ->
                     {
@@ -145,43 +158,30 @@ public class FightScreen extends BaseScreen {
                             return false;
 
                         if (firstAttack && abilityUser.attackOne((Fighter)o.getTarget ())) {
-                            firstAttack = false;
                             System.out.println ( abilityUser + " we delivered the first attack! target: " + o.getTarget ( ) );
-                            turn = !turn;
-                            activateDefaultMouse ( );
-
+                            abilitySuccess ();
                         }else if ( abilityUser.attackTwo ( (Fighter)o.getTarget () ) && secondAttack){
-                            secondAttack = false;
-                            System.out.println(abilityUser+" we delivered the second attack! target: "+o.getTarget ());
-                            turn = !turn;
-                            activateDefaultMouse ();
 
+                            System.out.println(abilityUser+" we delivered the second attack! target: "+o.getTarget ());
+                            abilitySuccess ();
                         }else if (thirdAttack ){
                             if (o.getTarget() instanceof Champion){
                                 if(abilityUser.attackThree(championOne, championTwo, championThree)) {
-                                    thirdAttack = false;
-                                    turn =! turn;
-                                    activateDefaultMouse ();
+                                    abilitySuccess ();
                                 }
                             }else if (o.getTarget () instanceof EnemyFighters){
                                 if (o.getTarget () == enemyOne )
                                     if (abilityUser.attackThree(enemyOne,enemyTwo,enemyThree)){
                                         System.out.println ("hitting third enemy with third ability" );
-                                        thirdAttack = false;
-                                        turn =! turn;
-                                        activateDefaultMouse ();
+                                        abilitySuccess ();
                                     }
                                 if (o.getTarget () == enemyTwo )
                                     if (abilityUser.attackThree(enemyTwo,enemyOne,enemyThree)){
-                                        thirdAttack = false;
-                                        turn =! turn;
-                                        activateDefaultMouse ();
+                                        abilitySuccess ();
                                     }
                                 if (o.getTarget () == enemyThree )
                                     if (abilityUser.attackThree(enemyThree,enemyOne,enemyTwo)){
-                                        thirdAttack = false;
-                                        turn =! turn;
-                                        activateDefaultMouse ();
+                                        abilitySuccess ();
                                     }
                             }
                         }
@@ -205,9 +205,9 @@ public class FightScreen extends BaseScreen {
         uiTable.add ( ).height ( 200 ).width ( 25 );
         uiTable.row ();
         uiTable.add().height ( 200 ).width ( 25 );
-        uiTable.add (championOne ).height ( 200 ).width ( 116 ).top ( ); //hero 3 position
-        uiTable.add (championTwo ).height ( 200 ).width ( 116 ); //hero 2 position
-        uiTable.add (championThree ).height ( 200 ).width ( 116 ); //hero 1 possition
+        uiTable.add ( championThree ).height ( 200 ).width ( 116 ); //hero 3 position
+        uiTable.add ( championTwo ).height ( 200 ).width ( 116 ); //hero 2 position
+        uiTable.add ( championOne ).height ( 200 ).width ( 116 ); //hero 1 possition
         uiTable.add ( ).height ( 200 ).width ( 56 ); //space between hero and enemy
         uiTable.add ( enemyOne ).height ( 200 ).width ( 116 ); //enemy 1 position
         uiTable.add ( enemyTwo ).height ( 200 ).width ( 116 ); //enemy 2 position
@@ -235,33 +235,62 @@ public class FightScreen extends BaseScreen {
 
     public void update(float dt) {
         //creating the multiplexer for handling events.
+        if (Gdx.input.isKeyJustPressed (Input.Keys.E))
+            System.out.println (fightingTurn.peek() );
+
+        if (fightingTurn.isEmpty ()){
+            fightingTurn.addAll(aliveFighters);
+            Collections.shuffle(fightingTurn);
+            turn ++; // not been used, maybe we can put a Turn number on screen.
+        }
         int enemyThinking = MathUtils.random(1200,2200);
-        if (!(turn)){
-            try
-            {
-                Thread.sleep(enemyThinking);
+        if (fightingTurn.peek() instanceof EnemyFighters){
+            // = false;
+
+            while ((currentTime - startTime) < enemyThinking){
+                currentTime = System.currentTimeMillis();
             }
-            catch (InterruptedException e)
-            {
+            int championTarget = MathUtils.random(0,100);
+            //60% chance to hit first target 25% second chance 15% last if the target is dead goes for next
+            if (championTarget > 40 && aliveFighters.contains ( championOne )){
+                theEnemyAttacks ( (EnemyFighters)fightingTurn.pop(), championOne );
+                System.out.println ("we have been attacked to warrior" );
+                System.out.println (fightingTurn );
             }
-            enemyOne.attackOne( championOne );
-            turn = !(turn);
-            System.out.println ("enemyTwo HP: "+enemyTwo.getHP() );
-            System.out.println("we got attacked by enemy");
-            System.out.println("Our hero health is: "+ championOne.getHP());
+            else if (championTarget > 15 && aliveFighters.contains (championTwo)){
+                theEnemyAttacks ( (EnemyFighters)fightingTurn.pop(), championTwo );
+                System.out.println ("we have been attacked to mage" );
+                System.out.println (fightingTurn );
+            }
+            else{
+                theEnemyAttacks ( (EnemyFighters)fightingTurn.pop(),championThree );
+                System.out.println ("we have been attacked to support" );
+                System.out.println (fightingTurn );
+
+            }
 
         }
+
         if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT)){
-            System.out.println("setting attack to false");
             activateDefaultMouse ();
             firstAttack = false;
         }
-
-        if (enemyOne.getHP() <= 0){
+        boolean enemyAlive = true;
+        for (Fighter f : aliveFighters){
+            if (f instanceof EnemyFighters)
+                enemyAlive = false;
+        }
+        if (enemyAlive){//if all enemys are dead go back to exploring map
+            //implement HP and MANA exporting of our characters before leaving the screen
             this.dispose();
             MortenCombat.setActiveScreen(previousMap);
         }
-        // make if our figther hp <= 0 go to Game over -Screen
+        for (Fighter f : aliveFighters){
+            if (f.getHP ()<= 0){
+                aliveFighters.remove ( f );
+                fightingTurn.remove ( f );
+            }
+        }
 
     }
 
@@ -272,5 +301,18 @@ private void activateDefaultMouse(){
 private void activateSpellMouse(){
     Gdx.graphics.setCursor(Gdx.graphics.newCursor(spellMouse, 0, 0));
 }
-
+private void abilitySuccess(){
+    activateDefaultMouse ();
+    fightingTurn.pop();
+    System.out.println (fightingTurn );
+    startTime = System.currentTimeMillis();
+    firstAttack = secondAttack = thirdAttack = false;
+}
+private void theEnemyAttacks(EnemyFighters enemy,Fighter fighter){
+    int chanceAbility = MathUtils.random(0,100);
+    if (chanceAbility >=40)
+        enemy.attackOne(fighter);//60% chance to attack with attack1
+    else
+        enemy.attackTwo(fighter);//40% chance to attack with attack2
+}
 }

@@ -41,6 +41,7 @@ public abstract class Champion extends Fighter {
         thirdButton = new Button( buttonStyle );
         thirdButton.setColor( Color.CYAN );
 
+
     }
 
     public Button getFirstButton() {
@@ -54,6 +55,7 @@ public abstract class Champion extends Fighter {
     public Button getThirdButton() {
         return thirdButton;
     }
+
 
     /**
      * return 1 if the ability is possible
