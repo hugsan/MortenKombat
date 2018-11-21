@@ -51,9 +51,9 @@ public class FightScreen extends BaseScreen {
         fightBackground.loadTexture( "assets/img/dungeon.png" );
         fightBackground.setSize(800,600);
         //initialize the actors at the screen
-        championOne = new WarriorOne(mainStage);
-        championTwo = new MageOne(mainStage);
-        championThree = new SupportOne(mainStage);
+        championOne = new WarriorTwo (mainStage);
+        championTwo = new MageTwo (mainStage ) ;
+        championThree = new SupportTwo (mainStage ) ;
 
         champions = new ArrayList<Champion>();
 
@@ -62,8 +62,8 @@ public class FightScreen extends BaseScreen {
         champions.add(championThree);
 
         enemyOne = new SkeletonFighter(mainStage);
-        enemyTwo = new SkeletonFighter(mainStage);
-        enemyThree = new SkeletonFighter(mainStage);
+        enemyTwo = new BatFighter (mainStage);
+        enemyThree = new ZombieFighter (mainStage);
 
         enemies = new ArrayList<EnemyFighters>();
         enemies.add(enemyOne);
