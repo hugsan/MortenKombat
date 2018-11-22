@@ -34,9 +34,7 @@ public class LevelScreen extends BaseScreen {
      * Constructor for LevelScreen. Initialize the map withprevious map
      * and next map to null
      */
-    public LevelScreen() {
-        this.previousMap = null;
-    }
+    public LevelScreen() { this.previousMap = null; }
 
     /**
      * Constructor for LevelScreen. Initialize the map with previous map object. Nextmaps are
@@ -263,6 +261,7 @@ public class LevelScreen extends BaseScreen {
                     }
                     if (a.overlaps(hero)) {
 
+                        musicStop();
                         MortenCombat.setActiveScreen(new FightScreen(this));
                         a.remove();
                     }
@@ -303,12 +302,12 @@ public class LevelScreen extends BaseScreen {
 
         }
     }
+
     public static void musicPlay() { backgroundMusic.play();
     }
 
-    public static void stopMusic(){
-        backgroundMusic.stop();
-    }
+    public static void musicStop() { backgroundMusic.stop();
+   }
 }
 
 
