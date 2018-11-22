@@ -13,7 +13,7 @@ public class BatFighter extends EnemyFighters {
 
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Troll Attack.png", 0.14f,1,7);
         iddle = AnimationCreator.createAnimation("assets/fightingscreen/Troll Idle.png", 0.14f, 1, 7);
-        dead = AnimationCreator.createAnimation("assets/fightingscreen/Troll Dead.png", 0.14f, 7, 1);
+        dead = AnimationCreator.createAnimation("assets/fightingscreen/Troll Dead.png", 0.14f, 1, 7);
 
         setAnimation(iddle);
 
