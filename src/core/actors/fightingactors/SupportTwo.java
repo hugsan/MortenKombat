@@ -11,9 +11,9 @@ public class SupportTwo extends SpellCaster {
         this.setMaxHP(125);
 
 
-        attack = AnimationCreator.createAnimation("assets/fightscreen/Knight Sup Attack-min.png", 0.14f,1,10);
-        iddle = AnimationCreator.createAnimation("assets/fightscreen/Knight Sup Iddle-min.png", 0.14f, 1, 10);
-        dead = AnimationCreator.createAnimation("assets/fightscreen/Knight Sup Dead-min.png", 0.14f, 1, 10);
+        attack = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight Sup Attack-min.png", 0.14f,1,10);
+        iddle = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight Sup Iddle-min.png", 0.14f, 1, 10);
+        dead = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight Sup Dead-min.png", 0.14f, 1, 10);
 
         setAnimation(iddle);
     }

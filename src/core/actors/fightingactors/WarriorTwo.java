@@ -12,9 +12,9 @@ public class WarriorTwo extends Champion{
         setMaxHP(250);
 
 
-        attack = AnimationCreator.createAnimation("assets/fightscreen/Ninja Attack-min.png", 0.14f,1,10);
-        iddle = AnimationCreator.createAnimation("assets/fightscreen/Ninja Iddle-min.png", 0.14f, 1, 10);
-        dead = AnimationCreator.createAnimation("assets/fightscreen/Ninja Dead-min.png", 0.14f, 1, 10);
+        attack = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight 2 Attack.png", 0.14f,1,8);
+        iddle = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight 2 Idle.png", 0.14f, 1, 7);
+        dead = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight 2 Dead.png", 0.14f, 1, 7);
 
         setAnimation(iddle);
     }

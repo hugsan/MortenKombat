@@ -10,9 +10,9 @@ public class SupportOne extends SpellCaster{
         this.setHP(125);
         this.setMaxHP(125);
 
-        attack = AnimationCreator.createAnimation("assets/fightscreen/Robot Attack-min.png", 0.14f,1,8);
-        iddle = AnimationCreator.createAnimation("assets/fightscreen/Robot Iddle-min.png", 0.14f, 1, 10);
-        dead = AnimationCreator.createAnimation("assets/fightscreen/Robot Dead-min.png", 0.14f, 1, 10);
+        attack = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Robot Attack-min.png", 0.14f,1,8);
+        iddle = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Robot Iddle-min.png", 0.14f, 1, 10);
+        dead = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Robot Dead-min.png", 0.14f, 1, 10);
 
         setAnimation(iddle);
 

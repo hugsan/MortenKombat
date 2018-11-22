@@ -12,9 +12,9 @@ public class ZombieFighter extends EnemyFighters {
         this.setMaxHP(120);
         this.setFighterName("Zombie");
 
-        attack = AnimationCreator.createAnimation("assets/fightscreen/Zombie Attack-min.png", 0.14f,1,8);
-        iddle = AnimationCreator.createAnimation("assets/fightscreen/Zombie Iddle-min.png", 0.14f, 1, 15);
-        dead = AnimationCreator.createAnimation("assets/fightscreen/Zombie Dead-min.png", 0.14f, 1, 12);
+        attack = AnimationCreator.createAnimation("assets/fightingscreen/Zombie Attack.png", 0.14f,1,8);
+        iddle = AnimationCreator.createAnimation("assets/fightingscreen/Zombie Idle.png", 0.14f, 1, 15);
+        dead = AnimationCreator.createAnimation("assets/fightingscreen/Zombie Dead.png", 0.14f, 1, 12);
 
         setAnimation(iddle);
     }
