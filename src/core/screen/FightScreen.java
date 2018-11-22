@@ -334,6 +334,7 @@ public class FightScreen extends BaseScreen {
         if (enemyAlive){//if all enemys are dead go back to exploring map
             //implement HP and MANA exporting of our characters before leaving the screen
             exportHP();
+            battleMusic.stop();
             this.dispose();
             MortenCombat.setActiveScreen(previousMap);
         }

@@ -23,7 +23,7 @@ public class LevelScreen extends BaseScreen {
     private LevelScreen nextMap2 = null;
     private Hero hero;
     public static Music backgroundMusic;
-    private boolean isPlaying = true;
+    public static boolean isPlaying = true;
 
     // X Y position of the hero when the hero travels to next map
     private float x, y;
