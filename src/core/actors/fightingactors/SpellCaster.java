@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 public abstract class SpellCaster extends Champion {
 
     public Sound missingMana = Gdx.audio.newSound(Gdx.files.internal("assets/audio/sound/outmana.mp3"));
+
     public SpellCaster(Stage s){
         super(s);
 
@@ -44,6 +45,7 @@ public abstract class SpellCaster extends Champion {
         if (this.getMana() >= amount)
             return true;
         else {
+
             missingMana.play();
             return false;
         }
