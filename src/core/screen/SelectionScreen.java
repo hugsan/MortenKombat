@@ -24,7 +24,7 @@ public class SelectionScreen extends BaseScreen {
         super();
         this.menu = menu;
     }
-
+//initializing
     @Override
     public void initialize() {
 
@@ -49,6 +49,7 @@ public class SelectionScreen extends BaseScreen {
             System.out.println(i);
             selectedHeroes[i-1].setHeroType(i);
             selectedHeroes[i-1].setTargetable(true);
+
 
         }
 
