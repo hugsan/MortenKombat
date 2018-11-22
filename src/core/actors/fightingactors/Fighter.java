@@ -25,9 +25,9 @@ public abstract class Fighter extends BaseActor {
     private boolean animationPaused;
 
     //Animation iddle, attack, dead
-    Animation attack;
-    Animation iddle;
-    Animation dead;
+    public Animation attack;
+    public Animation iddle;
+    public Animation dead;
 
     //healthbar
     /*

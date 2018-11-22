@@ -1,6 +1,7 @@
 package core.actors.fightingactors;
 
 
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
@@ -16,9 +17,7 @@ public class WarriorOne extends Champion {
         attack = AnimationCreator.createAnimation("assets/fightscreen/Knight Attack-min.png", 0.14f,1,7);
         iddle = AnimationCreator.createAnimation("assets/fightscreen/Knight Iddle-min.png", 0.14f, 1, 7);
         dead = AnimationCreator.createAnimation("assets/fightscreen/Knight Dead-min.png", 0.14f, 1, 7);
-
         setAnimation(iddle);
-
     }
 
 

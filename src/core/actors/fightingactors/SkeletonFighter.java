@@ -12,7 +12,7 @@ public class SkeletonFighter extends EnemyFighters {
     public SkeletonFighter (Stage s) {
 
         super(s);
-        this.setHP(100);
+        this.setHP(1);
         this.setMaxHP(100);
         this.setFighterName("Skeleton");
         attack = AnimationCreator.createAnimation("assets/fightscreen/Troll Attack-min.png", 0.14f,1,7);
