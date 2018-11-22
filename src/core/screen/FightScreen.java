@@ -342,6 +342,7 @@ public class FightScreen extends BaseScreen {
 
                 if (aliveFighters.contains(f)){
                     f.setAnimation(f.dead);
+                    System.out.println("in process to kill whatever"+f);
                     deadAnimationStart = System.currentTimeMillis();
                     killHim = true;
                     killingTarget = f;
@@ -354,6 +355,7 @@ public class FightScreen extends BaseScreen {
         }
         if (killHim && (System.currentTimeMillis() - deadAnimationStart)/1000 > killingTarget.dead.getAnimationDuration() ){
             killingTarget.dead.setPlayMode(Animation.PlayMode.NORMAL);
+            System.out.println("we got him kill"+killingTarget);
             killHim = false;
         }
 

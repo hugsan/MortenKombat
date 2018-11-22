@@ -12,7 +12,7 @@ public class SkeletonFighter extends EnemyFighters {
     public SkeletonFighter (Stage s) {
 
         super(s);
-        this.setHP(1);
+        this.setHP(100);
         this.setMaxHP(100);
         this.setFighterName("Skeleton");
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Skeleton Attack.png", 0.14f,2,5);
