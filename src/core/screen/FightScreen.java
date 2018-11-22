@@ -2,6 +2,7 @@ package core.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.MathUtils;
@@ -34,6 +35,7 @@ public class FightScreen extends BaseScreen {
     boolean thirdAttack = false;
     private Pixmap defaultMouse;
     private Pixmap spellMouse;
+    private static Music battleMusic;
     CopyOnWriteArrayList<Fighter> aliveFighters;
     Stack<Fighter> fightingTurn;
     long currentTime;
@@ -55,6 +57,13 @@ public class FightScreen extends BaseScreen {
     }
 
     public void initialize() {
+
+        // Battle music
+        battleMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/NoSurrender.mp3"));
+        battleMusic.setVolume(MortenCombat.volume);
+        battleMusic.setLooping(true);
+        battleMusic.play();
+
         //initialize the mapbackground
         BaseActor fightBackground = new BaseActor(0,0, mainStage);
         fightBackground.loadTexture( "assets/img/dungeon.png" );
@@ -81,8 +90,8 @@ public class FightScreen extends BaseScreen {
         champions.add(championThree);
 
         enemyOne = new SkeletonFighter(mainStage);
-        enemyTwo = new SkeletonFighter(mainStage);
-        enemyThree = new SkeletonFighter(mainStage);
+        enemyTwo = new ZombieFighter (mainStage);
+        enemyThree = new BatFighter (mainStage);
 
         enemies = new ArrayList<EnemyFighters>();
         enemies.add(enemyOne);

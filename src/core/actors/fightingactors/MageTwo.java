@@ -12,9 +12,9 @@ public class MageTwo extends SpellCaster {
         this.setMaxHP(150);
 
 
-        attack = AnimationCreator.createAnimation("assets/fightscreen/Mage 2 Attack-min.png", 0.14f,1,20);
-        iddle = AnimationCreator.createAnimation("assets/fightscreen/Mage 2 Iddle-min.png", 0.14f, 1, 20);
-        dead = AnimationCreator.createAnimation("assets/fightscreen/Mage 2 Dead-min.png", 0.14f, 1, 20);
+        attack = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Mage 2 Attack.png", 0.14f,1,5);
+        iddle = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Mage 2 Idle.png", 0.14f, 1, 5);
+        dead = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Mage 2 Dead.png", 0.14f, 1, 5);
 
         setAnimation(iddle);
     }
