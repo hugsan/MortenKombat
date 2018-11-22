@@ -1,24 +1,27 @@
 package core.actors.fightingactors;
 
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import core.framework.BaseActor;
-
-
+import core.framework.BaseGame;
 
 public abstract class Fighter extends BaseActor {
 
     private String fighterName;
     private int HP;
     private int maxHP;
+
+    private BaseActor HPBar;
+    public int HPPixels = 100;
+    private Label health;
 
     private Animation<TextureRegion> animation;
     private float elapsedTime;
@@ -29,26 +32,14 @@ public abstract class Fighter extends BaseActor {
     public Animation iddle;
     public Animation dead;
 
-    //healthbar
-    /*
-    int percentageHP = HP / maxHP;
-    int HPBarWidth = 140 * percentageHP;
-    int HPBarWidthBase = 140;
+    public Fighter( Stage s) {
+        super(s);
 
-    public void healthBar() {
+        health = new Label("Health: ", BaseGame.labelStyle);
+        health.setColor( Color.RED );
+        health.setFontScale(0.6f);
 
-        int height = 40;
-        int width = 146;
-
-
-    }*/
-
-    public Fighter( Stage s)
-    {
-            super(s);
     }
-
-
 
     public void setAnimation(Animation<TextureRegion> anim)
     {
@@ -150,15 +141,18 @@ public abstract class Fighter extends BaseActor {
     public void setFighterName(String s){
         this.fighterName=s;
     }
-
-
     public int getHP() {
         return HP;
     }
     public void setHP(int HP) {
         this.HP = HP;
     }
+    public Label getHPBar() { return health;  }
 
+    public void updateHPBar() {
+        health.setText(getHP() +"/" + getMaxHP());
+        health.setSize(110,20);
+    }
     public int getMaxHP() {
         return maxHP;
     }

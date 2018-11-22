@@ -46,7 +46,6 @@ public class SelectionScreen extends BaseScreen {
             int pixelY = 350;
 
             selectedHeroes[i-1] = new SelectionArea(pixelX,pixelY,mainStage);
-            System.out.println(i);
             selectedHeroes[i-1].setHeroType(i);
             selectedHeroes[i-1].setTargetable(true);
 

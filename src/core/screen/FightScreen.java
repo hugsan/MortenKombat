@@ -2,6 +2,7 @@ package core.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -221,20 +222,32 @@ public class FightScreen extends BaseScreen {
 
         //put the buttons in the table.
         //uiTable.pad ( 25 ); // add 10 pixel corner to the screen.
-        uiTable.add ( ).height ( 200 ).width ( 25 );
-        uiTable.add ( ).height ( 200 ).width ( 116 );
-        uiTable.add ( ).height ( 200 ).width ( 116 );
-        uiTable.add ( ).height ( 200 ).width ( 116 );
-        uiTable.add ( ).height ( 200 ).width ( 56 );
-        uiTable.add ( ).height ( 200 ).width ( 116 );
-        uiTable.add ( ).height ( 200 ).width ( 116 );
-        uiTable.add ( ).height ( 200 ).width ( 116 );
-        uiTable.add ( ).height ( 200 ).width ( 25 );
+        uiTable.add ( ).height ( 180 ).width ( 25 );
+        uiTable.add ( ).height ( 180 ).width ( 116 );
+        uiTable.add ( ).height ( 180 ).width ( 116 );
+        uiTable.add ( ).height ( 180 ).width ( 116 );
+        uiTable.add ( ).height ( 180 ).width ( 56 );
+        uiTable.add ( ).height ( 180 ).width ( 116 );
+        uiTable.add ( ).height ( 180 ).width ( 116 );
+        uiTable.add ( ).height ( 180 ).width ( 116 );
+        uiTable.add ( ).height ( 180 ).width ( 25 );
         uiTable.row ();
+        //HPBar row
+        uiTable.add ( ).height( 20 ).width( 25 );
+        uiTable.add ( championThree.getHPBar() ).height( 20 ).width( 110 ); //hero 3 hpbar
+        uiTable.add ( championTwo.getHPBar() ).height( 20 ).width( 110 ); //hero 2 hpbar
+        uiTable.add ( championOne.getHPBar() ).height( 20 ).width( 110 ); //hero 1 hpbar
+        uiTable.add ( ).height( 20 ).width( 56 );
+        uiTable.add ( enemyOne.getHPBar() ).height( 20 ).width( 110 ); //enemy 1 hpbar
+        uiTable.add ( enemyTwo.getHPBar() ).height( 20 ).width( 110 ); //enemy 2 hpbar
+        uiTable.add ( enemyThree.getHPBar() ).height( 20 ).width( 110 ); // enemy 3 hpbar
+        uiTable.add ( ).height( 20 ).width( 25 );
+        uiTable.row ();
+        //Heroes row
         uiTable.add().height ( 200 ).width ( 25 );
         uiTable.add ( championThree ).height ( 200 ).width ( 116 ); //hero 3 position
         uiTable.add ( championTwo ).height ( 200 ).width ( 116 ); //hero 2 position
-        uiTable.add ( championOne ).height ( 200 ).width ( 116 ); //hero 1 possition
+        uiTable.add ( championOne ).height ( 200 ).width ( 116 ); //hero 1 position
         uiTable.add ( ).height ( 200 ).width ( 56 ); //space between hero and enemy
         uiTable.add ( enemyOne ).height ( 200 ).width ( 116 ); //enemy 1 position
         uiTable.add ( enemyTwo ).height ( 200 ).width ( 116 ); //enemy 2 position
@@ -262,6 +275,10 @@ public class FightScreen extends BaseScreen {
 
     public void update(float dt) {
         //creating the multiplexer for handling events.
+        for (Fighter f : aliveFighters){
+            f.updateHPBar();
+
+        }
         if (Gdx.input.isKeyJustPressed (Input.Keys.E))
             System.out.println (fightingTurn.peek() );
 
