@@ -29,6 +29,7 @@ public class BatFighter extends EnemyFighters {
     public boolean attackOne(Fighter fighter){
         int damage = MathUtils.random(8,13);
         fighter.setHP(fighter.getHP()-damage);
+        System.out.println("first");
         return true;
     }
 
@@ -38,7 +39,8 @@ public class BatFighter extends EnemyFighters {
      */
     @Override
     public boolean attackTwo(Fighter fighter){
-        fighter.setHP(fighter.getHP()*(65/100));
+        fighter.setHP((int)(fighter.getHP()*(0.35f)));
+        System.out.println("second");
         return true;
     }
 }

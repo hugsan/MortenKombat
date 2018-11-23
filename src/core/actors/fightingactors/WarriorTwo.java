@@ -59,8 +59,10 @@ public class WarriorTwo extends Champion{
     @Override
     public boolean attackThree(Fighter fighterOne, Fighter fighterTwo, Fighter fighterThree) {
         if (fighterOne instanceof EnemyFighters){
-            fighterOne.setHP(fighterOne.getHP() - (this.getHP()*100)/20);
-            this.setHP(this.getHP() - (this.getMaxHP()/10) );
+
+            fighterOne.setHP(fighterOne.getHP() - (int)(this.getHP()*(0.20f)));
+
+            this.setHP(this.getHP() - (int)(this.getMaxHP()*(0.10f)) );
         return true;}
         cantclick.play();
         return false;

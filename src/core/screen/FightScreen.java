@@ -102,10 +102,12 @@ public class FightScreen extends BaseScreen {
         fightingTurn = new Stack<> ( );
         fightingTurn.addAll ( champions );
         fightingTurn.addAll ( enemies );
+
+        //set size for all our characters in the map
+
         //fightingTurn is a ArrayList of fighters, randomize every turn.
         Collections.shuffle ( fightingTurn );
 
-            System.out.println (fightingTurn.size () );
         //aliveFighters is a arrayList of all the remaining Fighters in our screen.
         aliveFighters = new CopyOnWriteArrayList<> (  );
         aliveFighters.addAll ( fightingTurn );
@@ -271,6 +273,9 @@ public class FightScreen extends BaseScreen {
         uiTable.add ( championOne.getThirdButton ( ) ).width ( 115 );// ability 3 section for hero 1
 
 
+        for (Fighter f : fightingTurn){
+            f.sizeBy(60);
+        }
     }
 
     public void update(float dt) {
@@ -291,9 +296,10 @@ public class FightScreen extends BaseScreen {
         //makes the attack animation and reset to idle after
         if (attacker != null){
             attacker.setAnimation(attacker.attack);
+            attacker.sizeBy(110);
             if ((System.currentTimeMillis() - startTime)/1000 > attacker.attack.getAnimationDuration()){
                 attacker.setAnimation(attacker.iddle);
-                System.out.println((System.currentTimeMillis() - startTime)/1000 );
+                attacker.sizeBy(90);
                 attacker = null;
             }
 
@@ -360,6 +366,7 @@ public class FightScreen extends BaseScreen {
 
                 if (aliveFighters.contains(f)){
                     f.setAnimation(f.dead);
+                    f.sizeBy(70);
                     System.out.println("in process to kill whatever"+f);
                     deadAnimationStart = System.currentTimeMillis();
                     killHim = true;
@@ -390,7 +397,6 @@ private void activateSpellMouse(){
 private void abilitySuccess(Champion user){
     activateDefaultMouse ();
     fightingTurn.pop();
-
     startTime = System.currentTimeMillis();
     attacker = user;
     firstAttack = secondAttack = thirdAttack = false;
