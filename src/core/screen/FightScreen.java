@@ -289,7 +289,7 @@ public class FightScreen extends BaseScreen {
         for (Fighter f : aliveFighters){
             f.updateHPBar();
             f.updateNamePlate();
-
+            fightingTurn.peek().updateNameColor();
         }
         if (Gdx.input.isKeyJustPressed (Input.Keys.E))
             System.out.println (fightingTurn.peek() );
@@ -308,8 +308,6 @@ public class FightScreen extends BaseScreen {
                 System.out.println((System.currentTimeMillis() - startTime)/1000 );
                 attacker = null;
             }
-
-
         }
 
         if (fightingTurn.peek() instanceof EnemyFighters){
@@ -346,9 +344,6 @@ public class FightScreen extends BaseScreen {
                 }
                 enemyThinking = MathUtils.random(2000,3000); //thinking for the next enemy
             }
-
-
-
         }
 
         if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT)){
@@ -391,39 +386,39 @@ public class FightScreen extends BaseScreen {
 
     }
 
-private void activateDefaultMouse(){
-    Gdx.graphics.setCursor(Gdx.graphics.newCursor(defaultMouse, 0, 0));
-}
+    private void activateDefaultMouse(){
+        Gdx.graphics.setCursor(Gdx.graphics.newCursor(defaultMouse, 0, 0));
+    }
 
-private void activateSpellMouse(){
-    Gdx.graphics.setCursor(Gdx.graphics.newCursor(spellMouse, 0, 0));
-}
-//method that is been used every ability that has been done by our Champions
-private void abilitySuccess(Champion user){
-    activateDefaultMouse ();
-    fightingTurn.pop();
+    private void activateSpellMouse(){
+        Gdx.graphics.setCursor(Gdx.graphics.newCursor(spellMouse, 0, 0));
+    }
+    //method that is been used every ability that has been done by our Champions
+    private void abilitySuccess(Champion user){
+        activateDefaultMouse ();
+        fightingTurn.pop();
 
-    startTime = System.currentTimeMillis();
-    attacker = user;
-    firstAttack = secondAttack = thirdAttack = false;
-}
-private void theEnemyAttacks(EnemyFighters enemy,Fighter fighter){
-    int chanceAbility = MathUtils.random(0,100);
-    if (chanceAbility >=40)
-        enemy.attackOne(fighter);//60% chance to attack with attack1
-    else
-        enemy.attackTwo(fighter);//40% chance to attack with attack2
-}
-private void exportHP(){
+        startTime = System.currentTimeMillis();
+        attacker = user;
+        firstAttack = secondAttack = thirdAttack = false;
+    }
+    private void theEnemyAttacks(EnemyFighters enemy,Fighter fighter){
+        int chanceAbility = MathUtils.random(0,100);
+        if (chanceAbility >=40)
+            enemy.attackOne(fighter);//60% chance to attack with attack1
+        else
+            enemy.attackTwo(fighter);//40% chance to attack with attack2
+    }
+    private void exportHP(){
         championOneHP = championOne.getHP();
         championTwoHP = championTwo.getHP();
         championThreeHP = championThree.getHP();
-}
-private void importHP(){
+    }
+    private void importHP(){
         if (championOneHP != 666 && championTwoHP != 666 && championThreeHP != 666){
             championOne.setHP(championOneHP);
             championTwo.setHP(championTwoHP);
             championThree.setHP(championThreeHP);
         }
-}
+    }
 }

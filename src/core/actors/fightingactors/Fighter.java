@@ -40,9 +40,8 @@ public abstract class Fighter extends BaseActor {
 
         namePlate = new Label(""+fighterName, BaseGame.labelStyle);
         namePlate.setText(""+fighterName);
-        namePlate.setColor( Color.WHITE);
+        namePlate.setColor( Color.WHITE );
         namePlate.setFontScale(0.5f);
-
     }
 
     public void setAnimation(Animation<TextureRegion> anim)
@@ -160,6 +159,10 @@ public abstract class Fighter extends BaseActor {
     }
     public void updateNamePlate() {
         namePlate.setText("" + getFighterName());
+        namePlate.setColor( Color.WHITE );
+    }
+    public void updateNameColor() {
+        namePlate.setColor( Color.GREEN );
     }
 
     public int getMaxHP() {
