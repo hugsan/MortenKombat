@@ -38,7 +38,7 @@ public class BatFighter extends EnemyFighters {
      */
     @Override
     public boolean attackTwo(Fighter fighter){
-        fighter.setHP(fighter.getHP()*(65/100));
+        fighter.setHP((fighter.getHP()*(65)/100));
         return true;
     }
 }
