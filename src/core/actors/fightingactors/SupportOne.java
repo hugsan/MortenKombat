@@ -41,10 +41,9 @@ public class SupportOne extends SpellCaster{
     @Override
     public boolean attackTwo(Fighter fighter) {
         if (this.enoughMana(30) && fighter instanceof Champion){
-            fighter.setHP(fighter.getHP()+20);
+            fighter.setHP(Math.min ( (fighter.getHP()+20), fighter.getMaxHP ()));
             spendMana(30);
-            if (fighter.getHP()>= fighter.getMaxHP())
-                fighter.setHP(fighter.getMaxHP());
+
             return true;
         }
         cantclick.play();
@@ -64,9 +63,9 @@ public class SupportOne extends SpellCaster{
         if (fighterOne instanceof Champion || fighterTwo instanceof Champion || fighterThree instanceof Champion)
         {
             if (enoughMana(50)){
-                fighterOne.setHP( Math.max( (fighterOne.getHP()+30),fighterOne.getMaxHP() ) );
-                fighterTwo.setHP( Math.max( (fighterTwo.getHP()+30),fighterTwo.getMaxHP() ) );
-                fighterThree.setHP( Math.max( (fighterThree.getHP()+30),fighterThree.getMaxHP() ) );
+                fighterOne.setHP( Math.min( (fighterOne.getHP()+30),fighterOne.getMaxHP() ) );
+                fighterTwo.setHP( Math.min ( (fighterTwo.getHP()+30),fighterTwo.getMaxHP() ) );
+                fighterThree.setHP( Math.min ( (fighterThree.getHP()+30),fighterThree.getMaxHP() ) );
                 this.spendMana(35);
             }else
                 return false;
