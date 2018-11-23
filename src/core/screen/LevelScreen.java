@@ -24,6 +24,7 @@ public class LevelScreen extends BaseScreen {
     private Hero hero;
     public static Music backgroundMusic;
     public static boolean isPlaying = true;
+    private BaseActor pauseBackground;
 
     // X Y position of the hero when the hero travels to next map
     private float x, y;
@@ -55,9 +56,15 @@ public class LevelScreen extends BaseScreen {
     public void initialize() {
         TilemapActor tma = new TilemapActor("assets/maps/" + mapName + ".tmx", mainStage);
         //load music only for the first map
+
         if (mapName.equals("map1")) {
             backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/backgroundmusic.mp3"));
             backgroundMusic.setLooping(true);
+            pauseBackground = new BaseActor(0, 0, mainStage);
+            pauseBackground.loadTexture( "assets/img/PauseScreen.png" );
+            pauseBackground.setSize(400,500);
+            pauseBackground.toFront();
+            pauseBackground.setVisible(false);
 
         }
 
@@ -103,20 +110,8 @@ public class LevelScreen extends BaseScreen {
             y = (float) previousProp.get("y");
         }
 
-        PauseScreen pauseS = new PauseScreen();
 
-        if (isPlaying = true){
-            if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)){
-                isPlaying = false;
-                // PauseScreen to front
-            }
-        }
-        if (isPlaying = false) {
-            if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)){
-                isPlaying = true;
-                // PauseScreen to back
-            }
-        }
+
 
     }
 
@@ -130,6 +125,16 @@ public class LevelScreen extends BaseScreen {
             hero.accelerateAtAngle(90);
         if (Gdx.input.isKeyPressed(Keys.DOWN))
             hero.accelerateAtAngle(270);
+
+        if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)){
+            if (pauseBackground.isVisible()){
+                pauseBackground.setVisible(false);
+
+            }
+            else
+                pauseBackground.setVisible(true);
+            pauseBackground.toFront();
+        }
 
         //update the volume for the game
         backgroundMusic.setVolume(MortenCombat.volume);
