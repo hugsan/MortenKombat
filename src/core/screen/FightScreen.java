@@ -219,15 +219,15 @@ public class FightScreen extends BaseScreen {
 
         //put the buttons in the table.
         //uiTable.pad ( 25 ); // add 10 pixel corner to the screen.
-        uiTable.add ( ).height ( 160 ).width ( 25 );
-        uiTable.add ( ).height ( 160 ).width ( 116 );
-        uiTable.add ( ).height ( 160 ).width ( 116 );
-        uiTable.add ( ).height ( 160 ).width ( 116 );
-        uiTable.add ( ).height ( 160 ).width ( 56 );
-        uiTable.add ( ).height ( 160 ).width ( 116 );
-        uiTable.add ( ).height ( 160 ).width ( 116 );
-        uiTable.add ( ).height ( 160 ).width ( 116 );
-        uiTable.add ( ).height ( 160 ).width ( 25 );
+        uiTable.add ( ).height ( 140 ).width ( 25 );
+        uiTable.add ( ).height ( 140 ).width ( 116 );
+        uiTable.add ( ).height ( 140 ).width ( 116 );
+        uiTable.add ( ).height ( 140 ).width ( 116 );
+        uiTable.add ( ).height ( 140 ).width ( 56 );
+        uiTable.add ( ).height ( 140 ).width ( 116 );
+        uiTable.add ( ).height ( 140 ).width ( 116 );
+        uiTable.add ( ).height ( 140 ).width ( 116 );
+        uiTable.add ( ).height ( 140 ).width ( 25 );
         uiTable.row ();
         //nameplate of the hero
         uiTable.add ( ).height( 20 ).width( 25 );
@@ -249,6 +249,17 @@ public class FightScreen extends BaseScreen {
         uiTable.add ( enemyOne.getHPBar() ).height( 20 ).width( 110 ); //enemy 1 hpbar
         uiTable.add ( enemyTwo.getHPBar() ).height( 20 ).width( 110 ); //enemy 2 hpbar
         uiTable.add ( enemyThree.getHPBar() ).height( 20 ).width( 110 ); // enemy 3 hpbar
+        uiTable.add ( ).height( 20 ).width( 25 );
+        uiTable.row ();
+        //ManaBar row
+        uiTable.add ( ).height( 20 ).width( 25 );
+        uiTable.add ( championThree.getManaBar() ).height( 20 ).width( 110 ); //hero 3 manabar
+        uiTable.add ( championTwo.getManaBar() ).height( 20 ).width( 110 ); //hero 2 manabar
+        uiTable.add ( ).height( 20 ).width( 110 );
+        uiTable.add ( ).height( 20 ).width( 56 );
+        uiTable.add ( ).height( 20 ).width( 110 );
+        uiTable.add ( ).height( 20 ).width( 110 );
+        uiTable.add ( ).height( 20 ).width( 110 );
         uiTable.add ( ).height( 20 ).width( 25 );
         uiTable.row ();
         //Heroes row
@@ -286,8 +297,6 @@ public class FightScreen extends BaseScreen {
 
     public void update(float dt) {
         //creating the multiplexer for handling events.
-
-
         if (fightingTurn.isEmpty ()){
             fightingTurn.addAll(aliveFighters);
             Collections.shuffle(fightingTurn);
@@ -296,8 +305,12 @@ public class FightScreen extends BaseScreen {
         for (Fighter f : aliveFighters){
             f.updateHPBar();
             f.updateNamePlate();
+            f.updateManaBar();
             fightingTurn.peek().updateNameColor();
         }
+        if (Gdx.input.isKeyJustPressed (Input.Keys.E))
+            System.out.println (fightingTurn.peek() );
+
         //makes the attack animation and reset to idle after
         if (attacker != null){
             attacker.setAnimation(attacker.attack);
@@ -307,8 +320,6 @@ public class FightScreen extends BaseScreen {
                 attacker.sizeBy(90);
                 attacker = null;
             }
-
-
         }
 
         if (fightingTurn.peek() instanceof EnemyFighters){
@@ -339,9 +350,6 @@ public class FightScreen extends BaseScreen {
                 }
                 enemyThinking = MathUtils.random(3500,4500); //thinking for the next enemy
             }
-
-
-
         }
 
         if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT)){

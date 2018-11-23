@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public abstract class Champion extends Fighter {
@@ -57,7 +58,9 @@ public abstract class Champion extends Fighter {
         return thirdButton;
     }
 
+    public abstract Label getManaBar();
 
+    public abstract void updateManaBar();
 
 
     /**

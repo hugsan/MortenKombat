@@ -137,6 +137,7 @@ public abstract class Fighter extends BaseActor {
      */
     abstract public boolean attackOne (Fighter fighter);
     abstract public boolean attackTwo (Fighter fighter);
+    abstract public void updateManaBar();
 
     public Label getFighterNamePlate() {
         return namePlate;
@@ -166,6 +167,7 @@ public abstract class Fighter extends BaseActor {
     public void updateNameColor() {
         namePlate.setColor( Color.GREEN );
     }
+
 
     public int getMaxHP() {
         return maxHP;

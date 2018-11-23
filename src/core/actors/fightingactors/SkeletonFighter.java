@@ -45,4 +45,5 @@ public class SkeletonFighter extends EnemyFighters {
         return true;
 
     }
+    public void updateManaBar() {}
 }

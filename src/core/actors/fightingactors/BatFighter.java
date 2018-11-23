@@ -41,4 +41,5 @@ public class BatFighter extends EnemyFighters {
         fighter.setHP((fighter.getHP()*(65)/100));
         return true;
     }
+    public void updateManaBar() { }
 }

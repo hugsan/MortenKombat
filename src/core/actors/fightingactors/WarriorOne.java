@@ -1,12 +1,12 @@
 package core.actors.fightingactors;
 
-
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 public class WarriorOne extends Champion {
+
+    private Label manaBar;
 
     public WarriorOne(Stage s){
         super(s);
@@ -66,5 +66,8 @@ public class WarriorOne extends Champion {
         cantclick.play();
         return false;
     }
+    public void updateManaBar() { }
+
+    public Label getManaBar() { return manaBar; }
 
 }

@@ -37,5 +37,6 @@ public class ZombieFighter extends EnemyFighters {
         fighter.setHP(fighter.getHP()*65/100);
         return true;
     }
+    public void updateManaBar() {}
 }
 
