@@ -1,6 +1,7 @@
 package core.actors.fightingactors;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
@@ -13,7 +14,7 @@ public abstract class SpellCaster extends Champion {
 
     }
     private final int maxMana = 100;
-    private int mana = 100;
+    private int mana = 0;
 
 
     private void manaRegeneration(){
@@ -45,8 +46,7 @@ public abstract class SpellCaster extends Champion {
         if (this.getMana() >= amount)
             return true;
         else {
-
-            missingMana.play();
+            missingMana.play(1f);
             return false;
         }
     }

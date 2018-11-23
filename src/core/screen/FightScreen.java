@@ -42,7 +42,7 @@ public class FightScreen extends BaseScreen {
     long currentTime;
     long startTime = System.currentTimeMillis();
     int turn = 0;
-    int enemyThinking = MathUtils.random(1200,2200);
+    int enemyThinking = MathUtils.random(3500,4500);
     Fighter attacker = null; //variable to know when someone have attacked to make the animation
     long deadAnimationStart;
     static private int championOneHP= 666;
@@ -105,7 +105,6 @@ public class FightScreen extends BaseScreen {
         //fightingTurn is a ArrayList of fighters, randomize every turn.
         Collections.shuffle ( fightingTurn );
 
-            System.out.println (fightingTurn.size () );
         //aliveFighters is a arrayList of all the remaining Fighters in our screen.
         aliveFighters = new CopyOnWriteArrayList<> (  );
         aliveFighters.addAll ( fightingTurn );
@@ -187,10 +186,8 @@ public class FightScreen extends BaseScreen {
                             return false;
 
                         if (firstAttack && abilityUser.attackOne((Fighter)o.getTarget ())) {
-                            System.out.println ( abilityUser + " we delivered the first attack! target: " + o.getTarget ( ) );
                             abilitySuccess (abilityUser);
                         }else if (  secondAttack && abilityUser.attackTwo ( (Fighter)o.getTarget () )){
-                            System.out.println(abilityUser+" we delivered the second attack! target: "+o.getTarget ());
                             abilitySuccess (abilityUser);
                         }else if (thirdAttack ){
                             if (o.getTarget() instanceof Champion){
@@ -200,7 +197,6 @@ public class FightScreen extends BaseScreen {
                             }else if (o.getTarget () instanceof EnemyFighters){
                                 if (o.getTarget () == enemyOne )
                                     if (abilityUser.attackThree(enemyOne,enemyTwo,enemyThree)){
-                                        System.out.println ("hitting third enemy with third ability" );
                                         abilitySuccess (abilityUser);
                                     }
                                 if (o.getTarget () == enemyTwo )
@@ -289,20 +285,18 @@ public class FightScreen extends BaseScreen {
 
     public void update(float dt) {
         //creating the multiplexer for handling events.
-        for (Fighter f : aliveFighters){
-            f.updateHPBar();
-            f.updateNamePlate();
-            fightingTurn.peek().updateNameColor();
-        }
-        if (Gdx.input.isKeyJustPressed (Input.Keys.E))
-            System.out.println (fightingTurn.peek() );
+
 
         if (fightingTurn.isEmpty ()){
             fightingTurn.addAll(aliveFighters);
             Collections.shuffle(fightingTurn);
             turn ++; // not been used, maybe we can put a Turn number on screen.
         }
-
+        for (Fighter f : aliveFighters){
+            f.updateHPBar();
+            f.updateNamePlate();
+            fightingTurn.peek().updateNameColor();
+        }
         //makes the attack animation and reset to idle after
         if (attacker != null){
             attacker.setAnimation(attacker.attack);
@@ -328,27 +322,21 @@ public class FightScreen extends BaseScreen {
                 //60% chance to hit first target 25% second chance 15% last if the target is dead goes for next
                 if (championTarget > 40 && aliveFighters.contains ( championOne )){
                     theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championOne );
-                    System.out.println ("we have been attacked to warrior" );
-                    System.out.println (fightingTurn );
                     startTime = System.currentTimeMillis();
                     attacker = fightingTurn.pop();
                 }
                 else if (championTarget > 15 && aliveFighters.contains (championTwo)){
                     theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championTwo );
-                    System.out.println ("we have been attacked to mage" );
                     startTime = System.currentTimeMillis();
-                    System.out.println (fightingTurn );
                     attacker = fightingTurn.pop();
                 }
                 else{
                     theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(),championThree );
-                    System.out.println ("we have been attacked to support" );
                     startTime = System.currentTimeMillis();
-                    System.out.println (fightingTurn );
                     attacker = fightingTurn.pop();
 
                 }
-                enemyThinking = MathUtils.random(2000,3000); //thinking for the next enemy
+                enemyThinking = MathUtils.random(3500,4500); //thinking for the next enemy
             }
 
 
@@ -377,7 +365,6 @@ public class FightScreen extends BaseScreen {
                 if (aliveFighters.contains(f)){
                     f.setAnimation(f.dead);
                     f.sizeBy(70);
-                    System.out.println("in process to kill whatever"+f);
                     deadAnimationStart = System.currentTimeMillis();
                     killHim = true;
                     killingTarget = f;
@@ -390,7 +377,6 @@ public class FightScreen extends BaseScreen {
         }
         if (killHim && (System.currentTimeMillis() - deadAnimationStart)/1000 > killingTarget.dead.getAnimationDuration() ){
             killingTarget.dead.setPlayMode(Animation.PlayMode.NORMAL);
-            System.out.println("we got him kill"+killingTarget);
             killHim = false;
         }
 

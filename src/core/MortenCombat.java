@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 
 public class MortenCombat extends BaseGame {
-    public static float volume = 0.5f;
+    public static float volume = 0.05f;
     public static int fighterN = 0;
     public static int mageN = 0;
     public static int supportN = 0;

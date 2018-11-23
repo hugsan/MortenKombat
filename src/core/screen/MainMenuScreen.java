@@ -119,13 +119,13 @@ public class MainMenuScreen extends BaseScreen {
         // This changes the volume when you press the volume button
     }
     protected static void volumeUp(){
-        MortenCombat.volume = MortenCombat.volume + 0.1f;
-        if ( MortenCombat.volume > 1)
-            MortenCombat.volume = 1;
+        MortenCombat.volume = MortenCombat.volume + 0.05f;
+        if ( MortenCombat.volume > 0.5)
+            MortenCombat.volume = 0.5f;
         menuMusic.setVolume(MortenCombat.volume);
     }
     protected static void volumeDown() {
-        MortenCombat.volume = MortenCombat.volume - 0.1f;
+        MortenCombat.volume = MortenCombat.volume - 0.05f;
         if (MortenCombat.volume < 0 )
             MortenCombat.volume = 0;
         menuMusic.setVolume(MortenCombat.volume);
