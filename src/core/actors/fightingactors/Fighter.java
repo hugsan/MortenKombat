@@ -155,6 +155,8 @@ public abstract class Fighter extends BaseActor {
 
     public void updateHPBar() {
         health.setText(getHP() +"/" + getMaxHP());
+        if (getHP ()<0)
+            health.setText ( "0/" + getMaxHP () );
         health.setSize(110,20);
     }
     public void updateNamePlate() {
