@@ -55,6 +55,7 @@ public class FightScreen extends BaseScreen {
     public FightScreen(LevelScreen prev){
         super();
         previousMap = prev;
+
     }
 
     public void initialize() {
