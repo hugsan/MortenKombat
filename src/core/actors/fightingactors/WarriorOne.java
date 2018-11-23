@@ -1,6 +1,7 @@
 package core.actors.fightingactors;
 
 
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
@@ -13,12 +14,11 @@ public class WarriorOne extends Champion {
         setHP(200);
         setMaxHP(200);
 
-        attack = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight 1 Attack.png", 0.14f,1,7);
-        iddle = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight 1 Idle.png", 0.14f, 1, 7);
-        dead = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight 1 Dead.png", 0.14f, 1, 7);
+        attack = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight 1 Attack-min.png", 0.14f,1,7);
+        iddle = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight 1 Iddle-min.png", 0.14f, 1, 7);
+        dead = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight 1 Dead-min.png", 0.14f, 1, 7);
 
         setAnimation(iddle);
-
     }
 
 

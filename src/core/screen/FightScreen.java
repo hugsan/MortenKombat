@@ -2,8 +2,10 @@ package core.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -38,12 +40,16 @@ public class FightScreen extends BaseScreen {
     CopyOnWriteArrayList<Fighter> aliveFighters;
     Stack<Fighter> fightingTurn;
     long currentTime;
-    long startTime;
+    long startTime = System.currentTimeMillis();
     int turn = 0;
-
+    int enemyThinking = MathUtils.random(1200,2200);
+    Fighter attacker = null; //variable to know when someone have attacked to make the animation
+    long deadAnimationStart;
     static private int championOneHP= 666;
     static private int championThreeHP = 666;
     static private int championTwoHP = 666;
+    private boolean killHim = false;
+    Fighter killingTarget;
 
 
     public FightScreen(LevelScreen prev){
@@ -182,28 +188,28 @@ public class FightScreen extends BaseScreen {
 
                         if (firstAttack && abilityUser.attackOne((Fighter)o.getTarget ())) {
                             System.out.println ( abilityUser + " we delivered the first attack! target: " + o.getTarget ( ) );
-                            abilitySuccess ();
+                            abilitySuccess (abilityUser);
                         }else if (  secondAttack && abilityUser.attackTwo ( (Fighter)o.getTarget () )){
                             System.out.println(abilityUser+" we delivered the second attack! target: "+o.getTarget ());
-                            abilitySuccess ();
+                            abilitySuccess (abilityUser);
                         }else if (thirdAttack ){
                             if (o.getTarget() instanceof Champion){
                                 if(abilityUser.attackThree(championOne, championTwo, championThree)) {
-                                    abilitySuccess ();
+                                    abilitySuccess (abilityUser);
                                 }
                             }else if (o.getTarget () instanceof EnemyFighters){
                                 if (o.getTarget () == enemyOne )
                                     if (abilityUser.attackThree(enemyOne,enemyTwo,enemyThree)){
                                         System.out.println ("hitting third enemy with third ability" );
-                                        abilitySuccess ();
+                                        abilitySuccess (abilityUser);
                                     }
                                 if (o.getTarget () == enemyTwo )
                                     if (abilityUser.attackThree(enemyTwo,enemyOne,enemyThree)){
-                                        abilitySuccess ();
+                                        abilitySuccess (abilityUser);
                                     }
                                 if (o.getTarget () == enemyThree )
                                     if (abilityUser.attackThree(enemyThree,enemyOne,enemyTwo)){
-                                        abilitySuccess ();
+                                        abilitySuccess (abilityUser);
                                     }
                             }
                         }
@@ -216,20 +222,43 @@ public class FightScreen extends BaseScreen {
 
         //put the buttons in the table.
         //uiTable.pad ( 25 ); // add 10 pixel corner to the screen.
-        uiTable.add ( ).height ( 200 ).width ( 25 );
-        uiTable.add ( ).height ( 200 ).width ( 116 );
-        uiTable.add ( ).height ( 200 ).width ( 116 );
-        uiTable.add ( ).height ( 200 ).width ( 116 );
-        uiTable.add ( ).height ( 200 ).width ( 56 );
-        uiTable.add ( ).height ( 200 ).width ( 116 );
-        uiTable.add ( ).height ( 200 ).width ( 116 );
-        uiTable.add ( ).height ( 200 ).width ( 116 );
-        uiTable.add ( ).height ( 200 ).width ( 25 );
+        uiTable.add ( ).height ( 160 ).width ( 25 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 56 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 25 );
         uiTable.row ();
+        //nameplate of the hero
+        uiTable.add ( ).height( 20 ).width( 25 );
+        uiTable.add ( championThree.getFighterNamePlate() ).height( 20 ).width( 110 ); //hero 3 nameplate
+        uiTable.add ( championTwo.getFighterNamePlate() ).height( 20 ).width( 110 ); //hero 2 nameplate
+        uiTable.add ( championOne.getFighterNamePlate() ).height( 20 ).width( 110 ); //hero 1 nameplate
+        uiTable.add ( ).height( 20 ).width( 56 );
+        uiTable.add ( enemyOne.getFighterNamePlate() ).height( 20 ).width( 110 ); //enemy 1 nameplate
+        uiTable.add ( enemyTwo.getFighterNamePlate() ).height( 20 ).width( 110 ); //enemy 2 nameplate
+        uiTable.add ( enemyThree.getFighterNamePlate() ).height( 20 ).width( 110 ); // enemy 3 nameplate
+        uiTable.add ( ).height( 20 ).width( 25 );
+        uiTable.row ();
+        //HPBar row
+        uiTable.add ( ).height( 20 ).width( 25 );
+        uiTable.add ( championThree.getHPBar() ).height( 20 ).width( 110 ); //hero 3 hpbar
+        uiTable.add ( championTwo.getHPBar() ).height( 20 ).width( 110 ); //hero 2 hpbar
+        uiTable.add ( championOne.getHPBar() ).height( 20 ).width( 110 ); //hero 1 hpbar
+        uiTable.add ( ).height( 20 ).width( 56 );
+        uiTable.add ( enemyOne.getHPBar() ).height( 20 ).width( 110 ); //enemy 1 hpbar
+        uiTable.add ( enemyTwo.getHPBar() ).height( 20 ).width( 110 ); //enemy 2 hpbar
+        uiTable.add ( enemyThree.getHPBar() ).height( 20 ).width( 110 ); // enemy 3 hpbar
+        uiTable.add ( ).height( 20 ).width( 25 );
+        uiTable.row ();
+        //Heroes row
         uiTable.add().height ( 200 ).width ( 25 );
         uiTable.add ( championThree ).height ( 200 ).width ( 116 ); //hero 3 position
         uiTable.add ( championTwo ).height ( 200 ).width ( 116 ); //hero 2 position
-        uiTable.add ( championOne ).height ( 200 ).width ( 116 ); //hero 1 possition
+        uiTable.add ( championOne ).height ( 200 ).width ( 116 ); //hero 1 position
         uiTable.add ( ).height ( 200 ).width ( 56 ); //space between hero and enemy
         uiTable.add ( enemyOne ).height ( 200 ).width ( 116 ); //enemy 1 position
         uiTable.add ( enemyTwo ).height ( 200 ).width ( 116 ); //enemy 2 position
@@ -257,6 +286,11 @@ public class FightScreen extends BaseScreen {
 
     public void update(float dt) {
         //creating the multiplexer for handling events.
+        for (Fighter f : aliveFighters){
+            f.updateHPBar();
+            f.updateNamePlate();
+
+        }
         if (Gdx.input.isKeyJustPressed (Input.Keys.E))
             System.out.println (fightingTurn.peek() );
 
@@ -265,31 +299,55 @@ public class FightScreen extends BaseScreen {
             Collections.shuffle(fightingTurn);
             turn ++; // not been used, maybe we can put a Turn number on screen.
         }
-        int enemyThinking = MathUtils.random(1200,2200);
+
+        //makes the attack animation and reset to idle after
+        if (attacker != null){
+            attacker.setAnimation(attacker.attack);
+            if ((System.currentTimeMillis() - startTime)/1000 > attacker.attack.getAnimationDuration()){
+                attacker.setAnimation(attacker.iddle);
+                System.out.println((System.currentTimeMillis() - startTime)/1000 );
+                attacker = null;
+            }
+
+
+        }
+
         if (fightingTurn.peek() instanceof EnemyFighters){
             // = false;
+            currentTime = System.currentTimeMillis();
 
-            while ((currentTime - startTime) < enemyThinking){
+            /*while ((currentTime - startTime) < enemyThinking){
                 currentTime = System.currentTimeMillis();
-            }
-            int championTarget = MathUtils.random(0,100);
-            //60% chance to hit first target 25% second chance 15% last if the target is dead goes for next
-            if (championTarget > 40 && aliveFighters.contains ( championOne )){
-                theEnemyAttacks ( (EnemyFighters)fightingTurn.pop(), championOne );
-                System.out.println ("we have been attacked to warrior" );
-                System.out.println (fightingTurn );
-            }
-            else if (championTarget > 15 && aliveFighters.contains (championTwo)){
-                theEnemyAttacks ( (EnemyFighters)fightingTurn.pop(), championTwo );
-                System.out.println ("we have been attacked to mage" );
-                System.out.println (fightingTurn );
-            }
-            else{
-                theEnemyAttacks ( (EnemyFighters)fightingTurn.pop(),championThree );
-                System.out.println ("we have been attacked to support" );
-                System.out.println (fightingTurn );
+            }*/
+            if ((currentTime - startTime) > enemyThinking){
+                int championTarget = MathUtils.random(0,100);
+                //60% chance to hit first target 25% second chance 15% last if the target is dead goes for next
+                if (championTarget > 40 && aliveFighters.contains ( championOne )){
+                    theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championOne );
+                    System.out.println ("we have been attacked to warrior" );
+                    System.out.println (fightingTurn );
+                    startTime = System.currentTimeMillis();
+                    attacker = fightingTurn.pop();
+                }
+                else if (championTarget > 15 && aliveFighters.contains (championTwo)){
+                    theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championTwo );
+                    System.out.println ("we have been attacked to mage" );
+                    startTime = System.currentTimeMillis();
+                    System.out.println (fightingTurn );
+                    attacker = fightingTurn.pop();
+                }
+                else{
+                    theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(),championThree );
+                    System.out.println ("we have been attacked to support" );
+                    startTime = System.currentTimeMillis();
+                    System.out.println (fightingTurn );
+                    attacker = fightingTurn.pop();
 
+                }
+                enemyThinking = MathUtils.random(2000,3000); //thinking for the next enemy
             }
+
+
 
         }
 
@@ -305,14 +363,30 @@ public class FightScreen extends BaseScreen {
         if (enemyAlive){//if all enemys are dead go back to exploring map
             //implement HP and MANA exporting of our characters before leaving the screen
             exportHP();
+            battleMusic.stop();
             this.dispose();
             MortenCombat.setActiveScreen(previousMap);
         }
         for (Fighter f : aliveFighters){
             if (f.getHP ()<= 0){
+
+                if (aliveFighters.contains(f)){
+                    f.setAnimation(f.dead);
+                    System.out.println("in process to kill whatever"+f);
+                    deadAnimationStart = System.currentTimeMillis();
+                    killHim = true;
+                    killingTarget = f;
+
+                }
                 aliveFighters.remove ( f );
                 fightingTurn.remove ( f );
+
             }
+        }
+        if (killHim && (System.currentTimeMillis() - deadAnimationStart)/1000 > killingTarget.dead.getAnimationDuration() ){
+            killingTarget.dead.setPlayMode(Animation.PlayMode.NORMAL);
+            System.out.println("we got him kill"+killingTarget);
+            killHim = false;
         }
 
     }
@@ -325,11 +399,12 @@ private void activateSpellMouse(){
     Gdx.graphics.setCursor(Gdx.graphics.newCursor(spellMouse, 0, 0));
 }
 //method that is been used every ability that has been done by our Champions
-private void abilitySuccess(){
+private void abilitySuccess(Champion user){
     activateDefaultMouse ();
     fightingTurn.pop();
-    System.out.println (fightingTurn );
+
     startTime = System.currentTimeMillis();
+    attacker = user;
     firstAttack = secondAttack = thirdAttack = false;
 }
 private void theEnemyAttacks(EnemyFighters enemy,Fighter fighter){

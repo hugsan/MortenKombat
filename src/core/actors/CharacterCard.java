@@ -52,24 +52,29 @@ public class CharacterCard extends DragAndDropActor {
 
         this.fighterNumber = fighterNumber;
         this.fighterType = fighterType;
-        loadTexture("assets/img/FighterOne.png");
+
 
         if (fighterType == 1 && fighterNumber == 1) {
-            //loadTexture("assets/img/FighterOne.png");
+
+            loadTexture("assets/img/FighterCardOne.png");
         }
         if (fighterType == 1 && fighterNumber == 2) {
-
+            loadTexture("assets/img/FighterCardTwo.png");
         }
         if (fighterType == 2 && fighterNumber == 1) {
-
+            loadTexture("assets/img/MageCardTwo.png");
         }
         if (fighterType == 2 && fighterNumber == 2) {
+            loadTexture("assets/img/MageCardOne.png");
 
         }
-        if (fighterType == 3 && fighterNumber == 3) {
+        if (fighterType == 3 && fighterNumber == 1) {
+            loadTexture("assets/img/SupportCardTwo.png");
 
         }
-        if (fighterType == 3 && fighterNumber == 3) {
+        if (fighterType == 3 && fighterNumber == 2) {
+            loadTexture("assets/img/SupportCardOne.png");
+
 
         }
 
