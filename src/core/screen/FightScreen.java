@@ -222,15 +222,26 @@ public class FightScreen extends BaseScreen {
 
         //put the buttons in the table.
         //uiTable.pad ( 25 ); // add 10 pixel corner to the screen.
-        uiTable.add ( ).height ( 180 ).width ( 25 );
-        uiTable.add ( ).height ( 180 ).width ( 116 );
-        uiTable.add ( ).height ( 180 ).width ( 116 );
-        uiTable.add ( ).height ( 180 ).width ( 116 );
-        uiTable.add ( ).height ( 180 ).width ( 56 );
-        uiTable.add ( ).height ( 180 ).width ( 116 );
-        uiTable.add ( ).height ( 180 ).width ( 116 );
-        uiTable.add ( ).height ( 180 ).width ( 116 );
-        uiTable.add ( ).height ( 180 ).width ( 25 );
+        uiTable.add ( ).height ( 160 ).width ( 25 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 56 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 25 );
+        uiTable.row ();
+        //nameplate of the hero
+        uiTable.add ( ).height( 20 ).width( 25 );
+        uiTable.add ( championThree.getFighterNamePlate() ).height( 20 ).width( 110 ); //hero 3 nameplate
+        uiTable.add ( championTwo.getFighterNamePlate() ).height( 20 ).width( 110 ); //hero 2 nameplate
+        uiTable.add ( championOne.getFighterNamePlate() ).height( 20 ).width( 110 ); //hero 1 nameplate
+        uiTable.add ( ).height( 20 ).width( 56 );
+        uiTable.add ( enemyOne.getFighterNamePlate() ).height( 20 ).width( 110 ); //enemy 1 nameplate
+        uiTable.add ( enemyTwo.getFighterNamePlate() ).height( 20 ).width( 110 ); //enemy 2 nameplate
+        uiTable.add ( enemyThree.getFighterNamePlate() ).height( 20 ).width( 110 ); // enemy 3 nameplate
+        uiTable.add ( ).height( 20 ).width( 25 );
         uiTable.row ();
         //HPBar row
         uiTable.add ( ).height( 20 ).width( 25 );
@@ -277,6 +288,7 @@ public class FightScreen extends BaseScreen {
         //creating the multiplexer for handling events.
         for (Fighter f : aliveFighters){
             f.updateHPBar();
+            f.updateNamePlate();
 
         }
         if (Gdx.input.isKeyJustPressed (Input.Keys.E))
