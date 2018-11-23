@@ -19,8 +19,7 @@ public abstract class Fighter extends BaseActor {
     private int HP;
     private int maxHP;
 
-    private BaseActor HPBar;
-    public int HPPixels = 100;
+    private Label namePlate;
     private Label health;
 
     private Animation<TextureRegion> animation;
@@ -39,6 +38,10 @@ public abstract class Fighter extends BaseActor {
         health.setColor( Color.RED );
         health.setFontScale(0.6f);
 
+        namePlate = new Label(""+fighterName, BaseGame.labelStyle);
+        namePlate.setText(""+fighterName);
+        namePlate.setColor( Color.WHITE );
+        namePlate.setFontScale(0.5f);
     }
 
     public void setAnimation(Animation<TextureRegion> anim)
@@ -135,9 +138,10 @@ public abstract class Fighter extends BaseActor {
     abstract public boolean attackOne (Fighter fighter);
     abstract public boolean attackTwo (Fighter fighter);
 
-    public String getFighterName() {
-        return fighterName;
+    public Label getFighterNamePlate() {
+        return namePlate;
     }
+    public String getFighterName() { return fighterName; }
     public void setFighterName(String s){
         this.fighterName=s;
     }
@@ -151,8 +155,18 @@ public abstract class Fighter extends BaseActor {
 
     public void updateHPBar() {
         health.setText(getHP() +"/" + getMaxHP());
+        if (getHP ()<0)
+            health.setText ( "0/" + getMaxHP () );
         health.setSize(110,20);
     }
+    public void updateNamePlate() {
+        namePlate.setText("" + getFighterName());
+        namePlate.setColor( Color.WHITE );
+    }
+    public void updateNameColor() {
+        namePlate.setColor( Color.GREEN );
+    }
+
     public int getMaxHP() {
         return maxHP;
     }

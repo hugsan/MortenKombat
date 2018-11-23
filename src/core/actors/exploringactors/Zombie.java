@@ -4,13 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import core.framework.BaseActor;
-import com.badlogic.gdx.math.MathUtils;
 
-
-public class Bat extends BaseActor
+public class Zombie extends BaseActor
 {
     Animation north;
     Animation south;
@@ -18,12 +17,12 @@ public class Bat extends BaseActor
     Animation west;
     private float facingAngle;
 
-    public Bat(float x, float y, Stage s)
+    public Zombie(float x, float y, Stage s)
     {
         super(x,y,s);
-        String fileName = "assets/img/bat.png";
+        String fileName = "assets/img/2ZombieSpriteSheet.png";
         int rows = 4;
-        int cols = 4;
+        int cols = 3;
         Texture texture = new Texture(Gdx.files.internal(fileName), true);
         int frameWidth = texture.getWidth() / cols;
         int frameHeight = texture.getHeight() / rows;
@@ -48,9 +47,10 @@ public class Bat extends BaseActor
         setAnimation(south);
         facingAngle = 270;
         setBoundaryPolygon(8);
-        setScale(2);
+        setScale(1.5f);
+
         boundToWorld();
-        setSpeed(MathUtils.random(120,140));
+        setSpeed(MathUtils.random(60,90));
         setMotionAngle( MathUtils.random(0,360));
     }
     public void act(float dt)

@@ -4,24 +4,24 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import core.framework.BaseActor;
-import com.badlogic.gdx.math.MathUtils;
 
-
-public class Bat extends BaseActor
+public class Skeleton extends BaseActor
 {
+
     Animation north;
     Animation south;
     Animation east;
     Animation west;
     private float facingAngle;
 
-    public Bat(float x, float y, Stage s)
+    public Skeleton(float x, float y, Stage s)
     {
         super(x,y,s);
-        String fileName = "assets/img/bat.png";
+        String fileName = "assets/img/Skeleton.png";
         int rows = 4;
         int cols = 4;
         Texture texture = new Texture(Gdx.files.internal(fileName), true);
@@ -32,25 +32,25 @@ public class Bat extends BaseActor
         Array<TextureRegion> textureArray = new Array<TextureRegion>();
         for (int c = 0; c < cols; c++)
             textureArray.add( temp[0][c] );
-        south = new Animation(frameDuration, textureArray, Animation.PlayMode.LOOP_PINGPONG);
+        south = new com.badlogic.gdx.graphics.g2d.Animation(frameDuration, textureArray, com.badlogic.gdx.graphics.g2d.Animation.PlayMode.LOOP_PINGPONG);
         textureArray.clear();
         for (int c = 0; c < cols; c++)
             textureArray.add( temp[1][c] );
-        east = new Animation(frameDuration, textureArray, Animation.PlayMode.LOOP_PINGPONG);
+        east = new com.badlogic.gdx.graphics.g2d.Animation(frameDuration, textureArray, com.badlogic.gdx.graphics.g2d.Animation.PlayMode.LOOP_PINGPONG);
         textureArray.clear();
         for (int c = 0; c < cols; c++)
             textureArray.add( temp[2][c] );
-        north = new Animation(frameDuration, textureArray, Animation.PlayMode.LOOP_PINGPONG);
+        north = new com.badlogic.gdx.graphics.g2d.Animation(frameDuration, textureArray, com.badlogic.gdx.graphics.g2d.Animation.PlayMode.LOOP_PINGPONG);
         textureArray.clear();
         for (int c = 0; c < cols; c++)
             textureArray.add( temp[3][c] );
-        west = new Animation(frameDuration, textureArray, Animation.PlayMode.LOOP_PINGPONG);
+        west = new com.badlogic.gdx.graphics.g2d.Animation(frameDuration, textureArray, com.badlogic.gdx.graphics.g2d.Animation.PlayMode.LOOP_PINGPONG);
         setAnimation(south);
         facingAngle = 270;
         setBoundaryPolygon(8);
         setScale(2);
         boundToWorld();
-        setSpeed(MathUtils.random(120,140));
+        setSpeed(MathUtils.random(80,110));
         setMotionAngle( MathUtils.random(0,360));
     }
     public void act(float dt)
@@ -95,4 +95,32 @@ public class Bat extends BaseActor
         return facingAngle;
     }
 
-}
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

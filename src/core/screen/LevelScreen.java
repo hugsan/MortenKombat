@@ -24,6 +24,7 @@ public class LevelScreen extends BaseScreen {
     private Hero hero;
     public static Music backgroundMusic;
     public static boolean isPlaying = true;
+    private BaseActor pauseBackground;
 
     // X Y position of the hero when the hero travels to next map
     private float x, y;
@@ -55,9 +56,15 @@ public class LevelScreen extends BaseScreen {
     public void initialize() {
         TilemapActor tma = new TilemapActor("assets/maps/" + mapName + ".tmx", mainStage);
         //load music only for the first map
+
         if (mapName.equals("map1")) {
             backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/backgroundmusic.mp3"));
             backgroundMusic.setLooping(true);
+            pauseBackground = new BaseActor(0, 0, mainStage);
+            pauseBackground.loadTexture( "assets/img/PauseScreen.png" );
+            pauseBackground.setSize(400,500);
+            pauseBackground.toFront();
+            pauseBackground.setVisible(false);
 
         }
 
@@ -71,6 +78,8 @@ public class LevelScreen extends BaseScreen {
         createMapObjects(tma, "Bat");
         createMapObjects(tma, "Torch");
         createMapObjects(tma, "Chest");
+        createMapObjects(tma, "Zombie");
+        createMapObjects(tma, "Skeleton");
 
         //create the starting point for our hero.
         MapObject startPoint = tma.getRectangleList("Start").get(0);
@@ -103,20 +112,8 @@ public class LevelScreen extends BaseScreen {
             y = (float) previousProp.get("y");
         }
 
-        PauseScreen pauseS = new PauseScreen();
 
-        if (isPlaying = true){
-            if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)){
-                isPlaying = false;
-                // PauseScreen to front
-            }
-        }
-        if (isPlaying = false) {
-            if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)){
-                isPlaying = true;
-                // PauseScreen to back
-            }
-        }
+
 
     }
 
@@ -131,6 +128,16 @@ public class LevelScreen extends BaseScreen {
         if (Gdx.input.isKeyPressed(Keys.DOWN))
             hero.accelerateAtAngle(270);
 
+        if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)){
+            if (pauseBackground.isVisible()){
+                pauseBackground.setVisible(false);
+
+            }
+            else
+                pauseBackground.setVisible(true);
+            pauseBackground.toFront();
+        }
+
         //update the volume for the game
         backgroundMusic.setVolume(MortenCombat.volume);
         //Checks if our object interact with each other. If they interact their functionality is executed.
@@ -140,6 +147,9 @@ public class LevelScreen extends BaseScreen {
         actorObjectInteraction("core.actors.exploringactors.GoBack");
         actorObjectInteraction("core.actors.exploringactors.Bat");
         actorObjectInteraction("core.actors.exploringactors.Chest");
+        actorObjectInteraction("core.actors.exploringactors.Zombie");
+        actorObjectInteraction("core.actors.exploringactors.Skeleton");
+
 
 
         //Checks if the current map is windy. if it is blows the hero every 1 sec.
@@ -231,6 +241,12 @@ public class LevelScreen extends BaseScreen {
                 case "Chest":
                     new Chest((float) props.get("x"), (float) props.get("y"), mainStage);
                     break;
+                case "Zombie":
+                    new Zombie((float) props.get("x"), (float) props.get("y"), mainStage);
+                    break;
+                case "Skeleton":
+                    new Skeleton((float) props.get("x"), (float) props.get("y"), mainStage);
+                    break;
                 default:
                     System.out.println("Something went really wrong, contact ITCOM5");
             }
@@ -252,6 +268,21 @@ public class LevelScreen extends BaseScreen {
                     }
                     break;
                 case "core.actors.exploringactors.Bat":
+                    for (BaseActor s : BaseActor.getList(mainStage, "core.actors.exploringactors.Solid")) {
+                        if (a.overlaps(s)) {
+                            a.preventOverlap(s);
+                            a.setMotionAngle(MathUtils.random(0, 360));
+                        }
+
+                    }
+                    if (a.overlaps(hero)) {
+
+                        musicStop();
+                        MortenCombat.setActiveScreen(new FightScreen(this));
+                        a.remove();
+                    }
+                    break;
+                case "core.actors.exploringactors.Zombie":
                     for (BaseActor s : BaseActor.getList(mainStage, "core.actors.exploringactors.Solid")) {
                         if (a.overlaps(s)) {
                             a.preventOverlap(s);

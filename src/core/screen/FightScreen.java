@@ -102,12 +102,10 @@ public class FightScreen extends BaseScreen {
         fightingTurn = new Stack<> ( );
         fightingTurn.addAll ( champions );
         fightingTurn.addAll ( enemies );
-
-        //set size for all our characters in the map
-
         //fightingTurn is a ArrayList of fighters, randomize every turn.
         Collections.shuffle ( fightingTurn );
 
+            System.out.println (fightingTurn.size () );
         //aliveFighters is a arrayList of all the remaining Fighters in our screen.
         aliveFighters = new CopyOnWriteArrayList<> (  );
         aliveFighters.addAll ( fightingTurn );
@@ -224,15 +222,26 @@ public class FightScreen extends BaseScreen {
 
         //put the buttons in the table.
         //uiTable.pad ( 25 ); // add 10 pixel corner to the screen.
-        uiTable.add ( ).height ( 180 ).width ( 25 );
-        uiTable.add ( ).height ( 180 ).width ( 116 );
-        uiTable.add ( ).height ( 180 ).width ( 116 );
-        uiTable.add ( ).height ( 180 ).width ( 116 );
-        uiTable.add ( ).height ( 180 ).width ( 56 );
-        uiTable.add ( ).height ( 180 ).width ( 116 );
-        uiTable.add ( ).height ( 180 ).width ( 116 );
-        uiTable.add ( ).height ( 180 ).width ( 116 );
-        uiTable.add ( ).height ( 180 ).width ( 25 );
+        uiTable.add ( ).height ( 160 ).width ( 25 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 56 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 116 );
+        uiTable.add ( ).height ( 160 ).width ( 25 );
+        uiTable.row ();
+        //nameplate of the hero
+        uiTable.add ( ).height( 20 ).width( 25 );
+        uiTable.add ( championThree.getFighterNamePlate() ).height( 20 ).width( 110 ); //hero 3 nameplate
+        uiTable.add ( championTwo.getFighterNamePlate() ).height( 20 ).width( 110 ); //hero 2 nameplate
+        uiTable.add ( championOne.getFighterNamePlate() ).height( 20 ).width( 110 ); //hero 1 nameplate
+        uiTable.add ( ).height( 20 ).width( 56 );
+        uiTable.add ( enemyOne.getFighterNamePlate() ).height( 20 ).width( 110 ); //enemy 1 nameplate
+        uiTable.add ( enemyTwo.getFighterNamePlate() ).height( 20 ).width( 110 ); //enemy 2 nameplate
+        uiTable.add ( enemyThree.getFighterNamePlate() ).height( 20 ).width( 110 ); // enemy 3 nameplate
+        uiTable.add ( ).height( 20 ).width( 25 );
         uiTable.row ();
         //HPBar row
         uiTable.add ( ).height( 20 ).width( 25 );
@@ -282,7 +291,8 @@ public class FightScreen extends BaseScreen {
         //creating the multiplexer for handling events.
         for (Fighter f : aliveFighters){
             f.updateHPBar();
-
+            f.updateNamePlate();
+            fightingTurn.peek().updateNameColor();
         }
         if (Gdx.input.isKeyJustPressed (Input.Keys.E))
             System.out.println (fightingTurn.peek() );
@@ -386,38 +396,39 @@ public class FightScreen extends BaseScreen {
 
     }
 
-private void activateDefaultMouse(){
-    Gdx.graphics.setCursor(Gdx.graphics.newCursor(defaultMouse, 0, 0));
-}
+    private void activateDefaultMouse(){
+        Gdx.graphics.setCursor(Gdx.graphics.newCursor(defaultMouse, 0, 0));
+    }
 
-private void activateSpellMouse(){
-    Gdx.graphics.setCursor(Gdx.graphics.newCursor(spellMouse, 0, 0));
-}
-//method that is been used every ability that has been done by our Champions
-private void abilitySuccess(Champion user){
-    activateDefaultMouse ();
-    fightingTurn.pop();
-    startTime = System.currentTimeMillis();
-    attacker = user;
-    firstAttack = secondAttack = thirdAttack = false;
-}
-private void theEnemyAttacks(EnemyFighters enemy,Fighter fighter){
-    int chanceAbility = MathUtils.random(0,100);
-    if (chanceAbility >=40)
-        enemy.attackOne(fighter);//60% chance to attack with attack1
-    else
-        enemy.attackTwo(fighter);//40% chance to attack with attack2
-}
-private void exportHP(){
+    private void activateSpellMouse(){
+        Gdx.graphics.setCursor(Gdx.graphics.newCursor(spellMouse, 0, 0));
+    }
+    //method that is been used every ability that has been done by our Champions
+    private void abilitySuccess(Champion user){
+        activateDefaultMouse ();
+        fightingTurn.pop();
+
+        startTime = System.currentTimeMillis();
+        attacker = user;
+        firstAttack = secondAttack = thirdAttack = false;
+    }
+    private void theEnemyAttacks(EnemyFighters enemy,Fighter fighter){
+        int chanceAbility = MathUtils.random(0,100);
+        if (chanceAbility >=40)
+            enemy.attackOne(fighter);//60% chance to attack with attack1
+        else
+            enemy.attackTwo(fighter);//40% chance to attack with attack2
+    }
+    private void exportHP(){
         championOneHP = championOne.getHP();
         championTwoHP = championTwo.getHP();
         championThreeHP = championThree.getHP();
-}
-private void importHP(){
+    }
+    private void importHP(){
         if (championOneHP != 666 && championTwoHP != 666 && championThreeHP != 666){
             championOne.setHP(championOneHP);
             championTwo.setHP(championTwoHP);
             championThree.setHP(championThreeHP);
         }
-}
+    }
 }
