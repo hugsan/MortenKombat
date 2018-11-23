@@ -16,6 +16,7 @@ public abstract class BaseScreen implements Screen, InputProcessor
     public Stage mainStage;
     protected Stage uiStage;
     protected Table uiTable;
+    protected boolean paused = false;
 
     public BaseScreen()
     {
@@ -43,30 +44,39 @@ public abstract class BaseScreen implements Screen, InputProcessor
     public void render(float dt) 
     {
         // limit amount of time that can pass while window is being dragged
-        dt = Math.min(dt,1/30f);
-        
-        // act methods
-        uiStage.act(dt);
-        mainStage.act(dt);
+        if (!paused)
+        {
+            dt = Math.min(dt,1/30f);
 
-        // defined by user
-        update(dt);
+            // act methods
+            uiStage.act(dt);
+            mainStage.act(dt);
 
-        // clear the screen
-        Gdx.gl.glClearColor(0,0,0,1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+            // defined by user
+            update(dt);
 
-        // draw the graphics
-        mainStage.draw();
-        uiStage.draw();
+            // clear the screen
+            Gdx.gl.glClearColor(0,0,0,1);
+            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+            // draw the graphics
+            mainStage.draw();
+            uiStage.draw();
+        }
+
+
     }
 
     // methods required by Screen interface
     public void resize(int width, int height) {  }
 
-    public void pause()   {  }
+    public void pause()   {
+        this.paused = true;
+    }
 
-    public void resume()  {  }
+    public void resume()  {
+        this.paused = false;
+    }
 
     public void dispose() {  }
 
