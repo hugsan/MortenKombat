@@ -1193,7 +1193,7 @@
   </object>
   <object id="182" x="416" y="864">
    <properties>
-    <property name="name" value="Bat"/>
+    <property name="name" value="Zombie"/>
    </properties>
   </object>
   <object id="193" x="832" y="768">
