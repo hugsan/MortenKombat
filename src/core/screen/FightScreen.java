@@ -432,6 +432,7 @@ public class FightScreen extends BaseScreen {
         championOneHP = championOne.getHP();
         championTwoHP = championTwo.getHP();
         championThreeHP = championThree.getHP();
+
     }
     //method to initialize the HP. if the HP of the heroes are 666 that means that is entering the first time in the
     //fighting screen and does not need to import any HP.
