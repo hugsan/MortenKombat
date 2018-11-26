@@ -29,8 +29,8 @@ public class MageOne extends SpellCaster {
             fighter.setHP(fighter.getHP()- MathUtils.random(10,18));
             this.gainMana(15);
             return true;}
-            cantclick.play();
-            return false;
+        cantclick.play();
+        return false;
 
     }
 
@@ -41,14 +41,15 @@ public class MageOne extends SpellCaster {
     @Override
     public boolean attackTwo(Fighter fighter){
         if (fighter instanceof EnemyFighters){
-        if (this.enoughMana(55)){
-            fighter.setHP(fighter.getHP()-50);
-            this.spendMana(55);
-            return true;
+            if (this.enoughMana(55)){
+                fighter.setHP(fighter.getHP()-50);
+                this.spendMana(55);
+                return true;
+            }
+            else{
+                return false;
+            }
         }
-        else{
-            return false;
-        }}
         cantclick.play();
         return false;
     }

@@ -45,6 +45,7 @@ public class MainMenuScreen extends BaseScreen {
         newGame.setPosition(450, 180);
         uiStage.addActor(newGame);
 
+        //listener starting the game, going to characterSelector screen
         newGame.addListener(
                 (Event e) ->
                 {
@@ -55,7 +56,7 @@ public class MainMenuScreen extends BaseScreen {
                         return false;
                     SelectionScreen charSelect = new SelectionScreen(this);
                     MortenCombat.setActiveScreen(charSelect);
-                    return false;
+                    return true;
                 }
         );
 
@@ -78,13 +79,12 @@ public class MainMenuScreen extends BaseScreen {
 
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
-                    System.out.println("options pressed");
                     OptionsMenuScreen optionsScreen = new OptionsMenuScreen(this);
                     this.dispose();
                     MortenCombat.setActiveScreen(optionsScreen);
 
 
-                    return false;
+                    return true;
                 }
         );
 
@@ -114,16 +114,23 @@ public class MainMenuScreen extends BaseScreen {
 
     }
 
+    //abstract method from BaseScreen need to be declared in our class.
     public void update(float dt) {
-
-        // This changes the volume when you press the volume button
     }
+
+    /**
+     * Method that increases 5% the music of our game
+      */
     protected static void volumeUp(){
         MortenCombat.volume = MortenCombat.volume + 0.05f;
         if ( MortenCombat.volume > 0.5)
             MortenCombat.volume = 0.5f;
         menuMusic.setVolume(MortenCombat.volume);
     }
+
+    /**
+     * Method that decreases 5% the music of our game
+     */
     protected static void volumeDown() {
         MortenCombat.volume = MortenCombat.volume - 0.05f;
         if (MortenCombat.volume < 0 )

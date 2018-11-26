@@ -54,9 +54,12 @@ public class LevelScreen extends BaseScreen {
 
 
     public void initialize() {
+        //been read by enum MapLayout
         TilemapActor tma = new TilemapActor("assets/maps/" + mapName + ".tmx", mainStage);
         //load music only for the first map
 
+
+        //check if we can implement this in the first constructor
         if (mapName.equals("map1")) {
             backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/backgroundmusic.mp3"));
             backgroundMusic.setLooping(true);
@@ -68,9 +71,10 @@ public class LevelScreen extends BaseScreen {
 
         }
 
+
         currentMapEffect = mapEffect;
 
-        //Creates all the objects of our Tilemaps
+        //Creates all the objects of our Tilemaps from the tmx files.
         createMapObjects(tma, "Solid");
         createMapObjects(tma, "Exit");
         createMapObjects(tma, "Exit2");
@@ -128,6 +132,7 @@ public class LevelScreen extends BaseScreen {
         if (Gdx.input.isKeyPressed(Keys.DOWN))
             hero.accelerateAtAngle(270);
 
+        //escape that should implement a pauseScreen
         if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)){
             if (pauseBackground.isVisible()){
                 pauseBackground.setVisible(false);
@@ -155,10 +160,9 @@ public class LevelScreen extends BaseScreen {
         //Checks if the current map is windy. if it is blows the hero every 1 sec.
         if (currentMapEffect.equals("wind")) {
             windTimer++;
-            System.out.println(windTimer);
+            //every second
             if (windTimer % 60 == 0) {
                 windBlow();
-                System.out.println("blow");
             }
         } else {
             windTimer = 0;
@@ -198,6 +202,7 @@ public class LevelScreen extends BaseScreen {
         return w;
     }
 
+    //method that pushes our hero on wind maps effect.
     private void windBlow() {
 
         hero.setMotionAngle(MathUtils.random(0, 360));

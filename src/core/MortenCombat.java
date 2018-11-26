@@ -21,6 +21,7 @@ public class MortenCombat extends BaseGame {
 
     static LevelScreen[] layout = new LevelScreen[MapLayout.values().length];
 
+    /*
     public void importing() throws FileNotFoundException {
 
         File data = new File("assets\\QnA\\QnAData.txt");
@@ -42,16 +43,11 @@ public class MortenCombat extends BaseGame {
 
         ImportQandA a = listQScience.get(2);
 //        System.out.println(a.question);
-    }
+    }*/
 
     public void create() {
 
         super.create();
-        try {
-            importing();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
         int i = 0;
 
@@ -70,9 +66,9 @@ public class MortenCombat extends BaseGame {
         setActiveScreen( menu );
     }
 
+    //method used to start the levelScreen from another screen (for example MenuScreen)
     public static void startGame(){
         setActiveScreen( new LoadingScreen(layout[0]) );
-        System.out.println(fighterN +" "+ mageN +" "+ supportN);
         LevelScreen.musicPlay();
     }
 

@@ -62,6 +62,7 @@ public class OptionsMenuScreen extends BaseScreen {
                         return false;
 
                     System.out.println("Exit Settings");
+                    //deletes the screen that we are using, before going back to menu screen.
                     this.dispose();
                     MortenCombat.setActiveScreen(menu);
                     return false;

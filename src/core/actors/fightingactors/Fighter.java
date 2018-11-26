@@ -113,6 +113,7 @@ public abstract class Fighter extends BaseActor {
      *  @see #setVisible
      *
      */
+
     @Override
     public void draw(Batch batch, float parentAlpha)
     {

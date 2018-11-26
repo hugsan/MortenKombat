@@ -70,7 +70,8 @@ public class FightScreen extends BaseScreen {
         BaseActor fightBackground = new BaseActor(0,0, mainStage);
         fightBackground.loadTexture( "assets/img/dungeon.png" );
         fightBackground.setSize(800,600);
-        //initialize the actors at the screen
+        //initialize the actors at the screen, depending on the seletionScreen, read by a static variable in
+        //Morten combat
         if (MortenCombat.fighterN == 1)
             championOne = new WarriorOne(mainStage);
         else
@@ -107,6 +108,8 @@ public class FightScreen extends BaseScreen {
         Collections.shuffle ( fightingTurn );
 
         //aliveFighters is a arrayList of all the remaining Fighters in our screen.
+        //A thread-safe variant of ArrayList in which all mutative operations (add, set, and so on) are implemented
+        // by making a fresh copy of the underlying array. (copied from Oracle)
         aliveFighters = new CopyOnWriteArrayList<> (  );
         aliveFighters.addAll ( fightingTurn );
 
@@ -114,8 +117,7 @@ public class FightScreen extends BaseScreen {
         defaultMouse = new Pixmap (Gdx.files.internal("assets/img/NormalMouse.png"));
         spellMouse = new Pixmap (Gdx.files.internal("assets/img/SpellMouse.png"));
         activateDefaultMouse();
-        //create the buttons
-        uiStage.addActor( championOne.getFirstButton());
+
 
         //creating listeners for buttons, activate the spell selector.
         for (Champion c : champions){
@@ -126,6 +128,7 @@ public class FightScreen extends BaseScreen {
                             return false;
                         if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                             return false;
+                        //making sure that only the fighter with the turn can listen to clicks.
                         if (c != fightingTurn.peek ())
                             //implement not my turn sound
                             return false;
@@ -183,9 +186,12 @@ public class FightScreen extends BaseScreen {
                         if ( !((InputEvent)o).getType().equals(InputEvent.Type.touchDown) ){
                             return false;
                         }
+                        //if you dont put this line, right click would also trigger the spells. and we only
+                        //want to trigget the spells with left mouse click.
                         if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT))
                             return false;
 
+                        //if the first condition is false, the second condition is never check and never executed
                         if (firstAttack && abilityUser.attackOne((Fighter)o.getTarget ())) {
                             abilitySuccess (abilityUser);
                         }else if (  secondAttack && abilityUser.attackTwo ( (Fighter)o.getTarget () )){
@@ -195,6 +201,7 @@ public class FightScreen extends BaseScreen {
                                 if(abilityUser.attackThree(championOne, championTwo, championThree)) {
                                     abilitySuccess (abilityUser);
                                 }
+                                //when clicking make sure that the target is the first target.
                             }else if (o.getTarget () instanceof EnemyFighters){
                                 if (o.getTarget () == enemyOne )
                                     if (abilityUser.attackThree(enemyOne,enemyTwo,enemyThree)){
@@ -296,7 +303,8 @@ public class FightScreen extends BaseScreen {
     }
 
     public void update(float dt) {
-        //creating the multiplexer for handling events.
+        //if the turn is over (means there is no more object in the stack), we create a new turn by feeding the stack
+        //with alivefighter Arraylist
         if (fightingTurn.isEmpty ()){
             fightingTurn.addAll(aliveFighters);
             Collections.shuffle(fightingTurn);
@@ -306,10 +314,9 @@ public class FightScreen extends BaseScreen {
             f.updateHPBar();
             f.updateNamePlate();
             f.updateManaBar();
+            //updating to green when the actor has the turn
             fightingTurn.peek().updateNameColor();
         }
-        if (Gdx.input.isKeyJustPressed (Input.Keys.E))
-            System.out.println (fightingTurn.peek() );
 
         //makes the attack animation and reset to idle after
         if (attacker != null){
@@ -331,7 +338,8 @@ public class FightScreen extends BaseScreen {
             }*/
             if ((currentTime - startTime) > enemyThinking){
                 int championTarget = MathUtils.random(0,100);
-                //60% chance to hit first target 25% second chance 15% last if the target is dead goes for next
+                //60% chance to hit first target 25% second chance 15% last target
+                //if target is dead, goes for the next one
                 if (championTarget > 40 && aliveFighters.contains ( championOne )){
                     theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championOne );
                     startTime = System.currentTimeMillis();
@@ -352,25 +360,31 @@ public class FightScreen extends BaseScreen {
             }
         }
 
+        //going out of the spell buffer if we right click.
         if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT)){
             activateDefaultMouse ();
-            firstAttack = false;
+            firstAttack = secondAttack = thirdAttack = false;
         }
-        boolean enemyAlive = true;
+        //I assume that all enemies are dead
+        boolean isAllEnemyDead = true;
+        //I check if any enemy is alive
         for (Fighter f : aliveFighters){
             if (f instanceof EnemyFighters)
-                enemyAlive = false;
+                isAllEnemyDead = false;
         }
-        if (enemyAlive){//if all enemys are dead go back to exploring map
+        if (isAllEnemyDead){//if all enemys are dead go back to exploring map
             //implement HP and MANA exporting of our characters before leaving the screen
             exportHP();
             battleMusic.stop();
+            //remove the screen
             this.dispose();
+            //exit to exploring map
             MortenCombat.setActiveScreen(previousMap);
         }
+        //checking if we have killed any fighters
         for (Fighter f : aliveFighters){
             if (f.getHP ()<= 0){
-
+                //checking that we only make the dead animation once
                 if (aliveFighters.contains(f)){
                     f.setAnimation(f.dead);
                     f.sizeBy(70);
@@ -419,6 +433,8 @@ public class FightScreen extends BaseScreen {
         championTwoHP = championTwo.getHP();
         championThreeHP = championThree.getHP();
     }
+    //method to initialize the HP. if the HP of the heroes are 666 that means that is entering the first time in the
+    //fighting screen and does not need to import any HP.
     private void importHP(){
         if (championOneHP != 666 && championTwoHP != 666 && championThreeHP != 666){
             championOne.setHP(championOneHP);
