@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Stack;
 
 
 public class ImportQandA {
@@ -47,10 +48,10 @@ public class ImportQandA {
 
     }
 
-    public static void filler(int qNumber, ArrayList<ImportQandA> arrayList, File data) throws FileNotFoundException {
+    public static void filler(int qNumber, Stack<ImportQandA> stack, File data) throws FileNotFoundException {
 
         for (int i= 1; i<= qNumber; i++) {
-            arrayList.add(new ImportQandA(i, data));
+            stack.push(new ImportQandA(i, data));
         }
     }
 

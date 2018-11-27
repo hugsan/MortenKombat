@@ -21,30 +21,6 @@ public class MortenCombat extends BaseGame {
 
     static LevelScreen[] layout = new LevelScreen[MapLayout.values().length];
 
-    /*
-    public void importing() throws FileNotFoundException {
-
-        File data = new File("assets\\QnA\\QnAData.txt");
-        File data2 = new File("assets\\QnA\\Science.txt");
-        File data3 = new File("assets\\QnA\\Geography.txt");
-        File data4 = new File("assets\\QnA\\History.txt");
-        File data5 = new File("assets\\QnA\\Art.txt");
-        File data6 = new File("assets\\QnA\\Sport.txt");
-        File data7 = new File("assets\\QnA\\Entertainment.txt");
-
-        ArrayList<ImportQandA> listQScience = new ArrayList<ImportQandA>();
-        ArrayList<ImportQandA> listQGeography = new ArrayList<ImportQandA>();
-        ArrayList<ImportQandA> listQHistory = new ArrayList<ImportQandA>();
-        ArrayList<ImportQandA> listQArt = new ArrayList<ImportQandA>();
-        ArrayList<ImportQandA> listQSport = new ArrayList<ImportQandA>();
-        ArrayList<ImportQandA> listQEntertainment = new ArrayList<ImportQandA>();
-
-        ImportQandA.filler(5,listQScience,data2);
-
-        ImportQandA a = listQScience.get(2);
-//        System.out.println(a.question);
-    }*/
-
     public void create() {
 
         super.create();
@@ -55,19 +31,32 @@ public class MortenCombat extends BaseGame {
             LevelScreen.mapName = map.getTmx();
             LevelScreen.mapEffect = map.getMapEffect();
             if (map.getLevel() == 0){
-                layout[i] = new LevelScreen();
+                try {
+                    layout[i] = new LevelScreen();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
             }else {
-                layout[i] = new LevelScreen(layout[map.getLevel() -1]);
+                try {
+                    layout[i] = new LevelScreen(layout[map.getLevel() -1]);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
             i++;
         }
 
-        MainMenuScreen menu = new MainMenuScreen();
+        MainMenuScreen menu = null;
+        try {
+            menu = new MainMenuScreen();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         setActiveScreen( menu );
     }
 
     //method used to start the levelScreen from another screen (for example MenuScreen)
-    public static void startGame(){
+    public static void startGame() throws FileNotFoundException {
         setActiveScreen( new LoadingScreen(layout[0]) );
         LevelScreen.musicPlay();
     }

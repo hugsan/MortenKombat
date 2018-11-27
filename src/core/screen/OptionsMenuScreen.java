@@ -11,11 +11,13 @@ import core.MortenCombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
 
+import java.io.FileNotFoundException;
+
 public class OptionsMenuScreen extends BaseScreen {
 
     private BaseScreen menu;
 
-    public OptionsMenuScreen(BaseScreen menu){
+    public OptionsMenuScreen(BaseScreen menu) throws FileNotFoundException {
         super();
         this.menu = menu;
     }

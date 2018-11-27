@@ -3,6 +3,8 @@ import core.MortenCombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
 
+import java.io.FileNotFoundException;
+
 public class LoadingScreen extends BaseScreen {
 
     // Variable of the next LevelScreen
@@ -10,7 +12,7 @@ public class LoadingScreen extends BaseScreen {
     private double startTime;
     private double currentTime;
 
-    public LoadingScreen (LevelScreen nextScreen){
+    public LoadingScreen (LevelScreen nextScreen) throws FileNotFoundException {
         super();
         this.nextScreen = nextScreen;
         startTime = System.currentTimeMillis();

@@ -10,6 +10,5 @@ public class Launcher
     {
         Game myGame = new MortenCombat();
         LwjglApplication launcher = new LwjglApplication( myGame, "Morten Combat", 800, 600 );
-
     }
 }

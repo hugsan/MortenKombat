@@ -11,10 +11,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import core.MortenCombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
+import java.io.FileNotFoundException;
 
-public class MainMenuScreen extends BaseScreen {
+public class MainMenuScreen extends BaseScreen{
     private LevelScreen playableMap;
     private static Music menuMusic;
+
+    public MainMenuScreen() throws FileNotFoundException {
+    }
 
     public void initialize() {
 
@@ -54,7 +58,12 @@ public class MainMenuScreen extends BaseScreen {
                     //mouseover
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
-                    SelectionScreen charSelect = new SelectionScreen(this);
+                    SelectionScreen charSelect = null;
+                    try {
+                        charSelect = new SelectionScreen(this);
+                    } catch (FileNotFoundException e1) {
+                        e1.printStackTrace();
+                    }
                     MortenCombat.setActiveScreen(charSelect);
                     return true;
                 }
@@ -79,7 +88,12 @@ public class MainMenuScreen extends BaseScreen {
 
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
-                    OptionsMenuScreen optionsScreen = new OptionsMenuScreen(this);
+                    OptionsMenuScreen optionsScreen = null;
+                    try {
+                        optionsScreen = new OptionsMenuScreen(this);
+                    } catch (FileNotFoundException e1) {
+                        e1.printStackTrace();
+                    }
                     this.dispose();
                     MortenCombat.setActiveScreen(optionsScreen);
 

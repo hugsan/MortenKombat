@@ -11,17 +11,20 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent.Type;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
+import java.io.FileNotFoundException;
+
 public abstract class BaseScreen implements Screen, InputProcessor
 {
     public Stage mainStage;
     protected Stage uiStage;
+    protected Stage qaStage;
     protected Table uiTable;
     protected boolean paused = false;
 
-    public BaseScreen()
-    {
+    public BaseScreen() throws FileNotFoundException {
         mainStage = new Stage();
         uiStage = new Stage();
+        qaStage = new Stage();
 
         uiTable = new Table();
         uiTable.setFillParent(true);
@@ -33,9 +36,9 @@ public abstract class BaseScreen implements Screen, InputProcessor
 
     }
 
-    public abstract void initialize();
+    public abstract void initialize() throws FileNotFoundException;
 
-    public abstract void update(float dt);
+    public abstract void update(float dt) throws FileNotFoundException;
 
     // Gameloop:
     // (1) process input (discrete handled by listener; continuous in update)
@@ -50,10 +53,15 @@ public abstract class BaseScreen implements Screen, InputProcessor
 
             // act methods
             uiStage.act(dt);
+            qaStage.act(dt);
             mainStage.act(dt);
 
             // defined by user
-            update(dt);
+            try {
+                update(dt);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
 
             // clear the screen
             Gdx.gl.glClearColor(0,0,0,1);
@@ -62,6 +70,7 @@ public abstract class BaseScreen implements Screen, InputProcessor
             // draw the graphics
             mainStage.draw();
             uiStage.draw();
+            qaStage.draw();
         }
 
 
@@ -89,6 +98,7 @@ public abstract class BaseScreen implements Screen, InputProcessor
         InputMultiplexer im = (InputMultiplexer)Gdx.input.getInputProcessor();
         im.addProcessor(this);
         im.addProcessor(uiStage);
+        im.addProcessor(qaStage);
         im.addProcessor(mainStage);
     }
 
@@ -102,6 +112,7 @@ public abstract class BaseScreen implements Screen, InputProcessor
         InputMultiplexer im = (InputMultiplexer)Gdx.input.getInputProcessor();
         im.removeProcessor(this);
         im.removeProcessor(uiStage);
+        im.removeProcessor(qaStage);
         im.removeProcessor(mainStage);
     }
 

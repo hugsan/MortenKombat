@@ -12,6 +12,8 @@ import core.framework.BaseActor;
 import core.framework.BaseScreen;
 import core.framework.TilemapActor;
 
+import java.io.FileNotFoundException;
+
 
 public class LevelScreen extends BaseScreen {
     public static String mapName;
@@ -35,7 +37,7 @@ public class LevelScreen extends BaseScreen {
      * Constructor for LevelScreen. Initialize the map withprevious map
      * and next map to null
      */
-    public LevelScreen() { this.previousMap = null; }
+    public LevelScreen() throws FileNotFoundException { this.previousMap = null; }
 
     /**
      * Constructor for LevelScreen. Initialize the map with previous map object. Nextmaps are
@@ -45,7 +47,7 @@ public class LevelScreen extends BaseScreen {
      *
      * @param previousMap LevelScreen object, where the current map is connected to.
      */
-    public LevelScreen(LevelScreen previousMap) {
+    public LevelScreen(LevelScreen previousMap) throws FileNotFoundException {
         if (previousMap.getNextMap() != null)
             previousMap.setNextMap2(this);
         else previousMap.setNextMap(this);
@@ -121,7 +123,7 @@ public class LevelScreen extends BaseScreen {
 
     }
 
-    public void update(float dt) {
+    public void update(float dt) throws FileNotFoundException {
         // hero movement controls
         if (Gdx.input.isKeyPressed(Keys.LEFT))
             hero.accelerateAtAngle(180);
@@ -263,7 +265,7 @@ public class LevelScreen extends BaseScreen {
      *
      * @param className Name of the class that we want to check of any interaction.
      */
-    private void actorObjectInteraction(String className) {
+    private void actorObjectInteraction(String className) throws FileNotFoundException {
         for (BaseActor a : BaseActor.getList(mainStage, className)) {
 
             switch (className) {

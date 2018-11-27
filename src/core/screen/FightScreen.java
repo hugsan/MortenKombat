@@ -15,6 +15,14 @@ import core.framework.BaseActor;
 import core.framework.BaseScreen;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import core.ImportQandA;
+import core.framework.BaseGame;
+import java.io.File;
+import java.io.FileNotFoundException;
+
+
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
@@ -51,14 +59,52 @@ public class FightScreen extends BaseScreen {
     private boolean killHim = false;
     Fighter killingTarget;
 
+    public File data1;
+    public File data2;
+    public File data3;
+    public File data4;
+    public File data5;
+    public File data6;
 
-    public FightScreen(LevelScreen prev){
+    public Stack<ImportQandA> science;
+    public Stack<ImportQandA> geography;
+    public Stack<ImportQandA> history;
+    public Stack<ImportQandA> art;
+    public Stack<ImportQandA> sport;
+    public Stack<ImportQandA> entertainment;
+
+    private DialogBox questionBox;
+
+    private TextButton answerButton1;
+    private TextButton answerButton2;
+    private TextButton answerButton3;
+    private TextButton answerButton4;
+
+    private TextButton question;
+
+    boolean isAnswerButton1Pushed=false;
+    boolean isAnswerButton2Pushed=false;
+    boolean isAnswerButton3Pushed=false;
+    boolean isAnswerButton4Pushed=false;
+
+    boolean isCorrectAnswer;
+
+    ArrayList<Stack<ImportQandA>> topics;
+    ArrayList<String> answers;
+
+    long startTime2;
+    long currentTime2;
+
+    static int randomInt=0;
+
+
+    public FightScreen(LevelScreen prev) throws FileNotFoundException {
         super();
         previousMap = prev;
 
     }
 
-    public void initialize() {
+    public void initialize() throws FileNotFoundException {
 
         // Battle music
         battleMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/NoSurrender.mp3"));
@@ -300,6 +346,162 @@ public class FightScreen extends BaseScreen {
         for (Fighter f : fightingTurn){
             f.sizeBy(60);
         }
+
+
+
+        data1= new File("assets\\QnA\\Science.txt");
+        data2= new File("assets\\QnA\\Geography.txt");
+        data3= new File("assets\\QnA\\History.txt");
+        data4= new File("assets\\QnA\\Art.txt");
+        data5= new File("assets\\QnA\\Sport.txt");
+        data6= new File("assets\\QnA\\Entertainment.txt");
+
+        science = new Stack<>();
+        geography = new Stack<>();
+        history = new Stack<>();
+        art = new Stack<>();
+        sport = new Stack<>();
+        entertainment = new Stack<>();
+
+        ImportQandA.filler(10,science,data1);
+        ImportQandA.filler(10,geography,data2);
+        ImportQandA.filler(10,history,data3);
+        ImportQandA.filler(10,art,data4);
+        ImportQandA.filler(10,sport,data5);
+        ImportQandA.filler(10,entertainment,data6);
+
+        Collections.shuffle(science);
+        Collections.shuffle(geography);
+        Collections.shuffle(history);
+        Collections.shuffle(art);
+        Collections.shuffle(sport);
+        Collections.shuffle(entertainment);
+
+        topics= new ArrayList<Stack<ImportQandA>>();
+        topics.add(science);
+        topics.add(geography);
+        topics.add(history);
+        topics.add(art);
+        topics.add(sport);
+        topics.add(entertainment);
+
+        Collections.shuffle(topics);
+
+        questionBox= new DialogBox(100,400,uiStage);
+        questionBox.setBackgroundColor(Color.BLACK);
+        questionBox.setFontColor(Color.GOLDENROD);
+        questionBox.setDialogSize(600,100);
+        questionBox.setFontScale(0.80f);
+        questionBox.alignCenter();
+        questionBox.setText(topics.get(randomInt).peek().question);
+        questionBox.setVisible(false);
+
+        answerButton1= new TextButton("",BaseGame.textButtonStyle);
+        answerButton2= new TextButton("",BaseGame.textButtonStyle);
+        answerButton3= new TextButton("",BaseGame.textButtonStyle);
+        answerButton4= new TextButton("",BaseGame.textButtonStyle);
+
+        question= new TextButton("",BaseGame.textButtonStyle);
+
+        answers= new ArrayList<String>();
+
+        answers.add(topics.get(randomInt).peek().correctAnswer);
+        answers.add(topics.get(randomInt).peek().wrongAnswer1);
+        answers.add(topics.get(randomInt).peek().wrongAnswer2);
+        answers.add(topics.get(randomInt).peek().wrongAnswer3);
+
+        Collections.shuffle(answers);
+
+        setAnswerButton(answerButton1,answers.get(0),100,275,300);
+        setAnswerButton(answerButton2,answers.get(1),100,175,300);
+        setAnswerButton(answerButton3,answers.get(2),400,275,300);
+        setAnswerButton(answerButton4,answers.get(3),400,175,300);
+
+        setAnswerButton(question,"???",500,500,100);
+        question.getLabel().setColor(Color.YELLOW);
+        question.setVisible(true);
+
+        question.addListener(
+                (Event e) ->
+                {
+                    if ( !(e instanceof InputEvent) )
+                        return false;
+                    if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
+                        return false;
+
+                    showTrivia();
+
+                    return true;
+                }
+        );
+
+        answerButton1.addListener(
+                (Event e) ->
+                {
+                    if ( !(e instanceof InputEvent) )
+                        return false;
+                    if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
+                        return false;
+
+                    isAnswerButton1Pushed=true;
+                    startTime2=System.currentTimeMillis();
+
+                    return true;
+                }
+        );
+
+        answerButton2.addListener(
+                (Event e) ->
+                {
+                    if ( !(e instanceof InputEvent) )
+                        return false;
+                    if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
+                        return false;
+
+                    isAnswerButton2Pushed=true;
+                    startTime2=System.currentTimeMillis();
+
+                    return true;
+                }
+        );
+
+        answerButton3.addListener(
+                (Event e) ->
+                {
+                    if ( !(e instanceof InputEvent) )
+                        return false;
+                    if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
+                        return false;
+
+                    isAnswerButton3Pushed=true;
+                    startTime2=System.currentTimeMillis();
+
+                    return true;
+                }
+        );
+
+        answerButton4.addListener(
+                (Event e) ->
+                {
+                    if ( !(e instanceof InputEvent) )
+                        return false;
+                    if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
+                        return false;
+
+                    isAnswerButton4Pushed=true;
+                    startTime2=System.currentTimeMillis();
+
+                    return true;
+                }
+        );
+
+        qaStage.addActor(questionBox);
+        qaStage.addActor(answerButton1);
+        qaStage.addActor(answerButton2);
+        qaStage.addActor(answerButton3);
+        qaStage.addActor(answerButton4);
+        qaStage.addActor(question);
+
     }
 
     public void update(float dt) {
@@ -403,6 +605,12 @@ public class FightScreen extends BaseScreen {
             killHim = false;
         }
 
+        caseOfAnswerButton1(isAnswerButton1Pushed);
+        caseOfAnswerButton2(isAnswerButton2Pushed);
+        caseOfAnswerButton3(isAnswerButton3Pushed);
+        caseOfAnswerButton4(isAnswerButton4Pushed);
+        stateOfAnswer(isAnswerButton1Pushed,isAnswerButton2Pushed,isAnswerButton3Pushed,isAnswerButton4Pushed);
+
     }
 
     private void activateDefaultMouse(){
@@ -442,5 +650,247 @@ public class FightScreen extends BaseScreen {
             championTwo.setHP(championTwoHP);
             championThree.setHP(championThreeHP);
         }
+    }
+
+    private void setAnswerButton(TextButton answerButton,String answer,float x,float y,float width){
+
+        answerButton.getLabel().setText(answer);
+        answerButton.setPosition(x,y);
+        answerButton.setWidth(width);
+        answerButton.getLabel().setFontScale(0.5f,0.5f);
+        answerButton.getLabel().setWrap(true);
+        answerButton.getLabel().setColor(Color.WHITE);
+        answerButton.setColor(Color.BLACK);
+        answerButton.setVisible(false);
+
+    }
+
+    private void caseOfAnswerButton1(boolean isAnswerButton1Pushed){
+        if(isAnswerButton1Pushed){
+
+            if(answerButton1.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+
+                answerButton1.getLabel().setColor(Color.GREEN);
+                answerButton2.getLabel().setColor(Color.CLEAR);
+                answerButton3.getLabel().setColor(Color.CLEAR);
+                answerButton4.getLabel().setColor(Color.CLEAR);
+
+            }else{
+
+                answerButton1.getLabel().setColor(Color.RED);
+                if(answerButton2.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+
+                    answerButton2.getLabel().setColor(Color.GREEN);
+                    answerButton3.getLabel().setColor(Color.CLEAR);
+                    answerButton4.getLabel().setColor(Color.CLEAR);
+                }
+                if(answerButton3.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+
+                    answerButton3.getLabel().setColor(Color.GREEN);
+                    answerButton2.getLabel().setColor(Color.CLEAR);
+                    answerButton4.getLabel().setColor(Color.CLEAR);
+                }
+                if(answerButton4.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+
+                    answerButton4.getLabel().setColor(Color.GREEN);
+                    answerButton2.getLabel().setColor(Color.CLEAR);
+                    answerButton3.getLabel().setColor(Color.CLEAR);
+                }
+
+            }
+
+            deleteTrivia(startTime2);
+        }
+    }
+
+    private void caseOfAnswerButton2(boolean isAnswerButton2Pushed){
+        if(isAnswerButton2Pushed){
+
+            if(answerButton2.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+
+                answerButton2.getLabel().setColor(Color.GREEN);
+                answerButton1.getLabel().setColor(Color.CLEAR);
+                answerButton3.getLabel().setColor(Color.CLEAR);
+                answerButton4.getLabel().setColor(Color.CLEAR);
+
+            }else{
+
+                answerButton2.getLabel().setColor(Color.RED);
+                if(answerButton1.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+
+                    answerButton1.getLabel().setColor(Color.GREEN);
+                    answerButton3.getLabel().setColor(Color.CLEAR);
+                    answerButton4.getLabel().setColor(Color.CLEAR);
+                }
+                if(answerButton3.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+
+                    answerButton3.getLabel().setColor(Color.GREEN);
+                    answerButton1.getLabel().setColor(Color.CLEAR);
+                    answerButton4.getLabel().setColor(Color.CLEAR);
+                }
+                if(answerButton4.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+
+                    answerButton4.getLabel().setColor(Color.GREEN);
+                    answerButton1.getLabel().setColor(Color.CLEAR);
+                    answerButton3.getLabel().setColor(Color.CLEAR);
+                }
+
+            }
+
+            deleteTrivia(startTime2);
+        }
+    }
+
+    private void caseOfAnswerButton3(boolean isAnswerButton3Pushed){
+        if(isAnswerButton3Pushed){
+
+            if(answerButton3.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+
+                answerButton3.getLabel().setColor(Color.GREEN);
+                answerButton1.getLabel().setColor(Color.CLEAR);
+                answerButton2.getLabel().setColor(Color.CLEAR);
+                answerButton4.getLabel().setColor(Color.CLEAR);
+
+            }else{
+
+                answerButton3.getLabel().setColor(Color.RED);
+                if(answerButton1.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+
+                    answerButton1.getLabel().setColor(Color.GREEN);
+                    answerButton2.getLabel().setColor(Color.CLEAR);
+                    answerButton4.getLabel().setColor(Color.CLEAR);
+                }
+                if(answerButton2.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+
+                    answerButton2.getLabel().setColor(Color.GREEN);
+                    answerButton1.getLabel().setColor(Color.CLEAR);
+                    answerButton4.getLabel().setColor(Color.CLEAR);
+                }
+                if(answerButton4.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+
+                    answerButton4.getLabel().setColor(Color.GREEN);
+                    answerButton1.getLabel().setColor(Color.CLEAR);
+                    answerButton2.getLabel().setColor(Color.CLEAR);
+                }
+
+            }
+
+            deleteTrivia(startTime2);
+        }
+    }
+
+    private void caseOfAnswerButton4(boolean isAnswerButton4Pushed){
+        if(isAnswerButton4Pushed){
+
+            if(answerButton4.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+
+                answerButton4.getLabel().setColor(Color.GREEN);
+                answerButton1.getLabel().setColor(Color.CLEAR);
+                answerButton2.getLabel().setColor(Color.CLEAR);
+                answerButton3.getLabel().setColor(Color.CLEAR);
+
+            }else{
+
+                answerButton4.getLabel().setColor(Color.RED);
+                if(answerButton1.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+
+                    answerButton1.getLabel().setColor(Color.GREEN);
+                    answerButton2.getLabel().setColor(Color.CLEAR);
+                    answerButton3.getLabel().setColor(Color.CLEAR);
+                }
+                if(answerButton2.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+
+                    answerButton2.getLabel().setColor(Color.GREEN);
+                    answerButton1.getLabel().setColor(Color.CLEAR);
+                    answerButton3.getLabel().setColor(Color.CLEAR);
+                }
+                if(answerButton3.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+
+                    answerButton3.getLabel().setColor(Color.GREEN);
+                    answerButton1.getLabel().setColor(Color.CLEAR);
+                    answerButton2.getLabel().setColor(Color.CLEAR);
+                }
+
+            }
+
+            deleteTrivia(startTime2);
+        }
+    }
+
+    private void deleteTrivia(long startTime2){
+
+        currentTime2=System.currentTimeMillis();
+        if((currentTime2-startTime2)>4000){
+
+            isAnswerButton1Pushed=false;
+            isAnswerButton2Pushed=false;
+            isAnswerButton3Pushed=false;
+            isAnswerButton4Pushed=false;
+
+            answerButton1.setVisible(false);
+            answerButton2.setVisible(false);
+            answerButton3.setVisible(false);
+            answerButton4.setVisible(false);
+            questionBox.setVisible(false);
+
+            answerButton1.getLabel().setColor(Color.WHITE);
+            answerButton2.getLabel().setColor(Color.WHITE);
+            answerButton3.getLabel().setColor(Color.WHITE);
+            answerButton4.getLabel().setColor(Color.WHITE);
+
+            topics.get(randomInt).pop();
+
+            randomInt=MathUtils.random(0,5);
+
+//            if(!topics.get(randomInt).empty()){
+
+                questionBox.setText(topics.get(randomInt).peek().question);
+
+                answers.clear();
+
+                answers.add(topics.get(randomInt).peek().correctAnswer);
+                answers.add(topics.get(randomInt).peek().wrongAnswer1);
+                answers.add(topics.get(randomInt).peek().wrongAnswer2);
+                answers.add(topics.get(randomInt).peek().wrongAnswer3);
+
+//            }
+
+            Collections.shuffle(answers);
+
+            answerButton1.getLabel().setText(answers.get(0));
+            answerButton2.getLabel().setText(answers.get(1));
+            answerButton3.getLabel().setText(answers.get(2));
+            answerButton4.getLabel().setText(answers.get(3));
+
+            uiTable.setVisible(true);
+
+        }
+    }
+
+    private void showTrivia(){
+
+        answerButton1.setVisible(true);
+        answerButton2.setVisible(true);
+        answerButton3.setVisible(true);
+        answerButton4.setVisible(true);
+        questionBox.setVisible(true);
+
+        uiTable.setVisible(false);
+
+    }
+
+    private boolean stateOfAnswer(boolean isAnswerButton1Pushed,boolean isAnswerButton2Pushed, boolean isAnswerButton3Pushed,boolean isAnswerButton4Pushed){
+
+        if((isAnswerButton1Pushed && answerButton1.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer)) || (isAnswerButton2Pushed && answerButton2.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer)) || (isAnswerButton3Pushed && answerButton3.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer)) || (isAnswerButton4Pushed && answerButton4.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer))){
+//            System.out.println("Correct");
+            isCorrectAnswer=true;
+
+        }else if((isAnswerButton1Pushed && !(answerButton1.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer))) || (isAnswerButton2Pushed && !(answerButton2.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer))) || (isAnswerButton3Pushed && !(answerButton3.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer))) || (isAnswerButton4Pushed && !(answerButton4.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer)))){
+//            System.out.println("UnCorrect");
+            isCorrectAnswer=false;
+
+        }
+
+        return isCorrectAnswer;
     }
 }

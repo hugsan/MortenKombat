@@ -112,9 +112,4 @@ Sweden
 Italy
 Norway
 Denmark
-
-
-
-
-
-
+end

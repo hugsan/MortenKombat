@@ -13,6 +13,8 @@ import core.framework.BaseScreen;
 import core.actors.CharacterCard;
 import core.actors.SelectionArea;
 
+import java.io.FileNotFoundException;
+
 public class SelectionScreen extends BaseScreen {
 
     private BaseScreen menu;
@@ -20,7 +22,7 @@ public class SelectionScreen extends BaseScreen {
     private static SelectionArea[] selectedHeroes = new SelectionArea[3];
     private static CharacterCard[] heroCards = new CharacterCard[6];
 
-    public SelectionScreen(BaseScreen menu){
+    public SelectionScreen(BaseScreen menu) throws FileNotFoundException {
         super();
         this.menu = menu;
     }
@@ -99,7 +101,11 @@ public class SelectionScreen extends BaseScreen {
                             MortenCombat.supportN = selectedHeroes[2].getHeroNumber();
                             menu.dispose();
                             this.dispose();
-                            MortenCombat.startGame();
+                            try {
+                                MortenCombat.startGame();
+                            } catch (FileNotFoundException e1) {
+                                e1.printStackTrace();
+                            }
                         }
                     return false;
                 }
