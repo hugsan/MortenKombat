@@ -4,16 +4,17 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import core.framework.BaseActor;
 
+/**
+ * This class makes the animated torches on the maps. It have no interactions with gameplay.
+ */
 
 public class Torch extends BaseActor
 {
-    Animation torchAnimation;
-
+    private Animation torchAnimation;
 
     public Torch(float x, float y, Stage s)
     {
@@ -33,14 +34,10 @@ public class Torch extends BaseActor
 
         setAnimation(torchAnimation);
 
-
     }
     public void act(float dt)
     {
         super.act(dt);
-
-
     }
-
 
 }

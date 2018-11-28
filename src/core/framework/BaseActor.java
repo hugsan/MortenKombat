@@ -253,6 +253,7 @@ public class BaseActor extends Group
     {
         this.getColor().a = opacity;
     }
+
     // ----------------------------------------------
     // physics/motion methods
     // ----------------------------------------------

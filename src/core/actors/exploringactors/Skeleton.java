@@ -9,13 +9,18 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import core.framework.BaseActor;
 
+/**
+ * Class for the skeleton actors in the maze.
+ * It should walk in a random direction until it hits a wall, then chance to a new random direction.
+ * When the Hero hit a skeleton start the FightScreen.
+ */
+
 public class Skeleton extends BaseActor
 {
-
-    Animation north;
-    Animation south;
-    Animation east;
-    Animation west;
+    private Animation north;
+    private Animation south;
+    private Animation east;
+    private Animation west;
     private float facingAngle;
 
     public Skeleton(float x, float y, Stage s)
@@ -90,37 +95,4 @@ public class Skeleton extends BaseActor
         boundToWorld();
         applyPhysics(dt);
     }
-    public float getFacingAngle()
-    {
-        return facingAngle;
-    }
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

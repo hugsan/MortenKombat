@@ -9,13 +9,18 @@ import com.badlogic.gdx.utils.Array;
 import core.framework.BaseActor;
 import com.badlogic.gdx.math.MathUtils;
 
+/**
+ * Class for the bat actors in the maze.
+ * It should walk in a random direction until it hits a wall, then chance to a new random direction.
+ * When the Hero hit the bat start the FightScreen.
+ */
 
 public class Bat extends BaseActor
 {
-    Animation north;
-    Animation south;
-    Animation east;
-    Animation west;
+    private Animation north;
+    private Animation south;
+    private Animation east;
+    private Animation west;
     private float facingAngle;
 
     public Bat(float x, float y, Stage s)
@@ -89,10 +94,6 @@ public class Bat extends BaseActor
         }
         boundToWorld();
         applyPhysics(dt);
-    }
-    public float getFacingAngle()
-    {
-        return facingAngle;
     }
 
 }

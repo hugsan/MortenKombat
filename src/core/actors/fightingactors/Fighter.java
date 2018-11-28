@@ -19,8 +19,12 @@ public abstract class Fighter extends BaseActor {
     private int HP;
     private int maxHP;
 
+
+    private int aux;
+
     private Label namePlate;
     private Label health;
+
 
     private Animation<TextureRegion> animation;
     private float elapsedTime;
@@ -42,6 +46,10 @@ public abstract class Fighter extends BaseActor {
         namePlate.setText(""+fighterName);
         namePlate.setColor( Color.WHITE );
         namePlate.setFontScale(0.5f);
+
+
+
+
     }
 
     public void setAnimation(Animation<TextureRegion> anim)
@@ -52,7 +60,10 @@ public abstract class Fighter extends BaseActor {
         float h = tr.getRegionHeight();
         setSize( w, h );
         setOrigin( w/2, h/2 );
+
+
     }
+
 
     /**
      * Creates an animation from images stored in separate files.
@@ -66,7 +77,7 @@ public abstract class Fighter extends BaseActor {
         int fileCount = fileNames.length;
         Array<TextureRegion> textureArray = new Array<TextureRegion>();
 
-        for (int n = 0; n < fileCount; n++)
+            for (int n = 0; n < fileCount; n++)
         {
             String fileName = fileNames[n];
             Texture texture = new Texture( Gdx.files.internal(fileName) );
@@ -185,5 +196,20 @@ public abstract class Fighter extends BaseActor {
     public Animation getAnimationDead(){
         return dead;
     }
+
+    public int getAux() {
+        return aux;
+    }
+
+    public void setAux(int aux) {
+        this.aux = aux;
+    }
+
+
+
+
+
+
+
 
 }
