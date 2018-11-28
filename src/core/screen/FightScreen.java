@@ -6,9 +6,12 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import core.MortenCombat;
 import core.actors.fightingactors.*;
 import core.framework.BaseActor;
@@ -346,6 +349,8 @@ public class FightScreen extends BaseScreen {
 
         for (Fighter f : fightingTurn){
             f.sizeBy(60);
+
+            f.setAux ( f.getHP () );
         }
 
 
@@ -599,6 +604,13 @@ public class FightScreen extends BaseScreen {
                 aliveFighters.remove ( f );
                 fightingTurn.remove ( f );
 
+            }
+            if (f.getAux () != f.getHP ()){
+
+                f.getHPBar().addAction( Actions.repeat ( 3, Actions.sequence (Actions.fadeOut (0.20f),Actions.fadeIn ( 0.20f )) ) );
+
+
+                f.setAux ( f.getHP () );
             }
         }
         if (killHim && (System.currentTimeMillis() - deadAnimationStart)/1000 > killingTarget.dead.getAnimationDuration() ){
