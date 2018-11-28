@@ -1,70 +1,58 @@
-p001
 What’s the worlds highest waterfall?
 Angel Falls
 b
 c
 d
-p002
 Where is the Capoeira dance from?
 Brazil
 Argentina
 Spain
 Portugal
-p003
 Tripoli is the capital of what country?
 Libyen
 Liberia
 Tunesien
 Algeriet
-p004
 Which is the most populated city in Turkey?
 Istanbul
 Bursa
 Antalya
 Ankara
-p005
 Where is whisky from?
 Ireland
 Scotland
 Germany
 Norway
-p006
 Where is the island of Malta located?
 Mediterranean Sea
 Carribean sea
 Mexican Gulf
 Guinea Bay
-p007
 Yerevan is the capital of what country?
 Armenia
 b
 c
 d
-p008
 How many countries border with Egypt?
 4
 b
 c
 d
-p009
 Which is the only country who borders with Portugal?
 Spain
 France
 Italy
 Germany
-p0010
 Which of these countries has a pink lake?
 Australia
 b
 c
 d
-p0011
 What colors are on the Mexican flag?
 Red, white and green
 b
 c
 d
-p0012
 What’s the most populated city in Scotland?
 Glasgow
 Edinburgh
@@ -76,46 +64,38 @@ Germany
 USA
 France
 Great Britain
-p0014
 What is the biggest city in Hungary?
 Budapest
 Debrecen
 Miskolc
 Szeged
-p0015
 How many countries are in the United Kingdom?
 4
 6
 2
 3
-p0016
 Which country is Mount Everest located in?
 Nepal
 China
 India
 Bangladesh
-p0017
 On what continent is Maldives
 Asia
 Africa
 Australia
 Europe
-p0018
 In which Chinese city would you find the Forbidden City?
 Beijing
 Shanghai
 Tianjin 
 Guangzhou
-p0019
 How many countries share borders with Germany?
 9
 3
 4
 6
-p0020
 What are the colors of the Philippines flag?
 Blue, red, yellow and white
 b
 c
 d
-end

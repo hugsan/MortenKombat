@@ -1,133 +1,110 @@
-p001
 What Olympic medal does not exist?
 Copper medal
 b
 c
 d
-p002
 How many players per team are there in court in handball?
 7 players
 9
 11
 5
-p003
 What’s the name of the field hockey move when the ball is lifted with the stick?
 Flick
 b
 c
 d
-p004
 What city are the Blue Jays from?
 Toronto
 b
 c
 d
-p005
 Which baseball player is behind the batter?
 Catcher
 Getter
 Support
 Spotter
-p006
 How many squares are there on a chess board?
 64 squares
 48
 32
 80
-p007
 How long is a basketball game international and in the NBA?
 40 and 48 minutes long
 b
 c
 d
-p008
 What is the name given to the NFL final?
 Super Bowl
 b
 c
 d
-p009
 Which team did Alex Ferguson manage?
 Manchester United
 Liverpool
 Arsenal
 Chelsea
-p0010
 Which of the following types of hockey does not exist?
 Asphalt hockey
 Ice hockey
 c
 d
-p0011
 The tiger Hodori was the mascot of which Olympic Games?
 Seoul 88 Olympic Games
 b
 c
 d
-p0012
 When did the FIFA World Cup take place in the USA?
 1994
 b
 c
 d
-p0013
 What country won EuroBasket 2011?
 Spain
 b
 c
 d
-p0014
 Which of these positions does not exist in a baseball game?
 Fullback
 b
 c
 d
-p0015
 What country has won the most Davis Cups?
 United States
 b
 c
 d
-p0016
 Where were the first Olympic Games of the modern era celebrated?
 Athens
 b
 c
 d
-p0017
 What player of the WWE is known as ‘The Lord of Darkness’?
 The Undertaker
 b
 c
 d
-p0018
 What is the world’s most popular and most played sport?
 Soccer
 b
 c
 d
-p0019
 Which team won the Baseball World Series of 2013?
 Boston Red Sox
 b
 c
 d
-p0020
 What number did Michael Jordan play as on the Chicago Bulls?
 23
 b
 c
 d
-p0021
 What boxer was found guilty for draft evasion after declaring himself a conscientious objector during the Vietnam War?
 Muhammad Ali
 b
 c
 d
-p0022
 Which ball is the smallest?
 Golf ball
 b
 c
 d
-end

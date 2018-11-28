@@ -1,132 +1,109 @@
-p001
 Sheldon Cooper is a character in which TV show?
 Big Bang Theory
 Simpsons
 Futurama
 Friends
-p002
 In what Disney movie could you listen to the song ‘A Whole New World’?
 Aladdin
 Pochahontas
 Bear Brothers
 Toy Story
-p003
 Where is the band ABBA from?
 Sweden
 Norway
 Denmark
 Finland
-p004
 Who portrayed Hannibal the Cannibal in the movies?
 Anthony Hopkins
 George Clooney
 Johnny Depp
 Jack Nicholson
-p005
 Mick Jagger is in which band?
 The Rolling Stones
 The Beatles
 The Clash
 Pink FLoyd
-p006
 What year did ‘Thriller’ come out?
 1982
 1979
 1985
 1990
-p007
 Who said the phrase ‘I am your father’?
 Darth Vader
 Indiana Jones
 Jack Sparrow
 Han Solo
-p008
 In what Indiana Jones movie is revealed that he has a son?
 The Kingdom of Crystal Skull
 b
 c
 d
-p009
 What is the last name of the family in the TV series ‘Family Guy’?
 Griffin
 Gefferson
 Gregsons
 Gary
-p0010
 Who forms the couple nicknamed ‘Brangelina’?
 Brad Pitt and Angelina Jolie
 b
 c
 d
-p0011
 What is the real name of the American supersoldier, Captain America?
 Steve Rogers
 Michael Morrison
 George Smith
 Jack Dench
-p0012
 Who was famous for the phrase ‘What’s up doc’?
 Bugs Bunny
 Donald Duck
 Goofy
 Daffy Duck
-p0013
 Who is Tim Burton?
 Director
 Artist
 Actor
 President
-p0014
 How old was Michael Jackson when he died?
 50
 45
 55
 40
-p0015
 Which actor has won the most Golden Globe awards?
 Meryl Streep
 Tom Hanks
 Julia Roberts
 Leonardo DiCpario
-p0017
-p0018
 What is the name of the princess in Mario Bros?
 Peach
 Pamela
 Puffy
 Pernille
-p0019
 To which TV show does the catchphrase 'respect my authoritah' belong?
 South Park
 Futurama
 Family Guy
 The Simpsons
-p0020
 Which of the following is not a scene for CSI?
 Washington
 Miami
 New York
 Las Vegas
-p0021
 Who is the Snow Queen in the Walt Disney’s animated movie Frozen?
 Elsa
 Anna
 Lisa
 Angela
-p0022
 Which rapper has won more Grammy Awards?
 Eminem
 Ice Cube
 Snoop Dogg
 50cent
-p0023
 Which movie won the Oscar for Best Animated Movie in the year 2014?
 Frozen
 Big Hero 6
 Up
 Inside Out
 end
-p0024
 'Bruce Banner' is the alter-ego of which superhero?
 Captain America
 Spider-Man

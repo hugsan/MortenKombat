@@ -1,115 +1,95 @@
-p001
 What year did the Titanic sink?
 1912
 1902
 1922
 1925
-p002
 What did the "D" in "D-Day" stand for?
 day
 doom
 Dwight (Eisenhower)
 Dunkirk
-p003
 What city was divided in two after the Second World War?
 Berlin
 Paris
 Hamburg
 Frankfurt
-p004
 Who is the current prime minister of the United Kingdom?
 Theresa May
 Tony Blair
 Gordon Brown
 David Cameron
-p005
 What year did the Berlin wall fall?
 1989
 1969
 1979
 1995
-p006
 When did men first travel to space?
 1961
 1969
 1959
 1955
-p007
 Who founded Playboy magazine?
 Hugh Hefner
 b
 c
 d
-p008
 Which two countries reunited in 1976 after 22 years of separation?
 North and South Vietnam
 b
 c
 d
-p009
 Which countries were part of the Grand Alliance during Second World War?
 Great Britain, USA and Russia
 France, USA and Canada
 Russia, Australia and USA
 Great Britain, France and Canada
-p0010
 ln which year did the first man walk on the moon?
 1969
 1961
 1959
 1965
-p0011
 Who was defeated in the Battle of Waterloo?
 Napoleon Bonaparte
 b
 c
 d
-p0012
 What army did the 300 represent?
 Spartan army
 Roman army
 Aztec army
 German army
-p0013
 Where was the first man on the moon from?
 USA
 Soviet Union
 Canada
 France
-p0014
 Which civilization constructed the Machu Picchu?
 Incas
 Mayans
 Aztecs
 Romans
-p0016
 Who was the first president of the United States?
 George Washington
 Abraham Lincoln
 Thomas Jefferson
 Theodore Roosevelt
-p0017
 In Greek mythology, how was Achilles heel injured?
 An arrow
 A sword
 A spear
 An accident by falling
-p0018
 When did the Vietnam War end?
 1975
 1960
 1968
 1977
-p0019
 Who said: "Ich bin ein berliner" at a speech in 1963?
 John F. Kennedy
 Richard Nixon
 Winston Churchill
 Lyndon B. Johnson
-p0020
 Which of these countries were not occupied by the Nazis in World War 2?
 Sweden
 Italy
 Norway
 Denmark
-end

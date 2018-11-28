@@ -59,12 +59,6 @@ public class FightScreen extends BaseScreen {
     private boolean killHim = false;
     Fighter killingTarget;
 
-    public File data1;
-    public File data2;
-    public File data3;
-    public File data4;
-    public File data5;
-    public File data6;
 
     public Stack<ImportQandA> science;
     public Stack<ImportQandA> geography;
@@ -348,7 +342,7 @@ public class FightScreen extends BaseScreen {
         }
 
 
-
+        /*
         data1= new File("assets\\QnA\\Science.txt");
         data2= new File("assets\\QnA\\Geography.txt");
         data3= new File("assets\\QnA\\History.txt");
@@ -385,7 +379,8 @@ public class FightScreen extends BaseScreen {
         topics.add(sport);
         topics.add(entertainment);
 
-        Collections.shuffle(topics);
+        Collections.shuffle(topics);*/
+        topics = MortenCombat.topics;
 
         questionBox= new DialogBox(100,400,uiStage);
         questionBox.setBackgroundColor(Color.BLACK);
@@ -881,13 +876,19 @@ public class FightScreen extends BaseScreen {
 
     private boolean stateOfAnswer(boolean isAnswerButton1Pushed,boolean isAnswerButton2Pushed, boolean isAnswerButton3Pushed,boolean isAnswerButton4Pushed){
 
-        if((isAnswerButton1Pushed && answerButton1.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer)) || (isAnswerButton2Pushed && answerButton2.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer)) || (isAnswerButton3Pushed && answerButton3.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer)) || (isAnswerButton4Pushed && answerButton4.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer))){
+        if((isAnswerButton1Pushed && answerButton1.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer))
+                || (isAnswerButton2Pushed && answerButton2.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer))
+                || (isAnswerButton3Pushed && answerButton3.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer))
+                || (isAnswerButton4Pushed && answerButton4.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer))){
 //            System.out.println("Correct");
-            isCorrectAnswer=true;
+                    isCorrectAnswer=true;
 
-        }else if((isAnswerButton1Pushed && !(answerButton1.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer))) || (isAnswerButton2Pushed && !(answerButton2.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer))) || (isAnswerButton3Pushed && !(answerButton3.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer))) || (isAnswerButton4Pushed && !(answerButton4.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer)))){
+        }else if((isAnswerButton1Pushed && !(answerButton1.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer)))
+                || (isAnswerButton2Pushed && !(answerButton2.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer)))
+                || (isAnswerButton3Pushed && !(answerButton3.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer)))
+                || (isAnswerButton4Pushed && !(answerButton4.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer)))){
 //            System.out.println("UnCorrect");
-            isCorrectAnswer=false;
+                    isCorrectAnswer=false;
 
         }
 

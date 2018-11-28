@@ -1,112 +1,93 @@
-p001
 What important piece of art was stolen and kept under a bed until it was returned to the Louvre Museum?
 Mona Lisa
 b
 c
 d
-p002
 Who wrote the novel Dracula?
 Bram Stoker
 b
 c
 d
-p003
 What actor portrayed the pirate Jack Sparrow?
 Johnny Depp
 Chris Evans
 Leonardo DiCaprio
 Nicolas Cage
-p004
 Where did medieval theatre originate?
 Churches
 b
 c
 d
-p005
 How many letters are in the English Alphabet?
 26 letters
 28
 24
 22
-p006
 Which artist painted 'The Scream'?
 Edvard Munch
 Pablo Picasso
 Claude Monet
 Vincent van Gogh
-p007
 In what novel is Holden Caulfield the main character?
 The Catcher in the Rye
 b
 c
 d
-p008
 What is the real name of the American super soldier, Captain America?
 Steve Rogers
 b
 c
 d
-p009
 Who is Apollo’s twin?
 Artemis
 b
 c
 d
-p0010
 What kinds of plants did Monet paint?
 Water lilies
 b
 c
 d
-p0011
 Which of the following is not one of the Seven Wonders of the Ancient World?
 The Colosseum in Rome
 b
 c
 d
-p0012
 Which one of these novels was not written by Robert Louis Stevenson?
 Journey to the Center of the Earth
 b
 c
 d
-p0013
 Who is detective Sherlock Holmes partner?
 John Watson
 b
 c
 d
-p0014
 Who’s the author of ‘The Count of Monte Cristo’?
 Alexandre Dumas
 b
 c
 d
-p0015
 What kind of creature was Medusa?
 Gorgon
 b
 c
 d
-p0016
 What century was William Shakespeare born?
 16th Century
 b
 c
 d
-p0017
 Which of the characters from ‘The Wonderful Wizard of Oz’ didn’t have a brain to think?
 Scarecrow
 b
 c
 d
-p0018
 Who played the character of Edward Scissorhands?
 Johnny Depp
 b
 c
 d
-p0019
 Which band performs the song ‘Another Brick In The Wall’?
 Pink Floyd
 b

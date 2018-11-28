@@ -25,7 +25,6 @@ public class LevelScreen extends BaseScreen {
     private LevelScreen nextMap2 = null;
     private Hero hero;
     public static Music backgroundMusic;
-    public static boolean isPlaying = true;
     private BaseActor pauseBackground;
 
     // X Y position of the hero when the hero travels to next map
