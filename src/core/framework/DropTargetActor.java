@@ -2,6 +2,10 @@ package core.framework;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
+/**
+ * This class extends the BaseActor to allow easier stacking of BaseActors.
+ * It also allows a baseactor to be "filled" when there already is a baseactor in the slot.
+ */
 
 public class DropTargetActor extends BaseActor {
 

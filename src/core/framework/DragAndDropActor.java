@@ -7,7 +7,12 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
-
+/**
+ * This class allows BaseActors to be draggable. It has three stages, touchDown, touchDragged and touchUp.
+ * First it sees if i can be moved, then it follows the mouse movement, and finally on release
+ * it sees where it gets dropped, and if there are any available targets it snaps to it.
+ * If the target is filled it get moved back to before the drag motion started.
+ */
 
 public class DragAndDropActor extends BaseActor {
 
@@ -103,9 +108,8 @@ public class DragAndDropActor extends BaseActor {
     public void onDrop() {    }
     public void onDragStart() {    }
     public boolean hasDropTarget() {  return (dropTarget != null);  }
-    public void setDropTarget(DropTargetActor dt) {  dropTarget = dt;  }
+    private void setDropTarget(DropTargetActor dt) {  dropTarget = dt;  }
     public DropTargetActor getDropTarget() {  return dropTarget;  }
-    public void setDraggable(boolean d) {  draggable = d;  }
-    public boolean isDraggable() {  return draggable;  }
+    private boolean isDraggable() {  return draggable;  }
 
 }
