@@ -15,6 +15,12 @@ import core.actors.SelectionArea;
 
 import java.io.FileNotFoundException;
 
+/**
+ * This is the hero selection screen. Here the player selects the three heroes to take with them into the maze.
+ * This is done dragging cards with the different characters on them.
+ * This class creates the cards and tells the game what characters the player selected.
+ */
+
 public class SelectionScreen extends BaseScreen {
 
     private BaseScreen menu;
@@ -26,7 +32,7 @@ public class SelectionScreen extends BaseScreen {
         super();
         this.menu = menu;
     }
-//initializing
+
     @Override
     public void initialize() {
 
@@ -50,8 +56,6 @@ public class SelectionScreen extends BaseScreen {
             selectedHeroes[i-1] = new SelectionArea(pixelX,pixelY,mainStage);
             selectedHeroes[i-1].setHeroType(i);
             selectedHeroes[i-1].setTargetable(true);
-
-
         }
 
         fighterTitle.toFront();

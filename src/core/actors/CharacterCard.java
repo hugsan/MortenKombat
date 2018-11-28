@@ -3,9 +3,14 @@ package core.actors;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import core.framework.DragAndDropActor;
 
-public class CharacterCard extends DragAndDropActor {
+/**
+ * This class sets the rules for how you may select your heroes.
+ * Using the SelectionArea class it limits the selection to one of each type of hero,
+ * and allows to unselect a previously selected hero.
+ * It also have the textures for the different heroes.
+ */
 
-    public static String[] fighterTypeString = {"Fighter", "Mage", "Support"};
+public class CharacterCard extends DragAndDropActor {
 
     private int fighterNumber;
     private int fighterType;
@@ -20,8 +25,8 @@ public class CharacterCard extends DragAndDropActor {
     public void act(float dt)
     {
         super.act(dt);
-
     }
+
     //check if the card is in the selection area, if it is clear the selection area for a new card.
     public void onDragStart()
     {
@@ -33,6 +38,7 @@ public class CharacterCard extends DragAndDropActor {
             sa.setHeroNumber(0);
         }
     }
+
     //check if there is a selection area, and if that selection area is valid. If we do we set up the selection area
     //to full.
     public void onDrop()
@@ -52,15 +58,14 @@ public class CharacterCard extends DragAndDropActor {
             }
         }
     }
+
     //creates the card for our fighters.
     public void createCard(int fighterNumber, int fighterType) {
 
         this.fighterNumber = fighterNumber;
         this.fighterType = fighterType;
 
-
         if (fighterType == 1 && fighterNumber == 1) {
-
             loadTexture("assets/img/FighterCardOne.png");
         }
         if (fighterType == 1 && fighterNumber == 2) {
@@ -71,27 +76,19 @@ public class CharacterCard extends DragAndDropActor {
         }
         if (fighterType == 2 && fighterNumber == 2) {
             loadTexture("assets/img/MageCardOne.png");
-
         }
         if (fighterType == 3 && fighterNumber == 1) {
             loadTexture("assets/img/SupportCardTwo.png");
-
         }
         if (fighterType == 3 && fighterNumber == 2) {
             loadTexture("assets/img/SupportCardOne.png");
-
-
         }
-
     }
 
-    public static String[] getFighterTypeString() {        return fighterTypeString;    }
-    public int getFighterNumber() {        return fighterNumber;    }
-    public int getFighterType() {        return fighterType;    }
-    public void setSelectionArea(SelectionArea sa)    {  selectionArea = sa;  }
-    public SelectionArea getSelectionArea()    {  return selectionArea;  }
-    public void clearSelectionArea()    {  selectionArea = null;  }
-    public boolean hasSelectionArea()    {  return selectionArea != null;  }
-
+    private int getFighterType() {        return fighterType;    }
+    private void setSelectionArea(SelectionArea sa)    {  selectionArea = sa;  }
+    private SelectionArea getSelectionArea()    {  return selectionArea;  }
+    private void clearSelectionArea()    {  selectionArea = null;  }
+    private boolean hasSelectionArea()    {  return selectionArea != null;  }
 
 }
