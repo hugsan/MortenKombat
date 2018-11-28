@@ -9,19 +9,19 @@ import com.badlogic.gdx.utils.Array;
 import core.framework.BaseActor;
 
 /**
- * Class hero that is being used to navigate in our mapdungeon.
+ * Class hero that is being used to navigate in our maze maps.
  * The hero uses a animation to simulate movement, and the animation will change if the direction of our hero changes
- * Hero is being initialize with MaxSpeed = 300 and Acceleration = 10000.
+ * Hero is being initialize with MaxSpeed = 300 and Acceleration = 1000.
  */
 public class Hero extends BaseActor
 {
-    Animation north;
-    Animation south;
-    Animation east;
-    Animation west;
+    private Animation north;
+    private Animation south;
+    private Animation east;
+    private Animation west;
     private float facingAngle;
     private Stage s;
-    private Shield shield;
+    private DarkEffect darkEffect;
 
     public Hero(float x, float y, Stage s)
     {
@@ -98,17 +98,9 @@ public class Hero extends BaseActor
         applyPhysics(dt);
     }
 
-    /**
-     *
-     * @return facing angle of our hero.
-     */
-    public float getFacingAngle()
-    {
-        return facingAngle;
-    }
     public void createLight(){
-        shield = new Shield(0,0, this.s);
-        addActor(shield);
-        shield.centerAtPosition( getWidth()/2, getHeight()/2 );
+        darkEffect = new DarkEffect(0,0, this.s);
+        addActor(darkEffect);
+        darkEffect.centerAtPosition( getWidth()/2, getHeight()/2 );
     }
 }

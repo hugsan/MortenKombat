@@ -9,7 +9,7 @@ public class BatFighter extends EnemyFighters {
         super(s);
         this.setHP(60);
         this.setMaxHP(60);
-        this.setFighterName("Troll");
+        this.setFighterName("Patrick");
 
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Troll Attack.png", 0.14f,1,7);
         iddle = AnimationCreator.createAnimation("assets/fightingscreen/Troll Idle.png", 0.14f, 1, 7);
