@@ -9,12 +9,18 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import core.framework.BaseActor;
 
+/**
+ * Class for the bat actors in the maze.
+ * It should walk in a random direction until it hits a wall, then chance to a new random direction.
+ * When the Hero hit the bat start the FightScreen.
+ */
+
 public class Zombie extends BaseActor
 {
-    Animation north;
-    Animation south;
-    Animation east;
-    Animation west;
+    private Animation north;
+    private Animation south;
+    private Animation east;
+    private Animation west;
     private float facingAngle;
 
     public Zombie(float x, float y, Stage s)
@@ -89,10 +95,6 @@ public class Zombie extends BaseActor
         }
         boundToWorld();
         applyPhysics(dt);
-    }
-    public float getFacingAngle()
-    {
-        return facingAngle;
     }
 
 }
