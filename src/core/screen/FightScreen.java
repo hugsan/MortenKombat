@@ -286,6 +286,7 @@ public class FightScreen extends BaseScreen {
         uiTable.add ( ).height( 20 ).width( 25 );
         uiTable.add ( championThree.getFighterNamePlate() ).height( 20 ).width( 110 ); //hero 3 nameplate
         uiTable.add ( championTwo.getFighterNamePlate() ).height( 20 ).width( 110 ); //hero 2 nameplate
+        championOne.getFighterNamePlate().setWrap(true);
         uiTable.add ( championOne.getFighterNamePlate() ).height( 20 ).width( 110 ); //hero 1 nameplate
         uiTable.add ( ).height( 20 ).width( 56 );
         uiTable.add ( enemyOne.getFighterNamePlate() ).height( 20 ).width( 110 ); //enemy 1 nameplate
