@@ -612,6 +612,9 @@ public class FightScreen extends BaseScreen {
 
                 f.setAux ( f.getHP () );
             }
+
+
+
         }
         if (killHim && (System.currentTimeMillis() - deadAnimationStart)/1000 > killingTarget.dead.getAnimationDuration() ){
             killingTarget.dead.setPlayMode(Animation.PlayMode.NORMAL);

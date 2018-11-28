@@ -67,8 +67,10 @@ public class SupportOne extends SpellCaster{
                 fighterTwo.setHP( Math.min ( (fighterTwo.getHP()+30),fighterTwo.getMaxHP() ) );
                 fighterThree.setHP( Math.min ( (fighterThree.getHP()+30),fighterThree.getMaxHP() ) );
                 this.spendMana(35);
-            }else
-                return false;
+                return  true;
+            }else {
+                missingMana.play ();
+                return false;}
         }
         cantclick.play();
         return false;
