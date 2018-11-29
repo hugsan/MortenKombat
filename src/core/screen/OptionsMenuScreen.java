@@ -13,6 +13,10 @@ import core.framework.BaseScreen;
 
 import java.io.FileNotFoundException;
 
+/**
+ * This is the options screen class and it consist of five buttons, it is in here the volume for music can be changed.
+ */
+
 public class OptionsMenuScreen extends BaseScreen {
 
     private BaseScreen menu;
@@ -30,19 +34,16 @@ public class OptionsMenuScreen extends BaseScreen {
         mainMenuBackground.setSize(800,600);
 
         // The text for difficulty
-
         BaseActor title = new BaseActor(200,475, mainStage);
         title.loadTexture("assets/img/buttons/DifficultyText.png");
         title.setSize(400,100);
 
         // The text for the volume
-
         BaseActor title1 = new BaseActor(250,100, mainStage);
         title1.loadTexture("assets/img/buttons/Volume.png");
         title1.setSize(300,70);
 
         // Back button
-
         Button.ButtonStyle buttonStyle1 = new Button.ButtonStyle();
 
         Texture buttonTex = new Texture( Gdx.files.internal("assets/img/buttons/Back.png") );
@@ -72,7 +73,6 @@ public class OptionsMenuScreen extends BaseScreen {
         );
 
         // Volume button for turning the volume up
-
         Button.ButtonStyle buttonStyle2 = new Button.ButtonStyle();
 
         Texture buttonTex2 = new Texture( Gdx.files.internal("assets/img/buttons/VolumeUp.png") );
@@ -92,7 +92,7 @@ public class OptionsMenuScreen extends BaseScreen {
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
 
-                    MainMenuScreen.volumeUp();
+                    MainMenuScreen.musicVolumeUp();
                     return false;
 
                 }
@@ -118,13 +118,12 @@ public class OptionsMenuScreen extends BaseScreen {
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
 
-                    MainMenuScreen.volumeDown();
+                    MainMenuScreen.musicVolumeDown();
                     return false;
                 }
         );
 
         // Difficulty button age 12-16
-
         Button.ButtonStyle buttonStyle4 = new Button.ButtonStyle();
 
         Texture buttonTex4 = new Texture( Gdx.files.internal("assets/img/buttons/AgeYoung.png") );
@@ -150,7 +149,6 @@ public class OptionsMenuScreen extends BaseScreen {
         );
 
         // Difficulty button age 16+
-
         Button.ButtonStyle buttonStyle5 = new Button.ButtonStyle();
 
         Texture buttonTex5 = new Texture( Gdx.files.internal("assets/img/buttons/AgeOlder.png") );
@@ -178,7 +176,5 @@ public class OptionsMenuScreen extends BaseScreen {
     }
 
     @Override
-    public void update(float dt) {
-
-    }
+    public void update(float dt) {   }
 }

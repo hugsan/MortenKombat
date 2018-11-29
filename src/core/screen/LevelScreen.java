@@ -24,7 +24,7 @@ public class LevelScreen extends BaseScreen {
     private LevelScreen nextMap = null;
     private LevelScreen nextMap2 = null;
     private Hero hero;
-    public static Music backgroundMusic;
+    private static Music backgroundMusic;
     private BaseActor pauseBackground;
 
     // X Y position of the hero when the hero travels to next map
@@ -237,7 +237,6 @@ public class LevelScreen extends BaseScreen {
                             a.preventOverlap(s);
                             a.setMotionAngle(MathUtils.random(0, 360));
                         }
-
                     }
                     if (a.overlaps(hero)) {
 
@@ -252,7 +251,6 @@ public class LevelScreen extends BaseScreen {
                             a.preventOverlap(s);
                             a.setMotionAngle(MathUtils.random(0, 360));
                         }
-
                     }
                     if (a.overlaps(hero)) {
 
@@ -284,6 +282,7 @@ public class LevelScreen extends BaseScreen {
 
                 case "core.actors.exploringactors.Chest":
                     if (hero.overlaps(a)) {
+                        a.remove();
                         System.out.println("Chest opened");
                     }
                     break;
