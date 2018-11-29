@@ -1,7 +1,5 @@
 package core;
-/**
- *
- */
+
 import core.framework.BaseGame;
 import core.screen.LevelScreen;
 import core.screen.LoadingScreen;
@@ -20,8 +18,6 @@ public class MortenCombat extends BaseGame {
     public static int fighterN = 0;
     public static int mageN = 0;
     public static int supportN = 0;
-
-
 
     public Stack<ImportQandA> science;
     public Stack<ImportQandA> geography;
@@ -78,7 +74,6 @@ public class MortenCombat extends BaseGame {
         ImportQandA.filler(art,data4);
         ImportQandA.filler(sport,data5);
         ImportQandA.filler(entertainment,data6);
-
 
         topics= new ArrayList<Stack<ImportQandA>>();
         topics.add(science);

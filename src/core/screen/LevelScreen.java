@@ -58,8 +58,6 @@ public class LevelScreen extends BaseScreen {
         //been read by enum MapLayout
         TilemapActor tma = new TilemapActor("assets/maps/" + mapName + ".tmx", mainStage);
         //load music only for the first map
-
-
         //check if we can implement this in the first constructor
         if (mapName.equals("map1")) {
             backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/backgroundmusic.mp3"));
@@ -69,9 +67,7 @@ public class LevelScreen extends BaseScreen {
             pauseBackground.setSize(400,500);
             pauseBackground.toFront();
             pauseBackground.setVisible(false);
-
         }
-
 
         currentMapEffect = mapEffect;
 
@@ -85,6 +81,7 @@ public class LevelScreen extends BaseScreen {
         createMapObjects(tma, "Chest");
         createMapObjects(tma, "Zombie");
         createMapObjects(tma, "Skeleton");
+        createMapObjects(tma, "Medic"); // Heal
 
         //create the starting point for our hero.
         MapObject startPoint = tma.getRectangleList("Start").get(0);
@@ -92,8 +89,6 @@ public class LevelScreen extends BaseScreen {
 
         //Create our hero, taking the generated starting point before.
         hero = new Hero((float) startProps.get("x"), (float) startProps.get("y"), mainStage);
-
-        //System.out.println(mapEffect);
 
         if (currentMapEffect.equals("wind")) {
             windBlow();
@@ -117,9 +112,6 @@ public class LevelScreen extends BaseScreen {
             y = (float) previousProp.get("y");
         }
 
-
-
-
     }
 
     public void update(float dt) throws FileNotFoundException {
@@ -137,7 +129,6 @@ public class LevelScreen extends BaseScreen {
         if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)){
             if (pauseBackground.isVisible()){
                 pauseBackground.setVisible(false);
-
             }
             else
                 pauseBackground.setVisible(true);
@@ -155,8 +146,7 @@ public class LevelScreen extends BaseScreen {
         actorObjectInteraction("core.actors.exploringactors.Chest");
         actorObjectInteraction("core.actors.exploringactors.Zombie");
         actorObjectInteraction("core.actors.exploringactors.Skeleton");
-
-
+        actorObjectInteraction("core.actors.exploringactors.Medic");
 
         //Checks if the current map is windy. if it is blows the hero every 1 sec.
         if (currentMapEffect.equals("wind")) {
@@ -169,46 +159,12 @@ public class LevelScreen extends BaseScreen {
             windTimer = 0;
         }
 
-    }
-
-    public void setNextMap(LevelScreen nextMap) {
-        this.nextMap = nextMap;
-    }
-
-    public LevelScreen getNextMap() {
-        return nextMap;
-    }
-
-    public LevelScreen getNextMap2() {
-        return nextMap2;
-    }
-
-    public void setNextMap2(LevelScreen nextMap2) {
-        this.nextMap2 = nextMap2;
-    }
-
-    public float getX() {
-        return x;
-    }
-
-    public float getY() {
-        return y;
-    }
-
-    public float getZ() {
-        return z;
-    }
-
-    public float getW() {
-        return w;
-    }
+    } // update end
 
     //method that pushes our hero on wind maps effect.
     private void windBlow() {
-
         hero.setMotionAngle(MathUtils.random(0, 360));
         hero.setSpeed(MathUtils.random(10000, 20000));
-
     }
 
     /**
@@ -235,8 +191,7 @@ public class LevelScreen extends BaseScreen {
                     break;
                 case "Solid":
                     new Solid((float) props.get("x"), (float) props.get("y"),
-                            (float) props.get("width"), (float) props.get("height"),
-                            mainStage);
+                            (float) props.get("width"), (float) props.get("height"), mainStage);
                     break;
                 case "Bat":
                     new Bat((float) props.get("x"), (float) props.get("y"), mainStage);
@@ -252,6 +207,9 @@ public class LevelScreen extends BaseScreen {
                     break;
                 case "Skeleton":
                     new Skeleton((float) props.get("x"), (float) props.get("y"), mainStage);
+                    break;
+                case "Medic" :
+                    new Medic((float) props.get("x"), (float) props.get("y"), mainStage);
                     break;
                 default:
                     System.out.println("Something went really wrong, contact ITCOM5");
@@ -307,8 +265,6 @@ public class LevelScreen extends BaseScreen {
                     if (hero.overlaps(a)) {
                         hero.setPosition(getX(), getY());
                         hero.setSpeed(0);
-                        //instead of using this, call LoadingScreen
-
                         MortenCombat.setActiveScreen(new LoadingScreen(nextMap));
                     }
                     break;
@@ -331,20 +287,55 @@ public class LevelScreen extends BaseScreen {
                         System.out.println("Chest opened");
                     }
                     break;
+
+                case "core.actors.exploringactors.Medic":
+                    if (hero.overlaps(a)) {
+                        FightScreen.medicHeal();
+                        a.remove();
+                        System.out.println("party healed");
+                    }
+                    break;
+
                 default:
                     System.out.println("Contact with ITCOM5 group, something went wrong.");
 
             }
-
-
         }
     }
 
-    public static void musicPlay() { backgroundMusic.play();
+    public static void musicPlay() { backgroundMusic.play(); }
+
+    private static void musicStop() { backgroundMusic.stop(); }
+
+    public void setNextMap(LevelScreen nextMap) {
+        this.nextMap = nextMap;
     }
 
-    public static void musicStop() { backgroundMusic.stop();
-   }
+    public LevelScreen getNextMap() {
+        return nextMap;
+    }
+
+    public LevelScreen getNextMap2() {
+        return nextMap2;
+    }
+
+    public void setNextMap2(LevelScreen nextMap2) {
+        this.nextMap2 = nextMap2;
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public float getZ() {
+        return z;
+    }
+
+    public float getW() {
+        return w;
+    }
 }
-
-
