@@ -23,8 +23,10 @@ public abstract class SpellCaster extends Champion {
     private final int maxMana = 100;
     private int mana = 100;
 
-    private void manaRegeneration(){
+    public void manaRegeneration(){
         mana += 10;
+        if (mana >= maxMana)
+            mana = maxMana;
     }
 
     public Label getManaBar() { return manaBar; }

@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
+/**
+ *
+ */
 public class SkeletonFighter extends EnemyFighters {
 
 

@@ -23,12 +23,9 @@ public class MortenCombat extends BaseGame {
 
 
 
-    public Stack<ImportQandA> science;
-    public Stack<ImportQandA> geography;
-    public Stack<ImportQandA> history;
-    public Stack<ImportQandA> art;
-    public Stack<ImportQandA> sport;
-    public Stack<ImportQandA> entertainment;
+    public static Stack<ImportQandA> questionAnswer;
+    public static Stack<ImportQandA> questionBackUp;
+
     public static ArrayList<Stack<ImportQandA>> topics;
 
     static LevelScreen[] layout = new LevelScreen[MapLayout.values().length];
@@ -58,39 +55,17 @@ public class MortenCombat extends BaseGame {
             i++;
         }
 
-        File data1= new File("assets\\QnA\\Science.txt");
-        File data2= new File("assets\\QnA\\Geography.txt");
-        File data3= new File("assets\\QnA\\History.txt");
-        File data4= new File("assets\\QnA\\Art.txt");
-        File data5= new File("assets\\QnA\\Sport.txt");
-        File data6= new File("assets\\QnA\\Entertainment.txt");
 
-        Stack<ImportQandA> science = new Stack<>();
-        Stack<ImportQandA> geography = new Stack<>();
-        Stack<ImportQandA> history = new Stack<>();
-        Stack<ImportQandA> art = new Stack<>();
-        Stack<ImportQandA> sport = new Stack<>();
-        Stack<ImportQandA> entertainment = new Stack<>();
+        File data = new File("assets\\QnA\\questionsanswers.txt");
+        questionAnswer = new Stack<ImportQandA>();
+        ImportQandA.filler(questionAnswer,data);
+        Collections.shuffle(questionAnswer);
 
-        ImportQandA.filler(science,data1);
-        ImportQandA.filler(geography,data2);
-        ImportQandA.filler(history,data3);
-        ImportQandA.filler(art,data4);
-        ImportQandA.filler(sport,data5);
-        ImportQandA.filler(entertainment,data6);
-
+        questionBackUp = new Stack<ImportQandA>();
+        questionBackUp.addAll(questionAnswer);
 
         topics= new ArrayList<Stack<ImportQandA>>();
-        topics.add(science);
-        topics.add(geography);
-        topics.add(history);
-        topics.add(art);
-        topics.add(sport);
-        topics.add(entertainment);
 
-        for (Stack<ImportQandA> QA: topics){
-            Collections.shuffle(QA);
-        }
         Collections.shuffle(topics);
 
         MainMenuScreen menu = null;

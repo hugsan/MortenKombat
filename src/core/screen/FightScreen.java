@@ -2,13 +2,12 @@ package core.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -21,7 +20,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import core.ImportQandA;
 import core.framework.BaseGame;
-import java.io.File;
+
 import java.io.FileNotFoundException;
 
 
@@ -61,14 +60,10 @@ public class FightScreen extends BaseScreen {
     static private int championTwoHP = 666;
     private boolean killHim = false;
     Fighter killingTarget;
+    private int triviaMustBeShown = -1;
+    public Sound cantclick = Gdx.audio.newSound(Gdx.files.internal("assets/audio/sound/cantclick.mp3"));
 
 
-    public Stack<ImportQandA> science;
-    public Stack<ImportQandA> geography;
-    public Stack<ImportQandA> history;
-    public Stack<ImportQandA> art;
-    public Stack<ImportQandA> sport;
-    public Stack<ImportQandA> entertainment;
 
     private DialogBox questionBox;
 
@@ -84,10 +79,10 @@ public class FightScreen extends BaseScreen {
     boolean isAnswerButton3Pushed=false;
     boolean isAnswerButton4Pushed=false;
 
-    boolean isCorrectAnswer;
+    boolean isCorrectAnswer = false;
 
-    ArrayList<Stack<ImportQandA>> topics;
-    ArrayList<String> answers;
+    private Stack<ImportQandA> qA;
+    private ArrayList<String> answers;
 
     long startTime2;
     long currentTime2;
@@ -115,10 +110,12 @@ public class FightScreen extends BaseScreen {
         fightBackground.setSize(800,600);
         //initialize the actors at the screen, depending on the seletionScreen, read by a static variable in
         //Morten combat
-        if (MortenCombat.fighterN == 1)
+        if (MortenCombat.fighterN == 1) {
             championOne = new WarriorOne(mainStage);
-        else
+        }
+        else {
             championOne = new WarriorTwo(mainStage);
+        }
         if (MortenCombat.mageN == 1)
             championTwo = new MageOne(mainStage);
         else
@@ -233,7 +230,11 @@ public class FightScreen extends BaseScreen {
                         //want to trigget the spells with left mouse click.
                         if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT))
                             return false;
-
+                        if (!aliveFighters.contains(o.getTarget())){
+                            //check if the target is dead before accepting the event
+                            cantclick.play();
+                            return false;
+                        }
                         //if the first condition is false, the second condition is never check and never executed
                         if (firstAttack && abilityUser.attackOne((Fighter)o.getTarget ())) {
                             abilitySuccess (abilityUser);
@@ -348,45 +349,10 @@ public class FightScreen extends BaseScreen {
         }
 
 
-        /*
-        data1= new File("assets\\QnA\\Science.txt");
-        data2= new File("assets\\QnA\\Geography.txt");
-        data3= new File("assets\\QnA\\History.txt");
-        data4= new File("assets\\QnA\\Art.txt");
-        data5= new File("assets\\QnA\\Sport.txt");
-        data6= new File("assets\\QnA\\Entertainment.txt");
 
-        science = new Stack<>();
-        geography = new Stack<>();
-        history = new Stack<>();
-        art = new Stack<>();
-        sport = new Stack<>();
-        entertainment = new Stack<>();
 
-        ImportQandA.filler(10,science,data1);
-        ImportQandA.filler(10,geography,data2);
-        ImportQandA.filler(10,history,data3);
-        ImportQandA.filler(10,art,data4);
-        ImportQandA.filler(10,sport,data5);
-        ImportQandA.filler(10,entertainment,data6);
-
-        Collections.shuffle(science);
-        Collections.shuffle(geography);
-        Collections.shuffle(history);
-        Collections.shuffle(art);
-        Collections.shuffle(sport);
-        Collections.shuffle(entertainment);
-
-        topics= new ArrayList<Stack<ImportQandA>>();
-        topics.add(science);
-        topics.add(geography);
-        topics.add(history);
-        topics.add(art);
-        topics.add(sport);
-        topics.add(entertainment);
-
-        Collections.shuffle(topics);*/
-        topics = MortenCombat.topics;
+        //qA = MortenCombat.topics;
+        qA = MortenCombat.questionAnswer;
 
         questionBox= new DialogBox(100,400,uiStage);
         questionBox.setBackgroundColor(Color.BLACK);
@@ -394,7 +360,7 @@ public class FightScreen extends BaseScreen {
         questionBox.setDialogSize(600,100);
         questionBox.setFontScale(0.80f);
         questionBox.alignCenter();
-        questionBox.setText(topics.get(randomInt).peek().question);
+        questionBox.setText(qA.peek().question);
         questionBox.setVisible(false);
 
         answerButton1= new TextButton("",BaseGame.textButtonStyle);
@@ -406,10 +372,10 @@ public class FightScreen extends BaseScreen {
 
         answers= new ArrayList<String>();
 
-        answers.add(topics.get(randomInt).peek().correctAnswer);
-        answers.add(topics.get(randomInt).peek().wrongAnswer1);
-        answers.add(topics.get(randomInt).peek().wrongAnswer2);
-        answers.add(topics.get(randomInt).peek().wrongAnswer3);
+        answers.add(qA.peek().correctAnswer);
+        answers.add(qA.peek().wrongAnswer1);
+        answers.add(qA.peek().wrongAnswer2);
+        answers.add(qA.peek().wrongAnswer3);
 
         Collections.shuffle(answers);
 
@@ -473,7 +439,6 @@ public class FightScreen extends BaseScreen {
                         return false;
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
-
                     isAnswerButton3Pushed=true;
                     startTime2=System.currentTimeMillis();
 
@@ -508,8 +473,17 @@ public class FightScreen extends BaseScreen {
     public void update(float dt) {
         //if the turn is over (means there is no more object in the stack), we create a new turn by feeding the stack
         //with alivefighter Arraylist
+        caseOfAnswerButton1(isAnswerButton1Pushed);
+        caseOfAnswerButton2(isAnswerButton2Pushed);
+        caseOfAnswerButton3(isAnswerButton3Pushed);
+        caseOfAnswerButton4(isAnswerButton4Pushed);
+
         if (fightingTurn.isEmpty ()){
             fightingTurn.addAll(aliveFighters);
+            for (Fighter sC : fightingTurn){ //regenerates mana at the end of each turn.
+                if (sC instanceof SpellCaster)
+                    ((SpellCaster) sC).manaRegeneration();
+            }
             Collections.shuffle(fightingTurn);
             turn ++; // not been used, maybe we can put a Turn number on screen.
         }
@@ -535,28 +509,64 @@ public class FightScreen extends BaseScreen {
         if (fightingTurn.peek() instanceof EnemyFighters){
             // = false;
             currentTime = System.currentTimeMillis();
-
-            /*while ((currentTime - startTime) < enemyThinking){
-                currentTime = System.currentTimeMillis();
-            }*/
             if ((currentTime - startTime) > enemyThinking){
+                boolean isNonQuestionAttack = false;
+                if (triviaMustBeShown == -1 && MathUtils.random(0,10)>=8 ){ //20% chance to activate the question for enemies.
+                    triviaMustBeShown = 1;
+                    System.out.println("is a trivia attack");
+                    showTrivia();
+                }else if (triviaMustBeShown == -1) {
+                    triviaMustBeShown = 0;
+                    isNonQuestionAttack = true;
+                }
+                stateOfAnswer(isAnswerButton1Pushed,isAnswerButton2Pushed,isAnswerButton3Pushed,isAnswerButton4Pushed);
+                boolean hasBeenPressed = (isAnswerButton1Pushed || isAnswerButton2Pushed || isAnswerButton3Pushed || isAnswerButton4Pushed);
                 int championTarget = MathUtils.random(0,100);
                 //60% chance to hit first target 25% second chance 15% last target
                 //if target is dead, goes for the next one
-                if (championTarget > 40 && aliveFighters.contains ( championOne )){
-                    theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championOne );
-                    startTime = System.currentTimeMillis();
-                    attacker = fightingTurn.pop();
+                if (championTarget > 40 && aliveFighters.contains ( championOne ) && (hasBeenPressed || isNonQuestionAttack) ){ //when a enemy choose to attack first target
+                    startTime = System.currentTimeMillis() ;
+                    if (isNonQuestionAttack){
+                        theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championOne );
+                        attacker = fightingTurn.peek();
+                    }
+                    else if (!isCorrectAnswer){
+                        theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championOne );
+                        theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championOne );
+                        attacker = fightingTurn.peek();
+                        startTime += 4000; //increasing animation time there is a 4s delay with the answer on screen
+                    }
+                    fightingTurn.pop();
+                    triviaMustBeShown  = -1;
                 }
-                else if (championTarget > 15 && aliveFighters.contains (championTwo)){
-                    theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championTwo );
-                    startTime = System.currentTimeMillis();
-                    attacker = fightingTurn.pop();
-                }
-                else{
-                    theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(),championThree );
-                    startTime = System.currentTimeMillis();
-                    attacker = fightingTurn.pop();
+                else if (championTarget > 15 && aliveFighters.contains (championTwo) && (hasBeenPressed || isNonQuestionAttack)){
+                    startTime = System.currentTimeMillis() ;
+                    if (isNonQuestionAttack){
+                        theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championTwo );
+                        attacker = fightingTurn.peek();
+                    }else if (!isCorrectAnswer){
+                        theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championTwo );
+                        theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championTwo );
+                        attacker = fightingTurn.peek();
+                        startTime += 4000;
+                    }
+                    fightingTurn.pop();
+                    triviaMustBeShown = -1;
+
+                    }
+                else if ((hasBeenPressed || isNonQuestionAttack)){
+                    startTime = System.currentTimeMillis() ;
+                    if (isNonQuestionAttack){
+                        theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(),championThree );
+                        attacker = fightingTurn.peek();
+                    }else if (!isCorrectAnswer){
+                        theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(),championThree );
+                        theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(),championThree );
+                        attacker = fightingTurn.peek();
+                        startTime += 4000;
+                    }
+                    fightingTurn.pop();
+                    triviaMustBeShown = -1;
 
                 }
                 enemyThinking = MathUtils.random(3500,4500); //thinking for the next enemy
@@ -594,21 +604,13 @@ public class FightScreen extends BaseScreen {
                     deadAnimationStart = System.currentTimeMillis();
                     killHim = true;
                     killingTarget = f;
-
                 }
                 aliveFighters.remove ( f );
                 fightingTurn.remove ( f );
-
             }
             if (f.getAux () != f.getHP ()){
-
                 f.getHPBar().addAction( Actions.repeat ( 3, Actions.sequence (Actions.fadeOut (0.20f),Actions.fadeIn ( 0.20f )) ) );
-
-
-                f.setAux ( f.getHP () );
-            }
-
-
+                f.setAux ( f.getHP () ); }
 
         }
         if (killHim && (System.currentTimeMillis() - deadAnimationStart)/1000 > killingTarget.dead.getAnimationDuration() ){
@@ -616,11 +618,7 @@ public class FightScreen extends BaseScreen {
             killHim = false;
         }
 
-        caseOfAnswerButton1(isAnswerButton1Pushed);
-        caseOfAnswerButton2(isAnswerButton2Pushed);
-        caseOfAnswerButton3(isAnswerButton3Pushed);
-        caseOfAnswerButton4(isAnswerButton4Pushed);
-        stateOfAnswer(isAnswerButton1Pushed,isAnswerButton2Pushed,isAnswerButton3Pushed,isAnswerButton4Pushed);
+
 
     }
 
@@ -679,7 +677,7 @@ public class FightScreen extends BaseScreen {
     private void caseOfAnswerButton1(boolean isAnswerButton1Pushed){
         if(isAnswerButton1Pushed){
 
-            if(answerButton1.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+            if(answerButton1.getText().toString().equals(qA.peek().correctAnswer)){
 
                 answerButton1.getLabel().setColor(Color.GREEN);
                 answerButton2.getLabel().setColor(Color.CLEAR);
@@ -689,19 +687,19 @@ public class FightScreen extends BaseScreen {
             }else{
 
                 answerButton1.getLabel().setColor(Color.RED);
-                if(answerButton2.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+                if(answerButton2.getText().toString().equals(qA.peek().correctAnswer)){
 
                     answerButton2.getLabel().setColor(Color.GREEN);
                     answerButton3.getLabel().setColor(Color.CLEAR);
                     answerButton4.getLabel().setColor(Color.CLEAR);
                 }
-                if(answerButton3.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+                if(answerButton3.getText().toString().equals(qA.peek().correctAnswer)){
 
                     answerButton3.getLabel().setColor(Color.GREEN);
                     answerButton2.getLabel().setColor(Color.CLEAR);
                     answerButton4.getLabel().setColor(Color.CLEAR);
                 }
-                if(answerButton4.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+                if(answerButton4.getText().toString().equals(qA.peek().correctAnswer)){
 
                     answerButton4.getLabel().setColor(Color.GREEN);
                     answerButton2.getLabel().setColor(Color.CLEAR);
@@ -709,7 +707,6 @@ public class FightScreen extends BaseScreen {
                 }
 
             }
-
             deleteTrivia(startTime2);
         }
     }
@@ -717,7 +714,7 @@ public class FightScreen extends BaseScreen {
     private void caseOfAnswerButton2(boolean isAnswerButton2Pushed){
         if(isAnswerButton2Pushed){
 
-            if(answerButton2.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+            if(answerButton2.getText().toString().equals(qA.peek().correctAnswer)){
 
                 answerButton2.getLabel().setColor(Color.GREEN);
                 answerButton1.getLabel().setColor(Color.CLEAR);
@@ -727,19 +724,19 @@ public class FightScreen extends BaseScreen {
             }else{
 
                 answerButton2.getLabel().setColor(Color.RED);
-                if(answerButton1.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+                if(answerButton1.getText().toString().equals(qA.peek().correctAnswer)){
 
                     answerButton1.getLabel().setColor(Color.GREEN);
                     answerButton3.getLabel().setColor(Color.CLEAR);
                     answerButton4.getLabel().setColor(Color.CLEAR);
                 }
-                if(answerButton3.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+                if(answerButton3.getText().toString().equals(qA.peek().correctAnswer)){
 
                     answerButton3.getLabel().setColor(Color.GREEN);
                     answerButton1.getLabel().setColor(Color.CLEAR);
                     answerButton4.getLabel().setColor(Color.CLEAR);
                 }
-                if(answerButton4.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+                if(answerButton4.getText().toString().equals(qA.peek().correctAnswer)){
 
                     answerButton4.getLabel().setColor(Color.GREEN);
                     answerButton1.getLabel().setColor(Color.CLEAR);
@@ -755,7 +752,7 @@ public class FightScreen extends BaseScreen {
     private void caseOfAnswerButton3(boolean isAnswerButton3Pushed){
         if(isAnswerButton3Pushed){
 
-            if(answerButton3.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+            if(answerButton3.getText().toString().equals(qA.peek().correctAnswer)){
 
                 answerButton3.getLabel().setColor(Color.GREEN);
                 answerButton1.getLabel().setColor(Color.CLEAR);
@@ -765,19 +762,19 @@ public class FightScreen extends BaseScreen {
             }else{
 
                 answerButton3.getLabel().setColor(Color.RED);
-                if(answerButton1.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+                if(answerButton1.getText().toString().equals(qA.peek().correctAnswer)){
 
                     answerButton1.getLabel().setColor(Color.GREEN);
                     answerButton2.getLabel().setColor(Color.CLEAR);
                     answerButton4.getLabel().setColor(Color.CLEAR);
                 }
-                if(answerButton2.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+                if(answerButton2.getText().toString().equals(qA.peek().correctAnswer)){
 
                     answerButton2.getLabel().setColor(Color.GREEN);
                     answerButton1.getLabel().setColor(Color.CLEAR);
                     answerButton4.getLabel().setColor(Color.CLEAR);
                 }
-                if(answerButton4.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+                if(answerButton4.getText().toString().equals(qA.peek().correctAnswer)){
 
                     answerButton4.getLabel().setColor(Color.GREEN);
                     answerButton1.getLabel().setColor(Color.CLEAR);
@@ -793,7 +790,7 @@ public class FightScreen extends BaseScreen {
     private void caseOfAnswerButton4(boolean isAnswerButton4Pushed){
         if(isAnswerButton4Pushed){
 
-            if(answerButton4.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+            if(answerButton4.getText().toString().equals(qA.peek().correctAnswer)){
 
                 answerButton4.getLabel().setColor(Color.GREEN);
                 answerButton1.getLabel().setColor(Color.CLEAR);
@@ -803,19 +800,19 @@ public class FightScreen extends BaseScreen {
             }else{
 
                 answerButton4.getLabel().setColor(Color.RED);
-                if(answerButton1.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+                if(answerButton1.getText().toString().equals(qA.peek().correctAnswer)){
 
                     answerButton1.getLabel().setColor(Color.GREEN);
                     answerButton2.getLabel().setColor(Color.CLEAR);
                     answerButton3.getLabel().setColor(Color.CLEAR);
                 }
-                if(answerButton2.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+                if(answerButton2.getText().toString().equals(qA.peek().correctAnswer)){
 
                     answerButton2.getLabel().setColor(Color.GREEN);
                     answerButton1.getLabel().setColor(Color.CLEAR);
                     answerButton3.getLabel().setColor(Color.CLEAR);
                 }
-                if(answerButton3.getText().toString().equals(topics.get(randomInt).peek().correctAnswer)){
+                if(answerButton3.getText().toString().equals(qA.peek().correctAnswer)){
 
                     answerButton3.getLabel().setColor(Color.GREEN);
                     answerButton1.getLabel().setColor(Color.CLEAR);
@@ -831,8 +828,8 @@ public class FightScreen extends BaseScreen {
     private void deleteTrivia(long startTime2){
 
         currentTime2=System.currentTimeMillis();
-        if((currentTime2-startTime2)>4000){
 
+        if((currentTime2-startTime2)>4000){
             isAnswerButton1Pushed=false;
             isAnswerButton2Pushed=false;
             isAnswerButton3Pushed=false;
@@ -849,20 +846,20 @@ public class FightScreen extends BaseScreen {
             answerButton3.getLabel().setColor(Color.WHITE);
             answerButton4.getLabel().setColor(Color.WHITE);
 
-            topics.get(randomInt).pop();
+            qA.pop();
 
             randomInt=MathUtils.random(0,5);
 
-//            if(!topics.get(randomInt).empty()){
+//            if(!qA.get(randomInt).empty()){
 
-                questionBox.setText(topics.get(randomInt).peek().question);
+                questionBox.setText(qA.peek().question);
 
                 answers.clear();
 
-                answers.add(topics.get(randomInt).peek().correctAnswer);
-                answers.add(topics.get(randomInt).peek().wrongAnswer1);
-                answers.add(topics.get(randomInt).peek().wrongAnswer2);
-                answers.add(topics.get(randomInt).peek().wrongAnswer3);
+                answers.add(qA.peek().correctAnswer);
+                answers.add(qA.peek().wrongAnswer1);
+                answers.add(qA.peek().wrongAnswer2);
+                answers.add(qA.peek().wrongAnswer3);
 
 //            }
 
@@ -890,24 +887,21 @@ public class FightScreen extends BaseScreen {
 
     }
 
-    private boolean stateOfAnswer(boolean isAnswerButton1Pushed,boolean isAnswerButton2Pushed, boolean isAnswerButton3Pushed,boolean isAnswerButton4Pushed){
+    private void stateOfAnswer(boolean isAnswerButton1Pushed,boolean isAnswerButton2Pushed, boolean isAnswerButton3Pushed,boolean isAnswerButton4Pushed){
 
-        if((isAnswerButton1Pushed && answerButton1.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer))
-                || (isAnswerButton2Pushed && answerButton2.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer))
-                || (isAnswerButton3Pushed && answerButton3.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer))
-                || (isAnswerButton4Pushed && answerButton4.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer))){
-//            System.out.println("Correct");
+        if((isAnswerButton1Pushed && answerButton1.getLabel().getText().toString().equals(qA.peek().correctAnswer))
+                || (isAnswerButton2Pushed && answerButton2.getLabel().getText().toString().equals(qA.peek().correctAnswer))
+                || (isAnswerButton3Pushed && answerButton3.getLabel().getText().toString().equals(qA.peek().correctAnswer))
+                || (isAnswerButton4Pushed && answerButton4.getLabel().getText().toString().equals(qA.peek().correctAnswer))){
                     isCorrectAnswer=true;
 
-        }else if((isAnswerButton1Pushed && !(answerButton1.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer)))
-                || (isAnswerButton2Pushed && !(answerButton2.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer)))
-                || (isAnswerButton3Pushed && !(answerButton3.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer)))
-                || (isAnswerButton4Pushed && !(answerButton4.getLabel().getText().toString().equals(topics.get(randomInt).peek().correctAnswer)))){
-//            System.out.println("UnCorrect");
+        }else if((isAnswerButton1Pushed && !(answerButton1.getLabel().getText().toString().equals(qA.peek().correctAnswer)))
+                || (isAnswerButton2Pushed && !(answerButton2.getLabel().getText().toString().equals(qA.peek().correctAnswer)))
+                || (isAnswerButton3Pushed && !(answerButton3.getLabel().getText().toString().equals(qA.peek().correctAnswer)))
+                || (isAnswerButton4Pushed && !(answerButton4.getLabel().getText().toString().equals(qA.peek().correctAnswer)))){
                     isCorrectAnswer=false;
 
         }
 
-        return isCorrectAnswer;
     }
 }

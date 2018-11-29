@@ -26,11 +26,15 @@ public class ImportQandA {
                 this.wrongAnswer3 = wrongAnswer3;
     }
 
+    /**
+     *
+     * @param stack
+     * @param data
+     */
     public static void filler(Stack<ImportQandA> stack, File data) { //throws FileNotFoundException {
         String question, answer, wrongOne, wrongTwo, wrongThree;
         question = answer = wrongOne = wrongTwo = wrongThree = null;
         int i = 0;
-
         try {
             Scanner dataReader = new Scanner(data);
             while (dataReader.hasNextLine()) {

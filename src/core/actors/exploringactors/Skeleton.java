@@ -35,6 +35,7 @@ public class Skeleton extends BaseActor
         float frameDuration = 0.18f;
         TextureRegion[][] temp = TextureRegion.split(texture, frameWidth, frameHeight);
         Array<TextureRegion> textureArray = new Array<TextureRegion>();
+
         for (int c = 0; c < cols; c++)
             textureArray.add( temp[0][c] );
         south = new com.badlogic.gdx.graphics.g2d.Animation(frameDuration, textureArray, com.badlogic.gdx.graphics.g2d.Animation.PlayMode.LOOP_PINGPONG);
@@ -53,8 +54,9 @@ public class Skeleton extends BaseActor
         setAnimation(south);
         facingAngle = 270;
         setBoundaryPolygon(8);
-        setScale(2);
         boundToWorld();
+
+        setScale(2);
         setSpeed(MathUtils.random(80,110));
         setMotionAngle( MathUtils.random(0,360));
     }
