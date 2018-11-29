@@ -485,6 +485,7 @@ public class FightScreen extends BaseScreen {
             Collections.shuffle(fightingTurn);
             turn ++; // not been used, maybe we can put a Turn number on screen.
         }
+
         for (Fighter f : aliveFighters){
             f.updateHPBar();
             f.updateNamePlate();
