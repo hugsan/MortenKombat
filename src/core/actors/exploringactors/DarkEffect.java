@@ -4,7 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import core.framework.BaseActor;
 
 /**
- * This is a black blur that follows the hero in the underground maps.
+ * This is a black blur that follows untop the hero in the underground maps.
  * It should limit the line of sight and make the maze more difficult to navigate.
  */
 

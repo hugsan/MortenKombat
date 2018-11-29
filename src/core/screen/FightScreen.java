@@ -23,15 +23,13 @@ import core.framework.BaseGame;
 
 import java.io.FileNotFoundException;
 
-
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
 
 
 public class FightScreen extends BaseScreen {
-    LevelScreen previousMap;
+    private LevelScreen previousMap;
     Champion championOne;
     Champion championTwo;
     Champion championThree;
@@ -654,11 +652,20 @@ public class FightScreen extends BaseScreen {
     //method to initialize the HP. if the HP of the heroes are 666 that means that is entering the first time in the
     //fighting screen and does not need to import any HP.
     private void importHP(){
-        if (championOneHP != 666 && championTwoHP != 666 && championThreeHP != 666){
+        if (championOneHP < 666 && championTwoHP < 666 && championThreeHP < 666){
             championOne.setHP(championOneHP);
             championTwo.setHP(championTwoHP);
             championThree.setHP(championThreeHP);
+        } else {
+            championOne.setHP(championOne.getMaxHP());
+            championTwo.setHP(championTwo.getMaxHP());
+            championThree.setHP(championThree.getMaxHP());
         }
+    }
+    public static void medicHeal() {
+        championOneHP = 777;
+        championTwoHP = 777;
+        championThreeHP = 777;
     }
 
     private void setAnswerButton(TextButton answerButton,String answer,float x,float y,float width){

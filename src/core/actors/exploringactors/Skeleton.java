@@ -12,7 +12,7 @@ import core.framework.BaseActor;
 /**
  * Class for the skeleton actors in the maze.
  * It should walk in a random direction until it hits a wall, then chance to a new random direction.
- * When the Hero hit a skeleton start the FightScreen.
+ * When the Hero hit a skeleton it starts the FightScreen.
  */
 
 public class Skeleton extends BaseActor

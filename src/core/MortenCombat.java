@@ -1,7 +1,5 @@
 package core;
-/**
- *
- */
+
 import core.framework.BaseGame;
 import core.screen.LevelScreen;
 import core.screen.LoadingScreen;

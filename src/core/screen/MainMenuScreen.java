@@ -13,8 +13,13 @@ import core.framework.BaseActor;
 import core.framework.BaseScreen;
 import java.io.FileNotFoundException;
 
+/**
+ * This is the main menu class. It is the first screen in the game,
+ * it consist of 3 buttons lead to other menus or exiting the game.
+ * It also contains the menu music that will play during all the menus, and the volume for all music in the game.
+ */
+
 public class MainMenuScreen extends BaseScreen{
-    private LevelScreen playableMap;
     private static Music menuMusic;
 
     public MainMenuScreen() throws FileNotFoundException {
@@ -129,13 +134,12 @@ public class MainMenuScreen extends BaseScreen{
     }
 
     //abstract method from BaseScreen need to be declared in our class.
-    public void update(float dt) {
-    }
+    public void update(float dt) { }
 
     /**
      * Method that increases 5% the music of our game
       */
-    protected static void volumeUp(){
+    protected static void musicVolumeUp(){
         MortenCombat.volume = MortenCombat.volume + 0.05f;
         if ( MortenCombat.volume > 0.5)
             MortenCombat.volume = 0.5f;
@@ -145,7 +149,7 @@ public class MainMenuScreen extends BaseScreen{
     /**
      * Method that decreases 5% the music of our game
      */
-    protected static void volumeDown() {
+    protected static void musicVolumeDown() {
         MortenCombat.volume = MortenCombat.volume - 0.05f;
         if (MortenCombat.volume < 0 )
             MortenCombat.volume = 0;

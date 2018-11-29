@@ -22,12 +22,9 @@ public class CharacterCard extends DragAndDropActor {
         super(x, y, s);
     }
 
-    public void act(float dt)
-    {
-        super.act(dt);
-    }
-
-    //check if the card is in the selection area, if it is clear the selection area for a new card.
+    /**
+     * Check if the card is in the selection area, if it is, we clear the selection area for a new card.
+     */
     public void onDragStart()
     {
         if ( hasSelectionArea() )
@@ -39,8 +36,11 @@ public class CharacterCard extends DragAndDropActor {
         }
     }
 
-    //check if there is a selection area, and if that selection area is valid. If we do we set up the selection area
-    //to full.
+    /**
+     * Check if there is a selection area beneath the card, and if that selection area is valid.
+     * If there is a area and it's empty fill it. Else move the card back to where it was picked up.
+     */
+
     public void onDrop()
     {
         if ( hasDropTarget() )
@@ -53,13 +53,15 @@ public class CharacterCard extends DragAndDropActor {
                 sa.setTargetable(false);
                 sa.setHeroNumber(fighterNumber);
             } else {
-                //if the card moves to a non valid selection area, throws the card back to original position.
                 moveToStart();
             }
         }
     }
 
-    //creates the card for our fighters.
+    /**
+     * Creates the card for our fighters, with art, number and type.
+     */
+
     public void createCard(int fighterNumber, int fighterType) {
 
         this.fighterNumber = fighterNumber;
@@ -85,6 +87,10 @@ public class CharacterCard extends DragAndDropActor {
         }
     }
 
+    public void act(float dt)
+    {
+        super.act(dt);
+    }
     private int getFighterType() {        return fighterType;    }
     private void setSelectionArea(SelectionArea sa)    {  selectionArea = sa;  }
     private SelectionArea getSelectionArea()    {  return selectionArea;  }
