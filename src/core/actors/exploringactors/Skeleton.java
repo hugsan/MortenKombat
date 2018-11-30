@@ -26,11 +26,11 @@ public class Skeleton extends BaseActor
     public Skeleton(float x, float y, Stage s)
     {
         super(x,y,s);
-        String fileName = "assets/img/Skeleton.png";
-        int rows = 4;
-        int cols = 4;
+        String fileName = "assets/img/Goblin.png";
+        int rows = 5;
+        int cols = 11;
         Texture texture = new Texture(Gdx.files.internal(fileName), true);
-        int frameWidth = texture.getWidth() / cols;
+        int frameWidth = texture.getWidth() /cols;
         int frameHeight = texture.getHeight() / rows;
         float frameDuration = 0.18f;
         TextureRegion[][] temp = TextureRegion.split(texture, frameWidth, frameHeight);
@@ -56,7 +56,7 @@ public class Skeleton extends BaseActor
         setBoundaryPolygon(8);
         boundToWorld();
 
-        setScale(2);
+        setScale(1.3f);
         setSpeed(MathUtils.random(80,110));
         setMotionAngle( MathUtils.random(0,360));
     }

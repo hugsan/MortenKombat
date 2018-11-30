@@ -225,7 +225,7 @@ public class FightScreen extends BaseScreen {
                             return false;
                         }
                         //if you dont put this line, right click would also trigger the spells. and we only
-                        //want to trigget the spells with left mouse click.
+                        //want to trigger the spells with left mouse click.
                         if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT))
                             return false;
                         if (!aliveFighters.contains(o.getTarget())){

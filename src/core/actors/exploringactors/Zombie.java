@@ -53,7 +53,7 @@ public class Zombie extends BaseActor
         setAnimation(south);
         facingAngle = 270;
         setBoundaryPolygon(8);
-        setScale(1.5f);
+        setScale(1.3f);
 
         boundToWorld();
         setSpeed(MathUtils.random(60,90));
