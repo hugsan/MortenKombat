@@ -325,19 +325,19 @@ public class FightScreen extends BaseScreen {
         //next column for abilities and items.
         uiTable.row ( );
         uiTable.add ( ).width ( 25 );
-        uiTable.add ( championThree.getFirstButton ()).width ( 115 ); // ability 1 section for hero 3
-        uiTable.add ( championTwo.getFirstButton ()).width ( 115 ); // ability 1 section for hero 2
-        uiTable.add ( championOne.getFirstButton ( ) ).width ( 115 );// ability 1 section for hero 1
+        uiTable.add ( championThree.getFirstButton ()).height( 50 ).width ( 115 ); // ability 1 section for hero 3
+        uiTable.add ( championTwo.getFirstButton ()).height( 50 ).width ( 115 ); // ability 1 section for hero 2
+        uiTable.add ( championOne.getFirstButton ()).height( 50 ).width ( 115 );// ability 1 section for hero 1
         uiTable.row ( );
         uiTable.add ( ).width( 25 );
-        uiTable.add ( championThree.getSecondButton ( ) ).width ( 115 ); // ability 2 section for hero 3
-        uiTable.add ( championTwo.getSecondButton () ).width ( 115 ); // ability 2 section for hero 2
-        uiTable.add ( championOne.getSecondButton ( ) ).width ( 115 );// ability 2 section for hero 1
+        uiTable.add ( championThree.getSecondButton ()).height( 50 ).width ( 115 ); // ability 2 section for hero 3
+        uiTable.add ( championTwo.getSecondButton ()).height( 50 ).width ( 115 ); // ability 2 section for hero 2
+        uiTable.add ( championOne.getSecondButton ()).height( 50 ).width ( 115 );// ability 2 section for hero 1
         uiTable.row ( );
         uiTable.add ( ).width ( 25 );
-        uiTable.add ( championThree.getThirdButton ()).width ( 115 ); // ability 3 section for hero 3
-        uiTable.add ( championTwo.getThirdButton ()).width ( 115 ); // ability 3 section for hero 2
-        uiTable.add ( championOne.getThirdButton ( ) ).width ( 115 );// ability 3 section for hero 1
+        uiTable.add ( championThree.getThirdButton ()).height( 50 ).width ( 115 ); // ability 3 section for hero 3
+        uiTable.add ( championTwo.getThirdButton ()).height( 50 ).width ( 115 ); // ability 3 section for hero 2
+        uiTable.add ( championOne.getThirdButton ()).height( 50 ).width ( 115 );// ability 3 section for hero 1
 
 
         for (Fighter f : fightingTurn){
