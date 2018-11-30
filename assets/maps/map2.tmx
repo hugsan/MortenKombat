@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="153">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="165">
  <tileset firstgid="1" name="grass-tiles-2-small" tilewidth="32" tileheight="32" tilecount="72" columns="12">
   <image source="grass-tiles-2-small.png" width="384" height="192"/>
  </tileset>
@@ -1167,6 +1167,66 @@
   <object id="152" x="1888" y="127.5" width="32" height="65">
    <properties>
     <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="153" x="510" y="1930" width="52" height="40">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="154" x="870" y="1092" width="52" height="40">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="155" x="162" y="668" width="52" height="40">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="156" x="70" y="1046" width="52" height="40">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="157" x="1640" y="1452" width="52" height="40">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="158" x="1318" y="1542" width="52" height="40">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="159" x="462" y="268" width="52" height="40">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="160" x="676" y="1764" width="52" height="40">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="161" x="710" y="1212" width="52" height="40">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="162" x="1610" y="934" width="52" height="40">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="163" x="1346" y="780" width="52" height="40">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="164" x="548" y="1138" width="52" height="40">
+   <properties>
+    <property name="name" value="Zombie"/>
    </properties>
   </object>
  </objectgroup>
