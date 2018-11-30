@@ -38,6 +38,7 @@ public class Morten extends BaseActor{
             setBoundaryPolygon(8);
             boundToWorld();
 
+
         }
     public void act(float dt)
     {
