@@ -21,7 +21,6 @@ public abstract class Champion extends Fighter {
         //firstButton.setColor( Color.CYAN );
         firstButton.getLabel().setFontScale(0.4f);
         firstButton.getLabel().setWrap(true);
-        firstButton.setScale(0.4f);
 
         secondButton = new TextButton( "",BaseGame.textButtonStyle );
         //secondButton.setColor( Color.CYAN );
