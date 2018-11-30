@@ -82,6 +82,7 @@ public class LevelScreen extends BaseScreen {
         createMapObjects(tma, "Zombie");
         createMapObjects(tma, "Skeleton");
         createMapObjects(tma, "Medic"); // Heal
+        createMapObjects ( tma, "Morten" );
 
         //create the starting point for our hero.
         MapObject startPoint = tma.getRectangleList("Start").get(0);
@@ -147,6 +148,7 @@ public class LevelScreen extends BaseScreen {
         actorObjectInteraction("core.actors.exploringactors.Zombie");
         actorObjectInteraction("core.actors.exploringactors.Skeleton");
         actorObjectInteraction("core.actors.exploringactors.Medic");
+        actorObjectInteraction ( "core.actors.exploringactors.Morten" );
 
         //Checks if the current map is windy. if it is blows the hero every 1 sec.
         if (currentMapEffect.equals("wind")) {
@@ -210,6 +212,9 @@ public class LevelScreen extends BaseScreen {
                     break;
                 case "Medic" :
                     new Medic((float) props.get("x"), (float) props.get("y"), mainStage);
+                    break;
+                case "Morten" :
+                    new Morten ((float) props.get("x"), (float) props.get("y"), mainStage  );
                     break;
                 default:
                     System.out.println("Something went really wrong, contact ITCOM5");
@@ -292,6 +297,14 @@ public class LevelScreen extends BaseScreen {
                         FightScreen.medicHeal();
                         a.remove();
                         System.out.println("party healed");
+                    }
+                    break;
+                case "core.actors.exploringactors.Morten":
+                    if (hero.overlaps(a)) {
+                        musicStop();
+                        MortenCombat.setActiveScreen(new FightScreen(this));
+                        a.remove();
+                        System.out.println ("fight Morten" );
                     }
                     break;
 
