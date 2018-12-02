@@ -5,11 +5,19 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class MageOne extends SpellCaster {
 
+    public String spellOneName = "Mana Torrent";
+    public String spellTwoName = "Death Lance";
+    public String spellThreeName = "Flame Wave";
+
     public MageOne(Stage s){
         super(s);
         this.setFighterName("Dimitrova");
         this.setHP(150);
         this.setMaxHP(150);
+
+        setFirstButtonName(spellOneName);
+        setSecondButtonName(spellTwoName);
+        setThridButtonName(spellThreeName);
 
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Mage 1 Attack.png", 0.14f,1,5);
         iddle = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Mage 1 Idle.png", 0.14f, 1, 5);

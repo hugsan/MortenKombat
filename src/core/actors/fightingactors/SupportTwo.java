@@ -4,12 +4,20 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class SupportTwo extends SpellCaster {
+
+    public String spellOneName = "Swing";
+    public String spellTwoName = "Heal";
+    public String spellThreeName = "Radiant Heal";
+
     public SupportTwo(Stage s) {
         super(s);
         this.setFighterName("Onagi");
         this.setHP(125);
         this.setMaxHP(125);
 
+        setFirstButtonName(spellOneName);
+        setSecondButtonName(spellTwoName);
+        setThridButtonName(spellThreeName);
 
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight Sup Attack-min.png", 0.14f,1,10);
         iddle = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight Sup Iddle-min.png", 0.14f, 1, 10);

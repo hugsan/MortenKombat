@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="163">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="177">
  <tileset firstgid="1" name="grass-tiles-2-small" tilewidth="32" tileheight="32" tilecount="72" columns="12">
   <image source="grass-tiles-2-small.png" width="384" height="192"/>
  </tileset>
@@ -1256,6 +1256,76 @@
   <object id="162" x="265.5" y="1391" width="46.5" height="34.5">
    <properties>
     <property name="name" value="Solid"/>
+   </properties>
+  </object>
+  <object id="163" x="1551.52" y="1775.76">
+   <properties>
+    <property name="name" value="Bat"/>
+   </properties>
+  </object>
+  <object id="164" x="536.364" y="1572.73">
+   <properties>
+    <property name="name" value="Bat"/>
+   </properties>
+  </object>
+  <object id="165" x="248.485" y="1866.67">
+   <properties>
+    <property name="name" value="Bat"/>
+   </properties>
+  </object>
+  <object id="166" x="1545.45" y="1200">
+   <properties>
+    <property name="name" value="Bat"/>
+   </properties>
+  </object>
+  <object id="167" x="1884.85" y="1700">
+   <properties>
+    <property name="name" value="Bat"/>
+   </properties>
+  </object>
+  <object id="168" x="1051.52" y="669.697">
+   <properties>
+    <property name="name" value="Bat"/>
+   </properties>
+  </object>
+  <object id="169" x="1696.97" y="618.182">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="170" x="1909.09" y="275.758">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="171" x="1421.21" y="436.364">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="172" x="687.879" y="230.303">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="173" x="569.697" y="842.424">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="174" x="93.9394" y="1254.55">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="175" x="545.455" y="1081.82">
+   <properties>
+    <property name="name" value="Zombie"/>
+   </properties>
+  </object>
+  <object id="176" x="981.818" y="1266.67">
+   <properties>
+    <property name="name" value="Zombie"/>
    </properties>
   </object>
  </objectgroup>

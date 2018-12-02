@@ -6,6 +6,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 public class WarriorOne extends Champion {
 
+    public String spellOneName = "Light Strike";
+    public String spellTwoName = "Equalizer";
+    public String spellThreeName = "Execute";
+
     private Label manaBar;
 
     public WarriorOne(Stage s){
@@ -13,6 +17,10 @@ public class WarriorOne extends Champion {
         setFighterName("Pepe");
         setHP(200);
         setMaxHP(200);
+
+        setFirstButtonName(spellOneName);
+        setSecondButtonName(spellTwoName);
+        setThridButtonName(spellThreeName);
 
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight 1 Attack-min.png", 0.14f,1,7);
         iddle = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight 1 Iddle-min.png", 0.14f, 1, 7);

@@ -4,11 +4,20 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class SupportOne extends SpellCaster{
+
+    public String spellOneName = "Light Hit";
+    public String spellTwoName = "Lights Grace";
+    public String spellThreeName = "Holy Light";
+
     public SupportOne(Stage s){
         super(s);
         this.setFighterName("Nami");
         this.setHP(125);
         this.setMaxHP(125);
+
+        setFirstButtonName(spellOneName);
+        setSecondButtonName(spellTwoName);
+        setThridButtonName(spellThreeName);
 
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Robot Attack-min.png", 0.14f,1,8);
         iddle = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Robot Iddle-min.png", 0.14f, 1, 10);
