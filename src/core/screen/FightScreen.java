@@ -26,6 +26,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
+import java.util.stream.Stream;
 
 
 public class FightScreen extends BaseScreen {
@@ -61,8 +62,6 @@ public class FightScreen extends BaseScreen {
     private int triviaMustBeShown = -1;
     public Sound cantclick = Gdx.audio.newSound(Gdx.files.internal("assets/audio/sound/cantclick.mp3"));
 
-
-
     private DialogBox questionBox;
 
     private TextButton answerButton1;
@@ -81,20 +80,25 @@ public class FightScreen extends BaseScreen {
 
     private Stack<ImportQandA> qA;
     private ArrayList<String> answers;
+    private boolean criticalAttack = false;
 
     long startTime2;
     long currentTime2;
 
     static int randomInt=0;
 
+    private int triviaHasCheck = -1;
+    private boolean isTriviaAttack = false;
 
-    public FightScreen(LevelScreen prev) throws FileNotFoundException {
+    public static int amountOfEnemies;
+
+
+    public FightScreen(LevelScreen prev)  {
         super();
         previousMap = prev;
-
     }
 
-    public void initialize() throws FileNotFoundException {
+    public void initialize() {
 
         // Battle music
         battleMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/NoSurrender.mp3"));
@@ -130,14 +134,21 @@ public class FightScreen extends BaseScreen {
         champions.add(championTwo);
         champions.add(championThree);
 
-        enemyOne = new SkeletonFighter(mainStage);
-        enemyTwo = new ZombieFighter (mainStage);
-        enemyThree = new BatFighter (mainStage);
-
         enemies = new ArrayList<EnemyFighters>();
-        enemies.add(enemyOne);
-        enemies.add(enemyTwo);
-        enemies.add(enemyThree);
+
+        if (amountOfEnemies >= 1){
+            enemyOne = createRandomEnemy();
+            enemies.add(enemyOne);
+        }
+        if (amountOfEnemies >= 2){
+            enemyTwo = createRandomEnemy();
+            enemies.add(enemyTwo);
+        }
+        if (amountOfEnemies >= 3){
+            enemyThree = createRandomEnemy();
+            enemies.add(enemyThree);
+        }
+
 
         fightingTurn = new Stack<> ( );
         fightingTurn.addAll ( champions );
@@ -234,8 +245,17 @@ public class FightScreen extends BaseScreen {
                             return false;
                         }
                         //if the first condition is false, the second condition is never check and never executed
-                        if (firstAttack && abilityUser.attackOne((Fighter)o.getTarget ())) {
-                            abilitySuccess (abilityUser);
+                        if (firstAttack){
+                            if (!isTriviaAttack && abilityUser.attackOne((Fighter)o.getTarget ()))
+                                abilitySuccess(abilityUser);
+                            if (isTriviaAttack  && criticalAttack && abilityUser.attackOne((Fighter)o.getTarget ())){
+                                abilityUser.attackOne((Fighter)o.getTarget ());
+                                abilitySuccess(abilityUser);
+                            }
+                            if (isTriviaAttack  && !criticalAttack){
+                                abilityNotSuccess();
+                            }
+
                         }else if (  secondAttack && abilityUser.attackTwo ( (Fighter)o.getTarget () )){
                             abilitySuccess (abilityUser);
                         }else if (thirdAttack ){
@@ -285,9 +305,18 @@ public class FightScreen extends BaseScreen {
         championOne.getFighterNamePlate().setWrap(true);
         uiTable.add ( championOne.getFighterNamePlate() ).height( 20 ).width( 110 ); //hero 1 nameplate
         uiTable.add ( ).height( 20 ).width( 56 );
-        uiTable.add ( enemyOne.getFighterNamePlate() ).height( 20 ).width( 110 ); //enemy 1 nameplate
-        uiTable.add ( enemyTwo.getFighterNamePlate() ).height( 20 ).width( 110 ); //enemy 2 nameplate
-        uiTable.add ( enemyThree.getFighterNamePlate() ).height( 20 ).width( 110 ); // enemy 3 nameplate
+        if (enemyOne != null)
+            uiTable.add (  enemyOne.getFighterNamePlate() ).height( 20 ).width( 110 ); //enemy 1 nameplate
+        else
+            uiTable.add (   ).height( 20 ).width( 110 ); //enemy 1 nameplate
+        if (enemyTwo != null)
+            uiTable.add ( enemyTwo.getFighterNamePlate() ).height( 20 ).width( 110 ); //enemy 2 nameplate
+        else
+            uiTable.add (  ).height( 20 ).width( 110 ); //enemy 2 nameplate
+        if (enemyThree != null)
+            uiTable.add ( enemyThree.getFighterNamePlate() ).height( 20 ).width( 110 ); // enemy 3 nameplate
+        else
+            uiTable.add (  ).height( 20 ).width( 110 ); // enemy 3 nameplate
         uiTable.add ( ).height( 20 ).width( 25 );
         uiTable.row ();
         //HPBar row
@@ -296,9 +325,18 @@ public class FightScreen extends BaseScreen {
         uiTable.add ( championTwo.getHPBar() ).height( 20 ).width( 110 ); //hero 2 hpbar
         uiTable.add ( championOne.getHPBar() ).height( 20 ).width( 110 ); //hero 1 hpbar
         uiTable.add ( ).height( 20 ).width( 56 );
-        uiTable.add ( enemyOne.getHPBar() ).height( 20 ).width( 110 ); //enemy 1 hpbar
-        uiTable.add ( enemyTwo.getHPBar() ).height( 20 ).width( 110 ); //enemy 2 hpbar
-        uiTable.add ( enemyThree.getHPBar() ).height( 20 ).width( 110 ); // enemy 3 hpbar
+        if (enemyOne != null)
+            uiTable.add (  enemyOne.getHPBar() ).height( 20 ).width( 110 ); //enemy 1 nameplate
+        else
+            uiTable.add (   ).height( 20 ).width( 110 ); //enemy 1 nameplate
+        if (enemyTwo != null)
+            uiTable.add ( enemyTwo.getHPBar() ).height( 20 ).width( 110 ); //enemy 2 nameplate
+        else
+            uiTable.add (  ).height( 20 ).width( 110 ); //enemy 2 nameplate
+        if (enemyThree != null)
+            uiTable.add ( enemyThree.getHPBar() ).height( 20 ).width( 110 ); // enemy 3 nameplate
+        else
+            uiTable.add (  ).height( 20 ).width( 110 ); // enemy 3 nameplate
         uiTable.add ( ).height( 20 ).width( 25 );
         uiTable.row ();
         //ManaBar row
@@ -382,7 +420,7 @@ public class FightScreen extends BaseScreen {
         setAnswerButton(answerButton3,answers.get(2),400,275,300);
         setAnswerButton(answerButton4,answers.get(3),400,175,300);
 
-        setAnswerButton(question,"???",500,500,100);
+       // setAnswerButton(question,"???",500,500,100);
         question.getLabel().setColor(Color.YELLOW);
         question.setVisible(true);
 
@@ -469,13 +507,8 @@ public class FightScreen extends BaseScreen {
     }
 
     public void update(float dt) {
-        //if the turn is over (means there is no more object in the stack), we create a new turn by feeding the stack
-        //with alivefighter Arraylist
-        caseOfAnswerButton1(isAnswerButton1Pushed);
-        caseOfAnswerButton2(isAnswerButton2Pushed);
-        caseOfAnswerButton3(isAnswerButton3Pushed);
-        caseOfAnswerButton4(isAnswerButton4Pushed);
 
+        //this has to be at the beginning of any fightingTurn checks. otherwise you might create a EmptyStackException
         if (fightingTurn.isEmpty ()){
             fightingTurn.addAll(aliveFighters);
             for (Fighter sC : fightingTurn){ //regenerates mana at the end of each turn.
@@ -485,13 +518,53 @@ public class FightScreen extends BaseScreen {
             Collections.shuffle(fightingTurn);
             turn ++; // not been used, maybe we can put a Turn number on screen.
         }
+        //if the turn is over (means there is no more object in the stack), we create a new turn by feeding the stack
+        //with alivefighter Arraylist
+        caseOfAnswerButton1(isAnswerButton1Pushed);
+        caseOfAnswerButton2(isAnswerButton2Pushed);
+        caseOfAnswerButton3(isAnswerButton3Pushed);
+        caseOfAnswerButton4(isAnswerButton4Pushed);
 
+
+        if (triviaHasCheck <= 0 && fightingTurn.peek() instanceof Champion ){
+            if (MathUtils.random(0,9)>=4 && triviaHasCheck == -1){//20% chance of activating the question for our champions
+                triviaHasCheck = 0 ;
+                showTrivia();
+                isTriviaAttack = true;
+            }else if (triviaHasCheck == -1){
+                triviaHasCheck = 0;
+                isTriviaAttack = false;
+            }
+            if (isAnswerButton1Pushed || isAnswerButton2Pushed || isAnswerButton3Pushed || isAnswerButton4Pushed){
+                stateOfAnswer(isAnswerButton1Pushed,isAnswerButton2Pushed,isAnswerButton3Pushed,isAnswerButton4Pushed);
+                criticalAttack = isCorrectAnswer;
+                triviaHasCheck = 1;
+            }
+        }
         for (Fighter f : aliveFighters){
             f.updateHPBar();
             f.updateNamePlate();
             f.updateManaBar();
             //updating to green when the actor has the turn
-            fightingTurn.peek().updateNameColor();
+
+        }
+        for (Fighter f : aliveFighters){
+            if (f.getHP ()<= 0){
+                //checking that we only make the dead animation once
+                if (aliveFighters.contains(f)){
+                    f.setAnimation(f.dead);
+                    f.sizeBy(70);
+                    deadAnimationStart = System.currentTimeMillis();
+                    killHim = true;
+                    killingTarget = f;
+                }
+                aliveFighters.remove ( f );
+                fightingTurn.remove ( f );
+            }
+            if (f.getAux () != f.getHP ()){
+                f.getHPBar().addAction( Actions.repeat ( 3, Actions.sequence (Actions.fadeOut (0.20f),Actions.fadeIn ( 0.20f )) ) );
+                f.setAux ( f.getHP () ); }
+
         }
 
         //makes the attack animation and reset to idle after
@@ -583,6 +656,8 @@ public class FightScreen extends BaseScreen {
         for (Fighter f : aliveFighters){
             if (f instanceof EnemyFighters)
                 isAllEnemyDead = false;
+            if (!fightingTurn.isEmpty())
+                fightingTurn.peek().updateNameColor();
         }
         if (isAllEnemyDead){//if all enemys are dead go back to exploring map
             //implement HP and MANA exporting of our characters before leaving the screen
@@ -594,30 +669,11 @@ public class FightScreen extends BaseScreen {
             MortenCombat.setActiveScreen(previousMap);
         }
         //checking if we have killed any fighters
-        for (Fighter f : aliveFighters){
-            if (f.getHP ()<= 0){
-                //checking that we only make the dead animation once
-                if (aliveFighters.contains(f)){
-                    f.setAnimation(f.dead);
-                    f.sizeBy(70);
-                    deadAnimationStart = System.currentTimeMillis();
-                    killHim = true;
-                    killingTarget = f;
-                }
-                aliveFighters.remove ( f );
-                fightingTurn.remove ( f );
-            }
-            if (f.getAux () != f.getHP ()){
-                f.getHPBar().addAction( Actions.repeat ( 3, Actions.sequence (Actions.fadeOut (0.20f),Actions.fadeIn ( 0.20f )) ) );
-                f.setAux ( f.getHP () ); }
 
-        }
         if (killHim && (System.currentTimeMillis() - deadAnimationStart)/1000 > killingTarget.dead.getAnimationDuration() ){
             killingTarget.dead.setPlayMode(Animation.PlayMode.NORMAL);
             killHim = false;
         }
-
-
 
     }
 
@@ -630,12 +686,15 @@ public class FightScreen extends BaseScreen {
     }
     //method that is been used every ability that has been done by our Champions
     private void abilitySuccess(Champion user){
-        activateDefaultMouse ();
-        fightingTurn.pop();
-
-        startTime = System.currentTimeMillis();
         attacker = user;
+        abilityNotSuccess();
+    }
+    private void abilityNotSuccess(){
+        startTime = System.currentTimeMillis();
+        activateDefaultMouse();
+        fightingTurn.pop();
         firstAttack = secondAttack = thirdAttack = false;
+        triviaHasCheck = -1;
     }
     private void theEnemyAttacks(EnemyFighters enemy,Fighter fighter){
         int chanceAbility = MathUtils.random(0,100);
@@ -878,7 +937,7 @@ public class FightScreen extends BaseScreen {
             answerButton3.getLabel().setText(answers.get(2));
             answerButton4.getLabel().setText(answers.get(3));
 
-            uiTable.setVisible(true);
+            //uiTable.setVisible(true);
 
         }
     }
@@ -891,7 +950,7 @@ public class FightScreen extends BaseScreen {
         answerButton4.setVisible(true);
         questionBox.setVisible(true);
 
-        uiTable.setVisible(false);
+        //uiTable.setVisible(false);
 
     }
 
@@ -910,6 +969,17 @@ public class FightScreen extends BaseScreen {
                     isCorrectAnswer=false;
 
         }
+
+    }
+
+    private EnemyFighters createRandomEnemy(){
+        int random = MathUtils.random(1,3);
+        if (random == 1)
+            return new SkeletonFighter(mainStage);
+        else if (random == 2)
+            return new ZombieFighter(mainStage);
+        else
+            return new BatFighter(mainStage);
 
     }
 }

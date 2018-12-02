@@ -17,7 +17,7 @@ public class LoadingScreen extends BaseScreen {
     private double startTime;
     private double currentTime;
 
-    public LoadingScreen (LevelScreen nextScreen) throws FileNotFoundException {
+    public LoadingScreen (LevelScreen nextScreen){
         super();
         this.nextScreen = nextScreen;
         startTime = System.currentTimeMillis();

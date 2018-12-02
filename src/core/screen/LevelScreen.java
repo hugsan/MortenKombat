@@ -36,7 +36,7 @@ public class LevelScreen extends BaseScreen {
      * Constructor for LevelScreen. Initialize the map withprevious map
      * and next map to null
      */
-    public LevelScreen() throws FileNotFoundException { this.previousMap = null; }
+    public LevelScreen()  { this.previousMap = null; }
 
     /**
      * Constructor for LevelScreen. Initialize the map with previous map object. Nextmaps are
@@ -46,7 +46,7 @@ public class LevelScreen extends BaseScreen {
      *
      * @param previousMap LevelScreen object, where the current map is connected to.
      */
-    public LevelScreen(LevelScreen previousMap) throws FileNotFoundException {
+    public LevelScreen(LevelScreen previousMap) {
         if (previousMap.getNextMap() != null)
             previousMap.setNextMap2(this);
         else previousMap.setNextMap(this);
@@ -114,7 +114,7 @@ public class LevelScreen extends BaseScreen {
 
     }
 
-    public void update(float dt) throws FileNotFoundException {
+    public void update(float dt)  {
         // hero movement controls
         if (Gdx.input.isKeyPressed(Keys.LEFT))
             hero.accelerateAtAngle(180);
@@ -222,7 +222,7 @@ public class LevelScreen extends BaseScreen {
      *
      * @param className Name of the class that we want to check of any interaction.
      */
-    private void actorObjectInteraction(String className) throws FileNotFoundException {
+    private void actorObjectInteraction(String className){
         for (BaseActor a : BaseActor.getList(mainStage, className)) {
 
             switch (className) {
@@ -241,6 +241,22 @@ public class LevelScreen extends BaseScreen {
                     if (a.overlaps(hero)) {
 
                         musicStop();
+                        FightScreen.amountOfEnemies = 1;
+                        MortenCombat.setActiveScreen(new FightScreen(this));
+                        a.remove();
+                    }
+                    break;
+                    case "core.actors.exploringactors.Skeleton":
+                    for (BaseActor s : BaseActor.getList(mainStage, "core.actors.exploringactors.Solid")) {
+                        if (a.overlaps(s)) {
+                            a.preventOverlap(s);
+                            a.setMotionAngle(MathUtils.random(0, 360));
+                        }
+                    }
+                    if (a.overlaps(hero)) {
+
+                        musicStop();
+                        FightScreen.amountOfEnemies = 2;
                         MortenCombat.setActiveScreen(new FightScreen(this));
                         a.remove();
                     }
@@ -255,6 +271,7 @@ public class LevelScreen extends BaseScreen {
                     if (a.overlaps(hero)) {
 
                         musicStop();
+                        FightScreen.amountOfEnemies = 3;
                         MortenCombat.setActiveScreen(new FightScreen(this));
                         a.remove();
                     }

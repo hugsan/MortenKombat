@@ -21,7 +21,7 @@ public abstract class BaseScreen implements Screen, InputProcessor
     protected Table uiTable;
     protected boolean paused = false;
 
-    public BaseScreen() throws FileNotFoundException {
+    public BaseScreen() {
         mainStage = new Stage();
         uiStage = new Stage();
         qaStage = new Stage();
@@ -36,9 +36,9 @@ public abstract class BaseScreen implements Screen, InputProcessor
 
     }
 
-    public abstract void initialize() throws FileNotFoundException;
+    public abstract void initialize();
 
-    public abstract void update(float dt) throws FileNotFoundException;
+    public abstract void update(float dt);
 
     // Gameloop:
     // (1) process input (discrete handled by listener; continuous in update)
@@ -57,11 +57,9 @@ public abstract class BaseScreen implements Screen, InputProcessor
             mainStage.act(dt);
 
             // defined by user
-            try {
+
                 update(dt);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+
 
             // clear the screen
             Gdx.gl.glClearColor(0,0,0,1);

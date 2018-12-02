@@ -10,7 +10,7 @@ public class WarriorOne extends Champion {
 
     public WarriorOne(Stage s){
         super(s);
-        setFighterName("Dominiqo Vespucci             ");
+        setFighterName("Pepe");
         setHP(200);
         setMaxHP(200);
 

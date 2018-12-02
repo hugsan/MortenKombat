@@ -38,17 +38,9 @@ public class MortenCombat extends BaseGame {
             LevelScreen.mapName = map.getTmx();
             LevelScreen.mapEffect = map.getMapEffect();
             if (map.getLevel() == 0){
-                try {
                     layout[i] = new LevelScreen();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
             }else {
-                try {
                     layout[i] = new LevelScreen(layout[map.getLevel() -1]);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
             }
             i++;
         }

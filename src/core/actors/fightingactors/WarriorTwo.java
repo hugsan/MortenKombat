@@ -47,9 +47,11 @@ public class WarriorTwo extends Champion{
     @Override
     public boolean attackTwo(Fighter fighter) {
         if (fighter instanceof EnemyFighters){
+            int damage = MathUtils.random(22,40);
             if (this.getHP() <= 100){
+                fighter.setHP(fighter.getHP() - damage);
             }
-        fighter.setHP(fighter.getHP() - MathUtils.random(22,40));
+        fighter.setHP(fighter.getHP() - damage);
         return true;}
         cantclick.play();
         return false;
