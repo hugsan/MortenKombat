@@ -69,7 +69,7 @@ public class FightScreen extends BaseScreen {
     private TextButton answerButton3;
     private TextButton answerButton4;
 
-    private TextButton question;
+    //private TextButton question;
 
     boolean isAnswerButton1Pushed=false;
     boolean isAnswerButton2Pushed=false;
@@ -404,7 +404,7 @@ public class FightScreen extends BaseScreen {
         answerButton3= new TextButton("",BaseGame.textButtonStyle);
         answerButton4= new TextButton("",BaseGame.textButtonStyle);
 
-        question= new TextButton("",BaseGame.textButtonStyle);
+      //  question= new TextButton("",BaseGame.textButtonStyle);
 
         answers= new ArrayList<String>();
 
@@ -420,7 +420,7 @@ public class FightScreen extends BaseScreen {
         setAnswerButton(answerButton3,answers.get(2),400,275,300);
         setAnswerButton(answerButton4,answers.get(3),400,175,300);
 
-       // setAnswerButton(question,"???",500,500,100);
+       /* setAnswerButton(question,"???",500,500,100);
         question.getLabel().setColor(Color.YELLOW);
         question.setVisible(true);
 
@@ -436,7 +436,7 @@ public class FightScreen extends BaseScreen {
 
                     return true;
                 }
-        );
+        );*/
 
         answerButton1.addListener(
                 (Event e) ->
@@ -502,7 +502,7 @@ public class FightScreen extends BaseScreen {
         qaStage.addActor(answerButton2);
         qaStage.addActor(answerButton3);
         qaStage.addActor(answerButton4);
-        qaStage.addActor(question);
+        //qaStage.addActor(question);
 
     }
 

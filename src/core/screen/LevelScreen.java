@@ -281,21 +281,6 @@ public class LevelScreen extends BaseScreen {
                         a.remove();
                     }
                     break;
-                case "core.actors.exploringactors.Skeleton":
-                    for (BaseActor s : BaseActor.getList(mainStage, "core.actors.exploringactors.Solid")) {
-                        if (a.overlaps(s)) {
-                            a.preventOverlap(s);
-                            a.setMotionAngle(MathUtils.random(0, 360));
-                        }
-
-                    }
-                    if (a.overlaps(hero)) {
-
-                        musicStop();
-                        MortenCombat.setActiveScreen(new FightScreen(this));
-                        a.remove();
-                    }
-                    break;
                 case "core.actors.exploringactors.Exit":
                     if (hero.overlaps(a)) {
                         hero.setPosition(getX(), getY());
