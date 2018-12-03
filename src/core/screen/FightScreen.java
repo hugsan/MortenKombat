@@ -276,31 +276,52 @@ public class FightScreen extends BaseScreen {
                                 abilityUser.attackOne((Fighter)o.getTarget ());
                                 abilitySuccess(abilityUser);
                             }
-                            /*if (isTriviaAttack  && !criticalAttack){
-                                abilityNotSuccess();
-                            }*/
 
-                        }else if (  secondAttack && abilityUser.attackTwo ( (Fighter)o.getTarget () )){
-                            abilitySuccess (abilityUser);
+
+                        }else if (  secondAttack ){
+                            if (!isTriviaAttack && abilityUser.attackTwo ( (Fighter)o.getTarget () ))
+                                abilitySuccess(abilityUser);
+                            if (isTriviaAttack  && criticalAttack && abilityUser.attackTwo((Fighter)o.getTarget ())){
+                                abilityUser.attackTwo((Fighter)o.getTarget ());
+                                abilitySuccess(abilityUser);
+                            }
+
                         }else if (thirdAttack ){
                             if (o.getTarget() instanceof Champion){
-                                if(abilityUser.attackThree(championOne, championTwo, championThree)) {
+                                if(!isTriviaAttack && abilityUser.attackThree(championOne, championTwo, championThree)) {
                                     abilitySuccess (abilityUser);
+                                }
+                                if (isTriviaAttack && criticalAttack && abilityUser.attackThree(championOne, championTwo, championThree)){
+                                    abilityUser.attackThree(championOne, championTwo, championThree);
+                                    abilitySuccess(abilityUser);
+
                                 }
                                 //when clicking make sure that the target is the first target.
                             }else if (o.getTarget () instanceof EnemyFighters){
                                 if (o.getTarget () == enemyOne )
-                                    if (abilityUser.attackThree(enemyOne,enemyTwo,enemyThree)){
+                                    if (!isTriviaAttack && abilityUser.attackThree(enemyOne,enemyTwo,enemyThree)){
                                         abilitySuccess (abilityUser);
+                                    }
+                                    if (isTriviaAttack  && criticalAttack && abilityUser.attackThree(enemyOne,enemyTwo,enemyThree)){
+                                        abilityUser.attackThree(enemyOne,enemyTwo,enemyThree);
+                                        abilitySuccess(abilityUser);
                                     }
                                 if (o.getTarget () == enemyTwo )
-                                    if (abilityUser.attackThree(enemyTwo,enemyOne,enemyThree)){
+                                    if (!isTriviaAttack && abilityUser.attackThree(enemyTwo,enemyOne,enemyThree)){
                                         abilitySuccess (abilityUser);
                                     }
+                                if (isTriviaAttack  && criticalAttack && abilityUser.attackThree(enemyTwo,enemyOne,enemyThree)){
+                                    abilityUser.attackThree(enemyTwo,enemyOne,enemyThree);
+                                    abilitySuccess(abilityUser);
+                                }
                                 if (o.getTarget () == enemyThree )
-                                    if (abilityUser.attackThree(enemyThree,enemyOne,enemyTwo)){
+                                    if (!isTriviaAttack && abilityUser.attackThree(enemyThree,enemyTwo,enemyOne)){
                                         abilitySuccess (abilityUser);
                                     }
+                                if (isTriviaAttack  && criticalAttack && abilityUser.attackThree(enemyThree,enemyTwo,enemyOne)){
+                                    abilityUser.attackThree(enemyThree,enemyTwo,enemyOne);
+                                    abilitySuccess(abilityUser);
+                                }
                             }
                         }
                         else return false;
