@@ -64,11 +64,9 @@ public class MainMenuScreen extends BaseScreen{
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
                     SelectionScreen charSelect = null;
-                    try {
-                        charSelect = new SelectionScreen(this);
-                    } catch (FileNotFoundException e1) {
-                        e1.printStackTrace();
-                    }
+
+                    charSelect = new SelectionScreen(this);
+
                     MortenCombat.setActiveScreen(charSelect);
                     return true;
                 }
@@ -94,11 +92,9 @@ public class MainMenuScreen extends BaseScreen{
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
                     OptionsMenuScreen optionsScreen = null;
-                    try {
+
                         optionsScreen = new OptionsMenuScreen(this);
-                    } catch (FileNotFoundException e1) {
-                        e1.printStackTrace();
-                    }
+
                     this.dispose();
                     MortenCombat.setActiveScreen(optionsScreen);
 
