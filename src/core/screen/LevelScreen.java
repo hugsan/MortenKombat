@@ -24,7 +24,7 @@ public class LevelScreen extends BaseScreen {
     private LevelScreen nextMap = null;
     private LevelScreen nextMap2 = null;
     private Hero hero;
-    private static Music backgroundMusic;
+    protected static Music backgroundMusic;
     private BaseActor pauseBackground;
 
     // X Y position of the hero when the hero travels to next map
@@ -83,6 +83,10 @@ public class LevelScreen extends BaseScreen {
         createMapObjects(tma, "Skeleton");
         createMapObjects(tma, "Medic"); // Heal
         createMapObjects ( tma, "Morten" );
+        createMapObjects ( tma, "Johan" );
+        createMapObjects ( tma, "Sokol" );
+        createMapObjects ( tma, "Lene" );
+
 
         //create the starting point for our hero.
         MapObject startPoint = tma.getRectangleList("Start").get(0);
@@ -128,12 +132,8 @@ public class LevelScreen extends BaseScreen {
 
         //escape that should implement a pauseScreen
         if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)){
-            if (pauseBackground.isVisible()){
-                pauseBackground.setVisible(false);
-            }
-            else
-                pauseBackground.setVisible(true);
-            pauseBackground.toFront();
+
+            MortenCombat.setActiveScreen(new PauseScreen(this));
         }
 
         //update the volume for the game
@@ -149,6 +149,9 @@ public class LevelScreen extends BaseScreen {
         actorObjectInteraction("core.actors.exploringactors.Skeleton");
         actorObjectInteraction("core.actors.exploringactors.Medic");
         actorObjectInteraction ( "core.actors.exploringactors.Morten" );
+        actorObjectInteraction ( "core.actors.exploringactors.Johan" );
+        actorObjectInteraction ( "core.actors.exploringactors.Lene" );
+        actorObjectInteraction ( "core.actors.exploringactors.Sokol" );
 
         //Checks if the current map is windy. if it is blows the hero every 1 sec.
         if (currentMapEffect.equals("wind")) {
@@ -215,6 +218,15 @@ public class LevelScreen extends BaseScreen {
                     break;
                 case "Morten" :
                     new Morten ((float) props.get("x"), (float) props.get("y"), mainStage  );
+                    break;
+                case "Lene" :
+                    new Lene ((float) props.get("x"), (float) props.get("y"), mainStage  );
+                    break;
+                case "Sokol" :
+                    new Sokol ((float) props.get("x"), (float) props.get("y"), mainStage  );
+                    break;
+                case "Johan" :
+                    new Johan ((float) props.get("x"), (float) props.get("y"), mainStage  );
                     break;
                 default:
                     System.out.println("Something went really wrong, contact ITCOM5");
@@ -318,10 +330,36 @@ public class LevelScreen extends BaseScreen {
                     break;
                 case "core.actors.exploringactors.Morten":
                     if (hero.overlaps(a)) {
+                        FightScreen.amountOfEnemies = -4;
                         musicStop();
                         MortenCombat.setActiveScreen(new FightScreen(this));
                         a.remove();
                         System.out.println ("fight Morten" );
+                    }
+                    break;
+                case "core.actors.exploringactors.Johan":
+                    if (hero.overlaps(a)) {
+                        FightScreen.amountOfEnemies = -2;
+                        musicStop();
+                        MortenCombat.setActiveScreen(new FightScreen(this));
+                        a.remove();
+                    }
+                    break;
+                case "core.actors.exploringactors.Sokol":
+                    if (hero.overlaps(a)) {
+                        FightScreen.amountOfEnemies = -3;
+                        musicStop();
+                        MortenCombat.setActiveScreen(new FightScreen(this));
+                        a.remove();
+                    }
+                    break;
+                case "core.actors.exploringactors.Lene":
+                    if (hero.overlaps(a)) {
+                        FightScreen.amountOfEnemies = -1;
+                        musicStop();
+                        MortenCombat.setActiveScreen(new FightScreen(this));
+                        a.remove();
+
                     }
                     break;
 

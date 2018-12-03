@@ -25,7 +25,6 @@ public abstract class Fighter extends BaseActor {
     private Label namePlate;
     private Label health;
 
-
     private Animation<TextureRegion> animation;
     private float elapsedTime;
     private boolean animationPaused;

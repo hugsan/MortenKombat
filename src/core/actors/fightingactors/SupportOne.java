@@ -60,13 +60,12 @@ public class SupportOne extends SpellCaster{
     }
 
     /**
-     * Heals all our champions for 30 at for exchange of 50 mana.
+     *Heals all our champions for 30 at for exchange of 50 mana.
      * @param fighterOne
      * @param fighterTwo
      * @param fighterThree
      * @return
      */
-
     @Override
     public boolean attackThree(Fighter fighterOne, Fighter fighterTwo, Fighter fighterThree) {
         if (fighterOne instanceof Champion || fighterTwo instanceof Champion || fighterThree instanceof Champion)
@@ -75,7 +74,7 @@ public class SupportOne extends SpellCaster{
                 fighterOne.setHP( Math.min( (fighterOne.getHP()+30),fighterOne.getMaxHP() ) );
                 fighterTwo.setHP( Math.min ( (fighterTwo.getHP()+30),fighterTwo.getMaxHP() ) );
                 fighterThree.setHP( Math.min ( (fighterThree.getHP()+30),fighterThree.getMaxHP() ) );
-                this.spendMana(35);
+                this.spendMana(50);
                 return  true;
             }else {
                 missingMana.play ();

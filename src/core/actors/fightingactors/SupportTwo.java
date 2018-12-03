@@ -49,7 +49,7 @@ public class SupportTwo extends SpellCaster {
      * Heals a fighter for 30, spending 15 mana. It checks if the fighter is a champion class. if not it return false
      *
      * @param fighter
-     * @return
+     * @return true if the fighter is instance of champion and there is enough mana for the act
      */
     @Override
     public boolean attackTwo(Fighter fighter) {
@@ -71,7 +71,7 @@ public class SupportTwo extends SpellCaster {
      * @param fighterOne
      * @param fighterTwo
      * @param fighterThree
-     * @return
+     * @return true if at least one fighter is instance of champion and false if not
      */
 
     @Override
