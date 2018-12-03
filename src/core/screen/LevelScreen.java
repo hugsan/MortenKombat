@@ -24,7 +24,7 @@ public class LevelScreen extends BaseScreen {
     private LevelScreen nextMap = null;
     private LevelScreen nextMap2 = null;
     private Hero hero;
-    private static Music backgroundMusic;
+    protected static Music backgroundMusic;
     private BaseActor pauseBackground;
 
     // X Y position of the hero when the hero travels to next map
@@ -132,12 +132,8 @@ public class LevelScreen extends BaseScreen {
 
         //escape that should implement a pauseScreen
         if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)){
-            if (pauseBackground.isVisible()){
-                pauseBackground.setVisible(false);
-            }
-            else
-                pauseBackground.setVisible(true);
-            pauseBackground.toFront();
+
+            MortenCombat.setActiveScreen(new PauseScreen(this));
         }
 
         //update the volume for the game

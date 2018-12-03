@@ -46,7 +46,12 @@ public class FightScreen extends BaseScreen {
     boolean thirdAttack = false;
     private Pixmap defaultMouse;
     private Pixmap spellMouse;
-    private static Music battleMusic;
+
+    public Champion getChampionOne() {
+        return championOne;
+    }
+
+    static Music battleMusic;
     CopyOnWriteArrayList<Fighter> aliveFighters;
     Stack<Fighter> fightingTurn;
     long currentTime;
@@ -528,6 +533,12 @@ public class FightScreen extends BaseScreen {
 
     public void update(float dt) {
 
+        //escape that should implement a pauseScreen
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
+
+            MortenCombat.setActiveScreen(new PauseScreen(this));
+        }
+
         //this has to be at the beginning of any fightingTurn checks. otherwise you might create a EmptyStackException
         if (fightingTurn.isEmpty ()){
             fightingTurn.addAll(aliveFighters);
@@ -748,6 +759,14 @@ public class FightScreen extends BaseScreen {
         championThreeHP = 777;
     }
 
+    /**
+     * Creates the answerbuttons.
+     * @param answerButton Textbutton object
+     * @param answer the text of the button
+     * @param x coordinate of the button
+     * @param y coordinate of the button
+     * @param width of the button
+     */
     private void setAnswerButton(TextButton answerButton,String answer,float x,float y,float width){
 
         answerButton.getLabel().setText(answer);
@@ -761,6 +780,11 @@ public class FightScreen extends BaseScreen {
 
     }
 
+    /**
+     * If the given answerButton1 is pushed, it checks if that button is the correct answer or not. If yes it appears as green and the rest become invisible.
+     * If this answerButton1 is wrong, then it appears as red and the good answer as green and the rest disappear.
+     * @param isAnswerButton1Pushed gives if answerButton1 pushed or not
+     */
     private void caseOfAnswerButton1(boolean isAnswerButton1Pushed){
         if(isAnswerButton1Pushed){
 
@@ -798,6 +822,11 @@ public class FightScreen extends BaseScreen {
         }
     }
 
+    /**
+     If the given answerButton2 is pushed, it checks if that button is the correct answer or not. If yes it appears as green and the rest become invisible.
+     * If this answerButton2 is wrong, then it appears as red and the good answer as green and the rest disappear.
+     * @param isAnswerButton2Pushed gives if answerButton1 pushed or not
+     */
     private void caseOfAnswerButton2(boolean isAnswerButton2Pushed){
         if(isAnswerButton2Pushed){
 
@@ -836,6 +865,11 @@ public class FightScreen extends BaseScreen {
         }
     }
 
+    /**
+     If the given answerButton3 is pushed, it checks if that button is the correct answer or not. If yes it appears as green and the rest become invisible.
+     * If this answerButton3 is wrong, then it appears as red and the good answer as green and the rest disappear.
+     * @param isAnswerButton3Pushed gives if answerButton1 pushed or not
+     */
     private void caseOfAnswerButton3(boolean isAnswerButton3Pushed){
         if(isAnswerButton3Pushed){
 
@@ -874,6 +908,11 @@ public class FightScreen extends BaseScreen {
         }
     }
 
+    /**
+     If the given answerButton4 is pushed, it checks if that button is the correct answer or not. If yes it appears as green and the rest become invisible.
+     * If this answerButton4 is wrong, then it appears as red and the good answer as green and the rest disappear.
+     * @param isAnswerButton4Pushed gives if answerButton1 pushed or not
+     */
     private void caseOfAnswerButton4(boolean isAnswerButton4Pushed){
         if(isAnswerButton4Pushed){
 
@@ -912,6 +951,12 @@ public class FightScreen extends BaseScreen {
         }
     }
 
+    /**
+     * It deletes the Trivia when it is called. It takes the exact time when an answerButton was pushed and compare it to the current time
+     * if it exceeds it makes invisible the Trivia, reset the isAnswerButtonPushed boolean variables` state to false and reset the colors of the buttons` text to white.
+     * It pops one element from the stack and
+     * @param startTime2
+     */
     private void deleteTrivia(long startTime2){
 
         currentTime2=System.currentTimeMillis();
@@ -962,6 +1007,9 @@ public class FightScreen extends BaseScreen {
         }
     }
 
+    /**
+     * Makes answerButtons and questionBox visible
+     */
     private void showTrivia(){
 
         answerButton1.setVisible(true);
@@ -974,6 +1022,13 @@ public class FightScreen extends BaseScreen {
 
     }
 
+    /**
+     * Check if the answer is correct or not.
+     * @param isAnswerButton1Pushed
+     * @param isAnswerButton2Pushed
+     * @param isAnswerButton3Pushed
+     * @param isAnswerButton4Pushed
+     */
     private void stateOfAnswer(boolean isAnswerButton1Pushed,boolean isAnswerButton2Pushed, boolean isAnswerButton3Pushed,boolean isAnswerButton4Pushed){
 
         if((isAnswerButton1Pushed && answerButton1.getLabel().getText().toString().equals(qA.peek().correctAnswer))
