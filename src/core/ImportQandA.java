@@ -26,12 +26,12 @@ public class ImportQandA {
                 this.wrongAnswer3 = wrongAnswer3;
     }
 
-    /**
-     *
-     * @param stack
-     * @param data
+    /**Fill the stack with questions and answers.
+     *It reads the txt file line by line( in a sample like question, correct answer, wrong answer, wrong answer, wrong answer) and push it to the stack after every fifth line.
+     * @param stack Stack data structure, in order to use pop, peek, push methods.
+     * @param data  File object, it contains the file`s path.
      */
-    public static void filler(Stack<ImportQandA> stack, File data) { //throws FileNotFoundException {
+    public static void filler(Stack<ImportQandA> stack, File data) {
         String question, answer, wrongOne, wrongTwo, wrongThree;
         question = answer = wrongOne = wrongTwo = wrongThree = null;
         int i = 0;
@@ -61,7 +61,7 @@ public class ImportQandA {
 
             }
         } catch (FileNotFoundException e) {
-            //do stuff
+            System.out.println("There is no available file");
         }
     }
 

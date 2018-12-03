@@ -23,6 +23,9 @@ public abstract class SpellCaster extends Champion {
     private final int maxMana = 100;
     private int mana = 100;
 
+    /**
+     * Regenerates mana by 10 each time it is called, until the mana value reach maxMana
+     */
     public void manaRegeneration(){
         mana += 10;
         if (mana >= maxMana)
@@ -31,6 +34,9 @@ public abstract class SpellCaster extends Champion {
 
     public Label getManaBar() { return manaBar; }
 
+    /**
+     * Update the value of mana.
+     */
     public void updateManaBar() {
         manaBar.setText(getMana() +"/"+ getMaxMana());
     }
@@ -46,15 +52,30 @@ public abstract class SpellCaster extends Champion {
     public int getMaxMana() {
         return maxMana;
     }
+
+    /**
+     * Give a certain amount of mana to the hero
+     * @param amount represents managain
+     */
     public void gainMana(int amount) {
         this.setMana(this.getMana() + amount );
         if (this.getMana()> this.getMaxMana())
             this.setMana(this.getMaxMana());
     }
+
+    /**
+     * Subtract a certain amount of mana from the hero`s mana.
+     * @param amount the value deducted
+     */
     public void spendMana(int amount){
         this.setMana(this.getMana() - amount);
     }
 
+    /**
+     * Check if there is enough mana of the hero, if not sound is played to notify the user
+     * @param amount checked mana value
+     * @return true if there is and false if there is not enough mana
+     */
     public boolean enoughMana(int amount){
         if (this.getMana() >= amount)
             return true;
