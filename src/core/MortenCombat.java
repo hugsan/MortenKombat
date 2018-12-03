@@ -69,7 +69,7 @@ public class MortenCombat extends BaseGame {
 
     //method used to start the levelScreen from another screen (for example MenuScreen)
     public static void startGame() throws FileNotFoundException {
-        setActiveScreen( new LoadingScreen(layout[0]) );
+        setActiveScreen( new LoadingScreen(layout[6]) );
         LevelScreen.musicPlay();
     }
 

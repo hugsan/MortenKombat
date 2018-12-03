@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import core.MortenCombat;
+import core.actors.exploringactors.Sokol;
 import core.actors.fightingactors.*;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
@@ -148,6 +149,24 @@ public class FightScreen extends BaseScreen {
             enemyThree = createRandomEnemy();
             enemies.add(enemyThree);
         }
+        if(amountOfEnemies == -1){
+            enemyOne =  new LeneFighter ( mainStage );
+            enemies.add(enemyOne);
+        }
+        if (amountOfEnemies == -2){
+            enemyOne =  new JohanFighter ( mainStage);
+            enemies.add(enemyOne);
+        }
+        if (amountOfEnemies == -3){
+            enemyOne =  new SokolFighter ( mainStage);
+            enemies.add(enemyOne);
+        }
+        if (amountOfEnemies == -4){
+            enemyOne =  new MortenFighter ( mainStage);
+            enemies.add(enemyOne);
+        }
+
+
 
 
         fightingTurn = new Stack<> ( );
@@ -287,7 +306,8 @@ public class FightScreen extends BaseScreen {
         }
 
         //put the buttons in the table.
-        //uiTable.pad ( 25 ); // add 10 pixel corner to the screen.
+        //uiTable.pad ( 25 );
+        // add 10 pixel corner to the screen.
         uiTable.add ( ).height ( 140 ).width ( 25 );
         uiTable.add ( ).height ( 140 ).width ( 116 );
         uiTable.add ( ).height ( 140 ).width ( 116 );
@@ -326,17 +346,17 @@ public class FightScreen extends BaseScreen {
         uiTable.add ( championOne.getHPBar() ).height( 20 ).width( 110 ); //hero 1 hpbar
         uiTable.add ( ).height( 20 ).width( 56 );
         if (enemyOne != null)
-            uiTable.add (  enemyOne.getHPBar() ).height( 20 ).width( 110 ); //enemy 1 nameplate
+            uiTable.add (  enemyOne.getHPBar() ).height( 20 ).width( 110 ); //enemy 1 HP bar
         else
-            uiTable.add (   ).height( 20 ).width( 110 ); //enemy 1 nameplate
+            uiTable.add (   ).height( 20 ).width( 110 ); //enemy 1 HP bar
         if (enemyTwo != null)
-            uiTable.add ( enemyTwo.getHPBar() ).height( 20 ).width( 110 ); //enemy 2 nameplate
+            uiTable.add ( enemyTwo.getHPBar() ).height( 20 ).width( 110 ); //enemy 2 HP bar
         else
-            uiTable.add (  ).height( 20 ).width( 110 ); //enemy 2 nameplate
+            uiTable.add (  ).height( 20 ).width( 110 ); //enemy 2 HP bar
         if (enemyThree != null)
-            uiTable.add ( enemyThree.getHPBar() ).height( 20 ).width( 110 ); // enemy 3 nameplate
+            uiTable.add ( enemyThree.getHPBar() ).height( 20 ).width( 110 ); // enemy 3 HP bar
         else
-            uiTable.add (  ).height( 20 ).width( 110 ); // enemy 3 nameplate
+            uiTable.add (  ).height( 20 ).width( 110 ); // enemy 3 HP bar
         uiTable.add ( ).height( 20 ).width( 25 );
         uiTable.row ();
         //ManaBar row
@@ -982,4 +1002,6 @@ public class FightScreen extends BaseScreen {
             return new BatFighter(mainStage);
 
     }
+
+
 }
