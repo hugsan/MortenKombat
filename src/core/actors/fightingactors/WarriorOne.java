@@ -44,14 +44,15 @@ public class WarriorOne extends Champion {
     }
 
     /**
-     * Makes 30% of target maximun life.
+     * Makes 30% of target missing life.
      * @param fighter enemy target
      */
     @Override
     public boolean attackTwo (Fighter fighter){
         if (fighter instanceof EnemyFighters){
-        fighter.setHP(fighter.getHP()-((int)(0.40*(fighter.getMaxHP()- fighter.getHP()))));
-        return true;}
+            int damage = (int)(( fighter.getMaxHP() - fighter.getHP() ) * 0.4);
+            fighter.setHP(fighter.getHP()- damage);
+            return true;}
         cantclick.play();
         return false;
     }
