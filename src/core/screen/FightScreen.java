@@ -45,7 +45,12 @@ public class FightScreen extends BaseScreen {
     boolean thirdAttack = false;
     private Pixmap defaultMouse;
     private Pixmap spellMouse;
-    private static Music battleMusic;
+
+    public Champion getChampionOne() {
+        return championOne;
+    }
+
+    static Music battleMusic;
     CopyOnWriteArrayList<Fighter> aliveFighters;
     Stack<Fighter> fightingTurn;
     long currentTime;
@@ -507,6 +512,12 @@ public class FightScreen extends BaseScreen {
     }
 
     public void update(float dt) {
+
+        //escape that should implement a pauseScreen
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
+
+            MortenCombat.setActiveScreen(new PauseScreen(this));
+        }
 
         //this has to be at the beginning of any fightingTurn checks. otherwise you might create a EmptyStackException
         if (fightingTurn.isEmpty ()){
