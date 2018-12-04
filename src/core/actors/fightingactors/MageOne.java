@@ -5,9 +5,13 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class MageOne extends SpellCaster {
 
-    public String spellOneName = "Mana Torrent";
-    public String spellTwoName = "Death Lance";
-    public String spellThreeName = "Flame Wave";
+    private String spellOneName = "Mana Torrent";
+    private String spellTwoName = "Death Lance";
+    private String spellThreeName = "Flame Wave";
+    private String spellOneText = "mana regen x dmg x-y";
+    private String spellTwoText = "Large single attck for 50 dmg and 55 mana";
+    private String spellThreeText = "Attack all 3 enemies for 20 dmg and 35 mana";
+
 
     public MageOne(Stage s){
         super(s);
@@ -18,6 +22,10 @@ public class MageOne extends SpellCaster {
         setFirstButtonName(spellOneName);
         setSecondButtonName(spellTwoName);
         setThridButtonName(spellThreeName);
+
+        setSpellOneText(spellOneText);
+        setSpellTwoText(spellTwoText);
+        setSpellThreeText(spellThreeText);
 
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Mage 1 Attack.png", 0.14f,1,5);
         iddle = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Mage 1 Idle.png", 0.14f, 1, 5);
@@ -32,7 +40,8 @@ public class MageOne extends SpellCaster {
      * @param fighter
      */
     @Override
-    public boolean attackOne(Fighter fighter){
+    public boolean attackOne(Fighter fighter)
+    {
         if (fighter instanceof EnemyFighters){
             fighter.setHP(fighter.getHP()- MathUtils.random(10,18));
             this.gainMana(15);
@@ -47,7 +56,8 @@ public class MageOne extends SpellCaster {
      * @param fighter
      */
     @Override
-    public boolean attackTwo(Fighter fighter){
+    public boolean attackTwo(Fighter fighter)
+    {
         if (fighter instanceof EnemyFighters){
             if (this.enoughMana(55)){
                 fighter.setHP(fighter.getHP()-50);
@@ -70,7 +80,8 @@ public class MageOne extends SpellCaster {
      * @return true if ability can be used, false if can not.
      */
     @Override
-    public boolean attackThree(Fighter fighterOne,Fighter fighterTwo, Fighter fighterThree ){
+    public boolean attackThree(Fighter fighterOne,Fighter fighterTwo, Fighter fighterThree )
+    {
         if (fighterOne instanceof EnemyFighters || fighterTwo instanceof EnemyFighters ||
                 fighterThree instanceof EnemyFighters){
             if (this.enoughMana(35)){
@@ -83,7 +94,7 @@ public class MageOne extends SpellCaster {
                 return true;
             }else{
                 return false;
-        }
+            }
         }
         cantclick.play();
         return false;
