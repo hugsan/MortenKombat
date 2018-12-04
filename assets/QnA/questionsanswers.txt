@@ -1,13 +1,13 @@
 What important piece of art was stolen and kept under a bed until it was returned to the Louvre Museum?
 Mona Lisa
-b
-c
-d
+Guernica
+Water Lily Pond
+The Last Supper
 Who wrote the novel Dracula?
 Bram Stoker
-b
-c
-d
+H.G. Wells
+Sir Arthur Conan Doyle
+Walt Whitman
 What actor portrayed the pirate Jack Sparrow?
 Johnny Depp
 Chris Evans
@@ -15,9 +15,9 @@ Leonardo DiCaprio
 Nicolas Cage
 Where did medieval theatre originate?
 Churches
-b
-c
-d
+Castle
+Monastic school
+Stable
 Sheldon Cooper is a character in which TV show?
 Big Bang Theory
 Simpsons
@@ -55,9 +55,9 @@ Jack Sparrow
 Han Solo
 In what Indiana Jones movie is revealed that he has a son?
 The Kingdom of Crystal Skull
-b
-c
-d
+The Last Crusade
+The Temple of Doom
+Raiders of the Lost Ark
 What is the last name of the family in the TV series ‘Family Guy’?
 Griffin
 Gefferson
@@ -65,9 +65,9 @@ Gregsons
 Gary
 Who forms the couple nicknamed ‘Brangelina’?
 Brad Pitt and Angelina Jolie
-b
-c
-d
+Brad Pitt and Jennifer Aniston
+Brendan Fraser and Angelina Jolie
+Brendan Fraser and Jennifer Aniston
 What is the real name of the American supersoldier, Captain America?
 Steve Rogers
 Michael Morrison
@@ -130,9 +130,9 @@ Spider-Man
 Batman
 What’s the worlds highest waterfall?
 Angel Falls
-b
-c
-d
+Tugela Falls
+Tres Hermanas Falls
+James Bruce Falls
 Where is the Capoeira dance from?
 Brazil
 Argentina
@@ -160,14 +160,14 @@ Mexican Gulf
 Guinea Bay
 Yerevan is the capital of what country?
 Armenia
-b
-c
-d
+Georgia
+Azerbaijan
+Turkey
 How many countries border with Egypt?
 4
-b
-c
-d
+5
+3
+6
 Which is the only country who borders with Portugal?
 Spain
 France
@@ -175,14 +175,14 @@ Italy
 Germany
 Which of these countries has a pink lake?
 Australia
-b
-c
-d
+Canada
+Kazakhstan
+Argentina
 What colors are on the Mexican flag?
 Red, white and green
-b
-c
-d
+Black, green and white
+Orange, blue, green
+Red, green and blue
 What’s the most populated city in Scotland?
 Glasgow
 Edinburgh
@@ -225,9 +225,9 @@ How many countries share borders with Germany?
 6
 What are the colors of the Philippines flag?
 Blue, red, yellow and white
-b
-c
-d
+Red, blue , yellow and brown
+Blue, yellow , pink and yellow
+Black, Blue, red and white
 What year did the Titanic sink?
 1912
 1902
@@ -260,14 +260,14 @@ When did men first travel to space?
 1955
 Who founded Playboy magazine?
 Hugh Hefner
-b
-c
-d
+David Hasselhoff
+Silvio Berlusconi
+John F. Kennedy
 Which two countries reunited in 1976 after 22 years of separation?
 North and South Vietnam
-b
-c
-d
+South and North Korea
+East Germany and West Germany
+China and Tibet
 Which countries were part of the Grand Alliance during Second World War?
 Great Britain, USA and Russia
 France, USA and Canada
@@ -280,9 +280,9 @@ ln which year did the first man walk on the moon?
 1965
 Who was defeated in the Battle of Waterloo?
 Napoleon Bonaparte
-b
-c
-d
+Frederick the Great
+Gustavus Adolphus
+John Churchill
 What army did the 300 represent?
 Spartan army
 Roman army
@@ -341,8 +341,8 @@ Add electricity to the object.
 What chemical process do plants create?
 Photosynthesis
 Combustion
-c
-d
+Hydrolysis
+Reduction
 What kind of energy does an unlit match have?
 Chemical energy
 Thermal energy
@@ -352,7 +352,7 @@ What is it called when light changes direction after leaving a lens?
 Refraction
 Reflection
 Diffraction
-d
+Distraction
 When x = 4, what is the value of 5(2x-3)?
 25
 15
@@ -410,14 +410,14 @@ When x = 6, what is the value of x+(2x-3)?
 16
 How are the holes of Swiss cheese made?
 Carbon dioxide
-c
-d
-e
+Nitrogen oxide
+Carbon monoxide
+Hidrogen dioxide
 What do you measure with a hygrometer?
 Humidity
 Pressure
 Oxygen
-d
+Water level
 What is the lobe located at the front of the brain?
 Frontal lobe
 Main lobe
@@ -425,9 +425,9 @@ Vision lobe
 Genetic lobe
 What are the building blocks of proteins?
 Amino Acids
-b
-c
-d
+Fatty Acids
+Nucleic Acids
+Lipids
 Which is organ is responsible for filtration?
 Kidney
 Liver
@@ -445,19 +445,19 @@ How many seconds is one hour?
 4600
 What color is perceived by cone cells with less sensitivity?
 Blue
-b
-c
-d
+Green
+Red
+Yellow
 What animal skin is similar to ours?
 Pigs skin
 Monkey skin
 Cow skin
-d
+Snake skin
 How is the natural hallucinogenic substance ayahuasca consumed?
 It is ingested
-b
-c
-d
+It is inhaled
+Intravanously
+Skin absorption
 The hardest substance available on earth is
 Diamond
 Gold
@@ -465,9 +465,9 @@ Iron
 Platinum
 What initials are given to lysergic acid?
 LSD
-b
-c
-d
+Ecstasy
+Heroin
+Cannabis
 How many degrees does a circle have?
 360 degrees
 180
@@ -490,9 +490,9 @@ Evolution
 Energy equation
 What Olympic medal does not exist?
 Copper medal
-b
-c
-d
+Gold
+Silver
+Bronze
 How many players per team are there in court in handball?
 7 players
 9
@@ -500,14 +500,14 @@ How many players per team are there in court in handball?
 5
 What’s the name of the field hockey move when the ball is lifted with the stick?
 Flick
-b
-c
-d
+Catch
+Grab
+Throw
 What city are the Blue Jays from?
 Toronto
-b
-c
-d
+New Orleans
+New York
+Ottawa
 Which baseball player is behind the batter?
 Catcher
 Getter
@@ -520,14 +520,14 @@ How many squares are there on a chess board?
 80
 How long is a basketball game international and in the NBA?
 40 and 48 minutes long
-b
-c
-d
+24 and 32 minutes long
+16 and 40 minutes long
+44 and 48 minutes long
 What is the name given to the NFL final?
 Super Bowl
-b
-c
-d
+Super Ball
+Super Game
+Super Night
 Which team did Alex Ferguson manage?
 Manchester United
 Liverpool
@@ -536,7 +536,7 @@ Chelsea
 Which of the following types of hockey does not exist?
 Asphalt hockey
 Ice hockey
-c
+
 d
 The tiger Hodori was the mascot of which Olympic Games?
 Seoul 88 Olympic Games
