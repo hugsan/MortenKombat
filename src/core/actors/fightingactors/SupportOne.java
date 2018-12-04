@@ -57,7 +57,7 @@ public class SupportOne extends SpellCaster{
     @Override
     public boolean attackTwo(Fighter fighter) {
         if (this.enoughMana(30) && fighter instanceof Champion){
-            fighter.setHP(Math.min ( (fighter.getHP()+20), fighter.getMaxHP ()));
+            fighter.setHP(Math.min ( (fighter.getHP()+50), fighter.getMaxHP ()));
             spendMana(30);
 
             return true;
