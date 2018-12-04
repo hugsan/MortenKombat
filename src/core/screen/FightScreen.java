@@ -48,7 +48,6 @@ public class FightScreen extends BaseScreen {
     static Music battleMusic;
     private Sound cantclick = Gdx.audio.newSound(Gdx.files.internal("assets/audio/sound/cantclick.mp3"));
 
-
     Champion abilityUser;
     Fighter attacker = null; //variable to know when someone have attacked to make the animation
     private int turn = 0;

@@ -8,9 +8,9 @@ public class MageOne extends SpellCaster {
     private String spellOneName = "Mana Torrent";
     private String spellTwoName = "Death Lance";
     private String spellThreeName = "Flame Wave";
-    private String spellOneText = "mana regen x dmg x-y";
-    private String spellTwoText = "Large single attck for 50 dmg and 55 mana";
-    private String spellThreeText = "Attack all 3 enemies for 20 dmg and 35 mana";
+    private String spellOneText = "Hits for 10-18 damage and restore 15 mana";
+    private String spellTwoText = "Large single attack for 50 damage, cost 55 mana";
+    private String spellThreeText = "Attack all 3 enemies for 20 damage, cost 35 mana";
 
 
     public MageOne(Stage s){
