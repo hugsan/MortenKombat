@@ -979,9 +979,13 @@ public class FightScreen extends BaseScreen {
     }
 
     /**
-     * It deletes the Trivia when it is called. It takes the exact time when an answerButton was pushed and compare it to the current time
+     * It deletes the Trivia when it is called. It takes the exact time when an answerButton was pushed and compare it to the current time,
      * if it exceeds it makes invisible the Trivia, reset the isAnswerButtonPushed boolean variables` state to false and reset the colors of the buttons` text to white.
-     * It pops one element from the stack and
+     * It pops one element from the stack, so the same question does not appear again.
+     * Then it points to the next element in the stack.
+     * Clear the previous element`s answers from the "answer" arraylist.
+     * It mixes the answer in the arraylist to be randomized on the screen.
+     * In the end, it makes uiTable visible again.
      * @param startTime2
      */
     private void deleteTrivia(long startTime2){
@@ -1036,7 +1040,7 @@ public class FightScreen extends BaseScreen {
     }
 
     /**
-     * Makes answerButtons and questionBox visible
+     * Makes answerButtons, questionBox visible and the uiTable invisible.
      */
     private void showTrivia(){
 
@@ -1052,10 +1056,10 @@ public class FightScreen extends BaseScreen {
 
     /**
      * Check if the answer is correct or not.
-     * @param isAnswerButton1Pushed
-     * @param isAnswerButton2Pushed
-     * @param isAnswerButton3Pushed
-     * @param isAnswerButton4Pushed
+     * @param isAnswerButton1Pushed boolean variable to check if the particular button is pushed or not
+     * @param isAnswerButton2Pushed boolean variable to check if the particular button is pushed or not
+     * @param isAnswerButton3Pushed boolean variable to check if the particular button is pushed or not
+     * @param isAnswerButton4Pushed boolean variable to check if the particular button is pushed or not
      */
     private void stateOfAnswer(boolean isAnswerButton1Pushed,boolean isAnswerButton2Pushed, boolean isAnswerButton3Pushed,boolean isAnswerButton4Pushed){
 
