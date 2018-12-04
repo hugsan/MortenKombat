@@ -23,6 +23,7 @@ import core.framework.BaseGame;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
+import java.util.logging.Level;
 
 public class FightScreen extends BaseScreen {
     private LevelScreen previousMap;
@@ -730,9 +731,10 @@ public class FightScreen extends BaseScreen {
             //remove the screen
             this.dispose();
             //exit to exploring map
+            LevelScreen.musicPlay();
             MortenCombat.setActiveScreen(previousMap);
         }
-        if (isAllHeroesDead){
+        if (isAllHeroesDead || Gdx.input.isKeyJustPressed(Input.Keys.A)){
             battleMusic.stop();
             this.dispose();
             MortenCombat.setActiveScreen(new GameOverScreen());

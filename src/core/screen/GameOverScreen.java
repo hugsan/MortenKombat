@@ -2,6 +2,7 @@ package core.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
@@ -15,7 +16,7 @@ import core.framework.BaseScreen;
 
 public class GameOverScreen extends BaseScreen {
 
-
+    static Music gameOverMusic;
     public void initialize() {
         // initialize the Background for the GameOverScreen
         BaseActor gameOverScreenBackground = new BaseActor(0, 0, mainStage);
@@ -34,6 +35,11 @@ public class GameOverScreen extends BaseScreen {
         TextureRegion buttonRegion3 = new TextureRegion( buttonTex );
         buttonStyle.up = new TextureRegionDrawable( buttonRegion3 );
         Button exit = new Button( buttonStyle );
+
+        gameOverMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/gameOverMusic.mp3"));
+        gameOverMusic.setVolume(MortenCombat.volume);
+        gameOverMusic.setLooping(true);
+        gameOverMusic.play();
 
         exit.setPosition(100, 40);
         uiStage.addActor(exit);
