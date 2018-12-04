@@ -826,7 +826,7 @@ public class FightScreen extends BaseScreen {
      */
     private void caseOfAnswerButton1(boolean isAnswerButton1Pushed){
         if(isAnswerButton1Pushed){
-
+            triviaInformation.setVisible(false);
             if(answerButton1.getText().toString().equals(qA.peek().correctAnswer)){
 
                 answerButton1.getLabel().setColor(Color.GREEN);
@@ -868,6 +868,7 @@ public class FightScreen extends BaseScreen {
      */
     private void caseOfAnswerButton2(boolean isAnswerButton2Pushed){
         if(isAnswerButton2Pushed){
+            triviaInformation.setVisible(false);
 
             if(answerButton2.getText().toString().equals(qA.peek().correctAnswer)){
 
@@ -911,6 +912,7 @@ public class FightScreen extends BaseScreen {
      */
     private void caseOfAnswerButton3(boolean isAnswerButton3Pushed){
         if(isAnswerButton3Pushed){
+            triviaInformation.setVisible(false);
 
             if(answerButton3.getText().toString().equals(qA.peek().correctAnswer)){
 
@@ -954,6 +956,7 @@ public class FightScreen extends BaseScreen {
      */
     private void caseOfAnswerButton4(boolean isAnswerButton4Pushed){
         if(isAnswerButton4Pushed){
+            triviaInformation.setVisible(false);
 
             if(answerButton4.getText().toString().equals(qA.peek().correctAnswer)){
 
@@ -1045,8 +1048,6 @@ public class FightScreen extends BaseScreen {
             answerButton2.getLabel().setText(answers.get(1));
             answerButton3.getLabel().setText(answers.get(2));
             answerButton4.getLabel().setText(answers.get(3));
-
-            triviaInformation.setVisible(false);
             uiTable.setVisible(true);
             tooltipText.setVisible(true);
 
