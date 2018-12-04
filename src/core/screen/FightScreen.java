@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import core.MortenCombat;
 import core.actors.exploringactors.Sokol;
 import core.actors.fightingactors.*;
@@ -46,10 +47,7 @@ public class FightScreen extends BaseScreen {
     boolean thirdAttack = false;
     private Pixmap defaultMouse;
     private Pixmap spellMouse;
-
-    public Champion getChampionOne() {
-        return championOne;
-    }
+    private Label turnLabel;
 
     static Music battleMusic;
     CopyOnWriteArrayList<Fighter> aliveFighters;
@@ -69,6 +67,7 @@ public class FightScreen extends BaseScreen {
     public Sound cantclick = Gdx.audio.newSound(Gdx.files.internal("assets/audio/sound/cantclick.mp3"));
 
     private DialogBox questionBox;
+    private DialogBox triviaInformation;
 
     private TextButton answerButton1;
     private TextButton answerButton2;
@@ -191,6 +190,10 @@ public class FightScreen extends BaseScreen {
         spellMouse = new Pixmap (Gdx.files.internal("assets/img/SpellMouse.png"));
         activateDefaultMouse();
 
+        turnLabel = new Label( "Turn: "+turn, BaseGame.labelStyle);
+        turnLabel.setColor( Color.GRAY);
+        turnLabel.setPosition(320,520);
+        uiStage.addActor(turnLabel);
 
         //creating listeners for buttons, activate the spell selector.
         for (Champion c : champions){
@@ -445,6 +448,15 @@ public class FightScreen extends BaseScreen {
         questionBox.setText(qA.peek().question);
         questionBox.setVisible(false);
 
+        triviaInformation = new DialogBox (100, 10, uiStage);
+        triviaInformation.setBackgroundColor(Color.DARK_GRAY);
+        triviaInformation.setFontColor(Color.LIGHT_GRAY);
+        triviaInformation.setDialogSize(600,150);
+        triviaInformation.setFontScale(0.50f);
+        triviaInformation.alignCenter();
+        triviaInformation.setVisible(false);
+
+
         answerButton1= new TextButton("",BaseGame.textButtonStyle);
         answerButton2= new TextButton("",BaseGame.textButtonStyle);
         answerButton3= new TextButton("",BaseGame.textButtonStyle);
@@ -569,6 +581,7 @@ public class FightScreen extends BaseScreen {
             }
             Collections.shuffle(fightingTurn);
             turn ++; // not been used, maybe we can put a Turn number on screen.
+            turnLabel.setText("Turn: "+turn);
         }
         //if the turn is over (means there is no more object in the stack), we create a new turn by feeding the stack
         //with alivefighter Arraylist
@@ -1030,6 +1043,7 @@ public class FightScreen extends BaseScreen {
             answerButton3.getLabel().setText(answers.get(2));
             answerButton4.getLabel().setText(answers.get(3));
 
+            triviaInformation.setVisible(false);
             uiTable.setVisible(true);
 
         }
@@ -1045,7 +1059,15 @@ public class FightScreen extends BaseScreen {
         answerButton3.setVisible(true);
         answerButton4.setVisible(true);
         questionBox.setVisible(true);
-
+        if (fightingTurn.peek() instanceof EnemyFighters)
+            triviaInformation.setText(fightingTurn.peek().getFighterName()+ " has the trivia attack. Answer" +
+                    " correctly to avoid been attacked by the enemy. If you fail you will be attacked twice by" +
+                    " the enemy");
+        if (fightingTurn.peek() instanceof Champion)
+            triviaInformation.setText(fightingTurn.peek().getFighterName()+ " has the trivia attack. Answer" +
+                    " correctly and your champion will deal twice the ability in the same turn (check if your spell " +
+                    "casters have enough mana!). If you give a wrong answer your champion will lose his turn.");
+        triviaInformation.setVisible(true);
         uiTable.setVisible(false);
 
     }

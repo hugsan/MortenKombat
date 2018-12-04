@@ -70,10 +70,14 @@ public class SupportOne extends SpellCaster{
     public boolean attackThree(Fighter fighterOne, Fighter fighterTwo, Fighter fighterThree) {
         if (fighterOne instanceof Champion || fighterTwo instanceof Champion || fighterThree instanceof Champion)
         {
+            //checking if the fighters are alive before fighting them.
             if (enoughMana(50)){
-                fighterOne.setHP( Math.min( (fighterOne.getHP()+30),fighterOne.getMaxHP() ) );
-                fighterTwo.setHP( Math.min ( (fighterTwo.getHP()+30),fighterTwo.getMaxHP() ) );
-                fighterThree.setHP( Math.min ( (fighterThree.getHP()+30),fighterThree.getMaxHP() ) );
+                if (fighterOne.getHP() != 0)
+                    fighterOne.setHP( Math.min( (fighterOne.getHP()+30),fighterOne.getMaxHP() ) );
+                if (fighterTwo.getHP() != 0)
+                    fighterTwo.setHP( Math.min ( (fighterTwo.getHP()+30),fighterTwo.getMaxHP() ) );
+                if (fighterThree.getHP() != 0)
+                    fighterThree.setHP( Math.min ( (fighterThree.getHP()+30),fighterThree.getMaxHP() ) );
                 this.spendMana(50);
                 return  true;
             }else {
