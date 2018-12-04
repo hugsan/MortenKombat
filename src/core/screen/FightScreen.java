@@ -1099,6 +1099,7 @@ public class FightScreen extends BaseScreen {
                 || (isAnswerButton4Pushed && !(answerButton4.getLabel().getText().toString().equals(qA.peek().correctAnswer)))){
                     isCorrectAnswer=false;
 
+
         }
 
     }
