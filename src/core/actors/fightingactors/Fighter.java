@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.compression.lzma.Base;
 import core.framework.BaseActor;
 import core.framework.BaseGame;
 
@@ -18,7 +19,6 @@ public abstract class Fighter extends BaseActor {
     private String fighterName;
     private int HP;
     private int maxHP;
-
 
     private int aux;
 
@@ -42,12 +42,9 @@ public abstract class Fighter extends BaseActor {
         health.setFontScale(0.6f);
 
         namePlate = new Label(""+fighterName, BaseGame.labelStyle);
-        namePlate.setText(""+fighterName);
+        //namePlate.setText(""+fighterName);
         namePlate.setColor( Color.WHITE );
         namePlate.setFontScale(0.5f);
-
-
-
 
     }
 
@@ -59,10 +56,7 @@ public abstract class Fighter extends BaseActor {
         float h = tr.getRegionHeight();
         setSize( w, h );
         setOrigin( w/2, h/2 );
-
-
     }
-
 
     /**
      * Creates an animation from images stored in separate files.
@@ -150,6 +144,10 @@ public abstract class Fighter extends BaseActor {
     abstract public boolean attackTwo (Fighter fighter);
     abstract public void updateManaBar();
 
+    public void updateTooltip(int i) {
+
+    }
+
     public Label getFighterNamePlate() {
         return namePlate;
     }
@@ -178,7 +176,6 @@ public abstract class Fighter extends BaseActor {
     public void updateNameColor() {
         namePlate.setColor( Color.GREEN );
     }
-
 
     public int getMaxHP() {
         return maxHP;

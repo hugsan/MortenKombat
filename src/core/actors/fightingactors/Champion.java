@@ -12,6 +12,10 @@ public abstract class Champion extends Fighter {
     private TextButton secondButton;
     private TextButton thirdButton;
 
+    private String spellOneText;
+    private String spellTwoText;
+    private String spellThreeText;
+
     public Sound cantclick = Gdx.audio.newSound(Gdx.files.internal("assets/audio/sound/cantclick.mp3"));
 
     public Champion(Stage s){
@@ -27,12 +31,30 @@ public abstract class Champion extends Fighter {
         secondButton.getLabel().setFontScale(0.4f);
         firstButton.getLabel().setWrap(true);
 
-
         thirdButton = new TextButton( "", BaseGame.textButtonStyle );
         //thirdButton.setColor( Color.CYAN );
         thirdButton.getLabel().setFontScale(0.4f);
         firstButton.getLabel().setWrap(true);
 
+    }
+
+    public String getSpellOneText() {
+        return spellOneText;
+    }
+    public void setSpellOneText(String spellOneText) {
+        this.spellOneText = spellOneText;
+    }
+    public String getSpellTwoText() {
+        return spellTwoText;
+    }
+    public void setSpellTwoText(String spellTwoText) {
+        this.spellTwoText = spellTwoText;
+    }
+    public String getSpellThreeText() {
+        return spellThreeText;
+    }
+    public void setSpellThreeText(String spellThreeText) {
+        this.spellThreeText = spellThreeText;
     }
 
     public TextButton getFirstButton() {
@@ -61,7 +83,7 @@ public abstract class Champion extends Fighter {
     /**
      * return 1 if the ability is possible
      * return -1 if there is missing resources to make the ability
-     * @param fighter target for the attack
+     * @param Fighter target for the attack
      * @return 1: if possible; -1: if not possible.
      */
     public abstract boolean attackThree (Fighter fighterOne, Fighter fighterTwo, Fighter fighterThree );
