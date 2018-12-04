@@ -2,6 +2,7 @@ package core.actors.fightingactors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -22,19 +23,22 @@ public abstract class Champion extends Fighter {
         super(s);
 
         firstButton = new TextButton( "" , BaseGame.textButtonStyle );
-        //firstButton.setColor( Color.CYAN );
-        firstButton.getLabel().setFontScale(0.4f);
+        firstButton.getLabel().setFontScale(0.37f);
+        firstButton.getLabel().setColor(Color.GRAY);
+        firstButton.getLabel().setSize(135,40);
         firstButton.getLabel().setWrap(true);
 
         secondButton = new TextButton( "",BaseGame.textButtonStyle );
-        //secondButton.setColor( Color.CYAN );
-        secondButton.getLabel().setFontScale(0.4f);
-        firstButton.getLabel().setWrap(true);
+        secondButton.getLabel().setFontScale(0.38f);
+        secondButton.getLabel().setColor(Color.GRAY);
+        secondButton.setSize(135,40);
+        secondButton.getLabel().setWrap(true);
 
         thirdButton = new TextButton( "", BaseGame.textButtonStyle );
-        //thirdButton.setColor( Color.CYAN );
-        thirdButton.getLabel().setFontScale(0.4f);
-        firstButton.getLabel().setWrap(true);
+        thirdButton.getLabel().setFontScale(0.37f);
+        thirdButton.getLabel().setColor(Color.GRAY);
+        thirdButton.getLabel().setSize(135,40);
+        thirdButton.getLabel().setWrap(true);
 
     }
 

@@ -24,52 +24,48 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
 
-
 public class FightScreen extends BaseScreen {
     private LevelScreen previousMap;
-    Champion championOne;
-    Champion championTwo;
-    Champion championThree;
-    ArrayList<Champion> champions;
-    ArrayList<EnemyFighters> enemies;
-    Champion abilityUser;
-    EnemyFighters enemyOne;
-    EnemyFighters enemyTwo;
-    EnemyFighters enemyThree;
-    Label tooltipText;
-    boolean firstAttack = false;
-    boolean secondAttack = false;
-    boolean thirdAttack = false;
-    private Pixmap defaultMouse;
-    private Pixmap spellMouse;
-    static Music battleMusic;
-    CopyOnWriteArrayList<Fighter> aliveFighters;
+    private Champion championOne, championTwo, championThree;
+    private ArrayList<Champion> champions;
+    private EnemyFighters enemyOne, enemyTwo, enemyThree;
+    private ArrayList<EnemyFighters> enemies;
+    private CopyOnWriteArrayList<Fighter> aliveFighters;
     Stack<Fighter> fightingTurn;
-    long currentTime;
-    long startTime = System.currentTimeMillis();
-    int turn = 0;
-    int enemyThinking = MathUtils.random(3500,4500);
-    Fighter attacker = null; //variable to know when someone have attacked to make the animation
-    long deadAnimationStart;
+
+    public static int amountOfEnemies;
+    private long currentTime;
+    private long startTime = System.currentTimeMillis();
+    private int enemyThinking = MathUtils.random(3500,4500);
     static private int championOneHP= 666;
     static private int championThreeHP = 666;
     static private int championTwoHP = 666;
+
+    private Label tooltipText;
+    private Pixmap defaultMouse, spellMouse;
+    static Music battleMusic;
+    private Sound cantclick = Gdx.audio.newSound(Gdx.files.internal("assets/audio/sound/cantclick.mp3"));
+
+
+    Champion abilityUser;
+    Fighter attacker = null; //variable to know when someone have attacked to make the animation
+    private int turn = 0;
+    private boolean firstAttack = false;
+    private boolean secondAttack = false;
+    private boolean thirdAttack = false;
+    private long deadAnimationStart;
+
     private boolean killHim = false;
     Fighter killingTarget;
+
     private int triviaMustBeShown = -1;
-    public Sound cantclick = Gdx.audio.newSound(Gdx.files.internal("assets/audio/sound/cantclick.mp3"));
-
     private DialogBox questionBox;
+    private TextButton answerButton1, answerButton2, answerButton3, answerButton4;
 
-    private TextButton answerButton1;
-    private TextButton answerButton2;
-    private TextButton answerButton3;
-    private TextButton answerButton4;
-
-    boolean isAnswerButton1Pushed=false;
-    boolean isAnswerButton2Pushed=false;
-    boolean isAnswerButton3Pushed=false;
-    boolean isAnswerButton4Pushed=false;
+    private boolean isAnswerButton1Pushed=false;
+    private boolean isAnswerButton2Pushed=false;
+    private boolean isAnswerButton3Pushed=false;
+    private boolean isAnswerButton4Pushed=false;
 
     boolean isCorrectAnswer = false;
 
@@ -82,9 +78,6 @@ public class FightScreen extends BaseScreen {
 
     private int triviaHasCheck = -1;
     private boolean isTriviaAttack = false;
-
-    public static int amountOfEnemies;
-
 
     public FightScreen(LevelScreen prev)  {
         super();
@@ -104,9 +97,9 @@ public class FightScreen extends BaseScreen {
         fightBackground.loadTexture( "assets/img/dungeon.png" );
         fightBackground.setSize(800,600);
 
-        tooltipText = new Label("Tooltip", BaseGame.labelStyle);
+        tooltipText = new Label("", BaseGame.labelStyle);
         tooltipText.setFontScale(0.5f);
-        tooltipText.setColor(Color.RED);
+        tooltipText.setColor(Color.LIGHT_GRAY);
         tooltipText.setPosition(430,80);
         tooltipText.setSize(300,50);
         tooltipText.setWrap(true);
@@ -332,9 +325,6 @@ public class FightScreen extends BaseScreen {
 
         }
 
-        //put the buttons in the table.
-        //uiTable.pad ( 25 );
-        // add 10 pixel corner to the screen.
         uiTable.add ( ).height ( 140 ).width ( 25 );
         uiTable.add ( ).height ( 140 ).width ( 116 );
         uiTable.add ( ).height ( 140 ).width ( 116 );
@@ -402,7 +392,7 @@ public class FightScreen extends BaseScreen {
         uiTable.add ( championThree ).height ( 200 ).width ( 116 ); //hero 3 position
         uiTable.add ( championTwo ).height ( 200 ).width ( 116 ); //hero 2 position
         uiTable.add ( championOne ).height ( 200 ).width ( 116 ); //hero 1 position
-        uiTable.add ( ).height ( 200 ).width ( 56 ); //space between hero and enemy
+        uiTable.add ( ).height ( 200 ).width ( 50 ); //space between hero and enemy
         uiTable.add ( enemyOne ).height ( 200 ).width ( 116 ); //enemy 1 position
         uiTable.add ( enemyTwo ).height ( 200 ).width ( 116 ); //enemy 2 position
         uiTable.add ( enemyThree ).height ( 200 ).width ( 116 ); //enemy 3 position
