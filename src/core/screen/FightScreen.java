@@ -11,93 +11,73 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import core.MortenCombat;
-import core.actors.exploringactors.Sokol;
 import core.actors.fightingactors.*;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
 import java.util.concurrent.CopyOnWriteArrayList;
-
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import core.ImportQandA;
 import core.framework.BaseGame;
-
-import java.io.FileNotFoundException;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
-import java.util.stream.Stream;
-
 
 public class FightScreen extends BaseScreen {
     private LevelScreen previousMap;
-    Champion championOne;
-    Champion championTwo;
-    Champion championThree;
-    ArrayList<Champion> champions;
-    ArrayList<EnemyFighters> enemies;
-    Champion abilityUser;
-    EnemyFighters enemyOne;
-    EnemyFighters enemyTwo;
-    EnemyFighters enemyThree;
-    boolean firstAttack = false;
-    boolean secondAttack = false;
-    boolean thirdAttack = false;
-    private Pixmap defaultMouse;
-    private Pixmap spellMouse;
-
-    public Champion getChampionOne() {
-        return championOne;
-    }
-
-    static Music battleMusic;
-    CopyOnWriteArrayList<Fighter> aliveFighters;
+    private Champion championOne, championTwo, championThree;
+    private ArrayList<Champion> champions;
+    private EnemyFighters enemyOne, enemyTwo, enemyThree;
+    private ArrayList<EnemyFighters> enemies;
+    private CopyOnWriteArrayList<Fighter> aliveFighters;
     Stack<Fighter> fightingTurn;
-    long currentTime;
-    long startTime = System.currentTimeMillis();
-    int turn = 0;
-    int enemyThinking = MathUtils.random(3500,4500);
-    Fighter attacker = null; //variable to know when someone have attacked to make the animation
-    long deadAnimationStart;
+
+    public static int amountOfEnemies;
+    private long currentTime;
+    private long startTime = System.currentTimeMillis();
+    private int enemyThinking = MathUtils.random(3500,4500);
     static private int championOneHP= 666;
     static private int championThreeHP = 666;
     static private int championTwoHP = 666;
+
+    private Label tooltipText;
+    private Pixmap defaultMouse, spellMouse;
+    static Music battleMusic;
+    private Sound cantclick = Gdx.audio.newSound(Gdx.files.internal("assets/audio/sound/cantclick.mp3"));
+
+
+    Champion abilityUser;
+    Fighter attacker = null; //variable to know when someone have attacked to make the animation
+    private int turn = 0;
+    private boolean firstAttack = false;
+    private boolean secondAttack = false;
+    private boolean thirdAttack = false;
+    private long deadAnimationStart;
+
     private boolean killHim = false;
     Fighter killingTarget;
+
     private int triviaMustBeShown = -1;
-    public Sound cantclick = Gdx.audio.newSound(Gdx.files.internal("assets/audio/sound/cantclick.mp3"));
-
     private DialogBox questionBox;
+    private TextButton answerButton1, answerButton2, answerButton3, answerButton4;
 
-    private TextButton answerButton1;
-    private TextButton answerButton2;
-    private TextButton answerButton3;
-    private TextButton answerButton4;
-
-    //private TextButton question;
-
-    boolean isAnswerButton1Pushed=false;
-    boolean isAnswerButton2Pushed=false;
-    boolean isAnswerButton3Pushed=false;
-    boolean isAnswerButton4Pushed=false;
+    private boolean isAnswerButton1Pushed=false;
+    private boolean isAnswerButton2Pushed=false;
+    private boolean isAnswerButton3Pushed=false;
+    private boolean isAnswerButton4Pushed=false;
 
     boolean isCorrectAnswer = false;
 
     private Stack<ImportQandA> qA;
     private ArrayList<String> answers;
     private boolean criticalAttack = false;
-
     long startTime2;
     long currentTime2;
-
     static int randomInt=0;
 
     private int triviaHasCheck = -1;
     private boolean isTriviaAttack = false;
-
-    public static int amountOfEnemies;
-
 
     public FightScreen(LevelScreen prev)  {
         super();
@@ -116,6 +96,15 @@ public class FightScreen extends BaseScreen {
         BaseActor fightBackground = new BaseActor(0,0, mainStage);
         fightBackground.loadTexture( "assets/img/dungeon.png" );
         fightBackground.setSize(800,600);
+
+        tooltipText = new Label("", BaseGame.labelStyle);
+        tooltipText.setFontScale(0.5f);
+        tooltipText.setColor(Color.LIGHT_GRAY);
+        tooltipText.setPosition(430,80);
+        tooltipText.setSize(300,50);
+        tooltipText.setWrap(true);
+        uiStage.addActor(tooltipText);
+
         //initialize the actors at the screen, depending on the seletionScreen, read by a static variable in
         //Morten combat
         if (MortenCombat.fighterN == 1) {
@@ -197,14 +186,15 @@ public class FightScreen extends BaseScreen {
             c.getFirstButton().addListener(
                     (Event e) ->
                     {
-                        if ( !(e instanceof InputEvent) )
+                        if (c != fightingTurn.peek ())
                             return false;
+                        tooltipText.setText(c.getSpellOneText());
+                        if ( !(e instanceof InputEvent) ){
+                            return false;
+                        }
                         if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                             return false;
-                        //making sure that only the fighter with the turn can listen to clicks.
-                        if (c != fightingTurn.peek ())
-                            //implement not my turn sound
-                            return false;
+
                         firstAttack = true;
                         secondAttack = false;
                         thirdAttack = false;
@@ -217,12 +207,14 @@ public class FightScreen extends BaseScreen {
             c.getSecondButton ().addListener(
                     (Event e) ->
                     {
+                        if (c != fightingTurn.peek ())
+                            return false;
+                        tooltipText.setText(c.getSpellTwoText());
                         if ( !(e instanceof InputEvent) )
                             return false;
                         if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                             return false;
-                        if (c != fightingTurn.peek ())
-                            return false;
+
                         secondAttack = true;
                         firstAttack = false;
                         thirdAttack = false;
@@ -234,12 +226,14 @@ public class FightScreen extends BaseScreen {
             c.getThirdButton ().addListener(
                     (Event e) ->
                     {
+                        if (c != fightingTurn.peek ())
+                            return false;
+                        tooltipText.setText(c.getSpellThreeText());
                         if ( !(e instanceof InputEvent) )
                             return false;
                         if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                             return false;
-                        if (c != fightingTurn.peek ())
-                            return false;
+
                         thirdAttack = true;
                         firstAttack = false;
                         secondAttack = false;
@@ -331,9 +325,6 @@ public class FightScreen extends BaseScreen {
 
         }
 
-        //put the buttons in the table.
-        //uiTable.pad ( 25 );
-        // add 10 pixel corner to the screen.
         uiTable.add ( ).height ( 140 ).width ( 25 );
         uiTable.add ( ).height ( 140 ).width ( 116 );
         uiTable.add ( ).height ( 140 ).width ( 116 );
@@ -401,7 +392,7 @@ public class FightScreen extends BaseScreen {
         uiTable.add ( championThree ).height ( 200 ).width ( 116 ); //hero 3 position
         uiTable.add ( championTwo ).height ( 200 ).width ( 116 ); //hero 2 position
         uiTable.add ( championOne ).height ( 200 ).width ( 116 ); //hero 1 position
-        uiTable.add ( ).height ( 200 ).width ( 56 ); //space between hero and enemy
+        uiTable.add ( ).height ( 200 ).width ( 50 ); //space between hero and enemy
         uiTable.add ( enemyOne ).height ( 200 ).width ( 116 ); //enemy 1 position
         uiTable.add ( enemyTwo ).height ( 200 ).width ( 116 ); //enemy 2 position
         uiTable.add ( enemyThree ).height ( 200 ).width ( 116 ); //enemy 3 position
@@ -422,16 +413,13 @@ public class FightScreen extends BaseScreen {
         uiTable.add ( championThree.getThirdButton ()).height( 50 ).width ( 115 ); // ability 3 section for hero 3
         uiTable.add ( championTwo.getThirdButton ()).height( 50 ).width ( 115 ); // ability 3 section for hero 2
         uiTable.add ( championOne.getThirdButton ()).height( 50 ).width ( 115 );// ability 3 section for hero 1
-
+        uiTable.row ( );
 
         for (Fighter f : fightingTurn){
             f.sizeBy(60);
 
             f.setAux ( f.getHP () );
         }
-
-
-
 
         //qA = MortenCombat.topics;
         qA = MortenCombat.questionAnswer;
@@ -599,7 +587,6 @@ public class FightScreen extends BaseScreen {
             f.updateHPBar();
             f.updateNamePlate();
             f.updateManaBar();
-            //updating to green when the actor has the turn
 
         }
         for (Fighter f : aliveFighters){
@@ -733,7 +720,7 @@ public class FightScreen extends BaseScreen {
             killHim = false;
         }
 
-    }
+    } // Update end
 
     private void activateDefaultMouse(){
         Gdx.graphics.setCursor(Gdx.graphics.newCursor(defaultMouse, 0, 0));
@@ -753,6 +740,7 @@ public class FightScreen extends BaseScreen {
         fightingTurn.pop();
         firstAttack = secondAttack = thirdAttack = false;
         triviaHasCheck = -1;
+        //set off the label
     }
     private void theEnemyAttacks(EnemyFighters enemy,Fighter fighter){
         int chanceAbility = MathUtils.random(0,100);
@@ -1035,6 +1023,7 @@ public class FightScreen extends BaseScreen {
             answerButton4.getLabel().setText(answers.get(3));
 
             uiTable.setVisible(true);
+            tooltipText.setVisible(true);
 
         }
     }
@@ -1051,6 +1040,7 @@ public class FightScreen extends BaseScreen {
         questionBox.setVisible(true);
 
         uiTable.setVisible(false);
+        tooltipText.setVisible(false);
 
     }
 

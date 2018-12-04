@@ -5,9 +5,12 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class SupportOne extends SpellCaster{
 
-    public String spellOneName = "Light Hit";
-    public String spellTwoName = "Lights Grace";
-    public String spellThreeName = "Holy Light";
+    private String spellOneName = "Light Hit";
+    private String spellTwoName = "Lights Grace";
+    private String spellThreeName = "Holy Light";
+    private String spellOneText = "Hits the enemy for 3-11 damage and restore 20 mana";
+    private String spellTwoText = "Heals a hero for 50 health, cost 30 mana";
+    private String spellThreeText = "Heals all heroes for 30 health, cost 50 mana";
 
     public SupportOne(Stage s){
         super(s);
@@ -18,6 +21,10 @@ public class SupportOne extends SpellCaster{
         setFirstButtonName(spellOneName);
         setSecondButtonName(spellTwoName);
         setThridButtonName(spellThreeName);
+
+        setSpellOneText(spellOneText);
+        setSpellTwoText(spellTwoText);
+        setSpellThreeText(spellThreeText);
 
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Robot Attack-min.png", 0.14f,1,8);
         iddle = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Robot Iddle-min.png", 0.14f, 1, 10);

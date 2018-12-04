@@ -6,9 +6,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 public class WarriorOne extends Champion {
 
-    public String spellOneName = "Light Strike";
-    public String spellTwoName = "Equalizer";
-    public String spellThreeName = "Execute";
+    private String spellOneName = "Light Strike";
+    private String spellTwoName = "Equalizer";
+    private String spellThreeName = "Execute";
+    private String spellOneText = "Strikes the enemy for 8-23 damage";
+    private String spellTwoText = "??";
+    private String spellThreeText = "Tries to exitcute the enemy for 3-15 damage, " +
+                                    "if it kills the enemy restore 20% health";
 
     private Label manaBar;
 
@@ -21,6 +25,10 @@ public class WarriorOne extends Champion {
         setFirstButtonName(spellOneName);
         setSecondButtonName(spellTwoName);
         setThridButtonName(spellThreeName);
+
+        setSpellOneText(spellOneText);
+        setSpellTwoText(spellTwoText);
+        setSpellThreeText(spellThreeText);
 
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight 1 Attack-min.png", 0.14f,1,7);
         iddle = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Knight 1 Iddle-min.png", 0.14f, 1, 7);
