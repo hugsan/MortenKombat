@@ -710,10 +710,13 @@ public class FightScreen extends BaseScreen {
         }
         //I assume that all enemies are dead
         boolean isAllEnemyDead = true;
+        boolean isAllHeroesDead = true;
         //I check if any enemy is alive
         for (Fighter f : aliveFighters){
             if (f instanceof EnemyFighters)
                 isAllEnemyDead = false;
+            else
+                isAllHeroesDead = false;
             if (!fightingTurn.isEmpty())
                 fightingTurn.peek().updateNameColor();
         }
@@ -725,6 +728,11 @@ public class FightScreen extends BaseScreen {
             this.dispose();
             //exit to exploring map
             MortenCombat.setActiveScreen(previousMap);
+        }
+        if (isAllHeroesDead){
+            battleMusic.stop();
+            this.dispose();
+            MortenCombat.setActiveScreen(new GameOverScreen());
         }
         //checking if we have killed any fighters
 
