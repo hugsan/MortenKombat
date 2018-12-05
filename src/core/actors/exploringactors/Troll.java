@@ -15,7 +15,7 @@ import core.framework.BaseActor;
  * When the Hero hit a skeleton it starts the FightScreen.
  */
 
-public class Skeleton extends BaseActor
+public class Troll extends BaseActor
 {
     private Animation north;
     private Animation south;
@@ -23,7 +23,7 @@ public class Skeleton extends BaseActor
     private Animation west;
     private float facingAngle;
 
-    public Skeleton(float x, float y, Stage s)
+    public Troll(float x, float y, Stage s)
     {
         super(x,y,s);
         String fileName = "assets/img/Goblin.png";

@@ -12,21 +12,21 @@ import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import core.MortenCombat;
+import core.utils.menu.PauseScreen;
+import core.utils.MortenCombat;
 import core.actors.fightingactors.*;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
 import java.util.concurrent.CopyOnWriteArrayList;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import core.ImportQandA;
+import core.utils.ImportQandA;
 import core.framework.BaseGame;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
-import java.util.logging.Level;
 
 public class FightScreen extends BaseScreen {
-    private LevelScreen previousMap;
+    private ExploringScreen previousMap;
     private Champion championOne, championTwo, championThree;
     private ArrayList<Champion> champions;
     private EnemyFighters enemyOne, enemyTwo, enemyThree;
@@ -45,7 +45,7 @@ public class FightScreen extends BaseScreen {
 
     private Label tooltipText;
     private Pixmap defaultMouse, spellMouse;
-    static Music battleMusic;
+    public static Music battleMusic;
     private Sound cantclick = Gdx.audio.newSound(Gdx.files.internal("assets/audio/sound/cantclick.mp3"));
 
     Champion abilityUser;
@@ -81,7 +81,7 @@ public class FightScreen extends BaseScreen {
     private int triviaHasCheck = -1;
     private boolean isTriviaAttack = false;
 
-    public FightScreen(LevelScreen prev)  {
+    public FightScreen(ExploringScreen prev)  {
         super();
         previousMap = prev;
     }
@@ -720,7 +720,7 @@ public class FightScreen extends BaseScreen {
             //remove the screen
             this.dispose();
             //exit to exploring map
-            LevelScreen.musicPlay();
+            ExploringScreen.musicPlay();
             MortenCombat.setActiveScreen(previousMap);
         }
         //checking if we have killed any fighters
@@ -1081,7 +1081,7 @@ public class FightScreen extends BaseScreen {
         else if (random == 2)
             return new ZombieFighter(mainStage);
         else
-            return new BatFighter(mainStage);
+            return new TrollFighter(mainStage);
     }
 
 }

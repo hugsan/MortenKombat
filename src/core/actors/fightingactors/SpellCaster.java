@@ -80,7 +80,6 @@ public abstract class SpellCaster extends Champion {
         if (this.getMana() >= amount)
             return true;
         else {
-            missingMana.play();
             missingMana.play(1f);
             return false;
         }

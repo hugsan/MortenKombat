@@ -1,6 +1,6 @@
 package core.screen;
 
-import core.MortenCombat;
+import core.utils.MortenCombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
 
@@ -11,11 +11,11 @@ import core.framework.BaseScreen;
 
 public class LoadingScreen extends BaseScreen {
 
-    private LevelScreen nextScreen;
+    private ExploringScreen nextScreen;
     private double startTime;
     private double currentTime;
 
-    public LoadingScreen (LevelScreen nextScreen){
+    public LoadingScreen (ExploringScreen nextScreen){
         super();
         this.nextScreen = nextScreen;
         startTime = System.currentTimeMillis();

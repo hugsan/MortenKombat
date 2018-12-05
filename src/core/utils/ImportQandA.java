@@ -1,4 +1,4 @@
-package core;
+package core.utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,7 +14,7 @@ public class ImportQandA {
     public String wrongAnswer1;
     public String wrongAnswer2;
     public String wrongAnswer3;
-
+    public static boolean fileError = false;
 
     public ImportQandA(String q, String correctAnswer, String wrongAnswer1, String wrongAnswer2,
                         String wrongAnswer3) {
@@ -35,8 +35,9 @@ public class ImportQandA {
         String question, answer, wrongOne, wrongTwo, wrongThree;
         question = answer = wrongOne = wrongTwo = wrongThree = null;
         int i = 0;
+        Scanner dataReader = null;
         try {
-            Scanner dataReader = new Scanner(data);
+            dataReader = new Scanner(data);
             while (dataReader.hasNextLine()) {
                 if (i == 0) {
                     question = dataReader.nextLine();
@@ -57,11 +58,14 @@ public class ImportQandA {
                     stack.push(new ImportQandA(question, answer, wrongOne, wrongTwo, wrongThree));
                     i = 0;
                 }
-
-
             }
         } catch (FileNotFoundException e) {
-            System.out.println("There is no available file");
+            //create a new screen with instroction to the player.
+            System.out.println("we are missing the file");
+            fileError = true;
+        }finally{
+            if (dataReader != null)
+                dataReader.close();
         }
     }
 

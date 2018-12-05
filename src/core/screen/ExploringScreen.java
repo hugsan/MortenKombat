@@ -6,25 +6,24 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.MathUtils;
-import core.MortenCombat;
+import core.utils.menu.PauseScreen;
+import core.utils.MortenCombat;
 import core.actors.exploringactors.*;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
 import core.framework.TilemapActor;
 
-import java.io.FileNotFoundException;
 
-
-public class LevelScreen extends BaseScreen {
+public class ExploringScreen extends BaseScreen {
     public static String mapName;
     private static int windTimer = 0;
     public static String mapEffect = "normal";
     private String currentMapEffect;
-    private LevelScreen previousMap;
-    private LevelScreen nextMap = null;
-    private LevelScreen nextMap2 = null;
+    private ExploringScreen previousMap;
+    private ExploringScreen nextMap = null;
+    private ExploringScreen nextMap2 = null;
     private Hero hero;
-    protected static Music backgroundMusic;
+    public static Music backgroundMusic;
     private BaseActor pauseBackground;
 
     // X Y position of the hero when the hero travels to next map
@@ -33,20 +32,20 @@ public class LevelScreen extends BaseScreen {
     private float z, w;
 
     /**
-     * Constructor for LevelScreen. Initialize the map withprevious map
+     * Constructor for ExploringScreen. Initialize the map withprevious map
      * and next map to null
      */
-    public LevelScreen()  { this.previousMap = null; }
+    public ExploringScreen()  { this.previousMap = null; }
 
     /**
-     * Constructor for LevelScreen. Initialize the map with previous map object. Nextmaps are
+     * Constructor for ExploringScreen. Initialize the map with previous map object. Nextmaps are
      * set to null. Also changes the value of previous map, so the previous map value of nextmap points to the
      * generated map in this constructor
      * This constructor implements a Map data structure as a tree with next and next1 being their branches
      *
-     * @param previousMap LevelScreen object, where the current map is connected to.
+     * @param previousMap ExploringScreen object, where the current map is connected to.
      */
-    public LevelScreen(LevelScreen previousMap) {
+    public ExploringScreen(ExploringScreen previousMap) {
         if (previousMap.getNextMap() != null)
             previousMap.setNextMap2(this);
         else previousMap.setNextMap(this);
@@ -80,7 +79,7 @@ public class LevelScreen extends BaseScreen {
         createMapObjects(tma, "Torch");
         createMapObjects(tma, "Chest");
         createMapObjects(tma, "Zombie");
-        createMapObjects(tma, "Skeleton");
+        createMapObjects(tma, "Troll");
         createMapObjects(tma, "Medic"); // Heal
         createMapObjects ( tma, "Morten" );
         createMapObjects ( tma, "Johan" );
@@ -146,7 +145,7 @@ public class LevelScreen extends BaseScreen {
         actorObjectInteraction("core.actors.exploringactors.Bat");
         actorObjectInteraction("core.actors.exploringactors.Chest");
         actorObjectInteraction("core.actors.exploringactors.Zombie");
-        actorObjectInteraction("core.actors.exploringactors.Skeleton");
+        actorObjectInteraction("core.actors.exploringactors.Troll");
         actorObjectInteraction("core.actors.exploringactors.Medic");
         actorObjectInteraction ( "core.actors.exploringactors.Morten" );
         actorObjectInteraction ( "core.actors.exploringactors.Johan" );
@@ -210,8 +209,8 @@ public class LevelScreen extends BaseScreen {
                 case "Zombie":
                     new Zombie((float) props.get("x"), (float) props.get("y"), mainStage);
                     break;
-                case "Skeleton":
-                    new Skeleton((float) props.get("x"), (float) props.get("y"), mainStage);
+                case "Troll":
+                    new Troll((float) props.get("x"), (float) props.get("y"), mainStage);
                     break;
                 case "Medic" :
                     new Medic((float) props.get("x"), (float) props.get("y"), mainStage);
@@ -263,7 +262,7 @@ public class LevelScreen extends BaseScreen {
                         a.remove();
                     }
                     break;
-                    case "core.actors.exploringactors.Skeleton":
+                    case "core.actors.exploringactors.Troll":
                     for (BaseActor s : BaseActor.getList(mainStage, "core.actors.exploringactors.Solid")) {
                         if (a.overlaps(s)) {
                             a.preventOverlap(s);
@@ -374,19 +373,19 @@ public class LevelScreen extends BaseScreen {
 
     private static void musicStop() { backgroundMusic.stop(); }
 
-    public void setNextMap(LevelScreen nextMap) {
+    public void setNextMap(ExploringScreen nextMap) {
         this.nextMap = nextMap;
     }
 
-    public LevelScreen getNextMap() {
+    public ExploringScreen getNextMap() {
         return nextMap;
     }
 
-    public LevelScreen getNextMap2() {
+    public ExploringScreen getNextMap2() {
         return nextMap2;
     }
 
-    public void setNextMap2(LevelScreen nextMap2) {
+    public void setNextMap2(ExploringScreen nextMap2) {
         this.nextMap2 = nextMap2;
     }
 

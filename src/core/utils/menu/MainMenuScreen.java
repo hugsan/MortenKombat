@@ -1,4 +1,4 @@
-package core.screen;
+package core.utils.menu;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
@@ -8,21 +8,21 @@ import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import core.MortenCombat;
+import core.screen.SelectionScreen;
+import core.utils.MortenCombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
-import java.io.FileNotFoundException;
 
 /**
- * This is the main menu class. It is the first screen in the game,
+ * This is the main utils class. It is the first screen in the game,
  * it consist of 3 buttons lead to other menus or exiting the game.
- * It also contains the menu music that will play during all the menus, and the volume for all music in the game.
+ * It also contains the utils music that will play during all the menus, and the volume for all music in the game.
  */
 
 public class MainMenuScreen extends BaseScreen{
     private static Music menuMusic;
 
-    public MainMenuScreen() throws FileNotFoundException {
+    public MainMenuScreen()  {
     }
 
     public void initialize() {
@@ -32,7 +32,7 @@ public class MainMenuScreen extends BaseScreen{
         mainMenuBackground.loadTexture("assets/img/menubackground.png");
         mainMenuBackground.setSize(800,600);
 
-        // This is the headline in the menu screen
+        // This is the headline in the utils screen
         BaseActor title = new BaseActor(100,400, mainStage);
         title.loadTexture("assets/img/MortenKombatLogo.png");
         title.setSize(600,150);

@@ -1,18 +1,17 @@
-package core.screen;
+package core.utils.menu;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import core.MortenCombat;
+import core.screen.ExploringScreen;
+import core.screen.FightScreen;
+import core.utils.MortenCombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
-
-import java.io.FileNotFoundException;
 
 public class PauseScreen extends BaseScreen {
 
@@ -132,7 +131,7 @@ public class PauseScreen extends BaseScreen {
 
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
-                    //deletes the screen that we are using, before going back to menu screen.
+                    //deletes the screen that we are using, before going back to utils screen.
                     this.dispose();
                     MortenCombat.setActiveScreen(screen);
                     return false;
@@ -143,9 +142,9 @@ public class PauseScreen extends BaseScreen {
 
     @Override
     public void update(float dt) {
-        if (screen instanceof LevelScreen)
-          LevelScreen.backgroundMusic.setVolume(MortenCombat.volume);
-        if (screen instanceof  FightScreen){
+        if (screen instanceof ExploringScreen)
+          ExploringScreen.backgroundMusic.setVolume(MortenCombat.volume);
+        if (screen instanceof FightScreen){
             FightScreen.battleMusic.setVolume(MortenCombat.volume);
         }
     }

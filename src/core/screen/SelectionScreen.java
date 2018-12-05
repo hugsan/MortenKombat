@@ -7,13 +7,12 @@ import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import core.MortenCombat;
+import core.utils.menu.MainMenuScreen;
+import core.utils.MortenCombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
-import core.actors.CharacterCard;
-import core.actors.SelectionArea;
-
-import java.io.FileNotFoundException;
+import core.utils.CharacterCard;
+import core.utils.SelectionArea;
 
 /**
  * This is the hero selection screen. Here the player selects the three heroes to take with them into the maze.

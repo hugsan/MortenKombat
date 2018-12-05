@@ -3,9 +3,9 @@ package core.actors.fightingactors;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class BatFighter extends EnemyFighters {
+public class TrollFighter extends EnemyFighters {
 
-    public BatFighter(Stage s){
+    public TrollFighter(Stage s){
         super(s);
         this.setHP(60);
         this.setMaxHP(60);

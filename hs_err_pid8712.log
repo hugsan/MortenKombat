@@ -39,10 +39,10 @@ j  com.badlogic.gdx.graphics.glutils.ShaderProgram.loadShader(ILjava/lang/String
 j  com.badlogic.gdx.graphics.glutils.ShaderProgram.compileShaders(Ljava/lang/String;Ljava/lang/String;)V+16
 j  com.badlogic.gdx.graphics.glutils.ShaderProgram.<init>(Ljava/lang/String;Ljava/lang/String;)V+219
 j  core.actors.Hero.<init>(FFLcom/badlogic/gdx/scenes/scene2d/Stage;)V+365
-j  core.screen.LevelScreen.initialize()V+209
+j  core.screen.ExploringScreen.initialize()V+209
 j  core.framework.BaseScreen.<init>()V+57
-j  core.screen.LevelScreen.<init>()V+1
-j  core.MortenCombat.create()V+68
+j  core.screen.ExploringScreen.<init>()V+1
+j  core.utils.MortenCombat.create()V+68
 j  com.badlogic.gdx.backends.lwjgl.LwjglApplication.mainLoop()V+29
 j  com.badlogic.gdx.backends.lwjgl.LwjglApplication$1.run()V+27
 v  ~StubRoutines::call_stub

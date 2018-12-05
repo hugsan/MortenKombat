@@ -1,10 +1,10 @@
-package core;
+package core.utils;
 
 import core.framework.BaseGame;
-import core.screen.LevelScreen;
-import core.screen.LoadingScreen;
-import core.screen.MainMenuScreen;
-import core.screen.MapLayout;
+import core.screen.*;
+import core.utils.menu.MainMenuScreen;
+import core.utils.menu.QAerrorScreen;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class MortenCombat extends BaseGame {
 
     public static ArrayList<Stack<ImportQandA>> topics;
 
-    static LevelScreen[] layout = new LevelScreen[MapLayout.values().length];
+    static ExploringScreen[] layout = new ExploringScreen[MapLayout.values().length];
 
     public void create() {
 
@@ -35,12 +35,12 @@ public class MortenCombat extends BaseGame {
         int i = 0;
 
         for (MapLayout map : MapLayout.values()){
-            LevelScreen.mapName = map.getTmx();
-            LevelScreen.mapEffect = map.getMapEffect();
+            ExploringScreen.mapName = map.getTmx();
+            ExploringScreen.mapEffect = map.getMapEffect();
             if (map.getLevel() == 0){
-                    layout[i] = new LevelScreen();
+                    layout[i] = new ExploringScreen();
             }else {
-                    layout[i] = new LevelScreen(layout[map.getLevel() -1]);
+                    layout[i] = new ExploringScreen(layout[map.getLevel() -1]);
             }
             i++;
         }
@@ -58,13 +58,12 @@ public class MortenCombat extends BaseGame {
 
         Collections.shuffle(topics);
 
-        MainMenuScreen menu = null;
-        try {
-            menu = new MainMenuScreen();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        if (ImportQandA.fileError)
+            setActiveScreen(new QAerrorScreen());
+        else{
+            MainMenuScreen menu = new MainMenuScreen();
+            setActiveScreen( menu );
         }
-        setActiveScreen( menu );
     }
 
     /**
@@ -72,8 +71,8 @@ public class MortenCombat extends BaseGame {
      * @throws FileNotFoundException
      */
     public static void startGame() {
-        setActiveScreen( new LoadingScreen(layout[0]) );
-        LevelScreen.musicPlay();
+            setActiveScreen( new LoadingScreen(layout[0]) );
+            ExploringScreen.musicPlay();
     }
 
 }

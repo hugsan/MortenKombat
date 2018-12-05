@@ -2,7 +2,7 @@ package launcher;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import core.MortenCombat;
+import core.utils.MortenCombat;
 
 public class Launcher
 {

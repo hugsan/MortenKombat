@@ -1,4 +1,4 @@
-package core.actors;
+package core.utils;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import core.framework.DragAndDropActor;

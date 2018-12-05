@@ -6,6 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 public class WarriorOne extends Champion {
 
+    static final double PERCENTAGE_GENERATE_QUESTIONS = 0.3; // this is the size in cm
+
     private String spellOneName = "Light Strike";
     private String spellTwoName = "Equalizer";
     private String spellThreeName = "Execute";
@@ -58,7 +60,7 @@ public class WarriorOne extends Champion {
     @Override
     public boolean attackTwo (Fighter fighter){
         if (fighter instanceof EnemyFighters){
-            int damage = (int)(( fighter.getMaxHP() - fighter.getHP() ) * 0.4);
+            int damage = (int)(( fighter.getMaxHP() - fighter.getHP() ) * 0.3);
             fighter.setHP(fighter.getHP()- damage);
             return true;}
         cantclick.play();

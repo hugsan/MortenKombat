@@ -1,4 +1,4 @@
-package core.screen;
+package core.utils.menu;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -7,11 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import core.MortenCombat;
+import core.utils.MortenCombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
-
-import java.io.FileNotFoundException;
 
 /**
  * This is the options screen class and it consist of five buttons, it is in here the volume for music can be changed.
@@ -65,7 +63,7 @@ public class OptionsMenuScreen extends BaseScreen {
                         return false;
 
                     System.out.println("Exit Settings");
-                    //deletes the screen that we are using, before going back to menu screen.
+                    //deletes the screen that we are using, before going back to utils screen.
                     this.dispose();
                     MortenCombat.setActiveScreen(menu);
                     return false;
