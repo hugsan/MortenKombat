@@ -18,7 +18,7 @@ public class WarriorTwo extends Champion{
 
     public WarriorTwo (Stage s){
         super(s);
-        setFighterName ( "Jens" );
+        setFighterName ( "Arthur" );
         setHP(250);
         setMaxHP(250);
 

@@ -15,7 +15,7 @@ public class MageOne extends SpellCaster {
 
     public MageOne(Stage s){
         super(s);
-        this.setFighterName("Dimitrova");
+        this.setFighterName("Drafaris");
         this.setHP(150);
         this.setMaxHP(150);
 
