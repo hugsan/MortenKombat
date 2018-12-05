@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="163">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="175">
  <tileset firstgid="1" name="terrain" tilewidth="32" tileheight="32" tilecount="483" columns="21">
   <image source="terrain.png" width="672" height="736"/>
   <tile id="0">
@@ -1175,5 +1175,65 @@
    </properties>
   </object>
   <object id="162" x="-61.3333" y="333.333"/>
+  <object id="163" x="454.545" y="75.7576" width="42.4242" height="48.4848">
+   <properties>
+    <property name="name" value="Medic"/>
+   </properties>
+  </object>
+  <object id="164" x="121.212" y="103.03" width="39.3939" height="45.4545">
+   <properties>
+    <property name="name" value="Skeleton"/>
+   </properties>
+  </object>
+  <object id="165" x="125.758" y="834.849" width="39.3939" height="45.4545">
+   <properties>
+    <property name="name" value="Skeleton"/>
+   </properties>
+  </object>
+  <object id="166" x="886.364" y="546.97" width="39.3939" height="45.4545">
+   <properties>
+    <property name="name" value="Skeleton"/>
+   </properties>
+  </object>
+  <object id="167" x="1004.55" y="756.061" width="39.3939" height="45.4545">
+   <properties>
+    <property name="name" value="Skeleton"/>
+   </properties>
+  </object>
+  <object id="168" x="1471.21" y="1186.36" width="39.3939" height="45.4545">
+   <properties>
+    <property name="name" value="Skeleton"/>
+   </properties>
+  </object>
+  <object id="169" x="1359.09" y="1780.3" width="39.3939" height="45.4545">
+   <properties>
+    <property name="name" value="Skeleton"/>
+   </properties>
+  </object>
+  <object id="170" x="592.424" y="1886.36" width="39.3939" height="45.4545">
+   <properties>
+    <property name="name" value="Skeleton"/>
+   </properties>
+  </object>
+  <object id="171" x="1013.64" y="1083.33" width="39.3939" height="45.4545">
+   <properties>
+    <property name="name" value="Skeleton"/>
+   </properties>
+  </object>
+  <object id="172" x="1843.94" y="1586.36" width="39.3939" height="45.4545">
+   <properties>
+    <property name="name" value="Skeleton"/>
+   </properties>
+  </object>
+  <object id="173" x="1259.09" y="246.97" width="39.3939" height="45.4545">
+   <properties>
+    <property name="name" value="Skeleton"/>
+   </properties>
+  </object>
+  <object id="174" x="531.818" y="637.879" width="39.3939" height="45.4545">
+   <properties>
+    <property name="name" value="Skeleton"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

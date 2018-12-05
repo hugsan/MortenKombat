@@ -5,9 +5,12 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class MageTwo extends SpellCaster {
 
-    public String spellOneName = "Mana Zapp";
-    public String spellTwoName = "Flame Lance";
-    public String spellThreeName = "Fire Ball";
+    private String spellOneName = "Mana Zapp";
+    private String spellTwoName = "Flame Lance";
+    private String spellThreeName = "Fire Ball";
+    private String spellOneText = "Zaps the enemy for 2-5 damage and gain 50 mana";
+    private String spellTwoText = "Burns the enemy for 60 damage for 75 mana";
+    private String spellThreeText = "Explode all enemies for 30 damage for 40 mana";
 
     public MageTwo (Stage s){
         super(s);
@@ -18,6 +21,10 @@ public class MageTwo extends SpellCaster {
         setFirstButtonName(spellOneName);
         setSecondButtonName(spellTwoName);
         setThridButtonName(spellThreeName);
+
+        setSpellOneText(spellOneText);
+        setSpellTwoText(spellTwoText);
+        setSpellThreeText(spellThreeText);
 
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Mage 2 Attack.png", 0.14f,1,5);
         iddle = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Mage 2 Idle.png", 0.14f, 1, 5);

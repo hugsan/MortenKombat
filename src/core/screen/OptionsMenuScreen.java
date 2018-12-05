@@ -21,7 +21,7 @@ public class OptionsMenuScreen extends BaseScreen {
 
     private BaseScreen menu;
 
-    public OptionsMenuScreen(BaseScreen menu) throws FileNotFoundException {
+    public OptionsMenuScreen(BaseScreen menu) {
         super();
         this.menu = menu;
     }

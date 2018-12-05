@@ -5,9 +5,12 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class SupportOne extends SpellCaster{
 
-    public String spellOneName = "Light Hit";
-    public String spellTwoName = "Lights Grace";
-    public String spellThreeName = "Holy Light";
+    private String spellOneName = "Light Hit";
+    private String spellTwoName = "Lights Grace";
+    private String spellThreeName = "Holy Light";
+    private String spellOneText = "Hits the enemy for 3-11 damage and restore 20 mana";
+    private String spellTwoText = "Heals a hero for 50 health, cost 30 mana";
+    private String spellThreeText = "Heals all heroes for 30 health, cost 50 mana";
 
     public SupportOne(Stage s){
         super(s);
@@ -18,6 +21,10 @@ public class SupportOne extends SpellCaster{
         setFirstButtonName(spellOneName);
         setSecondButtonName(spellTwoName);
         setThridButtonName(spellThreeName);
+
+        setSpellOneText(spellOneText);
+        setSpellTwoText(spellTwoText);
+        setSpellThreeText(spellThreeText);
 
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Robot Attack-min.png", 0.14f,1,8);
         iddle = AnimationCreator.createAnimation("assets/fightingscreen/Heroes/Robot Iddle-min.png", 0.14f, 1, 10);
@@ -50,7 +57,7 @@ public class SupportOne extends SpellCaster{
     @Override
     public boolean attackTwo(Fighter fighter) {
         if (this.enoughMana(30) && fighter instanceof Champion){
-            fighter.setHP(Math.min ( (fighter.getHP()+20), fighter.getMaxHP ()));
+            fighter.setHP(Math.min ( (fighter.getHP()+50), fighter.getMaxHP ()));
             spendMana(30);
 
             return true;
@@ -70,10 +77,14 @@ public class SupportOne extends SpellCaster{
     public boolean attackThree(Fighter fighterOne, Fighter fighterTwo, Fighter fighterThree) {
         if (fighterOne instanceof Champion || fighterTwo instanceof Champion || fighterThree instanceof Champion)
         {
+            //checking if the fighters are alive before fighting them.
             if (enoughMana(50)){
-                fighterOne.setHP( Math.min( (fighterOne.getHP()+30),fighterOne.getMaxHP() ) );
-                fighterTwo.setHP( Math.min ( (fighterTwo.getHP()+30),fighterTwo.getMaxHP() ) );
-                fighterThree.setHP( Math.min ( (fighterThree.getHP()+30),fighterThree.getMaxHP() ) );
+                if (fighterOne.getHP() != 0)
+                    fighterOne.setHP( Math.min( (fighterOne.getHP()+30),fighterOne.getMaxHP() ) );
+                if (fighterTwo.getHP() != 0)
+                    fighterTwo.setHP( Math.min ( (fighterTwo.getHP()+30),fighterTwo.getMaxHP() ) );
+                if (fighterThree.getHP() != 0)
+                    fighterThree.setHP( Math.min ( (fighterThree.getHP()+30),fighterThree.getMaxHP() ) );
                 this.spendMana(50);
                 return  true;
             }else {
