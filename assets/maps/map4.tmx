@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="189">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="189">
  <tileset firstgid="1" name="grass-tiles-2-small" tilewidth="32" tileheight="32" tilecount="72" columns="12">
   <image source="grass-tiles-2-small.png" width="384" height="192"/>
  </tileset>
@@ -498,7 +498,7 @@
 </data>
  </layer>
  <objectgroup id="5" name="Object Layer 1">
-  <object id="10" x="1053.39" y="1899.94" width="36.6667" height="24">
+  <object id="10" x="331.39" y="457.94" width="36.6667" height="42">
    <properties>
     <property name="name" value="Start"/>
    </properties>

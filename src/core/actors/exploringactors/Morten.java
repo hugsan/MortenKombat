@@ -24,7 +24,7 @@ public class Morten extends BaseActor{
             Texture texture = new Texture( Gdx.files.internal(fileName), true);
             int frameWidth = texture.getWidth() / cols;
             int frameHeight = texture.getHeight() / rows;
-            float frameDuration = 0.2f;
+            float frameDuration = 0.1f;
             TextureRegion[][] temp = TextureRegion.split(texture, frameWidth, frameHeight);
             Array<TextureRegion> textureArray = new Array<TextureRegion>();
 
@@ -34,7 +34,7 @@ public class Morten extends BaseActor{
             textureArray.clear();
 
             setAnimation ( idle );
-            setScale ( 1);
+            setScale (2);
             setBoundaryPolygon(8);
             boundToWorld();
 

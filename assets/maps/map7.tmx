@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="103">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="103">
  <tileset firstgid="1" name="terrain" tilewidth="32" tileheight="32" tilecount="483" columns="21">
   <image source="terrain.png" width="672" height="736"/>
  </tileset>
@@ -288,7 +288,7 @@
 </data>
  </layer>
  <objectgroup id="4" name="Object Layer 1">
-  <object id="12" x="1811.97" y="261.97" width="36" height="31">
+  <object id="12" x="239.243" y="246.818" width="36" height="31">
    <properties>
     <property name="name" value="Start"/>
    </properties>

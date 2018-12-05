@@ -10,9 +10,9 @@ public class JohanFighter extends EnemyFighters {
         this.setMaxHP(160);
         this.setFighterName("Johan");
 
-        attack = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/spritesheets/mage-1-85x94.png", 0.14f,2,4);
-        iddle = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/spritesheets/mage-1-85x94.png", 0.14f, 2, 4);
-        dead = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/spritesheets/mage-1-85x94.png", 0.14f, 2, 4);
+        attack = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Johan-Attack.png", 0.14f,1,6);
+        iddle = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Johan-Idle.png", 0.14f, 1, 8);
+        dead = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Johan-Dead.png", 0.14f, 1, 9);
 
         setAnimation(iddle);
 

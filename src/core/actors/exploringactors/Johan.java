@@ -15,9 +15,9 @@ public class Johan extends BaseActor{
     public Johan (float x, float y, Stage s)
     {
         super(x,y,s);
-        String fileName = "assets/Fightingscreen/Boss/spritesheets/mage-1-85x94.png";
-        int rows = 2;
-        int cols = 4;
+        String fileName = "assets/Fightingscreen/Boss/Johan-Idle.png";
+        int rows = 1;
+        int cols = 8;
         Texture texture = new Texture( Gdx.files.internal(fileName), true);
         int frameWidth = texture.getWidth() / cols;
         int frameHeight = texture.getHeight() / rows;

@@ -18,13 +18,13 @@ public class Sokol extends BaseActor {
     public Sokol (float x, float y, Stage s)
     {
         super(x,y,s);
-        String fileName = "assets/Fightingscreen/Boss/spritesheets/mage-2-122x110.png";
-        int rows = 2;
-        int cols = 4;
+        String fileName = "assets/Fightingscreen/Boss/Sokol-Idle.png";
+        int rows = 1;
+        int cols = 6;
         Texture texture = new Texture( Gdx.files.internal(fileName), true);
         int frameWidth = texture.getWidth() / cols;
         int frameHeight = texture.getHeight() / rows;
-        float frameDuration = 0.2f;
+        float frameDuration = 0.1f;
         TextureRegion[][] temp = TextureRegion.split(texture, frameWidth, frameHeight);
         Array<TextureRegion> textureArray = new Array<TextureRegion>();
 

@@ -9,9 +9,9 @@ public class MortenFighter extends EnemyFighters {
         this.setMaxHP(160);
         this.setFighterName("Morten");
 
-        attack = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/spritesheets/mage-1-85x94.png", 0.14f,2,4);
-        iddle = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/spritesheets/mage-1-85x94.png", 0.14f, 2, 4);
-        dead = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/spritesheets/mage-1-85x94.png", 0.14f, 2, 4);
+        attack = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Morten-Attack.png", 0.14f,1,11);
+        iddle = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Morten-Idle.png", 0.14f, 1, 26);
+        dead = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Morten-Dead.png", 0.14f, 1, 18);
 
         setAnimation(iddle);
 

@@ -9,9 +9,9 @@ public class SokolFighter extends EnemyFighters {
         this.setMaxHP(160);
         this.setFighterName("Sokol");
 
-        attack = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/spritesheets/mage-1-85x94.png", 0.14f,2,4);
-        iddle = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/spritesheets/mage-1-85x94.png", 0.14f, 2, 4);
-        dead = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/spritesheets/mage-1-85x94.png", 0.14f, 2, 4);
+        attack = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Sokol-Attack.png", 0.14f,1,8);
+        iddle = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Sokol-Idle.png", 0.14f, 1, 6);
+        dead = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Sokol-Dead.png", 0.14f, 1, 9);
 
         setAnimation(iddle);
 

@@ -9,9 +9,9 @@ public class LeneFighter extends EnemyFighters {
         this.setMaxHP(160);
         this.setFighterName("Lene");
 
-        attack = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/spritesheets/mage-3-87x110.png", 0.14f,2,4);
-        iddle = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/spritesheets/mage-3-87x110.png", 0.14f, 2, 4);
-        dead = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/spritesheets/mage-3-87x110.png", 0.14f, 2, 4);
+        attack = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Lene-Attack.png", 0.14f,1,30);
+        iddle = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Lene-Idle.png", 0.14f, 1, 16);
+        dead = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Lene-Dead.png", 0.14f, 1, 30);
 
         setAnimation(iddle);
 
