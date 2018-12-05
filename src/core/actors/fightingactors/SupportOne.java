@@ -14,7 +14,7 @@ public class SupportOne extends SpellCaster{
 
     public SupportOne(Stage s){
         super(s);
-        this.setFighterName("Nami");
+        this.setFighterName("Valyn");
         this.setHP(125);
         this.setMaxHP(125);
 

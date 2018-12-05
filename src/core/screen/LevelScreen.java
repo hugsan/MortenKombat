@@ -121,13 +121,13 @@ public class LevelScreen extends BaseScreen {
 
     public void update(float dt)  {
         // hero movement controls
-        if (Gdx.input.isKeyPressed(Keys.LEFT))
+        if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A))
             hero.accelerateAtAngle(180);
-        if (Gdx.input.isKeyPressed(Keys.RIGHT))
+        if (Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D))
             hero.accelerateAtAngle(0);
-        if (Gdx.input.isKeyPressed(Keys.UP))
+        if (Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.W))
             hero.accelerateAtAngle(90);
-        if (Gdx.input.isKeyPressed(Keys.DOWN))
+        if (Gdx.input.isKeyPressed(Keys.DOWN) || Gdx.input.isKeyPressed(Keys.S))
             hero.accelerateAtAngle(270);
 
         //escape that should implement a pauseScreen

@@ -734,11 +734,6 @@ public class FightScreen extends BaseScreen {
             LevelScreen.musicPlay();
             MortenCombat.setActiveScreen(previousMap);
         }
-        if (isAllHeroesDead || Gdx.input.isKeyJustPressed(Input.Keys.A)){
-            battleMusic.stop();
-            this.dispose();
-            MortenCombat.setActiveScreen(new GameOverScreen());
-        }
         //checking if we have killed any fighters
 
         if (killHim && (System.currentTimeMillis() - deadAnimationStart)/1000 > killingTarget.dead.getAnimationDuration() ){

@@ -14,7 +14,7 @@ public class SupportTwo extends SpellCaster {
 
     public SupportTwo(Stage s) {
         super(s);
-        this.setFighterName("Onagi");
+        this.setFighterName("Koryssh");
         this.setHP(125);
         this.setMaxHP(125);
 

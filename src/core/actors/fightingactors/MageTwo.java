@@ -14,7 +14,7 @@ public class MageTwo extends SpellCaster {
 
     public MageTwo (Stage s){
         super(s);
-        this.setFighterName("Chrille");
+        this.setFighterName("Alenor");
         this.setHP(150);
         this.setMaxHP(150);
 
