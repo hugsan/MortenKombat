@@ -35,7 +35,6 @@ public class FightScreen extends BaseScreen {
     Stack<Fighter> fightingTurn;
     private Label turnLabel;
 
-
     public static int amountOfEnemies;
     private long currentTime;
     private long startTime = System.currentTimeMillis();
@@ -162,9 +161,6 @@ public class FightScreen extends BaseScreen {
             enemyOne =  new MortenFighter ( mainStage);
             enemies.add(enemyOne);
         }
-
-
-
 
         fightingTurn = new Stack<> ( );
         fightingTurn.addAll ( champions );
@@ -329,9 +325,7 @@ public class FightScreen extends BaseScreen {
                         return true;
                     }
             );
-
         }
-
         uiTable.add ( ).height ( 140 ).width ( 25 );
         uiTable.add ( ).height ( 140 ).width ( 116 );
         uiTable.add ( ).height ( 140 ).width ( 116 );
@@ -428,7 +422,6 @@ public class FightScreen extends BaseScreen {
             f.setAux ( f.getHP () );
         }
 
-        //qA = MortenCombat.topics;
         qA = MortenCombat.questionAnswer;
 
         questionBox= new DialogBox(100,400,uiStage);
@@ -448,13 +441,10 @@ public class FightScreen extends BaseScreen {
         triviaInformation.alignCenter();
         triviaInformation.setVisible(false);
 
-
         answerButton1= new TextButton("",BaseGame.textButtonStyle);
         answerButton2= new TextButton("",BaseGame.textButtonStyle);
         answerButton3= new TextButton("",BaseGame.textButtonStyle);
         answerButton4= new TextButton("",BaseGame.textButtonStyle);
-
-      //  question= new TextButton("",BaseGame.textButtonStyle);
 
         answers= new ArrayList<String>();
 
@@ -553,7 +543,6 @@ public class FightScreen extends BaseScreen {
         qaStage.addActor(answerButton3);
         qaStage.addActor(answerButton4);
         //qaStage.addActor(question);
-
     }
 
     public void update(float dt) {
@@ -818,9 +807,7 @@ public class FightScreen extends BaseScreen {
         answerButton.getLabel().setColor(Color.WHITE);
         answerButton.setColor(Color.BLACK);
         answerButton.setVisible(false);
-
     }
-
     /**
      * If the given answerButton1 is pushed, it checks if that button is the correct answer or not. If yes it appears as green and the rest become invisible.
      * If this answerButton1 is wrong, then it appears as red and the good answer as green and the rest disappear.
@@ -862,7 +849,6 @@ public class FightScreen extends BaseScreen {
             deleteTrivia(startTime2);
         }
     }
-
     /**
      If the given answerButton2 is pushed, it checks if that button is the correct answer or not. If yes it appears as green and the rest become invisible.
      * If this answerButton2 is wrong, then it appears as red and the good answer as green and the rest disappear.
@@ -902,11 +888,9 @@ public class FightScreen extends BaseScreen {
                 }
 
             }
-
             deleteTrivia(startTime2);
         }
     }
-
     /**
      If the given answerButton3 is pushed, it checks if that button is the correct answer or not. If yes it appears as green and the rest become invisible.
      * If this answerButton3 is wrong, then it appears as red and the good answer as green and the rest disappear.
@@ -946,11 +930,9 @@ public class FightScreen extends BaseScreen {
                 }
 
             }
-
             deleteTrivia(startTime2);
         }
     }
-
     /**
      If the given answerButton4 is pushed, it checks if that button is the correct answer or not. If yes it appears as green and the rest become invisible.
      * If this answerButton4 is wrong, then it appears as red and the good answer as green and the rest disappear.
@@ -990,11 +972,9 @@ public class FightScreen extends BaseScreen {
                 }
 
             }
-
             deleteTrivia(startTime2);
         }
     }
-
     /**
      * It deletes the Trivia when it is called. It takes the exact time when an answerButton was pushed and compare it to the current time,
      * if it exceeds it makes invisible the Trivia, reset the isAnswerButtonPushed boolean variables` state to false and reset the colors of the buttons` text to white.
@@ -1008,7 +988,6 @@ public class FightScreen extends BaseScreen {
     private void deleteTrivia(long startTime2){
 
         currentTime2=System.currentTimeMillis();
-
 
         if((currentTime2-startTime2)>3400){
             isAnswerButton1Pushed=false;
@@ -1052,10 +1031,8 @@ public class FightScreen extends BaseScreen {
             answerButton4.getLabel().setText(answers.get(3));
             uiTable.setVisible(true);
             tooltipText.setVisible(true);
-
         }
     }
-
     /**
      * Makes answerButtons, questionBox visible and the uiTable invisible.
      */
@@ -1077,9 +1054,7 @@ public class FightScreen extends BaseScreen {
         triviaInformation.setVisible(true);
         uiTable.setVisible(false);
         tooltipText.setVisible(false);
-
     }
-
     /**
      * Check if the answer is correct or not.
      * @param isAnswerButton1Pushed boolean variable to check if the particular button is pushed or not
@@ -1100,8 +1075,6 @@ public class FightScreen extends BaseScreen {
                 || (isAnswerButton3Pushed && !(answerButton3.getLabel().getText().toString().equals(qA.peek().correctAnswer)))
                 || (isAnswerButton4Pushed && !(answerButton4.getLabel().getText().toString().equals(qA.peek().correctAnswer)))){
                     isCorrectAnswer=false;
-
-
         }
 
     }
@@ -1114,8 +1087,6 @@ public class FightScreen extends BaseScreen {
             return new ZombieFighter(mainStage);
         else
             return new BatFighter(mainStage);
-
     }
-
 
 }

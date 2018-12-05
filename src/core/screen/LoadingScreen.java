@@ -4,8 +4,6 @@ import core.MortenCombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
 
-import java.io.FileNotFoundException;
-
 /**
  * The LoadingScreen class is a pause between screens, it get the next screen to switch to in the constructor.
  * And when the wait time is over, set the screen to that screen.
