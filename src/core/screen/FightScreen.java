@@ -455,6 +455,7 @@ public class FightScreen extends BaseScreen {
         answerButton2.addAction(Actions.alpha(0.8f,0.8f));
         answerButton3.addAction(Actions.alpha(0.8f,0.8f));
         answerButton4.addAction(Actions.alpha(0.8f,0.8f));
+
         answers= new ArrayList<String>();
 
         answers.add(qA.peek().correctAnswer);
