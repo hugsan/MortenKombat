@@ -716,7 +716,14 @@ public class FightScreen extends BaseScreen {
                 countKeys++;
             }
             MortenCombat.setActiveScreen(previousMap);
-        }
+        } else
+            if (isAllHeroesDead) { // If all the fighting actors are dead, go to GameOverScreen
+                battleMusic.stop();
+                // Exit to the GameOverScreen
+                this.dispose();
+                MortenCombat.setActiveScreen(new GameOverScreen());
+            }
+
         //checking if we have killed any fighters
 
         if (killHim && (System.currentTimeMillis() - deadAnimationStart)/1000 > killingTarget.dead.getAnimationDuration() ){
