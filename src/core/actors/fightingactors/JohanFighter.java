@@ -5,10 +5,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 public class JohanFighter extends EnemyFighters {
 
     int plusDamage;
+
     public JohanFighter(Stage s){
         super(s);
-        this.setHP(350);
-        this.setMaxHP(350);
+        this.setHP(360);
+        this.setMaxHP(360);
         this.setFighterName("Johan");
 
         attack = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Johan-Attack.png", 0.14f,1,6);

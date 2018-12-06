@@ -1561,7 +1561,7 @@
     <property name="name" value="Medic"/>
    </properties>
   </object>
-  <object id="271" x="224" y="559.667" width="31" height="25">
+  <object id="271" x="224" y="579" width="9" height="5.66667">
    <properties>
     <property name="name" value="Morten"/>
    </properties>

@@ -5,13 +5,13 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 public class MortenFighter extends EnemyFighters {
     public MortenFighter(Stage s){
         super(s);
-        this.setHP(160);
-        this.setMaxHP(160);
+        this.setHP(420);
+        this.setMaxHP(420);
         this.setFighterName("Morten");
 
-        attack = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Morten-Attack.png", 0.14f,1,11);
-        iddle = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Morten-Idle.png", 0.14f, 1, 26);
-        dead = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Morten-Dead.png", 0.14f, 1, 18);
+        attack = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Morten-Attack.png", 0.14f,1,4);
+        iddle = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Morten-Idle.png", 0.14f, 1, 8);
+        dead = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Morten-Dead.png", 0.14f, 1, 9);
 
         setAnimation(iddle);
 

@@ -20,7 +20,7 @@ public class Morten extends BaseActor{
             super(x,y,s);
             String fileName = "assets/Fightingscreen/Boss/Morten-Idle.png";
             int rows = 1;
-            int cols = 26;
+            int cols = 8;
             Texture texture = new Texture( Gdx.files.internal(fileName), true);
             int frameWidth = texture.getWidth() / cols;
             int frameHeight = texture.getHeight() / rows;
@@ -34,7 +34,7 @@ public class Morten extends BaseActor{
             textureArray.clear();
 
             setAnimation ( idle );
-            setScale (2);
+            setScale (1);
             setBoundaryPolygon(8);
             boundToWorld();
 
