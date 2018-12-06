@@ -13,7 +13,6 @@ import core.framework.BaseActor;
 import core.framework.BaseScreen;
 import core.framework.TilemapActor;
 
-
 public class ExploringScreen extends BaseScreen {
     public static String mapName;
     private static int windTimer = 0;
@@ -32,10 +31,15 @@ public class ExploringScreen extends BaseScreen {
     private float z, w;
 
     /**
-     * Constructor for ExploringScreen. Initialize the map withprevious map
-     * and next map to null
+     * Constructor for ExploringScreen. Initialize the map with previous map
+     * and next map to null. Also creates the music for the exploring map.
      */
-    public ExploringScreen()  { this.previousMap = null; }
+    public ExploringScreen()  {
+        this.previousMap = null;
+
+        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/backgroundmusic.mp3"));
+        backgroundMusic.setLooping(true);
+    }
 
     /**
      * Constructor for ExploringScreen. Initialize the map with previous map object. Nextmaps are
@@ -52,21 +56,9 @@ public class ExploringScreen extends BaseScreen {
         this.previousMap = previousMap;
     }
 
-
     public void initialize() {
         //been read by enum MapLayout
         TilemapActor tma = new TilemapActor("assets/maps/" + mapName + ".tmx", mainStage);
-        //load music only for the first map
-        //check if we can implement this in the first constructor
-        if (mapName.equals("map1")) {
-            backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/backgroundmusic.mp3"));
-            backgroundMusic.setLooping(true);
-            pauseBackground = new BaseActor(0, 0, mainStage);
-            pauseBackground.loadTexture( "assets/img/PauseScreen.png" );
-            pauseBackground.setSize(400,500);
-            pauseBackground.toFront();
-            pauseBackground.setVisible(false);
-        }
 
         currentMapEffect = mapEffect;
 
@@ -364,7 +356,6 @@ public class ExploringScreen extends BaseScreen {
 
                 default:
                     System.out.println("Contact with ITCOM5 group, something went wrong.");
-
             }
         }
     }
