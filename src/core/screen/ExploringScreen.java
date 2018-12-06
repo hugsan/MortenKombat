@@ -26,12 +26,14 @@ public class ExploringScreen extends BaseScreen {
     private ExploringScreen nextMap2 = null;
     private Hero hero;
     public static Music backgroundMusic;
-
     private Label messageDoor;
+
     // X Y position of the hero when the hero travels to next map
     private float x, y;
     // Z W position of the hero when the hero travels to previous map
     private float z, w;
+
+    private final int FRAMESPRBLOW = 150;
 
     /**
      * Constructor for ExploringScreen. Initialize the map with previous map
@@ -161,7 +163,7 @@ public class ExploringScreen extends BaseScreen {
         if (currentMapEffect.equals("wind")) {
             windTimer++;
             //every second
-            if (windTimer % 60 == 0) {
+            if (windTimer % FRAMESPRBLOW == 0) {
                 windBlow();
             }
         } else {
