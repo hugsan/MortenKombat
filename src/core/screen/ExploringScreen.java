@@ -1,6 +1,7 @@
 package core.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
@@ -26,13 +27,14 @@ public class ExploringScreen extends BaseScreen {
     private ExploringScreen nextMap2 = null;
     private Hero hero;
     public static Music backgroundMusic;
-    private BaseActor pauseBackground;
-
     private Label messageDoor;
+
     // X Y position of the hero when the hero travels to next map
     private float x, y;
     // Z W position of the hero when the hero travels to previous map
     private float z, w;
+
+    private final int FRAMESPRBLOW = 150;
 
     /**
      * Constructor for ExploringScreen. Initialize the map with previous map
@@ -61,6 +63,7 @@ public class ExploringScreen extends BaseScreen {
     }
 
     public void initialize() {
+
         //been read by enum MapLayout
         TilemapActor tma = new TilemapActor("assets/maps/" + mapName + ".tmx", mainStage);
 
@@ -77,11 +80,11 @@ public class ExploringScreen extends BaseScreen {
         createMapObjects(tma, "Zombie");
         createMapObjects(tma, "Troll");
         createMapObjects(tma, "Medic"); // Heal
-        createMapObjects ( tma, "Morten" );
-        createMapObjects ( tma, "Johan" );
-        createMapObjects ( tma, "Sokol" );
-        createMapObjects ( tma, "Lene" );
-        createMapObjects ( tma,"Door" );
+        createMapObjects(tma, "Morten" );
+        createMapObjects(tma, "Johan" );
+        createMapObjects(tma, "Sokol" );
+        createMapObjects(tma, "Lene" );
+        createMapObjects(tma,"Door" );
 
         //create the starting point for our hero.
         MapObject startPoint = tma.getRectangleList("Start").get(0);
@@ -121,11 +124,15 @@ public class ExploringScreen extends BaseScreen {
         messageDoor.setWrap (true);
         uiStage.addActor( messageDoor );
         messageDoor.setVisible ( false );
-
-
     }
 
     public void update(float dt)  {
+
+        if (Gdx.input.isKeyJustPressed(Keys.Q)){
+
+            MortenCombat.setActiveScreen(new VictoryScreen());
+        }
+
         // hero movement controls
         if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A))
             hero.accelerateAtAngle(180);
@@ -164,7 +171,7 @@ public class ExploringScreen extends BaseScreen {
         if (currentMapEffect.equals("wind")) {
             windTimer++;
             //every second
-            if (windTimer % 60 == 0) {
+            if (windTimer % FRAMESPRBLOW == 0) {
                 windBlow();
             }
         } else {
@@ -342,15 +349,7 @@ public class ExploringScreen extends BaseScreen {
                      if (!hero.isWithinDistance ( 40,a )){
                          messageDoor.setVisible ( false );
                      }
-//                    if (hero.overlaps ( a )){
-//                        hero.preventOverlap ( a );
-//                        messageDoor.setVisible ( true );
-//
-//                    }
-//                    if (!hero.overlaps ( a )){
-//                        messageDoor.setVisible ( false );
-//                    }
-                    break;
+                     break;
 
                 case "core.actors.exploringactors.Medic":
                     if (hero.overlaps(a)) {

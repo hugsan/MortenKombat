@@ -1191,22 +1191,22 @@
     <property name="name" value="Solid"/>
    </properties>
   </object>
-  <object id="182" x="416" y="864">
+  <object id="182" x="384" y="872">
    <properties>
-    <property name="name" value="Zombie"/>
+    <property name="name" value="Troll"/>
    </properties>
   </object>
-  <object id="194" x="551" y="620">
-   <properties>
-    <property name="name" value="Bat"/>
-   </properties>
-  </object>
-  <object id="195" x="928" y="384">
+  <object id="194" x="576.333" y="630.667">
    <properties>
     <property name="name" value="Bat"/>
    </properties>
   </object>
-  <object id="196" x="1280" y="512">
+  <object id="195" x="900" y="377.333">
+   <properties>
+    <property name="name" value="Bat"/>
+   </properties>
+  </object>
+  <object id="196" x="1266.67" y="505.333">
    <properties>
     <property name="name" value="Bat"/>
    </properties>
@@ -1231,7 +1231,7 @@
     <property name="name" value="Bat"/>
    </properties>
   </object>
-  <object id="201" x="1696" y="1440">
+  <object id="201" x="1668" y="880">
    <properties>
     <property name="name" value="Bat"/>
    </properties>
@@ -1436,11 +1436,6 @@
     <property name="name" value="Torch"/>
    </properties>
   </object>
-  <object id="243" x="1269.67" y="896.333">
-   <properties>
-    <property name="name" value="Bat"/>
-   </properties>
-  </object>
   <object id="244" x="1351.5" y="850.833">
    <properties>
     <property name="name" value="Torch"/>
@@ -1541,7 +1536,7 @@
     <property name="name" value="Torch"/>
    </properties>
   </object>
-  <object id="264" x="1891" y="1235">
+  <object id="264" x="1896.33" y="1229.67">
    <properties>
     <property name="name" value="Torch"/>
    </properties>
@@ -1556,7 +1551,7 @@
     <property name="name" value="Chest"/>
    </properties>
   </object>
-  <object id="270" x="1419" y="361" width="31" height="35">
+  <object id="270" x="1405.67" y="361" width="31" height="35">
    <properties>
     <property name="name" value="Medic"/>
    </properties>
