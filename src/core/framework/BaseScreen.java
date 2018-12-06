@@ -27,6 +27,7 @@ public abstract class BaseScreen implements Screen, InputProcessor
         uiStage = new Stage();
         qaStage = new Stage();
 
+
         uiTable = new Table();
         uiTable.setFillParent(true);
         uiStage.addActor(uiTable);

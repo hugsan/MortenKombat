@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import core.utils.menu.PauseScreen;
 import core.utils.MortenCombat;
 import core.actors.fightingactors.*;
@@ -34,6 +35,7 @@ public class FightScreen extends BaseScreen {
     private CopyOnWriteArrayList<Fighter> aliveFighters;
     Stack<Fighter> fightingTurn;
     private Label turnLabel;
+
 
     public static int amountOfEnemies;
     private long currentTime;
@@ -326,6 +328,8 @@ public class FightScreen extends BaseScreen {
                     }
             );
         }
+
+
         uiTable.add ( ).height ( 140 ).width ( 25 );
         uiTable.add ( ).height ( 140 ).width ( 116 );
         uiTable.add ( ).height ( 140 ).width ( 116 );
@@ -401,6 +405,7 @@ public class FightScreen extends BaseScreen {
         //next column for abilities and items.
         uiTable.row ( );
         uiTable.add ( ).width ( 25 );
+
         uiTable.add ( championThree.getFirstButton ()).height( 50 ).width ( 115 ); // ability 1 section for hero 3
         uiTable.add ( championTwo.getFirstButton ()).height( 50 ).width ( 115 ); // ability 1 section for hero 2
         uiTable.add ( championOne.getFirstButton ()).height( 50 ).width ( 115 );// ability 1 section for hero 1
@@ -424,7 +429,7 @@ public class FightScreen extends BaseScreen {
 
         qA = MortenCombat.questionAnswer;
 
-        questionBox= new DialogBox(100,400,uiStage);
+        questionBox= new DialogBox(100,460,uiStage);
         questionBox.setBackgroundColor(Color.BLACK);
         questionBox.setFontColor(Color.GOLDENROD);
         questionBox.setDialogSize(600,100);
@@ -446,6 +451,10 @@ public class FightScreen extends BaseScreen {
         answerButton3= new TextButton("",BaseGame.textButtonStyle);
         answerButton4= new TextButton("",BaseGame.textButtonStyle);
 
+        answerButton1.addAction(Actions.alpha(0.8f,0.8f));
+        answerButton2.addAction(Actions.alpha(0.8f,0.8f));
+        answerButton3.addAction(Actions.alpha(0.8f,0.8f));
+        answerButton4.addAction(Actions.alpha(0.8f,0.8f));
         answers= new ArrayList<String>();
 
         answers.add(qA.peek().correctAnswer);
@@ -460,23 +469,6 @@ public class FightScreen extends BaseScreen {
         setAnswerButton(answerButton3,answers.get(2),400,275,300);
         setAnswerButton(answerButton4,answers.get(3),400,175,300);
 
-       /* setAnswerButton(question,"???",500,500,100);
-        question.getLabel().setColor(Color.YELLOW);
-        question.setVisible(true);
-
-        question.addListener(
-                (Event e) ->
-                {
-                    if ( !(e instanceof InputEvent) )
-                        return false;
-                    if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
-                        return false;
-
-                    showTrivia();
-
-                    return true;
-                }
-        );*/
 
         answerButton1.addListener(
                 (Event e) ->
@@ -1024,7 +1016,12 @@ public class FightScreen extends BaseScreen {
             answerButton2.getLabel().setText(answers.get(1));
             answerButton3.getLabel().setText(answers.get(2));
             answerButton4.getLabel().setText(answers.get(3));
-            uiTable.setVisible(true);
+            for (Champion c : champions){
+                c.getFirstButton().setVisible(true);
+                c.getSecondButton().setVisible(true);
+                c.getThirdButton().setVisible(true);
+            }
+            turnLabel.setVisible(true);
             tooltipText.setVisible(true);
         }
     }
@@ -1047,8 +1044,13 @@ public class FightScreen extends BaseScreen {
                     " correctly and your champion will deal twice the ability in the same turn (check if your spell " +
                     "casters have enough mana!). If you give a wrong answer your champion will lose his turn.");
         triviaInformation.setVisible(true);
-        uiTable.setVisible(false);
+        turnLabel.setVisible(false);
         tooltipText.setVisible(false);
+        for (Champion c: champions){
+            c.getFirstButton().setVisible(false);
+            c.getSecondButton().setVisible(false);
+            c.getThirdButton().setVisible(false);
+        }
     }
     /**
      * Check if the answer is correct or not.

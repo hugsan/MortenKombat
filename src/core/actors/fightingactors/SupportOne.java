@@ -88,7 +88,7 @@ public class SupportOne extends SpellCaster{
                 this.spendMana(50);
                 return  true;
             }else {
-                missingMana.play ();
+               // missingMana.play ();
                 return false;}
         }
         cantclick.play();
