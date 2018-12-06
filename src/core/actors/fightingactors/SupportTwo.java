@@ -87,11 +87,11 @@ public class SupportTwo extends SpellCaster {
             //checking if the fighters are alive before healing them.
             if (enoughMana(60)) {
                 if (fighterOne.getHP() != 0)
-                    fighterOne.setHP(Math.max((fighterOne.getHP() + 40), fighterOne.getMaxHP()));
+                    fighterOne.setHP(Math.min((fighterOne.getHP() + 40), fighterOne.getMaxHP()));
                 if (fighterTwo.getHP() != 0)
-                    fighterTwo.setHP(Math.max((fighterTwo.getHP() + 40), fighterTwo.getMaxHP()));
+                    fighterTwo.setHP(Math.min((fighterTwo.getHP() + 40), fighterTwo.getMaxHP()));
                 if (fighterThree.getHP() != 0)
-                    fighterThree.setHP(Math.max((fighterThree.getHP() + 40), fighterThree.getMaxHP()));
+                    fighterThree.setHP(Math.min((fighterThree.getHP() + 40), fighterThree.getMaxHP()));
                 this.spendMana(60);
                 return true;
             } else{

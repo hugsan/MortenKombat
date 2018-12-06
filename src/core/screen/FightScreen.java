@@ -448,6 +448,8 @@ public class FightScreen extends BaseScreen {
         triviaInformation.alignCenter();
         triviaInformation.setVisible(false);
 
+        BaseGame.textButtonStyle.fontColor = Color.WHITE;
+
         answerButton1= new TextButton("",BaseGame.textButtonStyle);
         answerButton2= new TextButton("",BaseGame.textButtonStyle);
         answerButton3= new TextButton("",BaseGame.textButtonStyle);
@@ -548,17 +550,6 @@ public class FightScreen extends BaseScreen {
             MortenCombat.setActiveScreen(new PauseScreen(this));
         }
 
-        //this has to be at the beginning of any fightingTurn checks. otherwise you might create a EmptyStackException
-        if (fightingTurn.isEmpty ()){
-            fightingTurn.addAll(aliveFighters);
-            for (Fighter sC : fightingTurn){ //regenerates mana at the end of each turn.
-                if (sC instanceof SpellCaster)
-                    ((SpellCaster) sC).manaRegeneration();
-            }
-            Collections.shuffle(fightingTurn);
-            turn ++; // not been used, maybe we can put a Turn number on screen.
-            turnLabel.setText("Turn: "+turn);
-        }
         //if the turn is over (means there is no more object in the stack), we create a new turn by feeding the stack
         //with alivefighter Arraylist
         caseOfAnswerButton1(isAnswerButton1Pushed);
@@ -612,10 +603,10 @@ public class FightScreen extends BaseScreen {
         //makes the attack animation and reset to idle after action
         if (attacker != null){
             attacker.setAnimation(attacker.attack);
-            attacker.sizeBy(110);
+            attacker.sizeBy(125);
             if ((System.currentTimeMillis() - startTime)/1000 > attacker.attack.getAnimationDuration()){
                 attacker.setAnimation(attacker.iddle);
-                attacker.sizeBy(90);
+                attacker.sizeBy(100);
                 attacker = null;
             }
         }
@@ -654,6 +645,7 @@ public class FightScreen extends BaseScreen {
                             startTime += 4000; //increasing animation time there is a 4s delay with the answer on screen
                         }
                         fightingTurn.pop();
+                        isFightTurnOver();
                         triviaMustBeShown  = -1;
                     }
                     else if (championTarget > 15 && aliveFighters.contains (championTwo) && (hasBeenPressed || isNonQuestionAttack)){
@@ -668,6 +660,7 @@ public class FightScreen extends BaseScreen {
                             startTime += 4000;
                         }
                         fightingTurn.pop();
+                        isFightTurnOver();
                         triviaMustBeShown = -1;
 
                     }
@@ -683,6 +676,7 @@ public class FightScreen extends BaseScreen {
                             startTime += 4000;
                         }
                         fightingTurn.pop();
+                        isFightTurnOver();
                         triviaMustBeShown = -1;
 
                     }
@@ -722,7 +716,14 @@ public class FightScreen extends BaseScreen {
                 countKeys++;
             }
             MortenCombat.setActiveScreen(previousMap);
-        }
+        } else
+            if (isAllHeroesDead) { // If all the fighting actors are dead, go to GameOverScreen
+                battleMusic.stop();
+                // Exit to the GameOverScreen
+                this.dispose();
+                MortenCombat.setActiveScreen(new GameOverScreen());
+            }
+
         //checking if we have killed any fighters
 
         if (killHim && (System.currentTimeMillis() - deadAnimationStart)/1000 > killingTarget.dead.getAnimationDuration() ){
@@ -748,7 +749,7 @@ public class FightScreen extends BaseScreen {
         startTime = System.currentTimeMillis();
         activateDefaultMouse();
         fightingTurn.pop();
-        //check if the peek is empty, if yes fill it
+        isFightTurnOver();
         firstAttack = secondAttack = thirdAttack = false;
         triviaHasCheck = -1;
         //set off the label
@@ -1095,6 +1096,18 @@ public class FightScreen extends BaseScreen {
             return new TrollFighter(mainStage);
     }
 
+    private void isFightTurnOver(){
+        if (fightingTurn.isEmpty ()){
+            fightingTurn.addAll(aliveFighters);
+            for (Fighter sC : fightingTurn){ //regenerates mana at the end of each turn.
+                if (sC instanceof SpellCaster)
+                    ((SpellCaster) sC).manaRegeneration();
+            }
+            Collections.shuffle(fightingTurn);
+            turn ++; // not been used, maybe we can put a Turn number on screen.
+            turnLabel.setText("Turn: "+turn);
+        }
+    }
     public static int getCountKeys() {
         return countKeys;
     }

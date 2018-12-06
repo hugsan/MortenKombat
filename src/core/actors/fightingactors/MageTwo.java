@@ -86,8 +86,10 @@ public class MageTwo extends SpellCaster {
                 fighterThree instanceof EnemyFighters) {
             if (this.enoughMana(40)) {
                 fighterOne.setHP(fighterOne.getHP() - 30);
-                fighterTwo.setHP(fighterTwo.getHP() - 30);
-                fighterThree.setHP(fighterThree.getHP() - 30);
+                if (fighterTwo != null)
+                    fighterTwo.setHP(fighterTwo.getHP() - 30);
+                if (fighterThree != null)
+                    fighterThree.setHP(fighterThree.getHP() - 30);
                 this.spendMana(40);
                 return true;
             } else {

@@ -13,7 +13,7 @@ public class WarriorOne extends Champion {
     private String spellThreeName = "Execute";
     private String spellOneText = "Strikes the enemy for 8-23 damage";
     private String spellTwoText = "??";
-    private String spellThreeText = "Tries to exitcute the enemy for 3-15 damage, " +
+    private String spellThreeText = "Tries to execute the enemy for 3-15 damage, " +
                                     "if it kills the enemy restore 20% health";
 
     private Label manaBar;
