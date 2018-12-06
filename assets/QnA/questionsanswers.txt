@@ -1,4 +1,4 @@
-What important piece of art was stolen and kept under a bed until it was returned to the Louvre Museum?
+﻿What important piece of art was stolen and kept under a bed until it was returned to the Louvre Museum?
 Mona Lisa
 Guernica
 Water Lily Pond
@@ -303,7 +303,7 @@ George Washington
 Abraham Lincoln
 Thomas Jefferson
 Theodore Roosevelt
-In Greek mythology, how was Achilles heel injured?
+In Greek mythology, what had injured Achille's heel?
 An arrow
 A sword
 A spear
@@ -364,9 +364,9 @@ Diurnal
 Crepuscular
 Matutinal
 Which of these is NOT found in an animal cell?
+Chloroplasts
 Mitochondria
 Nucleus
-Chloroplasts
 Endoplasmic reticulum
 Which kind of waves are used to make and receive cellphone calls?
 Radio waves
@@ -433,16 +433,16 @@ Kidney
 Liver
 Stomach
 Gallibladder
-What is the H in H2O
+What is the H in H2O?
 Hydrogen
 Helium
 Heavy
 Hexagon
 How many seconds is one hour?
 3600 seconds
-2600
-3200
-4600
+2600 seconds
+3200 seconds
+4600 seconds
 What color is perceived by cone cells with less sensitivity?
 Blue
 Green
@@ -470,14 +470,14 @@ Heroin
 Cannabis
 How many degrees does a circle have?
 360 degrees
-180
-90
-270
+180 degrees
+90 degrees
+270 degrees
 What is Linux?
 An operating system
 An internet browser
 A phone brand
-A educational website
+An educational website
 How many stomachs do cows have?
 4
 2
@@ -490,14 +490,14 @@ Evolution
 Energy equation
 What Olympic medal does not exist?
 Copper medal
-Gold
-Silver
-Bronze
+Gold medal
+Silver medal
+Bronze medal
 How many players per team are there in court in handball?
 7 players
-9
-11
-5
+9 players
+11 players
+5 players
 What’s the name of the field hockey move when the ball is lifted with the stick?
 Flick
 Catch
@@ -536,73 +536,73 @@ Chelsea
 Which of the following types of hockey does not exist?
 Asphalt hockey
 Ice hockey
-
-d
+Field Hockey
+Street Hockey
 The tiger Hodori was the mascot of which Olympic Games?
-Seoul 88 Olympic Games
-b
-c
-d
+Seoul 1988
+Beijing 2008
+London 2012
+Los Angeles 1984
 When did the FIFA World Cup take place in the USA?
 1994
-b
-c
-d
+2003
+2015
+1998
 What country won EuroBasket 2011?
 Spain
-b
-c
-d
+Portugal
+France
+Lithuania
 Which of these positions does not exist in a baseball game?
 Fullback
-b
-c
-d
+Pitcher
+Catcher
+Shortstop
 What country has won the most Davis Cups?
 United States
-b
-c
-d
+Turkey
+China
+Brazil
 Where were the first Olympic Games of the modern era celebrated?
 Athens
-b
-c
-d
-What player of the WWE is known as ‘The Lord of Darkness’?
-The Undertaker
-b
-c
-d
+Rome
+London
+Berlin
+How many countries are in the United Kingdom?
+4
+7
+9
+1
 What is the world’s most popular and most played sport?
 Soccer
-b
-c
-d
+Badminton
+Swimming
+Baseball
 Which team won the Baseball World Series of 2013?
 Boston Red Sox
-b
-c
-d
+Los Angeles Dodgers
+Philaelphia Athletics
+New York Giants
 What number did Michael Jordan play as on the Chicago Bulls?
 23
-b
-c
-d
-What boxer was found guilty for draft evasion after declaring himself a conscientious objector during the Vietnam War?
-Muhammad Ali
-b
-c
-d
+116
+27
+32
+Which of these countries has a pink lake?
+Australia
+Egypt
+Argentina
+Zimbabwe
 Which ball is the smallest?
 Golf ball
-b
-c
-d
+Tennis ball
+Football ball
+Voleyball Ball
 How many letters are in the English Alphabet?
 26 letters
-28
-24
-22
+28 letters
+24 letters
+22 letters
 Which artist painted 'The Scream'?
 Edvard Munch
 Pablo Picasso
@@ -610,66 +610,66 @@ Claude Monet
 Vincent van Gogh
 In what novel is Holden Caulfield the main character?
 The Catcher in the Rye
-b
-c
-d
+Pride and prejudice
+The Great Gatsby
+1984
 What is the real name of the American super soldier, Captain America?
 Steve Rogers
-b
-c
-d
+Chris Evans
+Reb Brown
+Arthur Pierce
 Who is Apollo’s twin?
 Artemis
-b
-c
-d
+Zeus
+Leto
+Troilus
 What kinds of plants did Monet paint?
 Water lilies
-b
-c
-d
+Tulips
+Sunflowers
+Roses
 Which of the following is not one of the Seven Wonders of the Ancient World?
 The Colosseum in Rome
-b
-c
-d
+Great Pyramid of Giza
+Hanging Gardens of Babylon
+Temple of Artemis
 Which one of these novels was not written by Robert Louis Stevenson?
 Journey to the Center of the Earth
-b
-c
-d
+Treasure Island
+Prince Otto
+Kidnapped
 Who is detective Sherlock Holmes partner?
 John Watson
-b
-c
-d
+Molly Hooper
+Mrs. Hudson
+Greg Lestrade
 Who’s the author of ‘The Count of Monte Cristo’?
 Alexandre Dumas
-b
-c
-d
+Victor Hugo
+Albert Camus
+Honoré de Balzac
 What kind of creature was Medusa?
 Gorgon
-b
-c
-d
+Butterfly
+Mermaid
+Goblin
 What century was William Shakespeare born?
 16th Century
-b
-c
-d
+20th Century
+10th Century
+6th Century
 Which of the characters from ‘The Wonderful Wizard of Oz’ didn’t have a brain to think?
 Scarecrow
-b
-c
-d
+The Tin Man
+The Lion
+Dorothy Gale
 Who played the character of Edward Scissorhands?
 Johnny Depp
-b
-c
-d
+Robert Oliveri
+Anthony Michael Hall
+Nicolas Cage
 Which band performs the song ‘Another Brick In The Wall’?
 Pink Floyd
-b
-c
-d
+AC/DC
+Whitesnake
+Metallica

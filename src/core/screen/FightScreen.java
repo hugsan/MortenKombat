@@ -606,7 +606,7 @@ public class FightScreen extends BaseScreen {
 
         }
 
-        //makes the attack animation and reset to idle after
+        //makes the attack animation and reset to idle after action
         if (attacker != null){
             attacker.setAnimation(attacker.attack);
             attacker.sizeBy(110);
@@ -704,6 +704,13 @@ public class FightScreen extends BaseScreen {
                 isAllHeroesDead = false;
             if (!fightingTurn.isEmpty())
                 fightingTurn.peek().updateNameColor();
+
+            if ( amountOfEnemies == -1 || amountOfEnemies==-2 || amountOfEnemies==-3){
+                isAllEnemyDead = true;
+                int countKeys=0;
+                countKeys++;
+
+            }
         }
         if (isAllEnemyDead){//if all enemys are dead go back to exploring map
             //implement HP and MANA exporting of our characters before leaving the screen
