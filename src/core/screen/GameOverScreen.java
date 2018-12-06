@@ -12,6 +12,10 @@ import core.utils.MortenCombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
 
+/**
+ * This is the GameOverScreen. The screen displays when all of the fighting actors dies.
+ */
+
 public class GameOverScreen extends BaseScreen {
 
     static Music gameOverMusic;
@@ -34,6 +38,7 @@ public class GameOverScreen extends BaseScreen {
         buttonStyle.up = new TextureRegionDrawable( buttonRegion3 );
         Button exit = new Button( buttonStyle );
 
+        // Music for the screen
         gameOverMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/gameOverMusic.mp3"));
         gameOverMusic.setVolume(MortenCombat.volume);
         gameOverMusic.setLooping(true);
