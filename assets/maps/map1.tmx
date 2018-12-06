@@ -1236,7 +1236,7 @@
     <property name="name" value="Bat"/>
    </properties>
   </object>
-  <object id="203" x="178.417" y="723.125">
+  <object id="203" x="166.084" y="722.792">
    <properties>
     <property name="name" value="Torch"/>
    </properties>
@@ -1568,7 +1568,7 @@
   </object>
   <object id="272" x="484" y="1576"/>
   <object id="275" x="205.667" y="622.667"/>
-  <object id="278" x="191.667" y="665" width="63" height="43.6667">
+  <object id="278" x="194" y="677.667" width="63" height="43.6667">
    <properties>
     <property name="name" value="Door"/>
    </properties>
