@@ -26,7 +26,6 @@ public class ExploringScreen extends BaseScreen {
     private ExploringScreen nextMap2 = null;
     private Hero hero;
     public static Music backgroundMusic;
-    private BaseActor pauseBackground;
 
     private Label messageDoor;
     // X Y position of the hero when the hero travels to next map
@@ -77,11 +76,11 @@ public class ExploringScreen extends BaseScreen {
         createMapObjects(tma, "Zombie");
         createMapObjects(tma, "Troll");
         createMapObjects(tma, "Medic"); // Heal
-        createMapObjects ( tma, "Morten" );
-        createMapObjects ( tma, "Johan" );
-        createMapObjects ( tma, "Sokol" );
-        createMapObjects ( tma, "Lene" );
-        createMapObjects ( tma,"Door" );
+        createMapObjects(tma, "Morten" );
+        createMapObjects(tma, "Johan" );
+        createMapObjects(tma, "Sokol" );
+        createMapObjects(tma, "Lene" );
+        createMapObjects(tma,"Door" );
 
         //create the starting point for our hero.
         MapObject startPoint = tma.getRectangleList("Start").get(0);
@@ -121,8 +120,6 @@ public class ExploringScreen extends BaseScreen {
         messageDoor.setWrap (true);
         uiStage.addActor( messageDoor );
         messageDoor.setVisible ( false );
-
-
     }
 
     public void update(float dt)  {
@@ -342,15 +339,7 @@ public class ExploringScreen extends BaseScreen {
                      if (!hero.isWithinDistance ( 40,a )){
                          messageDoor.setVisible ( false );
                      }
-//                    if (hero.overlaps ( a )){
-//                        hero.preventOverlap ( a );
-//                        messageDoor.setVisible ( true );
-//
-//                    }
-//                    if (!hero.overlaps ( a )){
-//                        messageDoor.setVisible ( false );
-//                    }
-                    break;
+                     break;
 
                 case "core.actors.exploringactors.Medic":
                     if (hero.overlaps(a)) {
