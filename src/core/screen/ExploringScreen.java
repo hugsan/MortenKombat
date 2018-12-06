@@ -1,6 +1,7 @@
 package core.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
@@ -62,6 +63,7 @@ public class ExploringScreen extends BaseScreen {
     }
 
     public void initialize() {
+
         //been read by enum MapLayout
         TilemapActor tma = new TilemapActor("assets/maps/" + mapName + ".tmx", mainStage);
 
@@ -125,6 +127,12 @@ public class ExploringScreen extends BaseScreen {
     }
 
     public void update(float dt)  {
+
+        if (Gdx.input.isKeyJustPressed(Keys.Q)){
+
+            MortenCombat.setActiveScreen(new VictoryScreen());
+        }
+
         // hero movement controls
         if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A))
             hero.accelerateAtAngle(180);
