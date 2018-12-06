@@ -17,6 +17,7 @@ public class JohanFighter extends EnemyFighters {
 
         setAnimation(iddle);
         plusDamage = 10;
+
     }
     /**
      * Attack one makes 30 damage, and increased the next attack one by 10.
