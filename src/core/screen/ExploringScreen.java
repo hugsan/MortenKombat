@@ -3,16 +3,18 @@ package core.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.MathUtils;
+import core.framework.BaseGame;
 import core.utils.menu.PauseScreen;
 import core.utils.MortenCombat;
 import core.actors.exploringactors.*;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
 import core.framework.TilemapActor;
-
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 public class ExploringScreen extends BaseScreen {
     public static String mapName;
@@ -26,16 +28,22 @@ public class ExploringScreen extends BaseScreen {
     public static Music backgroundMusic;
     private BaseActor pauseBackground;
 
+    private Label messageDoor;
     // X Y position of the hero when the hero travels to next map
     private float x, y;
     // Z W position of the hero when the hero travels to previous map
     private float z, w;
 
     /**
-     * Constructor for ExploringScreen. Initialize the map withprevious map
-     * and next map to null
+     * Constructor for ExploringScreen. Initialize the map with previous map
+     * and next map to null. Also creates the music for the exploring map.
      */
-    public ExploringScreen()  { this.previousMap = null; }
+    public ExploringScreen()  {
+        this.previousMap = null;
+
+        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/backgroundmusic.mp3"));
+        backgroundMusic.setLooping(true);
+    }
 
     /**
      * Constructor for ExploringScreen. Initialize the map with previous map object. Nextmaps are
@@ -52,21 +60,9 @@ public class ExploringScreen extends BaseScreen {
         this.previousMap = previousMap;
     }
 
-
     public void initialize() {
         //been read by enum MapLayout
         TilemapActor tma = new TilemapActor("assets/maps/" + mapName + ".tmx", mainStage);
-        //load music only for the first map
-        //check if we can implement this in the first constructor
-        if (mapName.equals("map1")) {
-            backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/backgroundmusic.mp3"));
-            backgroundMusic.setLooping(true);
-            pauseBackground = new BaseActor(0, 0, mainStage);
-            pauseBackground.loadTexture( "assets/img/PauseScreen.png" );
-            pauseBackground.setSize(400,500);
-            pauseBackground.toFront();
-            pauseBackground.setVisible(false);
-        }
 
         currentMapEffect = mapEffect;
 
@@ -85,7 +81,7 @@ public class ExploringScreen extends BaseScreen {
         createMapObjects ( tma, "Johan" );
         createMapObjects ( tma, "Sokol" );
         createMapObjects ( tma, "Lene" );
-
+        createMapObjects ( tma,"Door" );
 
         //create the starting point for our hero.
         MapObject startPoint = tma.getRectangleList("Start").get(0);
@@ -115,6 +111,17 @@ public class ExploringScreen extends BaseScreen {
             x = (float) previousProp.get("x");
             y = (float) previousProp.get("y");
         }
+
+        messageDoor = new com.badlogic.gdx.scenes.scene2d.ui.Label ("", BaseGame.labelStyle);
+        messageDoor.setText ( "This is the final Boss. First you need to kill the other 3 bosses to get the keys and unlock the door of the treasure." );
+        messageDoor.setFontScale(0.75f);
+        messageDoor.setColor( Color.CHARTREUSE);
+        messageDoor.setPosition ( 350, 250 );
+        messageDoor.setSize(300,50);
+        messageDoor.setWrap (true);
+        uiStage.addActor( messageDoor );
+        messageDoor.setVisible ( false );
+
 
     }
 
@@ -151,6 +158,7 @@ public class ExploringScreen extends BaseScreen {
         actorObjectInteraction ( "core.actors.exploringactors.Johan" );
         actorObjectInteraction ( "core.actors.exploringactors.Lene" );
         actorObjectInteraction ( "core.actors.exploringactors.Sokol" );
+        actorObjectInteraction ( "core.actors.exploringactors.Door");
 
         //Checks if the current map is windy. if it is blows the hero every 1 sec.
         if (currentMapEffect.equals("wind")) {
@@ -202,6 +210,9 @@ public class ExploringScreen extends BaseScreen {
                     break;
                 case "Torch":
                     new Torch((float) props.get("x"), (float) props.get("y"), mainStage);
+                    break;
+                case "Door":
+                    new Door((float) props.get("x"), (float) props.get("y"), mainStage);
                     break;
                 case "Chest":
                     new Chest((float) props.get("x"), (float) props.get("y"), mainStage);
@@ -310,7 +321,8 @@ public class ExploringScreen extends BaseScreen {
                     if (hero.overlaps(a)) {
                         hero.setPosition(getZ(), getW());
                         hero.setSpeed(0);
-                        MortenCombat.setActiveScreen(new LoadingScreen(previousMap));                    }
+                        MortenCombat.setActiveScreen(new LoadingScreen(previousMap));
+                    }
                     break;
 
                 case "core.actors.exploringactors.Chest":
@@ -318,6 +330,26 @@ public class ExploringScreen extends BaseScreen {
                         a.remove();
                         System.out.println("Chest opened");
                     }
+                    break;
+                case "core.actors.exploringactors.Door":
+                    if ( FightScreen.getCountKeys () == 3 ) {
+                        a.remove ();
+                    }
+                   if( hero.isWithinDistance (40,a  )){
+                    hero.preventOverlap ( a );
+                    messageDoor.setVisible ( true );
+                     }
+                     if (!hero.isWithinDistance ( 40,a )){
+                         messageDoor.setVisible ( false );
+                     }
+//                    if (hero.overlaps ( a )){
+//                        hero.preventOverlap ( a );
+//                        messageDoor.setVisible ( true );
+//
+//                    }
+//                    if (!hero.overlaps ( a )){
+//                        messageDoor.setVisible ( false );
+//                    }
                     break;
 
                 case "core.actors.exploringactors.Medic":
@@ -364,7 +396,6 @@ public class ExploringScreen extends BaseScreen {
 
                 default:
                     System.out.println("Contact with ITCOM5 group, something went wrong.");
-
             }
         }
     }

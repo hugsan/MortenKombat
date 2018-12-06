@@ -83,6 +83,8 @@ public class FightScreen extends BaseScreen {
     private int triviaHasCheck = -1;
     private boolean isTriviaAttack = false;
 
+    private static int countKeys = 0;
+
     public FightScreen(ExploringScreen prev)  {
         super();
         previousMap = prev;
@@ -700,12 +702,7 @@ public class FightScreen extends BaseScreen {
             if (!fightingTurn.isEmpty())
                 fightingTurn.peek().updateNameColor();
 
-            if ( amountOfEnemies == -1 || amountOfEnemies==-2 || amountOfEnemies==-3){
-                isAllEnemyDead = true;
-                int countKeys=0;
-                countKeys++;
 
-            }
         }
         if (isAllEnemyDead){//if all enemys are dead go back to exploring map
             //implement HP and MANA exporting of our characters before leaving the screen
@@ -715,6 +712,9 @@ public class FightScreen extends BaseScreen {
             this.dispose();
             //exit to exploring map
             ExploringScreen.musicPlay();
+            if (amountOfEnemies<0){
+                countKeys++;
+            }
             MortenCombat.setActiveScreen(previousMap);
         }
         //checking if we have killed any fighters
@@ -1101,4 +1101,8 @@ public class FightScreen extends BaseScreen {
             turnLabel.setText("Turn: "+turn);
         }
     }
+    public static int getCountKeys() {
+        return countKeys;
+    }
+
 }
