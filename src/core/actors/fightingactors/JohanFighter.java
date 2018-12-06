@@ -4,10 +4,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class JohanFighter extends EnemyFighters {
 
+    int plusDamage;
     public JohanFighter(Stage s){
         super(s);
-        this.setHP(160);
-        this.setMaxHP(160);
+        this.setHP(350);
+        this.setMaxHP(350);
         this.setFighterName("Johan");
 
         attack = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Johan-Attack.png", 0.14f,1,6);
@@ -15,26 +16,27 @@ public class JohanFighter extends EnemyFighters {
         dead = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Johan-Dead.png", 0.14f, 1, 9);
 
         setAnimation(iddle);
-
+        plusDamage = 10;
     }
     /**
-     * AttackOne from Johan deal 50 to another figther.
+     * Attack one makes 30 damage, and increased the next attack one by 10.
      * @param fighter target fighter we will attack.
      */
     @Override
     public boolean attackOne(Fighter fighter){
-        int damage = 50;
+        int damage = 30 +  plusDamage ;
         fighter.setHP(fighter.getHP()-damage);
+        plusDamage += 10;
         return true;
     }
 
     /**
-     * Attack two makes 55% damage of target current HP
-     * @param fighter target fighter we will attack.
+     * heals himself for 40 HP.
+     * @param fighter target fighter we will attack. (not been used)
      */
     @Override
     public boolean attackTwo(Fighter fighter){
-        fighter.setHP((fighter.getHP()*(45)/100));
+        this.setHP( Math.min(this.getHP()+40,this.getMaxHP()));
         return true;
     }
     public void updateManaBar() { }
