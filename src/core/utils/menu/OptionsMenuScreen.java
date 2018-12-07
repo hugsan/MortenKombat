@@ -19,6 +19,12 @@ public class OptionsMenuScreen extends BaseScreen {
 
     private BaseScreen menu;
 
+    public static boolean isQuickVersion() {
+        return quickVersion;
+    }
+
+    private static boolean quickVersion = false;
+
     public OptionsMenuScreen(BaseScreen menu) {
         super();
         this.menu = menu;
@@ -141,7 +147,7 @@ public class OptionsMenuScreen extends BaseScreen {
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
 
-                    System.out.println("Easy");
+                    quickVersion = true;
                     return false;
                 }
         );
@@ -166,7 +172,7 @@ public class OptionsMenuScreen extends BaseScreen {
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
 
-                    System.out.println("Hard");
+                    quickVersion = false;
                     return false;
                 }
         );
