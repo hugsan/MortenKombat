@@ -62,7 +62,7 @@ public class WarriorTwo extends Champion{
     @Override
     public boolean attackTwo(Fighter fighter) {
         if (fighter instanceof EnemyFighters){
-            int damage = MathUtils.random(22,40);
+            int damage = MathUtils.random(11,20);
             if (this.getHP() <= 100){
                 fighter.setHP(fighter.getHP() - damage);
             }
@@ -81,11 +81,12 @@ public class WarriorTwo extends Champion{
         if (fighterOne instanceof EnemyFighters){
 
             fighterOne.setHP(fighterOne.getHP() - (int)(this.getHP()*(0.20f)));
-
             this.setHP(this.getHP() - (int)(this.getMaxHP()*(0.10f)) );
-        return true;}
-        cantclick.play();
-        return false;
+            return true;
+        }else{
+            cantclick.play();
+            return false;
+        }
     }
 
     public Label getManaBar() { return manaBar;}

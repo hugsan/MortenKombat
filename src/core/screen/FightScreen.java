@@ -193,7 +193,7 @@ public class FightScreen extends BaseScreen {
             c.getFirstButton().addListener(
                     (Event e) ->
                     {
-                        if (c != fightingTurn.peek ())
+                        if (c != safeFighterStackPeek())
                             return false;
                         tooltipText.setText(c.getSpellOneText());
                         if ( !(e instanceof InputEvent) ){
@@ -215,7 +215,7 @@ public class FightScreen extends BaseScreen {
             c.getSecondButton ().addListener(
                     (Event e) ->
                     {
-                        if (c != fightingTurn.peek ())
+                        if (c != safeFighterStackPeek())
                             return false;
                         tooltipText.setText(c.getSpellTwoText());
                         if ( !(e instanceof InputEvent) )
@@ -233,7 +233,7 @@ public class FightScreen extends BaseScreen {
             c.getThirdButton ().addListener(
                     (Event e) ->
                     {
-                        if (c != fightingTurn.peek ())
+                        if (c != safeFighterStackPeek())
                             return false;
                         tooltipText.setText(c.getSpellThreeText());
                         if ( !(e instanceof InputEvent) )
@@ -557,8 +557,7 @@ public class FightScreen extends BaseScreen {
         caseOfAnswerButton3(isAnswerButton3Pushed);
         caseOfAnswerButton4(isAnswerButton4Pushed);
 
-
-        if (triviaHasCheck <= 0 && fightingTurn.peek() instanceof Champion ){
+        if (triviaHasCheck <= 0 && safeFighterStackPeek() instanceof Champion ){
             if (MathUtils.random(0,9)>=7 && triviaHasCheck == -1){//30% chance of activating the question for our champions
                 triviaHasCheck = 0 ;
                 showTrivia();
@@ -614,7 +613,7 @@ public class FightScreen extends BaseScreen {
         if (!fightingTurn.isEmpty()){//we check if the stack is empty at the beginning of the update method.
             //in some VERY RARE cases, we have found that the listeners might modify the stack in between the execution of the update
             //creating a EmptyStackException. That is the reason why we check if the stack is empty before making a peek.
-            if (fightingTurn.peek() instanceof EnemyFighters){
+            if (safeFighterStackPeek() instanceof EnemyFighters){
                 // = false;
                 currentTime = System.currentTimeMillis();
                 if ((currentTime - startTime) > enemyThinking){
@@ -635,31 +634,31 @@ public class FightScreen extends BaseScreen {
                     if (championTarget > 40 && aliveFighters.contains ( championOne ) && (hasBeenPressed || isNonQuestionAttack) ){ //when a enemy choose to attack first target
                         startTime = System.currentTimeMillis() ;
                         if (isNonQuestionAttack){
-                            theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championOne );
-                            attacker = fightingTurn.peek();
+                            theEnemyAttacks ( (EnemyFighters)safeFighterStackPeek(), championOne );
+                            attacker = safeFighterStackPeek();
                         }
                         else if (!isCorrectAnswer){
-                            theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championOne );
-                            theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championOne );
-                            attacker = fightingTurn.peek();
+                            theEnemyAttacks ( (EnemyFighters)safeFighterStackPeek(), championOne );
+                            theEnemyAttacks ( (EnemyFighters)safeFighterStackPeek(), championOne );
+                            attacker = safeFighterStackPeek();
                             startTime += 4000; //increasing animation time there is a 4s delay with the answer on screen
                         }
-                        fightingTurn.pop();
+                        safeFighterStackPop();
                         isFightTurnOver();
                         triviaMustBeShown  = -1;
                     }
                     else if (championTarget > 15 && aliveFighters.contains (championTwo) && (hasBeenPressed || isNonQuestionAttack)){
                         startTime = System.currentTimeMillis() ;
                         if (isNonQuestionAttack){
-                            theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championTwo );
-                            attacker = fightingTurn.peek();
+                            theEnemyAttacks ( (EnemyFighters)safeFighterStackPeek(), championTwo );
+                            attacker = safeFighterStackPeek();
                         }else if (!isCorrectAnswer){
-                            theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championTwo );
-                            theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(), championTwo );
-                            attacker = fightingTurn.peek();
+                            theEnemyAttacks ( (EnemyFighters)safeFighterStackPeek(), championTwo );
+                            theEnemyAttacks ( (EnemyFighters)safeFighterStackPeek(), championTwo );
+                            attacker = safeFighterStackPeek();
                             startTime += 4000;
                         }
-                        fightingTurn.pop();
+                        safeFighterStackPop();
                         isFightTurnOver();
                         triviaMustBeShown = -1;
 
@@ -667,15 +666,15 @@ public class FightScreen extends BaseScreen {
                     else if ((hasBeenPressed || isNonQuestionAttack)){
                         startTime = System.currentTimeMillis() ;
                         if (isNonQuestionAttack){
-                            theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(),championThree );
-                            attacker = fightingTurn.peek();
+                            theEnemyAttacks ( (EnemyFighters)safeFighterStackPeek(),championThree );
+                            attacker = safeFighterStackPeek();
                         }else if (!isCorrectAnswer){
-                            theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(),championThree );
-                            theEnemyAttacks ( (EnemyFighters)fightingTurn.peek(),championThree );
-                            attacker = fightingTurn.peek();
+                            theEnemyAttacks ( (EnemyFighters)safeFighterStackPeek(),championThree );
+                            theEnemyAttacks ( (EnemyFighters)safeFighterStackPeek(),championThree );
+                            attacker = safeFighterStackPeek();
                             startTime += 4000;
                         }
-                        fightingTurn.pop();
+                        safeFighterStackPop();
                         isFightTurnOver();
                         triviaMustBeShown = -1;
 
@@ -741,7 +740,7 @@ public class FightScreen extends BaseScreen {
     private void abilityNotSuccess(){
         startTime = System.currentTimeMillis();
         activateDefaultMouse();
-        fightingTurn.pop();
+        safeFighterStackPop();
         isFightTurnOver();
         firstAttack = secondAttack = thirdAttack = false;
         triviaHasCheck = -1;
@@ -1038,12 +1037,12 @@ public class FightScreen extends BaseScreen {
         answerButton3.setVisible(true);
         answerButton4.setVisible(true);
         questionBox.setVisible(true);
-        if (fightingTurn.peek() instanceof EnemyFighters)
-            triviaInformation.setText(fightingTurn.peek().getFighterName()+ " has the trivia attack. Answer" +
+        if (safeFighterStackPeek() instanceof EnemyFighters)
+            triviaInformation.setText(safeFighterStackPeek().getFighterName()+ " has the trivia attack. Answer" +
                     " correctly to avoid been attacked by the enemy. If you fail you will be attacked twice by" +
                     " the enemy");
-        if (fightingTurn.peek() instanceof Champion)
-            triviaInformation.setText(fightingTurn.peek().getFighterName()+ " has the trivia attack. Answer" +
+        if (safeFighterStackPeek() instanceof Champion)
+            triviaInformation.setText(safeFighterStackPeek().getFighterName()+ " has the trivia attack. Answer" +
                     " correctly and your champion will deal twice the ability in the same turn (check if your spell " +
                     "casters have enough mana!). If you give a wrong answer your champion will lose his turn.");
         triviaInformation.setVisible(true);
@@ -1104,5 +1103,14 @@ public class FightScreen extends BaseScreen {
     public static int getCountKeys() {
         return countKeys;
     }
-
+    private Fighter safeFighterStackPop(){
+        if (!fightingTurn.isEmpty())
+            return fightingTurn.pop();
+        return null;
+    }
+    private Fighter safeFighterStackPeek(){
+        if (!fightingTurn.isEmpty())
+            return fightingTurn.peek();
+        return null;
+    }
 }
