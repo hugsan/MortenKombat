@@ -130,12 +130,12 @@ public class OptionsMenuScreen extends BaseScreen {
         // Difficulty button age 12-16
         Button.ButtonStyle buttonStyle4 = new Button.ButtonStyle();
 
-        Texture buttonTex4 = new Texture( Gdx.files.internal("assets/img/buttons/AgeYoung.png") );
+        Texture buttonTex4 = new Texture( Gdx.files.internal("assets/img/buttons/Quick.png") );
         TextureRegion buttonRegion4 = new TextureRegion(buttonTex4);
         buttonStyle4.up = new TextureRegionDrawable( buttonRegion4 );
         Button easy = new Button( buttonStyle4 );
 
-        easy.setPosition(250, 350);
+        easy.setPosition(250, 270);
         uiStage.addActor(easy);
 
         easy.addListener(
@@ -155,12 +155,12 @@ public class OptionsMenuScreen extends BaseScreen {
         // Difficulty button age 16+
         Button.ButtonStyle buttonStyle5 = new Button.ButtonStyle();
 
-        Texture buttonTex5 = new Texture( Gdx.files.internal("assets/img/buttons/AgeOlder.png") );
+        Texture buttonTex5 = new Texture( Gdx.files.internal("assets/img/buttons/Normal.png") );
         TextureRegion buttonRegion5 = new TextureRegion(buttonTex5);
         buttonStyle5.up = new TextureRegionDrawable( buttonRegion5 );
         Button hard = new Button( buttonStyle5 );
 
-        hard.setPosition(250, 270);
+        hard.setPosition(250, 350);
         uiStage.addActor(hard);
 
         hard.addListener(
