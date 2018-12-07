@@ -1568,9 +1568,9 @@
     <property name="name" value="Door"/>
    </properties>
   </object>
-  <object id="280" x="222" y="1577" width="39" height="36">
+  <object id="280" x="238" y="1675" width="39" height="36">
    <properties>
-    <property name="message" value="this is a test. Christianooooooo"/>
+    <property name="message" value="Welcome to the starting area. One exit can be found here. Once you find and defeat all 3 Bosses, go back to this map and defeat the final boss located in the treasure room. Good luck!"/>
     <property name="name" value="Sign"/>
    </properties>
   </object>

@@ -131,7 +131,7 @@ public class ExploringScreen extends BaseScreen {
         dialogBox = new DialogBox(0,0, uiStage);
         dialogBox.setBackgroundColor( Color.TAN );
         dialogBox.setFontColor( Color.BROWN );
-        dialogBox.setDialogSize(600, 100);
+        dialogBox.setDialogSize(600, 300);
         dialogBox.setFontScale(0.80f);
         dialogBox.alignCenter();
         dialogBox.setVisible(false);
