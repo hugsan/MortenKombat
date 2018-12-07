@@ -128,10 +128,6 @@ public class ExploringScreen extends BaseScreen {
 
     public void update(float dt)  {
 
-        if (Gdx.input.isKeyJustPressed(Keys.Q)){
-
-            MortenCombat.setActiveScreen(new VictoryScreen());
-        }
 
         // hero movement controls
         if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A))

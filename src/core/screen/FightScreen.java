@@ -715,7 +715,10 @@ public class FightScreen extends BaseScreen {
             if (amountOfEnemies<0){
                 countKeys++;
             }
-            MortenCombat.setActiveScreen(previousMap);
+            if (amountOfEnemies == -4)
+                MortenCombat.setActiveScreen(new VictoryScreen());
+            else
+                MortenCombat.setActiveScreen(previousMap);
         } else
             if (isAllHeroesDead) { // If all the fighting actors are dead, go to GameOverScreen
                 battleMusic.stop();
