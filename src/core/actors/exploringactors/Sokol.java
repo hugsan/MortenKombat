@@ -18,9 +18,9 @@ public class Sokol extends BaseActor {
     public Sokol (float x, float y, Stage s)
     {
         super(x,y,s);
-        String fileName = "assets/Fightingscreen/Boss/Sokol-Idle.png";
+        String fileName = "assets/fightingscreen/Boss/Sokol-Idle.png";
         int rows = 1;
-        int cols = 6;
+        int cols = 8;
         Texture texture = new Texture( Gdx.files.internal(fileName), true);
         int frameWidth = texture.getWidth() / cols;
         int frameHeight = texture.getHeight() / rows;

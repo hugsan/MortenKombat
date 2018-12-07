@@ -498,7 +498,7 @@
 </data>
  </layer>
  <objectgroup id="5" name="Object Layer 1">
-  <object id="10" x="331.39" y="457.94" width="36.6667" height="42">
+  <object id="10" x="1053.39" y="1821.94" width="36.6667" height="42">
    <properties>
     <property name="name" value="Start"/>
    </properties>
@@ -1280,7 +1280,7 @@
   </object>
   <object id="181" x="961" y="610" width="46" height="44">
    <properties>
-    <property name="name" value="Bat"/>
+    <property name="name" value="Troll"/>
    </properties>
   </object>
   <object id="182" x="246" y="1834" width="50" height="48">
@@ -1290,7 +1290,7 @@
   </object>
   <object id="183" x="217" y="794" width="50" height="48">
    <properties>
-    <property name="name" value="Zombie"/>
+    <property name="name" value="Troll"/>
    </properties>
   </object>
   <object id="184" x="1833" y="1528" width="50" height="48">
@@ -1298,7 +1298,7 @@
     <property name="name" value="Zombie"/>
    </properties>
   </object>
-  <object id="185" x="1883" y="242" width="50" height="48">
+  <object id="185" x="1893" y="504" width="50" height="48">
    <properties>
     <property name="name" value="Zombie"/>
    </properties>
@@ -1308,8 +1308,12 @@
     <property name="name" value="Zombie"/>
    </properties>
   </object>
-  <object id="187" x="1385" y="540" width="50" height="48"/>
-  <object id="188" x="1670" y="468" width="46" height="50">
+  <object id="187" x="1385" y="540" width="50" height="48">
+   <properties>
+    <property name="name" value="Troll"/>
+   </properties>
+  </object>
+  <object id="188" x="1890" y="222" width="46" height="50">
    <properties>
     <property name="name" value="Medic"/>
    </properties>

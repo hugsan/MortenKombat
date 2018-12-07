@@ -5,13 +5,13 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 public class SokolFighter extends EnemyFighters {
     public SokolFighter(Stage s){
         super(s);
-        this.setHP(160);
-        this.setMaxHP(160);
+        this.setHP(320);
+        this.setMaxHP(320);
         this.setFighterName("Sokol");
 
-        attack = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Sokol-Attack.png", 0.14f,1,8);
-        iddle = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Sokol-Idle.png", 0.14f, 1, 6);
-        dead = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Sokol-Dead.png", 0.14f, 1, 9);
+        attack = AnimationCreator.createAnimation("assets/fightingscreen/Boss/Sokol-Attack.png", 0.14f,1,6);
+        iddle = AnimationCreator.createAnimation("assets/fightingscreen/Boss/Sokol-Idle.png", 0.14f, 1, 8);
+        dead = AnimationCreator.createAnimation("assets/fightingscreen/Boss/Sokol-Dead.png", 0.14f, 1, 5);
 
         setAnimation(iddle);
 
