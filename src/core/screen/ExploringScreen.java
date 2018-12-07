@@ -9,6 +9,7 @@ import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.MathUtils;
 import core.framework.BaseGame;
+import core.utils.menu.OptionsMenuScreen;
 import core.utils.menu.PauseScreen;
 import core.utils.MortenCombat;
 import core.actors.exploringactors.*;
@@ -67,8 +68,13 @@ public class ExploringScreen extends BaseScreen {
     public void initialize() {
 
         //been read by enum MapLayout
-        TilemapActor tma = new TilemapActor("assets/maps/" + mapName + ".tmx", mainStage);
-
+        TilemapActor tma;
+        if ( OptionsMenuScreen.isQuickVersion()  ){
+             tma = new TilemapActor("assets/maps/" + mapName + "q.tmx", mainStage);
+        }
+        else {
+             tma = new TilemapActor("assets/maps/" + mapName + ".tmx", mainStage);
+        }
         currentMapEffect = mapEffect;
 
         //Creates all the objects of our Tilemaps from the tmx files.

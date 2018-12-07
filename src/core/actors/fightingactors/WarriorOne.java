@@ -12,7 +12,7 @@ public class WarriorOne extends Champion {
     private String spellTwoName = "Equalizer";
     private String spellThreeName = "Execute";
     private String spellOneText = "Strikes the enemy for 8-23 damage";
-    private String spellTwoText = "??";
+    private String spellTwoText = " Executes the enemy!!! Deals 30% of the target missing life.";
     private String spellThreeText = "Tries to execute the enemy for 3-15 damage, " +
                                     "if it kills the enemy restore 20% health";
 

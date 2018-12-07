@@ -32,18 +32,8 @@ public class MortenCombat extends BaseGame {
 
         super.create();
 
-        int i = 0;
 
-        for (MapLayout map : MapLayout.values()){
-            ExploringScreen.mapName = map.getTmx();
-            ExploringScreen.mapEffect = map.getMapEffect();
-            if (map.getLevel() == 0){
-                    layout[i] = new ExploringScreen();
-            }else {
-                    layout[i] = new ExploringScreen(layout[map.getLevel() -1]);
-            }
-            i++;
-        }
+
 
 
         File data = new File("assets\\QnA\\questionsanswers.txt");
@@ -74,5 +64,19 @@ public class MortenCombat extends BaseGame {
             setActiveScreen( new LoadingScreen(layout[0] ));
             ExploringScreen.musicPlay();
     }
+    public static void createMaps(){
+        int i = 0;
 
+        for (MapLayout map : MapLayout.values()){
+            ExploringScreen.mapName = map.getTmx();
+            ExploringScreen.mapEffect = map.getMapEffect();
+            if (map.getLevel() == 0){
+                layout[i] = new ExploringScreen();
+            }else {
+                layout[i] = new ExploringScreen(layout[map.getLevel() -1]);
+            }
+            i++;
+        }
+
+    }
 }
