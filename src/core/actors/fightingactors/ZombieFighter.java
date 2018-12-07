@@ -8,8 +8,8 @@ public class ZombieFighter extends EnemyFighters {
     public ZombieFighter (Stage s) {
 
         super(s);
-        this.setHP(120);
-        this.setMaxHP(120);
+        this.setHP(80);
+        this.setMaxHP(80);
         this.setFighterName("Zombie");
 
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Zombie Attack.png", 0.14f,1,8);

@@ -7,8 +7,8 @@ public class TrollFighter extends EnemyFighters {
 
     public TrollFighter(Stage s){
         super(s);
-        this.setHP(60);
-        this.setMaxHP(60);
+        this.setHP(70);
+        this.setMaxHP(70);
         this.setFighterName("Troll");
 
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Troll Attack.png", 0.14f,1,7);

@@ -5,8 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 public class MortenFighter extends EnemyFighters {
     public MortenFighter(Stage s){
         super(s);
-        this.setHP(420);
-        this.setMaxHP(420);
+        this.setHP(200);
+        this.setMaxHP(200);
         this.setFighterName("Morten");
 
         attack = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Morten-Attack.png", 0.14f,1,4);

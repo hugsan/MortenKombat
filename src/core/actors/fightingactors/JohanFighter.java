@@ -8,8 +8,8 @@ public class JohanFighter extends EnemyFighters {
 
     public JohanFighter(Stage s){
         super(s);
-        this.setHP(360);
-        this.setMaxHP(360);
+        this.setHP(160);
+        this.setMaxHP(160);
         this.setFighterName("Johan");
 
         attack = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Johan-Attack.png", 0.14f,1,6);

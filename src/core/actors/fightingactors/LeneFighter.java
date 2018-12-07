@@ -5,8 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 public class LeneFighter extends EnemyFighters {
     public LeneFighter(Stage s){
         super(s);
-        this.setHP(340);
-        this.setMaxHP(340);
+        this.setHP(180);
+        this.setMaxHP(180);
         this.setFighterName("Lene");
 
         attack = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Lene-Attack.png", 0.14f,1,30);
