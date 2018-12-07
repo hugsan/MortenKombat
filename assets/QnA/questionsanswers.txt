@@ -320,7 +320,7 @@ Winston Churchill
 Lyndon B. Johnson
 Which of these countries were not occupied by the Nazis in World War 2?
 Sweden
-Italy
+Belgium
 Norway
 Denmark
 If you mix all colours, what color do you get?
@@ -515,14 +515,14 @@ Support
 Spotter
 How many squares are there on a chess board?
 64 squares
-48
-32
-80
+48 squares
+32 squares
+80 squares
 How long is a basketball game international and in the NBA?
 40 and 48 minutes long
 24 and 32 minutes long
 16 and 40 minutes long
-44 and 48 minutes long
+48 and 60 minutes long
 What is the name given to the NFL final?
 Super Bowl
 Super Ball

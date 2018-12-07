@@ -9,7 +9,7 @@ public class WarriorOne extends Champion {
     static final double PERCENTAGE_GENERATE_QUESTIONS = 0.3; // this is the size in cm
 
     private String spellOneName = "Light Strike";
-    private String spellTwoName = "Equalizer";
+    private String spellTwoName = "Equalize";
     private String spellThreeName = "Execute";
     private String spellOneText = "Strikes the enemy for 8-23 damage";
     private String spellTwoText = " Executes the enemy!!! Deals 30% of the target missing life.";
@@ -79,6 +79,7 @@ public class WarriorOne extends Champion {
                 this.setHP((int)(this.getHP()+ 0.20*this.getMaxHP()));
                 if (this.getHP() >= this.getMaxHP())
                 this.setHP(this.getHP());
+
             }
             return true;
         }
