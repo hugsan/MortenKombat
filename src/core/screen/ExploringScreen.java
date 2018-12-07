@@ -28,6 +28,8 @@ public class ExploringScreen extends BaseScreen {
     private Hero hero;
     public static Music backgroundMusic;
     private Label messageDoor;
+    private DialogBox dialogBox;
+
 
     // X Y position of the hero when the hero travels to next map
     private float x, y;
@@ -85,6 +87,7 @@ public class ExploringScreen extends BaseScreen {
         createMapObjects(tma, "Sokol" );
         createMapObjects(tma, "Lene" );
         createMapObjects(tma,"Door" );
+        createMapObjects(tma, "Sign");
 
         //create the starting point for our hero.
         MapObject startPoint = tma.getRectangleList("Start").get(0);
@@ -124,6 +127,16 @@ public class ExploringScreen extends BaseScreen {
         messageDoor.setWrap (true);
         uiStage.addActor( messageDoor );
         messageDoor.setVisible ( false );
+
+        dialogBox = new DialogBox(0,0, uiStage);
+        dialogBox.setBackgroundColor( Color.TAN );
+        dialogBox.setFontColor( Color.BROWN );
+        dialogBox.setDialogSize(600, 100);
+        dialogBox.setFontScale(0.80f);
+        dialogBox.alignCenter();
+        dialogBox.setVisible(false);
+
+        uiTable.add(dialogBox).colspan(3);
     }
 
     public void update(float dt)  {
@@ -162,6 +175,7 @@ public class ExploringScreen extends BaseScreen {
         actorObjectInteraction ( "core.actors.exploringactors.Lene" );
         actorObjectInteraction ( "core.actors.exploringactors.Sokol" );
         actorObjectInteraction ( "core.actors.exploringactors.Door");
+        actorObjectInteraction("core.actors.exploringactors.Sign");
 
         //Checks if the current map is windy. if it is blows the hero every 1 sec.
         if (currentMapEffect.equals("wind")) {
@@ -197,6 +211,10 @@ public class ExploringScreen extends BaseScreen {
             switch (mapattributes) {
                 case "Exit":
                     new Exit((float) props.get("x"), (float) props.get("y"), mainStage);
+                    break;
+                case "Sign":
+                    Sign s = new Sign( (float)props.get("x"), (float)props.get("y"), mainStage );
+                    s.setText( (String)props.get("message") );
                     break;
                 case "Exit2":
                     new ExitTwo((float) props.get("x"), (float) props.get("y"), mainStage);
@@ -276,7 +294,7 @@ public class ExploringScreen extends BaseScreen {
                         a.remove();
                     }
                     break;
-                    case "core.actors.exploringactors.Troll":
+                case "core.actors.exploringactors.Troll":
                     for (BaseActor s : BaseActor.getList(mainStage, "core.actors.exploringactors.Solid")) {
                         if (a.overlaps(s)) {
                             a.preventOverlap(s);
@@ -346,6 +364,26 @@ public class ExploringScreen extends BaseScreen {
                          messageDoor.setVisible ( false );
                      }
                      break;
+                case "core.actors.exploringactors.Sign":
+                    Sign sign = (Sign)a;
+
+                    hero.preventOverlap(a);
+                    boolean nearby = hero.isWithinDistance(4, sign);
+
+                    if ( nearby && !sign.isViewing() )
+                    {
+                        dialogBox.setText( sign.getText() );
+                        dialogBox.setVisible( true );
+                        sign.setViewing( true );
+                    }
+
+                    if (sign.isViewing() && !nearby)
+                    {
+                        dialogBox.setText( " " );
+                        dialogBox.setVisible( false );
+                        sign.setViewing( false );
+                    }
+                    break;
 
                 case "core.actors.exploringactors.Medic":
                     if (hero.overlaps(a)) {
