@@ -148,6 +148,8 @@ public class OptionsMenuScreen extends BaseScreen {
                         return false;
 
                     quickVersion = true;
+                    this.dispose();
+                    MortenCombat.setActiveScreen(menu);
                     return false;
                 }
         );
@@ -173,6 +175,8 @@ public class OptionsMenuScreen extends BaseScreen {
                         return false;
 
                     quickVersion = false;
+                    this.dispose();
+                    MortenCombat.setActiveScreen(menu);
                     return false;
                 }
         );
