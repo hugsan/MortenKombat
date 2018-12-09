@@ -43,6 +43,8 @@ public class CharacterCard extends DragAndDropActor {
 
     public void onDrop()
     {
+        if (getX() < 800 || getY() < 600)
+            moveToStart();
         if ( hasDropTarget() )
         {
             SelectionArea sa = (SelectionArea) getDropTarget();

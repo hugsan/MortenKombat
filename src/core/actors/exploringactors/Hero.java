@@ -15,6 +15,10 @@ import core.framework.BaseActor;
  */
 public class Hero extends BaseActor
 {
+    private final int HEROACC = 1000;
+    private final int HEROSPEED = 300;
+    private final int HERODEACC = 2000;
+
     private Animation north;
     private Animation south;
     private Animation east;
@@ -54,9 +58,9 @@ public class Hero extends BaseActor
         setAnimation(south);
         facingAngle = 270;
         setBoundaryPolygon(8);
-        setAcceleration(1000);
-        setMaxSpeed(300);
-        setDeceleration(1000);
+        setAcceleration(HEROACC);
+        setMaxSpeed(HEROSPEED);
+        setDeceleration(HERODEACC);
 
     }
     public void act(float dt)
