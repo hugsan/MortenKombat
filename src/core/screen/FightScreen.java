@@ -18,6 +18,8 @@ import core.utils.MortenCombat;
 import core.actors.fightingactors.*;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
+
+import java.util.ArrayDeque;
 import java.util.concurrent.CopyOnWriteArrayList;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import core.utils.ImportQandA;
@@ -33,7 +35,7 @@ public class FightScreen extends BaseScreen {
     private EnemyFighters enemyOne, enemyTwo, enemyThree;
     private ArrayList<EnemyFighters> enemies;
     private CopyOnWriteArrayList<Fighter> aliveFighters;
-    Stack<Fighter> fightingTurn;
+    ArrayDeque<Fighter> fightingTurn;
     private Label turnLabel;
 
 
@@ -166,12 +168,11 @@ public class FightScreen extends BaseScreen {
             enemies.add(enemyOne);
         }
 
-        fightingTurn = new Stack<> ( );
+        fightingTurn = new ArrayDeque<> ( );
         fightingTurn.addAll ( champions );
         fightingTurn.addAll ( enemies );
         //fightingTurn is a ArrayList of fighters, randomize every turn.
-        Collections.shuffle ( fightingTurn );
-
+        shuffleDeque(fightingTurn);
         //aliveFighters is a arrayList of all the remaining Fighters in our screen.
         //A thread-safe variant of ArrayList in which all mutative operations (add, set, and so on) are implemented
         // by making a fresh copy of the underlying array. (copied from Oracle)
@@ -1105,7 +1106,7 @@ public class FightScreen extends BaseScreen {
                 if (sC instanceof SpellCaster)
                     ((SpellCaster) sC).manaRegeneration();
             }
-            Collections.shuffle(fightingTurn);
+            shuffleDeque(fightingTurn);
             turn ++; // not been used, maybe we can put a Turn number on screen.
             turnLabel.setText("Turn: "+turn);
         }
@@ -1122,5 +1123,12 @@ public class FightScreen extends BaseScreen {
         if (!fightingTurn.isEmpty())
             return fightingTurn.peek();
         return null;
+    }
+    private void shuffleDeque(ArrayDeque fightingTurn){
+        ArrayList shuffler = new ArrayList<Fighter>();
+        shuffler.addAll(fightingTurn);
+        Collections.shuffle(shuffler);
+        fightingTurn.clear();
+        fightingTurn.addAll(shuffler);
     }
 }
