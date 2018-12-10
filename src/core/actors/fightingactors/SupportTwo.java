@@ -2,21 +2,22 @@ package core.actors.fightingactors;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import core.utils.FighterBalanceVariables;
 
 public class SupportTwo extends SpellCaster {
 
     private String spellOneName = "Swing";
     private String spellTwoName = "Heal";
     private String spellThreeName = "Radiant Heal";
-    private String spellOneText = "Slaches the enemy for 6-22 damage and restore 10 mana";
-    private String spellTwoText = "Heals a hero for 30 health, cost 15 mana";
-    private String spellThreeText = "Heals all heroes for 40 health, cost 60 mana";
+    private String spellOneText = "Slashes the enemy for 6-22 damage and restore "+ FighterBalanceVariables.SUPPORTTWOATTACKONEGAIN+" mana";
+    private String spellTwoText = "Heals a hero for 30 health, cost "+FighterBalanceVariables.SUPPORTTWOATTACKTWOCOST+" mana";
+    private String spellThreeText = "Heals all heroes for 40 health, cost "+FighterBalanceVariables.SUPPORTTWOATTACKTHREECOST+" mana";
 
     public SupportTwo(Stage s) {
         super(s);
         this.setFighterName("Koryssh");
-        this.setHP(125);
-        this.setMaxHP(125);
+        this.setHP(FighterBalanceVariables.SUPPPORTHP);
+        this.setMaxHP(FighterBalanceVariables.SUPPORTMAXHP);
 
         setFirstButtonName(spellOneName);
         setSecondButtonName(spellTwoName);
@@ -44,7 +45,7 @@ public class SupportTwo extends SpellCaster {
     public boolean attackOne(Fighter fighter) {
         if (fighter instanceof EnemyFighters) {
             fighter.setHP(fighter.getHP() - MathUtils.random(6, 22));
-            this.gainMana(10);
+            this.gainMana(FighterBalanceVariables.SUPPORTTWOATTACKONEGAIN);
             return true;
         }
         cantclick.play();
@@ -60,9 +61,9 @@ public class SupportTwo extends SpellCaster {
      */
     @Override
     public boolean attackTwo(Fighter fighter) {
-        if (this.enoughMana(15) && fighter instanceof Champion) {
+        if (this.enoughMana(FighterBalanceVariables.SUPPORTTWOATTACKTWOCOST) && fighter instanceof Champion) {
             fighter.setHP(fighter.getHP() + 30);
-            spendMana(15);
+            spendMana(FighterBalanceVariables.SUPPORTTWOATTACKTWOCOST);
             if (fighter.getHP() >= fighter.getMaxHP())
                 fighter.setHP(fighter.getMaxHP());
             return true;
@@ -85,14 +86,14 @@ public class SupportTwo extends SpellCaster {
     public boolean attackThree(Fighter fighterOne, Fighter fighterTwo, Fighter fighterThree) {
         if (fighterOne instanceof Champion || fighterTwo instanceof Champion || fighterThree instanceof Champion) {
             //checking if the fighters are alive before healing them.
-            if (enoughMana(60)) {
+            if (enoughMana(FighterBalanceVariables.SUPPORTTWOATTACKTHREECOST)) {
                 if (fighterOne.getHP() != 0)
                     fighterOne.setHP(Math.min((fighterOne.getHP() + 40), fighterOne.getMaxHP()));
                 if (fighterTwo.getHP() != 0)
                     fighterTwo.setHP(Math.min((fighterTwo.getHP() + 40), fighterTwo.getMaxHP()));
                 if (fighterThree.getHP() != 0)
                     fighterThree.setHP(Math.min((fighterThree.getHP() + 40), fighterThree.getMaxHP()));
-                this.spendMana(60);
+                this.spendMana(FighterBalanceVariables.SUPPORTTWOATTACKTHREECOST);
                 return true;
             } else{
                 missingMana.play ();

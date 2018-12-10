@@ -2,14 +2,15 @@ package core.actors.fightingactors;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import core.utils.FighterBalanceVariables;
 
 public class ZombieFighter extends EnemyFighters {
 
     public ZombieFighter (Stage s) {
 
         super(s);
-        this.setHP(80);
-        this.setMaxHP(80);
+        this.setHP( FighterBalanceVariables.ZOMBIEHP);
+        this.setMaxHP(FighterBalanceVariables.ZOMBIEMAXHP);
         this.setFighterName("Zombie");
 
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Zombie Attack.png", 0.14f,1,8);

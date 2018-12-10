@@ -1,9 +1,9 @@
 package core.actors.fightingactors;
 
 
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import core.utils.FighterBalanceVariables;
 
 /**
  *
@@ -15,8 +15,8 @@ public class SkeletonFighter extends EnemyFighters {
     public SkeletonFighter (Stage s) {
 
         super(s);
-        this.setHP(50);
-        this.setMaxHP(50);
+        this.setHP( FighterBalanceVariables.SKELETONHP);
+        this.setMaxHP(FighterBalanceVariables.SKELETONMAXHP);
         this.setFighterName("Skeleton");
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Skeleton Attack.png", 0.14f,2,5);
         iddle = AnimationCreator.createAnimation("assets/fightingscreen/Skeleton Idle.png", 0.14f, 2, 5);
