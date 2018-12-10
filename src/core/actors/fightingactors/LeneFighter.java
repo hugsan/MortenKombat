@@ -1,13 +1,14 @@
 package core.actors.fightingactors;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import core.utils.FighterBalanceVariables;
 
 public class LeneFighter extends EnemyFighters {
     public LeneFighter(Stage s){
         super(s);
-        this.setHP(180);
-        this.setMaxHP(180);
-        this.setFighterName("Lene");
+        this.setHP( FighterBalanceVariables.LENEHP);
+        this.setMaxHP(FighterBalanceVariables.LENEMAXHP);
+        this.setFighterName(FighterBalanceVariables.LENENAME);
 
         attack = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Lene-Attack.png", 0.14f,1,30);
         iddle = AnimationCreator.createAnimation("assets/Fightingscreen/Boss/Lene-Idle.png", 0.14f, 1, 16);

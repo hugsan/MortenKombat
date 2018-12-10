@@ -3,6 +3,7 @@ package core.actors.fightingactors;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import core.utils.FighterBalanceVariables;
 
 public class WarriorTwo extends Champion{
 
@@ -19,8 +20,8 @@ public class WarriorTwo extends Champion{
     public WarriorTwo (Stage s){
         super(s);
         setFighterName ( "Arthur" );
-        setHP(250);
-        setMaxHP(250);
+        setHP( FighterBalanceVariables.WARRIORTWOHP);
+        setMaxHP(FighterBalanceVariables.WARRIORTWOMAXHP);
 
         setFirstButtonName(spellOneName);
         setSecondButtonName(spellTwoName);

@@ -2,13 +2,14 @@ package core.actors.fightingactors;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import core.utils.FighterBalanceVariables;
 
 public class TrollFighter extends EnemyFighters {
 
     public TrollFighter(Stage s){
         super(s);
-        this.setHP(70);
-        this.setMaxHP(70);
+        this.setHP( FighterBalanceVariables.TROLLHP);
+        this.setMaxHP(FighterBalanceVariables.TROLLMAXHP);
         this.setFighterName("Troll");
 
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Troll Attack.png", 0.14f,1,7);

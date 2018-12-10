@@ -6,9 +6,14 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import core.framework.BaseGame;
+import core.utils.FighterBalanceVariables;
 
 
 public abstract class SpellCaster extends Champion {
+    //configuration variables for SpellCasters
+    private final int MAXMANA = FighterBalanceVariables.MAXMANA;
+    private int mana = FighterBalanceVariables.MANA;
+
 
     public Sound missingMana = Gdx.audio.newSound(Gdx.files.internal("assets/audio/sound/outmana.mp3"));
     private Label manaBar;
@@ -20,16 +25,15 @@ public abstract class SpellCaster extends Champion {
         manaBar.setColor( Color.CYAN );
         manaBar.setFontScale(0.6f);
     }
-    private final int maxMana = 100;
-    private int mana = 100;
+
 
     /**
-     * Regenerates mana by 10 each time it is called, until the mana value reach maxMana
+     * Regenerates mana by 10 each time it is called, until the mana value reach MAXMANA
      */
     public void manaRegeneration(){
-        mana += 10;
-        if (mana >= maxMana)
-            mana = maxMana;
+        mana += FighterBalanceVariables.MANAREGENERATION;
+        if (mana >= MAXMANA)
+            mana = MAXMANA;
     }
 
     public Label getManaBar() { return manaBar; }
@@ -38,7 +42,7 @@ public abstract class SpellCaster extends Champion {
      * Update the value of mana.
      */
     public void updateManaBar() {
-        manaBar.setText(getMana() +"/"+ getMaxMana());
+        manaBar.setText(getMana() +"/"+ getMAXMANA ());
     }
 
     public int getMana() {
@@ -49,8 +53,8 @@ public abstract class SpellCaster extends Champion {
         this.mana = mana;
     }
 
-    public int getMaxMana() {
-        return maxMana;
+    public int getMAXMANA() {
+        return MAXMANA;
     }
 
     /**
@@ -59,8 +63,8 @@ public abstract class SpellCaster extends Champion {
      */
     public void gainMana(int amount) {
         this.setMana(this.getMana() + amount );
-        if (this.getMana()> this.getMaxMana())
-            this.setMana(this.getMaxMana());
+        if (this.getMana()> this.getMAXMANA ())
+            this.setMana(this.getMAXMANA ());
     }
 
     /**

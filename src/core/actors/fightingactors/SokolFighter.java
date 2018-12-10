@@ -1,13 +1,14 @@
 package core.actors.fightingactors;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import core.utils.FighterBalanceVariables;
 
 public class SokolFighter extends EnemyFighters {
     public SokolFighter(Stage s){
         super(s);
-        this.setHP(140);
-        this.setMaxHP(140);
-        this.setFighterName("Sokol");
+        this.setHP( FighterBalanceVariables.SOKOLHP);
+        this.setMaxHP(FighterBalanceVariables.SOKOLMAXHP);
+        this.setFighterName(FighterBalanceVariables.SOKOLNAME);
 
         attack = AnimationCreator.createAnimation("assets/fightingscreen/Boss/Sokol-Attack.png", 0.14f,1,6);
         iddle = AnimationCreator.createAnimation("assets/fightingscreen/Boss/Sokol-Idle.png", 0.14f, 1, 8);
@@ -22,8 +23,8 @@ public class SokolFighter extends EnemyFighters {
      */
     @Override
     public boolean attackOne(Fighter fighter){
-        int damage = 50;
-        fighter.setHP(fighter.getHP()-damage);
+
+        fighter.setHP(fighter.getHP()- FighterBalanceVariables.SOKOLFIRSTATTACKDAMAGE);
         return true;
     }
 
