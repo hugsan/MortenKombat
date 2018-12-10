@@ -15,6 +15,7 @@ public class FighterBalanceVariables {
     public final static int SOKOLHP = 140;
     public final static int SOKOLMAXHP = 140;
     public final static String SOKOLNAME = "Sokol";
+    public final static int SOKOLFIRSTATTACKDAMAGE = 50;
 
     //Morten
     public final static int MORTENHP = 200 ;

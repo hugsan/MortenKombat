@@ -23,8 +23,8 @@ public class SokolFighter extends EnemyFighters {
      */
     @Override
     public boolean attackOne(Fighter fighter){
-        int damage = 50;
-        fighter.setHP(fighter.getHP()-damage);
+
+        fighter.setHP(fighter.getHP()- FighterBalanceVariables.SOKOLFIRSTATTACKDAMAGE);
         return true;
     }
 
