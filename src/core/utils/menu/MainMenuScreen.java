@@ -135,7 +135,7 @@ public class MainMenuScreen extends BaseScreen{
     /**
      * Method that increases 5% the music of our game
       */
-    protected static void musicVolumeUp(){
+     public static void musicVolumeUp(){
         MortenCombat.volume = MortenCombat.volume + 0.05f;
         if ( MortenCombat.volume > 0.5)
             MortenCombat.volume = 0.5f;
@@ -145,7 +145,7 @@ public class MainMenuScreen extends BaseScreen{
     /**
      * Method that decreases 5% the music of our game
      */
-    protected static void musicVolumeDown() {
+    public static void musicVolumeDown() {
         MortenCombat.volume = MortenCombat.volume - 0.05f;
         if (MortenCombat.volume < 0 )
             MortenCombat.volume = 0;

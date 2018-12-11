@@ -1,4 +1,4 @@
-package core.utils.menu;
+package core.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -12,6 +12,7 @@ import core.screen.FightScreen;
 import core.utils.MortenCombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
+import core.utils.menu.MainMenuScreen;
 
 public class PauseScreen extends BaseScreen {
 

@@ -1,4 +1,4 @@
-package core.screen;
+package core.utils;
 
 /**
  * Enum that saves the the layout of our map. Each map contains as the first argument what is their previousMap

@@ -434,7 +434,7 @@
 </data>
  </layer>
  <objectgroup id="4" name="Object Layer 1">
-  <object id="3" x="1845.33" y="420.787" width="53" height="46">
+  <object id="3" x="57.4512" y="1248.06" width="53" height="46">
    <properties>
     <property name="name" value="Start"/>
    </properties>
@@ -1187,7 +1187,7 @@
   </object>
   <object id="165" x="125.758" y="834.849" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Zombie"/>
+    <property name="name" value="Troll"/>
    </properties>
   </object>
   <object id="166" x="886.364" y="546.97" width="39.3939" height="45.4545">
@@ -1197,7 +1197,7 @@
   </object>
   <object id="167" x="1189.4" y="853.031" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Zombie"/>
+    <property name="name" value="Troll"/>
    </properties>
   </object>
   <object id="168" x="1471.21" y="1186.36" width="39.3939" height="45.4545">
@@ -1207,12 +1207,12 @@
   </object>
   <object id="169" x="1359.09" y="1780.3" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Zombie"/>
+    <property name="name" value="Troll"/>
    </properties>
   </object>
   <object id="170" x="592.424" y="1886.36" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Zombie"/>
+    <property name="name" value="Troll"/>
    </properties>
   </object>
   <object id="171" x="1013.64" y="1083.33" width="39.3939" height="45.4545">
@@ -1232,7 +1232,7 @@
   </object>
   <object id="174" x="531.818" y="637.879" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Zombie"/>
+    <property name="name" value="Troll"/>
    </properties>
   </object>
   <object id="175" x="256.5" y="1195" width="39" height="36">

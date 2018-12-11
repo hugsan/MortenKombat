@@ -48,6 +48,9 @@ public class SelectionScreen extends BaseScreen {
         BaseActor supportTitle = new BaseActor(562,390,mainStage);
         supportTitle.loadTexture("assets/img/SupportHeadLine.png");
 
+        BaseActor dragAndDrop = new BaseActor(160,270, mainStage);
+        dragAndDrop.loadTexture("assets/img/DragAndDrop.png");
+
         for ( int i = 1 ; i < 4 ; i++ ) {
             int pixelX = i * 200 - 50;
             int pixelY = 350;
