@@ -363,6 +363,9 @@ public class ExploringScreen extends BaseScreen {
                     }
                     break;
                 case "core.actors.exploringactors.Door":
+                    if (hero.overlaps(a)) {
+                        hero.preventOverlap(a);
+                    }
                     if ( FightScreen.getCountKeys () == 3 ) {
                         a.remove ();
                     }
