@@ -18,7 +18,7 @@ public class MortenKombat extends BaseGame {
     public static Stack<ImportQandA> questionAnswer;
     public static Stack<ImportQandA> questionBackUp;
 
-    static ExploringScreen[] layout = new ExploringScreen[MapLayout.values().length];
+    static private ExploringScreen[] layout = new ExploringScreen[MapLayout.values().length];
 
     public void create() {
 
