@@ -1,6 +1,7 @@
 package core.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Event;
@@ -9,12 +10,19 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
+import core.utils.MortenCombat;
 
 public class VictoryScreen extends BaseScreen {
 
 
-
+    static Music VictoryMusic;
     public void initialize() {
+
+        // Music for the screen
+        VictoryMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/VictoryCelebration.mp3"));
+        VictoryMusic.setVolume(MortenCombat.volume);
+        VictoryMusic.setLooping(true);
+        VictoryMusic.play();
 
         // initialize the Background for the VictoryScreen
         BaseActor background = new BaseActor(0,0, mainStage);

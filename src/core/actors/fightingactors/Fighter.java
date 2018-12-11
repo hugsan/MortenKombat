@@ -25,10 +25,6 @@ public abstract class Fighter extends BaseActor {
     private Label namePlate;
     private Label health;
 
-    private Animation<TextureRegion> animation;
-    private float elapsedTime;
-    private boolean animationPaused;
-
     //Animation iddle, attack, dead
     public Animation attack;
     public Animation iddle;
@@ -47,7 +43,6 @@ public abstract class Fighter extends BaseActor {
         namePlate.setFontScale(0.5f);
 
     }
-
     /**
      * return 1 if the ability is possible
      * return -1 if there is missing resources to make the ability
@@ -93,22 +88,11 @@ public abstract class Fighter extends BaseActor {
     public void setMaxHP(int maxHP) {
         this.maxHP = maxHP;
     }
-    public Animation getAnimationAttack(){
-        return attack;
-    }
-    public Animation getAnimationIddle(){
-        return iddle;
-    }
-    public Animation getAnimationDead(){
-        return dead;
-    }
 
     public int getAux() {
         return aux;
     }
-
     public void setAux(int aux) {
         this.aux = aux;
     }
-
 }

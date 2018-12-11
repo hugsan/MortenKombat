@@ -19,7 +19,7 @@ public class QAerrorScreen extends BaseScreen {
     public void initialize() {
         // initialize the Background for the GameOverScreen
         BaseActor gameOverScreenBackground = new BaseActor(0, 0, mainStage);
-        gameOverScreenBackground.loadTexture( "assets/img/GameOverScreen.png" );
+        gameOverScreenBackground.loadTexture( "assets/img/ErrorScreen.png" );
         gameOverScreenBackground.setSize(800,600);
 
 
