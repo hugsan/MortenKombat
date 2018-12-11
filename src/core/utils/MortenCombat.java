@@ -6,7 +6,6 @@ import core.utils.menu.MainMenuScreen;
 import core.utils.menu.QAerrorScreen;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;

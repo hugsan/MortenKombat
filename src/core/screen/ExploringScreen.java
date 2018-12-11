@@ -9,7 +9,6 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.MathUtils;
 import core.framework.BaseGame;
 import core.utils.menu.OptionsMenuScreen;
-import core.utils.menu.PauseScreen;
 import core.utils.MortenCombat;
 import core.actors.exploringactors.*;
 import core.framework.BaseActor;

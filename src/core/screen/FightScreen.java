@@ -12,8 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import core.utils.menu.PauseScreen;
 import core.utils.MortenCombat;
 import core.actors.fightingactors.*;
 import core.framework.BaseActor;
