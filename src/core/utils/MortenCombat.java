@@ -50,7 +50,7 @@ public class MortenCombat extends BaseGame {
      *
      */
     public static void startGame() {
-            setActiveScreen( new LoadingScreen(layout[5] ));
+            setActiveScreen( new LoadingScreen(layout[0] ));
             ExploringScreen.musicPlay();
     }
     public static void createMaps(){

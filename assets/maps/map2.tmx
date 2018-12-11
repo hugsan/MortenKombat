@@ -1171,7 +1171,7 @@
   </object>
   <object id="153" x="958.485" y="1811.82" width="52" height="40">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Zombie"/>
    </properties>
   </object>
   <object id="154" x="870" y="1092" width="52" height="40">
@@ -1181,7 +1181,7 @@
   </object>
   <object id="155" x="162" y="668" width="52" height="40">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Zombie"/>
    </properties>
   </object>
   <object id="156" x="70" y="1046" width="52" height="40">
@@ -1191,27 +1191,27 @@
   </object>
   <object id="157" x="1640" y="1452" width="52" height="40">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Zombie"/>
    </properties>
   </object>
   <object id="158" x="1318" y="1542" width="52" height="40">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Bat"/>
    </properties>
   </object>
   <object id="159" x="462" y="268" width="52" height="40">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Zombie"/>
    </properties>
   </object>
   <object id="161" x="710" y="1212" width="52" height="40">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Bat"/>
    </properties>
   </object>
   <object id="162" x="1610" y="934" width="52" height="40">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Zombie"/>
    </properties>
   </object>
   <object id="163" x="1346" y="780" width="52" height="40">
@@ -1221,7 +1221,7 @@
   </object>
   <object id="164" x="548" y="1138" width="52" height="40">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Zombie"/>
    </properties>
   </object>
   <object id="165" x="1056.73" y="1348" width="40" height="36">

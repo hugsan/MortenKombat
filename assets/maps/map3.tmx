@@ -1996,12 +1996,12 @@
   </object>
   <object id="269" x="1903.03" y="833.333">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Bat"/>
    </properties>
   </object>
   <object id="270" x="1539.39" y="1084.85">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Zombie"/>
    </properties>
   </object>
   <object id="271" x="1066.67" y="660.606">
@@ -2011,7 +2011,7 @@
   </object>
   <object id="272" x="115.152" y="775.758">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Zombie"/>
    </properties>
   </object>
   <object id="273" x="1906.06" y="1321.21">
