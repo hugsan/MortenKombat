@@ -6,9 +6,6 @@
  <tileset firstgid="73" name="Dungeon1" tilewidth="32" tileheight="32" tilecount="112" columns="4">
   <image source="Dungeon1.png" width="128" height="896"/>
  </tileset>
- <tileset firstgid="185" name="overworld" tilewidth="32" tileheight="32" tilecount="189" columns="21">
-  <image source="overworld.png" width="672" height="288"/>
- </tileset>
  <tileset firstgid="374" name="signpost-outsidestuff" tilewidth="32" tileheight="32" tilecount="16" columns="4">
   <image source="signpost-outsidestuff.png" width="128" height="128"/>
  </tileset>

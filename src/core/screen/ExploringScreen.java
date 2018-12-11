@@ -85,12 +85,12 @@ public class ExploringScreen extends BaseScreen {
         createMapObjects(tma, "Chest");
         createMapObjects(tma, "Zombie");
         createMapObjects(tma, "Troll");
-        createMapObjects(tma, "Medic"); // Heal
+        createMapObjects(tma, "Medic");
         createMapObjects(tma, "Morten" );
         createMapObjects(tma, "Johan" );
         createMapObjects(tma, "Sokol" );
         createMapObjects(tma, "Lene" );
-        createMapObjects(tma,"Door" );
+        createMapObjects(tma, "Door" );
         createMapObjects(tma, "Sign");
 
         //create the starting point for our hero.
