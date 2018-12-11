@@ -4,14 +4,10 @@ import core.framework.BaseGame;
 import core.screen.*;
 import core.utils.menu.MainMenuScreen;
 import core.utils.menu.QAerrorScreen;
-
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
-
-
 
 public class MortenCombat extends BaseGame {
     public static float volume = 0.05f;
@@ -19,11 +15,8 @@ public class MortenCombat extends BaseGame {
     public static int mageN = 0;
     public static int supportN = 0;
 
-
-
     public static Stack<ImportQandA> questionAnswer;
     public static Stack<ImportQandA> questionBackUp;
-
     public static ArrayList<Stack<ImportQandA>> topics;
 
     static ExploringScreen[] layout = new ExploringScreen[MapLayout.values().length];
@@ -31,10 +24,6 @@ public class MortenCombat extends BaseGame {
     public void create() {
 
         super.create();
-
-
-
-
 
         File data = new File("assets\\QnA\\questionsanswers.txt");
         questionAnswer = new Stack<ImportQandA>();
@@ -77,6 +66,5 @@ public class MortenCombat extends BaseGame {
             }
             i++;
         }
-
     }
 }

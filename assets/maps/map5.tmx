@@ -375,7 +375,7 @@
 </data>
  </layer>
  <objectgroup id="3" name="Object Layer 1">
-  <object id="1" x="1038.67" y="1013.33" width="43" height="34">
+  <object id="1" x="1042.67" y="1036.33" width="43" height="34">
    <properties>
     <property name="name" value="Start"/>
    </properties>
@@ -1062,7 +1062,7 @@
   </object>
   <object id="151" x="1595" y="697" width="45" height="35">
    <properties>
-    <property name="name" value="Zombie"/>
+    <property name="name" value="Troll"/>
    </properties>
   </object>
   <object id="152" x="1163.5" y="1180.5" width="45" height="35">
@@ -1077,7 +1077,7 @@
   </object>
   <object id="154" x="213.5" y="1684.5" width="45" height="35">
    <properties>
-    <property name="name" value="Zombie"/>
+    <property name="name" value="Troll"/>
    </properties>
   </object>
   <object id="155" x="849.5" y="1874.5" width="45" height="35">
@@ -1087,7 +1087,7 @@
   </object>
   <object id="156" x="925.5" y="1364.5" width="45" height="35">
    <properties>
-    <property name="name" value="Skeleton"/>
+    <property name="name" value="Troll"/>
    </properties>
   </object>
   <object id="157" x="1699.5" y="1364.5" width="45" height="35">
@@ -1102,7 +1102,7 @@
   </object>
   <object id="159" x="885.5" y="582.5" width="45" height="35">
    <properties>
-    <property name="name" value="Zombie"/>
+    <property name="name" value="Troll"/>
    </properties>
   </object>
   <object id="160" x="745.5" y="278.5" width="45" height="35">
@@ -1122,7 +1122,7 @@
   </object>
   <object id="163" x="1247.5" y="668.5" width="45" height="35">
    <properties>
-    <property name="name" value="Zombie"/>
+    <property name="name" value="Troll"/>
    </properties>
   </object>
   <object id="164" x="1543.5" y="1404.5" width="45" height="35">
@@ -1140,7 +1140,7 @@
     <property name="name" value="Medic"/>
    </properties>
   </object>
-  <object id="167" x="991.5" y="949.5" width="39" height="36">
+  <object id="167" x="966.5" y="952.5" width="39" height="36">
    <properties>
     <property name="message" value="Dungeon map - Two exits can be found in this map."/>
     <property name="name" value="Sign"/>

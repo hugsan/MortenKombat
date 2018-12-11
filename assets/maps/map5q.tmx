@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="168">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="172">
  <tileset firstgid="1" name="terrain" tilewidth="32" tileheight="32" tilecount="483" columns="21">
   <image source="terrain.png" width="672" height="736"/>
  </tileset>
@@ -375,7 +375,7 @@
 </data>
  </layer>
  <objectgroup id="3" name="Object Layer 1">
-  <object id="1" x="1038.67" y="1013.33" width="43" height="34">
+  <object id="1" x="1047.67" y="1036.33" width="43" height="34">
    <properties>
     <property name="name" value="Start"/>
    </properties>
@@ -1062,17 +1062,17 @@
   </object>
   <object id="154" x="213.5" y="1684.5" width="45" height="35">
    <properties>
-    <property name="name" value="Skeleton"/>
+    <property name="name" value="Troll"/>
    </properties>
   </object>
   <object id="157" x="1699.5" y="1364.5" width="45" height="35">
    <properties>
-    <property name="name" value="Skeleton"/>
+    <property name="name" value="Troll"/>
    </properties>
   </object>
   <object id="159" x="885.5" y="582.5" width="45" height="35">
    <properties>
-    <property name="name" value="Skeleton"/>
+    <property name="name" value="Troll"/>
    </properties>
   </object>
   <object id="166" x="154" y="1316" width="38" height="32">
@@ -1080,10 +1080,30 @@
     <property name="name" value="Medic"/>
    </properties>
   </object>
-  <object id="167" x="985.5" y="948" width="39" height="36">
+  <object id="167" x="963.5" y="947" width="39" height="36">
    <properties>
     <property name="message" value="Dungeon map - Two exits can be found in this map."/>
     <property name="name" value="Sign"/>
+   </properties>
+  </object>
+  <object id="168" x="1553.5" y="480.5" width="45" height="35">
+   <properties>
+    <property name="name" value="Troll"/>
+   </properties>
+  </object>
+  <object id="169" x="208" y="746" width="64" height="48">
+   <properties>
+    <property name="name" value="Bat"/>
+   </properties>
+  </object>
+  <object id="170" x="936" y="1860" width="64" height="48">
+   <properties>
+    <property name="name" value="Bat"/>
+   </properties>
+  </object>
+  <object id="171" x="1386" y="1294" width="64" height="48">
+   <properties>
+    <property name="name" value="Bat"/>
    </properties>
   </object>
  </objectgroup>
