@@ -17,7 +17,6 @@ public class MortenCombat extends BaseGame {
 
     public static Stack<ImportQandA> questionAnswer;
     public static Stack<ImportQandA> questionBackUp;
-    public static ArrayList<Stack<ImportQandA>> topics;
 
     static ExploringScreen[] layout = new ExploringScreen[MapLayout.values().length];
 
@@ -32,10 +31,6 @@ public class MortenCombat extends BaseGame {
 
         questionBackUp = new Stack<ImportQandA>();
         questionBackUp.addAll(questionAnswer);
-
-        topics= new ArrayList<Stack<ImportQandA>>();
-
-        Collections.shuffle(topics);
 
         if (ImportQandA.fileError)
             setActiveScreen(new QAerrorScreen());
