@@ -1,0 +1,35 @@
+This README will go through the error screen and how to make your own questions.
+
+The error screen will open if the "questionsanswers.txt" file can't be found in this folder.
+Make sure the file is there, is spelled correctly and it is a .txt file.
+
+If the file is there and it is in the correct format:
+
+Then make sure there are atleast one full question in the file.
+There needs to be atleast 5 lines of text to make a valid question.
+
+------------------------------------------------------------------------------------------------------------
+
+To make your own question list, make a backup of the old questions if you wish to keep them.
+Then create a new file with the name "questionsanswers.txt".
+In that file write the first line as your question the second line as the correct answer,
+line three, four and five should be wrong but plausible answers.
+Repeat this format as many times as you want, with a new question every 5 lines.
+
+It should look like this:
+
+1. question
+2. correct
+3. wrong
+4. wrong
+5. wrong
+1. question
+2. correct
+3. wrong
+4. wrong
+5. wrong
+1. question
+2. correct
+3. wrong
+4. wrong
+5. wrong
