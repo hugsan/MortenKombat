@@ -7,9 +7,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.MathUtils;
-import core.framework.BaseGame;
+import core.utils.MortenKombat;
 import core.utils.menu.OptionsMenuScreen;
-import core.utils.MortenCombat;
 import core.actors.exploringactors.*;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
@@ -164,11 +163,11 @@ public class ExploringScreen extends BaseScreen {
         //escape that should implement a pauseScreen
         if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)){
 
-            MortenCombat.setActiveScreen(new PauseScreen(this));
+            MortenKombat.setActiveScreen(new PauseScreen(this));
         }
 
         //update the volume for the game
-        backgroundMusic.setVolume(MortenCombat.volume);
+        backgroundMusic.setVolume(MortenKombat.volume);
         //Checks if our object interact with each other. If they interact their functionality is executed.
         actorObjectInteraction("core.actors.exploringactors.Solid");
         actorObjectInteraction("core.actors.exploringactors.Exit");
@@ -301,7 +300,7 @@ public class ExploringScreen extends BaseScreen {
 
                         musicStop();
                         FightScreen.amountOfEnemies = 1;
-                        MortenCombat.setActiveScreen(new FightScreen(this));
+                        MortenKombat.setActiveScreen(new FightScreen(this));
                         a.remove();
                     }
                     break;
@@ -316,7 +315,7 @@ public class ExploringScreen extends BaseScreen {
 
                         musicStop();
                         FightScreen.amountOfEnemies = 2;
-                        MortenCombat.setActiveScreen(new FightScreen(this));
+                        MortenKombat.setActiveScreen(new FightScreen(this));
                         a.remove();
                     }
                     break;
@@ -331,7 +330,7 @@ public class ExploringScreen extends BaseScreen {
 
                         musicStop();
                         FightScreen.amountOfEnemies = 3;
-                        MortenCombat.setActiveScreen(new FightScreen(this));
+                        MortenKombat.setActiveScreen(new FightScreen(this));
                         a.remove();
                     }
                     break;
@@ -339,21 +338,21 @@ public class ExploringScreen extends BaseScreen {
                     if (hero.overlaps(a)) {
                         hero.setPosition(getX(), getY());
                         hero.setSpeed(0);
-                        MortenCombat.setActiveScreen(new LoadingScreen(nextMap));
+                        MortenKombat.setActiveScreen(new LoadingScreen(nextMap));
                     }
                     break;
                 case "core.actors.exploringactors.ExitTwo":
                     if (hero.overlaps(a)) {
                         hero.setPosition(getX(), getY());
                         hero.setSpeed(0);
-                        MortenCombat.setActiveScreen(new LoadingScreen(nextMap2));
+                        MortenKombat.setActiveScreen(new LoadingScreen(nextMap2));
                     }
                     break;
                 case "core.actors.exploringactors.GoBack":
                     if (hero.overlaps(a)) {
                         hero.setPosition(getZ(), getW());
                         hero.setSpeed(0);
-                        MortenCombat.setActiveScreen(new LoadingScreen(previousMap));
+                        MortenKombat.setActiveScreen(new LoadingScreen(previousMap));
                     }
                     break;
 
@@ -400,7 +399,7 @@ public class ExploringScreen extends BaseScreen {
                     if (hero.overlaps(a)) {
                         FightScreen.amountOfEnemies = -4;
                         musicStop();
-                        MortenCombat.setActiveScreen(new FightScreen(this));
+                        MortenKombat.setActiveScreen(new FightScreen(this));
                         a.remove();
                         System.out.println ("fight Morten" );
                     }
@@ -409,7 +408,7 @@ public class ExploringScreen extends BaseScreen {
                     if (hero.overlaps(a)) {
                         FightScreen.amountOfEnemies = -2;
                         musicStop();
-                        MortenCombat.setActiveScreen(new FightScreen(this));
+                        MortenKombat.setActiveScreen(new FightScreen(this));
                         a.remove();
                     }
                     break;
@@ -417,7 +416,7 @@ public class ExploringScreen extends BaseScreen {
                     if (hero.overlaps(a)) {
                         FightScreen.amountOfEnemies = -3;
                         musicStop();
-                        MortenCombat.setActiveScreen(new FightScreen(this));
+                        MortenKombat.setActiveScreen(new FightScreen(this));
                         a.remove();
                     }
                     break;
@@ -425,7 +424,7 @@ public class ExploringScreen extends BaseScreen {
                     if (hero.overlaps(a)) {
                         FightScreen.amountOfEnemies = -1;
                         musicStop();
-                        MortenCombat.setActiveScreen(new FightScreen(this));
+                        MortenKombat.setActiveScreen(new FightScreen(this));
                         a.remove();
 
                     }

@@ -1,6 +1,6 @@
 package core.screen;
 
-import core.utils.MortenCombat;
+import core.utils.MortenKombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
 
@@ -32,7 +32,7 @@ public class LoadingScreen extends BaseScreen {
     {
         currentTime = System.currentTimeMillis();
         if ((currentTime - startTime) > 1500)
-        MortenCombat.setActiveScreen(nextScreen);
+        MortenKombat.setActiveScreen(nextScreen);
     }
 
 }

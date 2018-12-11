@@ -7,8 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import core.utils.menu.MainMenuScreen;
-import core.utils.MortenCombat;
+import core.utils.MortenKombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
 import core.utils.CharacterCard;
@@ -101,13 +100,13 @@ public class SelectionScreen extends BaseScreen {
                         if (selectedHeroes[0].getHeroNumber() != 0 &&
                             selectedHeroes[1].getHeroNumber() != 0 &&
                             selectedHeroes[2].getHeroNumber() != 0) {
-                            MortenCombat.fighterN = selectedHeroes[0].getHeroNumber();
-                            MortenCombat.mageN = selectedHeroes[1].getHeroNumber();
-                            MortenCombat.supportN = selectedHeroes[2].getHeroNumber();
+                            MortenKombat.fighterN = selectedHeroes[0].getHeroNumber();
+                            MortenKombat.mageN = selectedHeroes[1].getHeroNumber();
+                            MortenKombat.supportN = selectedHeroes[2].getHeroNumber();
                             menu.dispose();
                             this.dispose();
 
-                                MortenCombat.setActiveScreen(new TutorialScreen());
+                                MortenKombat.setActiveScreen(new TutorialScreen());
 
                         }
                     return false;
@@ -134,7 +133,7 @@ public class SelectionScreen extends BaseScreen {
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
                     this.dispose();
-                    MortenCombat.setActiveScreen( menu );
+                    MortenKombat.setActiveScreen( menu );
                     return false;
                 }
         );

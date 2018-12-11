@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
 
-public class MortenCombat extends BaseGame {
+public class MortenKombat extends BaseGame {
     public static float volume = 0.05f;
     public static int fighterN = 0;
     public static int mageN = 0;

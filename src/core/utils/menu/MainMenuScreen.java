@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import core.screen.SelectionScreen;
-import core.utils.MortenCombat;
+import core.utils.MortenKombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
 
@@ -39,7 +39,7 @@ public class MainMenuScreen extends BaseScreen{
 
         // Starting music
         menuMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/TheWitcherSpikeroog.mp3"));
-        menuMusic.setVolume(MortenCombat.volume);
+        menuMusic.setVolume(MortenKombat.volume);
         menuMusic.setLooping(true);
         menuMusic.play();
 
@@ -66,8 +66,8 @@ public class MainMenuScreen extends BaseScreen{
                     SelectionScreen charSelect = null;
 
                     charSelect = new SelectionScreen(this);
-                    MortenCombat.createMaps();
-                    MortenCombat.setActiveScreen(charSelect);
+                    MortenKombat.createMaps();
+                    MortenKombat.setActiveScreen(charSelect);
                     return true;
                 }
         );
@@ -96,7 +96,7 @@ public class MainMenuScreen extends BaseScreen{
                         optionsScreen = new OptionsMenuScreen(this);
 
                     this.dispose();
-                    MortenCombat.setActiveScreen(optionsScreen);
+                    MortenKombat.setActiveScreen(optionsScreen);
 
 
                     return true;
@@ -136,20 +136,20 @@ public class MainMenuScreen extends BaseScreen{
      * Method that increases 5% the music of our game
       */
      public static void musicVolumeUp(){
-        MortenCombat.volume = MortenCombat.volume + 0.05f;
-        if ( MortenCombat.volume > 0.5)
-            MortenCombat.volume = 0.5f;
-        menuMusic.setVolume(MortenCombat.volume);
+        MortenKombat.volume = MortenKombat.volume + 0.05f;
+        if ( MortenKombat.volume > 0.5)
+            MortenKombat.volume = 0.5f;
+        menuMusic.setVolume(MortenKombat.volume);
     }
 
     /**
      * Method that decreases 5% the music of our game
      */
     public static void musicVolumeDown() {
-        MortenCombat.volume = MortenCombat.volume - 0.05f;
-        if (MortenCombat.volume < 0 )
-            MortenCombat.volume = 0;
-        menuMusic.setVolume(MortenCombat.volume);
+        MortenKombat.volume = MortenKombat.volume - 0.05f;
+        if (MortenKombat.volume < 0 )
+            MortenKombat.volume = 0;
+        menuMusic.setVolume(MortenKombat.volume);
     }
     public static void menuMusicStop() {
         menuMusic.stop();
