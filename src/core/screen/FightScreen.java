@@ -30,7 +30,9 @@ public class FightScreen extends BaseScreen {
     private final int TRIVIATOBECHECK = -1;
     private final int TRIVIAWAITINGFORANSWER = 0;
     private final int TRIVIAHASBEENANSWER = 1;
-
+    //variable that determine what is the chance to pop a trivia question on each turn.
+    //For example if the value is 3 that means that we have a 30% chance to pop the trivia.
+    private final int TRIVIACHANCE = 3;
     //Turn variables
     private ArrayList<EnemyFighters> enemies;
     private ArrayList<Champion> champions;
@@ -42,7 +44,7 @@ public class FightScreen extends BaseScreen {
     private int turn = 0;
     //Trivia variables
     private boolean criticalAttack = false;
-    private int triviaMustBeShown = -1;
+    private int triviaMustBeShown = TRIVIATOBECHECK;
     private DialogBox questionBox;
     private TextButton answerButton1, answerButton2, answerButton3, answerButton4;
     private DialogBox triviaInformation;
@@ -128,6 +130,7 @@ public class FightScreen extends BaseScreen {
         fightBackground.loadTexture( "assets/img/dungeon.png" );
         fightBackground.setSize(800,600);
 
+        //initialize the tooltip label.
         tooltipText = new Label("", BaseGame.labelStyle);
         tooltipText.setFontScale(0.5f);
         tooltipText.setColor(Color.LIGHT_GRAY);
@@ -135,6 +138,58 @@ public class FightScreen extends BaseScreen {
         tooltipText.setSize(300,50);
         tooltipText.setWrap(true);
         uiStage.addActor(tooltipText);
+
+        //initialize the turn label
+        turnLabel = new Label( "Turn: "+turn, BaseGame.labelStyle);
+        turnLabel.setColor( Color.GRAY);
+        turnLabel.setPosition(320,520);
+        uiStage.addActor(turnLabel);
+
+        //Code that create the buttons, and dialogs for our trivia questions.
+        qA = MortenCombat.questionAnswer;
+
+        questionBox= new DialogBox(100,460,uiStage);
+        questionBox.setBackgroundColor(Color.BLACK);
+        questionBox.setFontColor(Color.GOLDENROD);
+        questionBox.setDialogSize(600,100);
+        questionBox.setFontScale(0.80f);
+        questionBox.alignCenter();
+        questionBox.setText(qA.peek().question);
+        questionBox.setVisible(false);
+
+        triviaInformation = new DialogBox (100, 10, uiStage);
+        triviaInformation.setBackgroundColor(Color.DARK_GRAY);
+        triviaInformation.setFontColor(Color.LIGHT_GRAY);
+        triviaInformation.setDialogSize(600,150);
+        triviaInformation.setFontScale(0.50f);
+        triviaInformation.alignCenter();
+        triviaInformation.setVisible(false);
+
+        BaseGame.textButtonStyle.fontColor = Color.WHITE;
+
+        answerButton1= new TextButton("",BaseGame.textButtonStyle);
+        answerButton2= new TextButton("",BaseGame.textButtonStyle);
+        answerButton3= new TextButton("",BaseGame.textButtonStyle);
+        answerButton4= new TextButton("",BaseGame.textButtonStyle);
+
+        answerButton1.addAction(Actions.alpha(0.8f,0.8f));
+        answerButton2.addAction(Actions.alpha(0.8f,0.8f));
+        answerButton3.addAction(Actions.alpha(0.8f,0.8f));
+        answerButton4.addAction(Actions.alpha(0.8f,0.8f));
+
+        answers= new ArrayList<String>();
+
+        answers.add(qA.peek().correctAnswer);
+        answers.add(qA.peek().wrongAnswer1);
+        answers.add(qA.peek().wrongAnswer2);
+        answers.add(qA.peek().wrongAnswer3);
+
+        Collections.shuffle(answers);
+
+        setAnswerButton(answerButton1,answers.get(0),100,275,300);
+        setAnswerButton(answerButton2,answers.get(1),100,175,300);
+        setAnswerButton(answerButton3,answers.get(2),400,275,300);
+        setAnswerButton(answerButton4,answers.get(3),400,175,300);
 
         //initialize the actors at the screen, depending on the selectionScreen, read by a static variable in
         //Morten combat
@@ -205,18 +260,11 @@ public class FightScreen extends BaseScreen {
         spellMouse = new Pixmap (Gdx.files.internal("assets/img/SpellMouse.png"));
         activateDefaultMouse();
 
-        //initialize the turn label
-        turnLabel = new Label( "Turn: "+turn, BaseGame.labelStyle);
-        turnLabel.setColor( Color.GRAY);
-        turnLabel.setPosition(320,520);
-        uiStage.addActor(turnLabel);
-
         //creating listeners for buttons, activate the spell selector.
         for (Champion c : champions){
             c.getFirstButton().addListener(
                     (Event e) ->
-                    {
-                        //making sure that only the fighter with the turn can listen to clicks.
+                    {//making sure that only the fighter with the turn can listen to clicks.
                         if (c != safeFighterStackPeek()) {
                             return false;
                         }
@@ -295,14 +343,14 @@ public class FightScreen extends BaseScreen {
                             //if the first condition is false, the second condition is never check and never executed
                             if (!isTriviaAttack && abilityUser.attackOne((Fighter)o.getTarget ()))
                                 abilitySuccess(abilityUser);
-                            if (isTriviaAttack  && criticalAttack && abilityUser.attackOne((Fighter)o.getTarget ())){
+                            if (isTriviaAttack  && abilityUser.attackOne((Fighter)o.getTarget ())){
                                 abilityUser.attackOne((Fighter)o.getTarget ());
                                 abilitySuccess(abilityUser);
                             }
                         }else if (  secondAttack ){
                             if (!isTriviaAttack && abilityUser.attackTwo ( (Fighter)o.getTarget () ))
                                 abilitySuccess(abilityUser);
-                            if (isTriviaAttack  && criticalAttack && abilityUser.attackTwo((Fighter)o.getTarget ())){
+                            if (isTriviaAttack   && abilityUser.attackTwo((Fighter)o.getTarget ())){
                                 abilityUser.attackTwo((Fighter)o.getTarget ());
                                 abilitySuccess(abilityUser);
                             }
@@ -311,7 +359,7 @@ public class FightScreen extends BaseScreen {
                                 if(!isTriviaAttack && abilityUser.attackThree(championOne, championTwo, championThree)) {
                                     abilitySuccess (abilityUser);
                                 }
-                                if (isTriviaAttack && criticalAttack && abilityUser.attackThree(championOne, championTwo, championThree)){
+                                if (isTriviaAttack  && abilityUser.attackThree(championOne, championTwo, championThree)){
                                     abilityUser.attackThree(championOne, championTwo, championThree);
                                     abilitySuccess(abilityUser);
                                 }
@@ -322,7 +370,7 @@ public class FightScreen extends BaseScreen {
                                     if (!isTriviaAttack && abilityUser.attackThree(enemyOne,enemyTwo,enemyThree)){
                                         abilitySuccess (abilityUser);
                                     }
-                                    if (isTriviaAttack  && criticalAttack && abilityUser.attackThree(enemyOne,enemyTwo,enemyThree)){
+                                    if (isTriviaAttack   && abilityUser.attackThree(enemyOne,enemyTwo,enemyThree)){
                                         abilityUser.attackThree(enemyOne,enemyTwo,enemyThree);
                                         abilitySuccess(abilityUser);
                                     }
@@ -330,7 +378,7 @@ public class FightScreen extends BaseScreen {
                                     if (!isTriviaAttack && abilityUser.attackThree(enemyTwo,enemyOne,enemyThree)){
                                         abilitySuccess (abilityUser);
                                     }
-                                if (isTriviaAttack  && criticalAttack && abilityUser.attackThree(enemyTwo,enemyOne,enemyThree)){
+                                if (isTriviaAttack   && abilityUser.attackThree(enemyTwo,enemyOne,enemyThree)){
                                     abilityUser.attackThree(enemyTwo,enemyOne,enemyThree);
                                     abilitySuccess(abilityUser);
                                 }
@@ -338,7 +386,7 @@ public class FightScreen extends BaseScreen {
                                     if (!isTriviaAttack && abilityUser.attackThree(enemyThree,enemyTwo,enemyOne)){
                                         abilitySuccess (abilityUser);
                                     }
-                                if (isTriviaAttack  && criticalAttack && abilityUser.attackThree(enemyThree,enemyTwo,enemyOne)){
+                                if (isTriviaAttack   && abilityUser.attackThree(enemyThree,enemyTwo,enemyOne)){
                                     abilityUser.attackThree(enemyThree,enemyTwo,enemyOne);
                                     abilitySuccess(abilityUser);
                                 }
@@ -349,6 +397,69 @@ public class FightScreen extends BaseScreen {
                     }
             );
         }
+
+        //Create the listeners for the trivia question answer buttons.
+        answerButton1.addListener(
+                (Event e) ->
+                {
+                    if ( !(e instanceof InputEvent) )
+                        return false;
+                    if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
+                        return false;
+
+                    isAnswerButton1Pushed=true;
+                    startTime2=System.currentTimeMillis();
+
+                    return true;
+                }
+        );
+        answerButton2.addListener(
+                (Event e) ->
+                {
+                    if ( !(e instanceof InputEvent) )
+                        return false;
+                    if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
+                        return false;
+
+                    isAnswerButton2Pushed=true;
+                    startTime2=System.currentTimeMillis();
+
+                    return true;
+                }
+        );
+        answerButton3.addListener(
+                (Event e) ->
+                {
+                    if ( !(e instanceof InputEvent) )
+                        return false;
+                    if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
+                        return false;
+                    isAnswerButton3Pushed=true;
+                    startTime2=System.currentTimeMillis();
+
+                    return true;
+                }
+        );
+        answerButton4.addListener(
+                (Event e) ->
+                {
+                    if ( !(e instanceof InputEvent) )
+                        return false;
+                    if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
+                        return false;
+
+                    isAnswerButton4Pushed=true;
+                    startTime2=System.currentTimeMillis();
+
+                    return true;
+                }
+        );
+
+        qaStage.addActor(questionBox);
+        qaStage.addActor(answerButton1);
+        qaStage.addActor(answerButton2);
+        qaStage.addActor(answerButton3);
+        qaStage.addActor(answerButton4);
 
         //table where we structure the position of our heroes, buttons, labels ...
         uiTable.add ( ).height ( 140 ).width ( 25 );
@@ -449,115 +560,6 @@ public class FightScreen extends BaseScreen {
             f.setAux ( f.getHP () );
         }
 
-        //Code that create the buttons, and dialogs for our trivia questions.
-        qA = MortenCombat.questionAnswer;
-
-        questionBox= new DialogBox(100,460,uiStage);
-        questionBox.setBackgroundColor(Color.BLACK);
-        questionBox.setFontColor(Color.GOLDENROD);
-        questionBox.setDialogSize(600,100);
-        questionBox.setFontScale(0.80f);
-        questionBox.alignCenter();
-        questionBox.setText(qA.peek().question);
-        questionBox.setVisible(false);
-
-        triviaInformation = new DialogBox (100, 10, uiStage);
-        triviaInformation.setBackgroundColor(Color.DARK_GRAY);
-        triviaInformation.setFontColor(Color.LIGHT_GRAY);
-        triviaInformation.setDialogSize(600,150);
-        triviaInformation.setFontScale(0.50f);
-        triviaInformation.alignCenter();
-        triviaInformation.setVisible(false);
-
-        BaseGame.textButtonStyle.fontColor = Color.WHITE;
-
-        answerButton1= new TextButton("",BaseGame.textButtonStyle);
-        answerButton2= new TextButton("",BaseGame.textButtonStyle);
-        answerButton3= new TextButton("",BaseGame.textButtonStyle);
-        answerButton4= new TextButton("",BaseGame.textButtonStyle);
-
-        answerButton1.addAction(Actions.alpha(0.8f,0.8f));
-        answerButton2.addAction(Actions.alpha(0.8f,0.8f));
-        answerButton3.addAction(Actions.alpha(0.8f,0.8f));
-        answerButton4.addAction(Actions.alpha(0.8f,0.8f));
-
-        answers= new ArrayList<String>();
-
-        answers.add(qA.peek().correctAnswer);
-        answers.add(qA.peek().wrongAnswer1);
-        answers.add(qA.peek().wrongAnswer2);
-        answers.add(qA.peek().wrongAnswer3);
-
-        Collections.shuffle(answers);
-
-        setAnswerButton(answerButton1,answers.get(0),100,275,300);
-        setAnswerButton(answerButton2,answers.get(1),100,175,300);
-        setAnswerButton(answerButton3,answers.get(2),400,275,300);
-        setAnswerButton(answerButton4,answers.get(3),400,175,300);
-
-        //Create the listeners for the trivia question answer buttons.
-        answerButton1.addListener(
-                (Event e) ->
-                {
-                    if ( !(e instanceof InputEvent) )
-                        return false;
-                    if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
-                        return false;
-
-                    isAnswerButton1Pushed=true;
-                    startTime2=System.currentTimeMillis();
-
-                    return true;
-                }
-        );
-        answerButton2.addListener(
-                (Event e) ->
-                {
-                    if ( !(e instanceof InputEvent) )
-                        return false;
-                    if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
-                        return false;
-
-                    isAnswerButton2Pushed=true;
-                    startTime2=System.currentTimeMillis();
-
-                    return true;
-                }
-        );
-        answerButton3.addListener(
-                (Event e) ->
-                {
-                    if ( !(e instanceof InputEvent) )
-                        return false;
-                    if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
-                        return false;
-                    isAnswerButton3Pushed=true;
-                    startTime2=System.currentTimeMillis();
-
-                    return true;
-                }
-        );
-        answerButton4.addListener(
-                (Event e) ->
-                {
-                    if ( !(e instanceof InputEvent) )
-                        return false;
-                    if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
-                        return false;
-
-                    isAnswerButton4Pushed=true;
-                    startTime2=System.currentTimeMillis();
-
-                    return true;
-                }
-        );
-
-        qaStage.addActor(questionBox);
-        qaStage.addActor(answerButton1);
-        qaStage.addActor(answerButton2);
-        qaStage.addActor(answerButton3);
-        qaStage.addActor(answerButton4);
-        //qaStage.addActor(question);
     }
 
     /**
@@ -576,7 +578,6 @@ public class FightScreen extends BaseScreen {
         boolean isAllHeroesDead = true;
         //escape that should implement a pauseScreen
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
-
             MortenCombat.setActiveScreen(new PauseScreen(this));
         }
 
@@ -588,19 +589,19 @@ public class FightScreen extends BaseScreen {
         caseOfAnswerButton4(isAnswerButton4Pushed);
 
         if (triviaHasCheck <= TRIVIAWAITINGFORANSWER && safeFighterStackPeek() instanceof Champion ){
-            if (MathUtils.random(0,9)>=7 && triviaHasCheck == TRIVIATOBECHECK){//30% chance of activating the question for our champions
+            if (MathUtils.random(0,9)< TRIVIACHANCE && triviaHasCheck == TRIVIATOBECHECK){//if true its a trivia question
                 triviaHasCheck = TRIVIAWAITINGFORANSWER ;
                 showTrivia();
                 isTriviaAttack = true;
-            }else if (triviaHasCheck == TRIVIATOBECHECK){
-                triviaHasCheck = TRIVIAWAITINGFORANSWER;
+            }else if (triviaHasCheck == TRIVIATOBECHECK){//it is not a trivia question
+                triviaHasCheck = TRIVIAHASBEENANSWER;
                 isTriviaAttack = false;
             }
-            if (triviaHasCheck == TRIVIAWAITINGFORANSWER && (isAnswerButton1Pushed || isAnswerButton2Pushed || isAnswerButton3Pushed || isAnswerButton4Pushed) ){
+            if (triviaHasCheck == TRIVIAWAITINGFORANSWER && (isAnswerButton1Pushed || isAnswerButton2Pushed ||
+                    isAnswerButton3Pushed || isAnswerButton4Pushed) ){
                 stateOfAnswer(isAnswerButton1Pushed,isAnswerButton2Pushed,isAnswerButton3Pushed,isAnswerButton4Pushed);
-                criticalAttack = isCorrectAnswer;
                 triviaHasCheck = TRIVIAHASBEENANSWER;
-                if (!criticalAttack)
+                if (!isCorrectAnswer)
                     abilityNotSuccess();
             }
         }
@@ -642,30 +643,27 @@ public class FightScreen extends BaseScreen {
                 attacker = null;
             }
         }
-
         if (!fightingTurn.isEmpty()){
-            //we check if the stack is empty at the beginning of the update method.
-            //in some VERY RARE cases, we have found that the listeners might modify the stack in between the execution of the update
-            //creating a EmptyStackException. That is the reason why we check if the stack is empty before making a peek.
             if (safeFighterStackPeek() instanceof EnemyFighters){
-                // = false;
                 currentTime = System.currentTimeMillis();
                 if ((currentTime - startTime) > enemyThinking){
                     boolean isNonQuestionAttack = false;
-                    if (triviaMustBeShown == -1 && MathUtils.random(0,9)>=7 ){ //30% chance to activate the question for enemies.
-                        triviaMustBeShown = 1;
-                        System.out.println("is a trivia attack");
+                    //30% chance to activate the question for enemies.
+                    if (triviaMustBeShown == TRIVIATOBECHECK && MathUtils.random(0,9)< TRIVIACHANCE ){
+                        triviaMustBeShown = TRIVIAHASBEENANSWER;
                         showTrivia();
-                    }else if (triviaMustBeShown == -1) {
-                        triviaMustBeShown = 0;
+                    }else if (triviaMustBeShown == TRIVIATOBECHECK) {
+                        triviaMustBeShown = TRIVIAWAITINGFORANSWER;
                         isNonQuestionAttack = true;
                     }
                     stateOfAnswer(isAnswerButton1Pushed,isAnswerButton2Pushed,isAnswerButton3Pushed,isAnswerButton4Pushed);
-                    boolean hasBeenPressed = (isAnswerButton1Pushed || isAnswerButton2Pushed || isAnswerButton3Pushed || isAnswerButton4Pushed);
+                    boolean hasBeenPressed = (isAnswerButton1Pushed || isAnswerButton2Pushed ||
+                            isAnswerButton3Pushed || isAnswerButton4Pushed);
                     int championTarget = MathUtils.random(0,100);
                     //60% chance to hit first target 25% second chance 15% last target
                     //if target is dead, goes for the next one
-                    if (championTarget > 40 && aliveFighters.contains ( championOne ) && (hasBeenPressed || isNonQuestionAttack) ){ //when a enemy choose to attack first target
+                    if (championTarget > 40 && aliveFighters.contains ( championOne ) &&
+                            (hasBeenPressed || isNonQuestionAttack) ){ //when a enemy choose to attack first target
                         startTime = System.currentTimeMillis() ;
                         if (isNonQuestionAttack){
                             theEnemyAttacks ( (EnemyFighters)safeFighterStackPeek(), championOne );
@@ -679,9 +677,10 @@ public class FightScreen extends BaseScreen {
                         }
                         safeFighterStackPop();
                         isFightTurnOver();
-                        triviaMustBeShown  = -1;
+                        triviaMustBeShown  = TRIVIATOBECHECK;
                     }
-                    else if (championTarget > 15 && aliveFighters.contains (championTwo) && (hasBeenPressed || isNonQuestionAttack)){
+                    else if (championTarget > 15 && aliveFighters.contains (championTwo) &&
+                            (hasBeenPressed || isNonQuestionAttack)){
                         startTime = System.currentTimeMillis() ;
                         if (isNonQuestionAttack){
                             theEnemyAttacks ( (EnemyFighters)safeFighterStackPeek(), championTwo );
@@ -694,7 +693,7 @@ public class FightScreen extends BaseScreen {
                         }
                         safeFighterStackPop();
                         isFightTurnOver();
-                        triviaMustBeShown = -1;
+                        triviaMustBeShown = TRIVIATOBECHECK;
                     }
                     else if ((hasBeenPressed || isNonQuestionAttack)){
                         startTime = System.currentTimeMillis() ;
@@ -709,7 +708,7 @@ public class FightScreen extends BaseScreen {
                         }
                         safeFighterStackPop();
                         isFightTurnOver();
-                        triviaMustBeShown = -1;
+                        triviaMustBeShown = TRIVIATOBECHECK;
                     }
                     enemyThinking = MathUtils.random(3500,4500); //thinking for the next enemy
                 }
@@ -784,7 +783,6 @@ public class FightScreen extends BaseScreen {
         isFightTurnOver();
         firstAttack = secondAttack = thirdAttack = false;
         triviaHasCheck = -1;
-        //set off the label
     }
 
     /**
@@ -1057,6 +1055,10 @@ public class FightScreen extends BaseScreen {
             answerButton4.getLabel().setColor(Color.WHITE);
 
             qA.pop();
+            if (qA.isEmpty()){
+                qA.addAll(MortenCombat.questionBackUp);
+                Collections.shuffle(qA);
+            }
 
             randomInt=MathUtils.random(0,5);
 
@@ -1170,7 +1172,7 @@ public class FightScreen extends BaseScreen {
                     ((SpellCaster) sC).manaRegeneration();
             }
             shuffleDeque(fightingTurn);
-            turn ++; // not been used, maybe we can put a Turn number on screen.
+            turn ++;
             turnLabel.setText("Turn: "+turn);
         }
     }
