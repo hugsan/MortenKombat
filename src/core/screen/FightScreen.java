@@ -26,6 +26,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
 
+/**
+ * Screen that is been used to make a fight between the champions and the enemies.
+ * Is a turn based fight, were each turn has a chance to activate a trivia question.
+ */
 public class FightScreen extends BaseScreen {
     private final int TRIVIATOBECHECK = -1;
     private final int TRIVIAWAITINGFORANSWER = 0;

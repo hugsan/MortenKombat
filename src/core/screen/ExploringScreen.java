@@ -16,6 +16,11 @@ import core.framework.BaseScreen;
 import core.framework.TilemapActor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
+/**
+ * Class that represent the screen where a character can explore a dungeon.
+ * The dungeon layout is been read from a tmx file, creating the position for all the other actors at the map.
+ * Also tells how all the actors should interact with each other.
+ */
 public class ExploringScreen extends BaseScreen {
     public static String mapName;
     private static int windTimer = 0;
@@ -28,7 +33,6 @@ public class ExploringScreen extends BaseScreen {
     public static Music backgroundMusic;
     private Label messageDoor;
     private DialogBox dialogBox;
-
 
     // X Y position of the hero when the hero travels to next map
     private float x, y;
@@ -63,6 +67,11 @@ public class ExploringScreen extends BaseScreen {
         this.previousMap = previousMap;
     }
 
+    /**
+     * Method that is been used to initialize the map with all object needed.
+     * It will read a tmx file from our assets and create all the object that are contained in the tmx file.
+     * Will also create any effect if the map as a effect (Dark, Wind, Ice)
+     */
     public void initialize() {
 
         //been read by enum MapLayout
@@ -122,16 +131,6 @@ public class ExploringScreen extends BaseScreen {
             y = (float) previousProp.get("y");
         }
 
-        messageDoor = new com.badlogic.gdx.scenes.scene2d.ui.Label ("", BaseGame.labelStyle);
-        messageDoor.setText ( "This is the final Boss. First you need to kill the other 3 bosses to get the keys and unlock the door of the treasure." );
-        messageDoor.setFontScale(0.75f);
-        messageDoor.setColor( Color.CHARTREUSE);
-        messageDoor.setPosition ( 350, 250 );
-        messageDoor.setSize(300,50);
-        messageDoor.setWrap (true);
-        uiStage.addActor( messageDoor );
-        messageDoor.setVisible ( false );
-
         dialogBox = new DialogBox(0,0, uiStage);
         dialogBox.setBackgroundColor( Color.TAN );
         dialogBox.setFontColor( Color.BROWN );
@@ -143,6 +142,12 @@ public class ExploringScreen extends BaseScreen {
         uiTable.add(dialogBox).colspan(3);
     }
 
+    /**
+     * Update methods tells what we should change in our game during runtime.
+     * We will check if the user moves the hero reading the input of the keyboard
+     * Also check all the interaction between the Actors that are in screen.
+     * @param dt delta time (time that has elapsed between frames in the game)
+     */
     public void update(float dt)  {
 
 
@@ -194,7 +199,10 @@ public class ExploringScreen extends BaseScreen {
 
     } // update end
 
-    //method that pushes our hero on wind maps effect.
+    /**
+     * Method that is been used to simulate a wind push to our hero.
+     * Will push the champion to random direction.
+     */
     private void windBlow() {
         hero.setMotionAngle(MathUtils.random(0, 360));
         hero.setSpeed(MathUtils.random(10000, 20000));
@@ -202,7 +210,6 @@ public class ExploringScreen extends BaseScreen {
 
     /**
      * Method used to create our object from our tile maps.
-     * <p>
      * The method reads all the object created in the tile maps. If their object name matc hwith the argument
      * String then they create that specific object.
      *
@@ -360,13 +367,6 @@ public class ExploringScreen extends BaseScreen {
                     if ( FightScreen.getCountKeys () == 3 ) {
                         a.remove ();
                     }
-                   if( hero.isWithinDistance (40,a  )){
-                    hero.preventOverlap ( a );
-                    messageDoor.setVisible ( true );
-                     }
-                     if (!hero.isWithinDistance ( 40,a )){
-                         messageDoor.setVisible ( false );
-                     }
                      break;
                 case "core.actors.exploringactors.Sign":
                     Sign sign = (Sign)a;
