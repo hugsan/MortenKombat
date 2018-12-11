@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.Stack;
 
 
-public class ImportQandA {
+public class ImportQandA  {
 
 
     public String question;
@@ -14,7 +14,7 @@ public class ImportQandA {
     public String wrongAnswer1;
     public String wrongAnswer2;
     public String wrongAnswer3;
-    public static boolean fileError = false;
+    public static boolean fileError = true;
 
     public ImportQandA(String q, String correctAnswer, String wrongAnswer1, String wrongAnswer2,
                         String wrongAnswer3) {
@@ -31,7 +31,7 @@ public class ImportQandA {
      * @param stack Stack data structure, in order to use pop, peek, push methods.
      * @param data  File object, it contains the file`s path.
      */
-    public static void filler(Stack<ImportQandA> stack, File data) {
+    public static void filler(Stack<ImportQandA> stack, File data)  {
         String question, answer, wrongOne, wrongTwo, wrongThree;
         question = answer = wrongOne = wrongTwo = wrongThree = null;
         int i = 0;
@@ -56,8 +56,16 @@ public class ImportQandA {
                     i++;
                 } else if (i == 5) {
                     stack.push(new ImportQandA(question, answer, wrongOne, wrongTwo, wrongThree));
+                    fileError = false;
                     i = 0;
                 }
+
+            }
+            //pushing last question after reading.
+            if (i == 5) {
+                stack.push(new ImportQandA(question, answer, wrongOne, wrongTwo, wrongThree));
+                fileError = false;
+                i = 0;
             }
         } catch (FileNotFoundException e) {
             //create a new screen with instroction to the player.
