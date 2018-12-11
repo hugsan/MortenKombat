@@ -1,6 +1,7 @@
 package core.utils;
 
-public class FighterBalanceVariables {
+public class FighterBalanceVariables
+{
     //johan
     public final static int JOHANHP = 160;
     public final static int JOHANMAXHP = 160;
@@ -64,7 +65,5 @@ public class FighterBalanceVariables {
     //Troll
     public final static int TROLLHP = 70;
     public final static int TROLLMAXHP = 70;
-
-
 
 }
