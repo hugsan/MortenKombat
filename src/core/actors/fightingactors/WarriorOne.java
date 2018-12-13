@@ -79,8 +79,7 @@ public class WarriorOne extends Champion {
             if (fighterOne.getHP()<= 0 ){
                 this.setHP((int)(this.getHP()+ 0.20*this.getMaxHP()));
                 if (this.getHP() >= this.getMaxHP())
-                this.setHP(this.getHP());
-
+                    this.setHP(this.getMaxHP());
             }
             return true;
         }

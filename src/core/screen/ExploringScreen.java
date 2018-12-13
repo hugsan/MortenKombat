@@ -22,13 +22,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
  * Also tells how all the actors should interact with each other.
  */
 public class ExploringScreen extends BaseScreen {
+    private ExploringScreen previousMap;
+    private ExploringScreen nextMap = null;
+    private ExploringScreen nextMap2 = null;
     public static String mapName;
     private static int windTimer = 0;
     public static String mapEffect = "normal";
     private String currentMapEffect;
-    private ExploringScreen previousMap;
-    private ExploringScreen nextMap = null;
-    private ExploringScreen nextMap2 = null;
     private Hero hero;
     public static Music backgroundMusic;
     private Label messageDoor;
@@ -113,14 +113,13 @@ public class ExploringScreen extends BaseScreen {
             windBlow();
         }
         if (currentMapEffect.equals("ice")) {
-            hero.setAcceleration(200);
-            hero.setDeceleration(100);
+            hero.setAcceleration(400);
+            hero.setDeceleration(250);
         }
         if (currentMapEffect.equals("dark")) {
             hero.createLight();
         }
 
-        // running this way because new Hero is probably being run in a threat, and execute before giving values to Z, W
         z = (float) startProps.get("x");
         w = (float) startProps.get("y");
         //setting the starting point, when we go back to the previous map
@@ -189,12 +188,9 @@ public class ExploringScreen extends BaseScreen {
         //Checks if the current map is windy. if it is blows the hero every 1 sec.
         if (currentMapEffect.equals("wind")) {
             windTimer++;
-            //every second
             if (windTimer % FRAMESPRBLOW == 0) {
                 windBlow();
             }
-        } else {
-            windTimer = 0;
         }
 
     } // update end
@@ -285,11 +281,6 @@ public class ExploringScreen extends BaseScreen {
         for (BaseActor a : BaseActor.getList(mainStage, className)) {
 
             switch (className) {
-                case "core.actors.exploringactors.Solid":
-                    if (hero.overlaps(a)) {
-                        hero.preventOverlap(a);
-                    }
-                    break;
                 case "core.actors.exploringactors.Bat":
                     for (BaseActor s : BaseActor.getList(mainStage, "core.actors.exploringactors.Solid")) {
                         if (a.overlaps(s)) {
@@ -305,6 +296,11 @@ public class ExploringScreen extends BaseScreen {
                         a.remove();
                     }
                     break;
+                case "core.actors.exploringactors.Solid":
+                if (hero.overlaps(a)) {
+                        hero.preventOverlap(a);
+                    }
+                break;
                 case "core.actors.exploringactors.Troll":
                     for (BaseActor s : BaseActor.getList(mainStage, "core.actors.exploringactors.Solid")) {
                         if (a.overlaps(s)) {

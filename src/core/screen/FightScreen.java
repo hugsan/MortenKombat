@@ -563,7 +563,7 @@ public class FightScreen extends BaseScreen {
 
             f.setAux ( f.getHP () );
         }
-
+        hideAllButtons(champions);
     }
 
     /**
@@ -584,7 +584,6 @@ public class FightScreen extends BaseScreen {
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
             MortenCombat.setActiveScreen(new PauseScreen(this));
         }
-
         //if the turn is over (means there is no more object in the stack), we create a new turn by feeding the stack
         //with alivefighter Arraylist
         caseOfAnswerButton1(isAnswerButton1Pushed);
@@ -753,6 +752,11 @@ public class FightScreen extends BaseScreen {
             killingTarget.dead.setPlayMode(Animation.PlayMode.NORMAL);
             killHim = false;
         }
+        hideAllButtons(champions);
+        if (safeFighterStackPeek() instanceof Champion){
+            showButtons((Champion)safeFighterStackPeek());
+        }
+        isFightTurnOver();
     } // Update end
 
     /**
@@ -786,7 +790,11 @@ public class FightScreen extends BaseScreen {
     private void abilityNotSuccess(){
         startTime = System.currentTimeMillis();
         activateDefaultMouse();
+        tooltipText.setVisible(false);
+        tooltipText.setText("");
         safeFighterStackPop();
+        if (safeFighterStackPeek() instanceof Champion)
+            tooltipText.setVisible(true);
         isFightTurnOver();
         firstAttack = secondAttack = thirdAttack = false;
         triviaHasCheck = -1;
@@ -1222,5 +1230,18 @@ public class FightScreen extends BaseScreen {
         Collections.shuffle(shuffler);
         fightingTurn.clear();
         fightingTurn.addAll(shuffler);
+    }
+    private void hideAllButtons(ArrayList<Champion> champions){
+        for (Champion c : champions){
+            c.getThirdButton().setVisible(false);
+            c.getSecondButton().setVisible(false);
+            c.getFirstButton().setVisible(false);
+        }
+    }
+    private void showButtons(Champion champion){
+        champion.getFirstButton().setVisible(true);
+        champion.getSecondButton().setVisible(true);
+        champion.getThirdButton().setVisible(true);
+
     }
 }
