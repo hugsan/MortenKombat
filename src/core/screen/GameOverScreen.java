@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import core.utils.MortenCombat;
+import core.utils.MortenKombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
 
@@ -40,7 +40,7 @@ public class GameOverScreen extends BaseScreen {
 
         // Music for the screen
         gameOverMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/gameOverMusic.mp3"));
-        gameOverMusic.setVolume(MortenCombat.volume);
+        gameOverMusic.setVolume(MortenKombat.volume);
         gameOverMusic.setLooping(true);
         gameOverMusic.play();
 

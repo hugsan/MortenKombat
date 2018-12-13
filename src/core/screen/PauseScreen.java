@@ -7,9 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import core.screen.ExploringScreen;
-import core.screen.FightScreen;
-import core.utils.MortenCombat;
+import core.utils.MortenKombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
 import core.utils.menu.MainMenuScreen;
@@ -134,7 +132,7 @@ public class PauseScreen extends BaseScreen {
                         return false;
                     //deletes the screen that we are using, before going back to utils screen.
                     this.dispose();
-                    MortenCombat.setActiveScreen(screen);
+                    MortenKombat.setActiveScreen(screen);
                     return false;
                 }
         );
@@ -144,9 +142,9 @@ public class PauseScreen extends BaseScreen {
     @Override
     public void update(float dt) {
         if (screen instanceof ExploringScreen)
-          ExploringScreen.backgroundMusic.setVolume(MortenCombat.volume);
+          ExploringScreen.backgroundMusic.setVolume(MortenKombat.volume);
         if (screen instanceof FightScreen){
-            FightScreen.battleMusic.setVolume(MortenCombat.volume);
+            FightScreen.battleMusic.setVolume(MortenKombat.volume);
         }
     }
 }

@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import core.utils.MortenCombat;
+import core.utils.MortenKombat;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
 
@@ -71,7 +71,7 @@ public class OptionsMenuScreen extends BaseScreen {
                     System.out.println("Exit Settings");
                     //deletes the screen that we are using, before going back to utils screen.
                     this.dispose();
-                    MortenCombat.setActiveScreen(menu);
+                    MortenKombat.setActiveScreen(menu);
                     return false;
                 }
         );
@@ -149,7 +149,7 @@ public class OptionsMenuScreen extends BaseScreen {
 
                     quickVersion = true;
                     this.dispose();
-                    MortenCombat.setActiveScreen(menu);
+                    MortenKombat.setActiveScreen(menu);
                     return false;
                 }
         );
@@ -176,7 +176,7 @@ public class OptionsMenuScreen extends BaseScreen {
 
                     quickVersion = false;
                     this.dispose();
-                    MortenCombat.setActiveScreen(menu);
+                    MortenKombat.setActiveScreen(menu);
                     return false;
                 }
         );

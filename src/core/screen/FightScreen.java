@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import core.utils.MortenCombat;
+import core.utils.MortenKombat;
 import core.actors.fightingactors.*;
 import core.framework.BaseActor;
 import core.framework.BaseScreen;
@@ -22,6 +22,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import core.utils.ImportQandA;
 import core.framework.BaseGame;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
@@ -114,7 +115,7 @@ public class FightScreen extends BaseScreen {
      * Initialize the class fightingScreen when create it.
      * Will initialize the next object in our screen class:
      *    - Put background music, and background picture.
-     *    - Create our champions reading witch ones should be created from MortenCombat class.
+     *    - Create our champions reading witch ones should be created from MortenKombat class.
      *    - Create random enemies. The amount of enemies depend on amountOfEnemies.
      *    - Initializes the data structure to be able to make the Turns in our game.
      *    - Create the listeners for our button abilities and listeners for fighters.
@@ -125,7 +126,7 @@ public class FightScreen extends BaseScreen {
 
         // Battle music
         battleMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/audio/music/NoSurrender.mp3"));
-        battleMusic.setVolume(MortenCombat.volume);
+        battleMusic.setVolume(MortenKombat.volume);
         battleMusic.setLooping(true);
         battleMusic.play();
 
@@ -150,7 +151,7 @@ public class FightScreen extends BaseScreen {
         uiStage.addActor(turnLabel);
 
         //Code that create the buttons, and dialogs for our trivia questions.
-        qA = MortenCombat.questionAnswer;
+        qA = MortenKombat.questionAnswer;
 
         questionBox= new DialogBox(100,460,uiStage);
         questionBox.setBackgroundColor(Color.BLACK);
@@ -196,18 +197,18 @@ public class FightScreen extends BaseScreen {
         setAnswerButton(answerButton4,answers.get(3),400,175,300);
 
         //initialize the actors at the screen, depending on the selectionScreen, read by a static variable in
-        //Morten combat
-        if (MortenCombat.fighterN == 1) {
+        //MortenKombat
+        if (MortenKombat.fighterN == 1) {
             championOne = new WarriorOne(mainStage);
         }
         else {
             championOne = new WarriorTwo(mainStage);
         }
-        if (MortenCombat.mageN == 1)
+        if (MortenKombat.mageN == 1)
             championTwo = new MageOne(mainStage);
         else
             championTwo = new MageTwo(mainStage);
-        if (MortenCombat.supportN == 1)
+        if (MortenKombat.supportN == 1)
             championThree = new SupportOne(mainStage);
         else
             championThree = new SupportTwo(mainStage);
@@ -582,7 +583,7 @@ public class FightScreen extends BaseScreen {
         boolean isAllHeroesDead = true;
         //escape that should implement a pauseScreen
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
-            MortenCombat.setActiveScreen(new PauseScreen(this));
+            MortenKombat.setActiveScreen(new PauseScreen(this));
         }
         //if the turn is over (means there is no more object in the stack), we create a new turn by feeding the stack
         //with alivefighter Arraylist
@@ -733,17 +734,17 @@ public class FightScreen extends BaseScreen {
             }
             if (amountOfEnemies == -4){
                 // Exit to the GameOverScreen
-                MortenCombat.setActiveScreen(new VictoryScreen());
+                MortenKombat.setActiveScreen(new VictoryScreen());
             }
             else{
                 ExploringScreen.musicPlay();
-                MortenCombat.setActiveScreen(previousMap);
+                MortenKombat.setActiveScreen(previousMap);
             }
         } else if (isAllHeroesDead) { // If all the fighting actors are dead, go to GameOverScreen
                 battleMusic.stop();
                 // Exit to the GameOverScreen
                 this.dispose();
-                MortenCombat.setActiveScreen(new GameOverScreen());
+                MortenKombat.setActiveScreen(new GameOverScreen());
             }
 
         //checking if we have killed any fighters
@@ -1070,7 +1071,7 @@ public class FightScreen extends BaseScreen {
 
             qA.pop();
             if (qA.isEmpty()){
-                qA.addAll(MortenCombat.questionBackUp);
+                qA.addAll(MortenKombat.questionBackUp);
                 Collections.shuffle(qA);
             }
 
