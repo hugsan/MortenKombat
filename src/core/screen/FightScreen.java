@@ -608,7 +608,6 @@ public class FightScreen extends BaseScreen {
                     abilityNotSuccess();
             }
         }
-
         for (Fighter f : aliveFighters){
             f.updateHPBar();
             f.updateNamePlate();
