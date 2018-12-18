@@ -14,6 +14,7 @@ import core.framework.BaseScreen;
 
 /**
  * This is the GameOverScreen. The screen displays when all of the fighting actors dies.
+ * It has a button for exiting the game and plays some music.
  */
 
 public class GameOverScreen extends BaseScreen {

@@ -13,12 +13,17 @@ import core.framework.BaseScreen;
 
 /**
  * This is the options screen class and it consist of five buttons, it is in here the volume for music can be changed.
+ * It also have buttons for the two versions of the game.
  */
 
 public class OptionsMenuScreen extends BaseScreen {
 
     private BaseScreen menu;
 
+    /**
+     * Checks what version is selected, it defaults to the normal version.
+     * @return false for normal and true for the quick version.
+     */
     public static boolean isQuickVersion() {
         return quickVersion;
     }
@@ -68,7 +73,6 @@ public class OptionsMenuScreen extends BaseScreen {
                     if ( !((InputEvent)e).getType().equals(InputEvent.Type.touchDown) )
                         return false;
 
-                    System.out.println("Exit Settings");
                     //deletes the screen that we are using, before going back to utils screen.
                     this.dispose();
                     MortenKombat.setActiveScreen(menu);

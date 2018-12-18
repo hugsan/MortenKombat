@@ -22,9 +22,6 @@ import core.framework.BaseScreen;
 public class MainMenuScreen extends BaseScreen{
     private static Music menuMusic;
 
-    public MainMenuScreen()  {
-    }
-
     public void initialize() {
 
         // This is the background picture

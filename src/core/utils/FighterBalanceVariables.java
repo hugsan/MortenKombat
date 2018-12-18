@@ -1,5 +1,9 @@
 package core.utils;
 
+/**
+ * This class contains the health and mana for all actors in our game.
+ */
+
 public class FighterBalanceVariables
 {
     //johan
