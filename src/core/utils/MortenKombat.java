@@ -5,9 +5,14 @@ import core.screen.*;
 import core.utils.menu.MainMenuScreen;
 import core.utils.menu.QAerrorScreen;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
+
+/**
+ * This is our game class, in here all the questions are loaded from the questionsanswers.txt file.
+ * And all the maps from the MapLayout enum are also created here.
+ * There are also some values like the game volume and what characters are selected at the start of the game.
+ */
 
 public class MortenKombat extends BaseGame {
     public static float volume = 0.05f;
@@ -41,13 +46,16 @@ public class MortenKombat extends BaseGame {
     }
 
     /**
-     * method used to start the levelScreen from another screen (for example MenuScreen)
-     *
+     * Method used to start the ExploringScreen from another screen (for example the menu)
      */
     public static void startGame() {
-            setActiveScreen( new LoadingScreen(layout[0] ));
+            setActiveScreen( layout[0] );
             ExploringScreen.musicPlay();
     }
+
+    /**
+     * Method used to create all the ExploringMaps and storing them in the layout Array.
+     */
     public static void createMaps(){
         int i = 0;
 

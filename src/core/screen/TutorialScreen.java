@@ -8,6 +8,11 @@ import core.framework.BaseScreen;
 import core.utils.MortenKombat;
 import core.utils.menu.MainMenuScreen;
 
+/**
+ * This is our tutorial and intro for our game. It quickly runs through most of the indicators
+ * and things the player can interact with. Afterwards it give the player a short intro to the story.
+ */
+
 public class TutorialScreen extends BaseScreen {
 
     private BaseActor[] screenSlide = new BaseActor[6];

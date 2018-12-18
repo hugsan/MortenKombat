@@ -5,9 +5,11 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.Stack;
 
-
+/**
+ * This class reads the questions from a file and saves each question as an object in a stack.
+ * It is randomized and used in the FightScreen to give the player questions from the stack.
+ */
 public class ImportQandA  {
-
 
     public String question;
     public String correctAnswer;
@@ -16,6 +18,14 @@ public class ImportQandA  {
     public String wrongAnswer3;
     public static boolean fileError = true;
 
+    /**
+     * Constructor for each question, each question is put into a stack as a object of the ImportQandA.
+     * @param q the question text.
+     * @param correctAnswer the correct answer.
+     * @param wrongAnswer1 first wrong answer.
+     * @param wrongAnswer2 second wrong answer.
+     * @param wrongAnswer3 third wrong answer.
+     */
     public ImportQandA(String q, String correctAnswer, String wrongAnswer1, String wrongAnswer2,
                         String wrongAnswer3) {
 
@@ -26,8 +36,9 @@ public class ImportQandA  {
                 this.wrongAnswer3 = wrongAnswer3;
     }
 
-    /**Fill the stack with questions and answers.
-     *It reads the txt file line by line( in a sample like question, correct answer, wrong answer, wrong answer, wrong answer) and push it to the stack after every fifth line.
+    /**
+     * Fill the stack with questions and answers.
+     * It reads the txt file line by line( in a sample like question, correct answer, wrong answer, wrong answer, wrong answer) and push it to the stack after every fifth line.
      * @param stack Stack data structure, in order to use pop, peek, push methods.
      * @param data  File object, it contains the file`s path.
      */
@@ -69,7 +80,7 @@ public class ImportQandA  {
             }
         } catch (FileNotFoundException e) {
             //create a new screen with instroction to the player.
-            System.out.println("we are missing the file");
+            System.out.println("Missing file! Missing the 'questonsanswers.txt' file");
             fileError = true;
         }finally{
             if (dataReader != null)

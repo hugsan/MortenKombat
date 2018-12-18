@@ -12,6 +12,12 @@ import core.framework.BaseActor;
 import core.framework.BaseScreen;
 import core.utils.menu.MainMenuScreen;
 
+/**
+ * This is the PauseScreen class, it is shown anytime the player presses the esc key.
+ * It pauses the game and shows four buttons, two to turn the music up and down.
+ * One to exit the game and one to continue the game.
+ */
+
 public class PauseScreen extends BaseScreen {
 
     private BaseScreen screen;
@@ -19,8 +25,6 @@ public class PauseScreen extends BaseScreen {
     public PauseScreen(BaseScreen s) {
         super();
         screen = s;
-
-
     }
 
     public void initialize() {

@@ -355,7 +355,6 @@ public class ExploringScreen extends BaseScreen {
                 case "core.actors.exploringactors.Chest":
                     if (hero.overlaps(a)) {
                         a.remove();
-                        System.out.println("Chest opened");
                     }
                     break;
                 case "core.actors.exploringactors.Door":
@@ -391,7 +390,6 @@ public class ExploringScreen extends BaseScreen {
                     if (hero.overlaps(a)) {
                         FightScreen.medicHeal();
                         a.remove();
-                        System.out.println("party healed");
                     }
                     break;
                 case "core.actors.exploringactors.Morten":
@@ -400,7 +398,6 @@ public class ExploringScreen extends BaseScreen {
                         musicStop();
                         MortenKombat.setActiveScreen(new FightScreen(this));
                         a.remove();
-                        System.out.println ("fight Morten" );
                     }
                     break;
                 case "core.actors.exploringactors.Johan":
@@ -430,7 +427,7 @@ public class ExploringScreen extends BaseScreen {
                     break;
 
                 default:
-                    System.out.println("Contact with ITCOM5 group, something went wrong.");
+                    System.out.println("Something went really wrong, contact ITCOM5");
             }
         }
     }

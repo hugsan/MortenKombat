@@ -7,6 +7,8 @@ import core.framework.BaseScreen;
 /**
  * The LoadingScreen class is a pause between screens, it get the next screen to switch to in the constructor.
  * And when the wait time is over, set the screen to that screen.
+ * This screen is a fake loading screen, and is there to give the player a chance to let go of the keys,
+ * before switching between the ExploringScreens.
  */
 
 public class LoadingScreen extends BaseScreen {

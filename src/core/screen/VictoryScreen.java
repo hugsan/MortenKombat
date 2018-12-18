@@ -12,8 +12,12 @@ import core.framework.BaseActor;
 import core.framework.BaseScreen;
 import core.utils.MortenKombat;
 
-public class VictoryScreen extends BaseScreen {
+/**
+ * This class is used at the end of the game if the player wins.
+ * It plays some music and have a button to exit the game.
+ */
 
+public class VictoryScreen extends BaseScreen {
 
     static Music VictoryMusic;
     public void initialize() {
