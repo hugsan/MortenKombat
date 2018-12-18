@@ -16,7 +16,6 @@ public class CharacterCard extends DragAndDropActor {
     private int fighterType;
 
     private SelectionArea selectionArea;
-
     public CharacterCard(float x, float y, Stage s)
     {
         super(x, y, s);
