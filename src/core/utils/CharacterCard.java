@@ -59,7 +59,9 @@ public class CharacterCard extends DragAndDropActor {
     }
 
     /**
-     * Creates the card for our fighters, with art, number and type.
+     * Create the card for our fighters, with art, number and type.
+     * @param fighterNumber this shows if it is the first or the second of each type.
+     * @param fighterType 1 is the warrior, 2 is the mage and 3 is the support.
      */
 
     public void createCard(int fighterNumber, int fighterType) {

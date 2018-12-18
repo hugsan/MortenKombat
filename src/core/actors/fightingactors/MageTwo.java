@@ -56,7 +56,7 @@ public class MageTwo extends SpellCaster {
 
     /**
      * Deals attack 60 and decrease mana 75
-     * @param fighter
+     * @param fighter target of our attack
      * @return true if the attack can be done, false if the attack can not be done.
      */
 

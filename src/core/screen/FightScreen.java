@@ -776,7 +776,7 @@ public class FightScreen extends BaseScreen {
     /**
      * Method that we call when one of our champions has done an ability. Will initialize the "attack animation"
      * and reset all the variables to the state that we dont have a ability in buffer, and reset the state of the trivia.
-      * @param user
+      * @param user Champion that has used an ability
      */
     private void abilitySuccess(Champion user){
         attacker = user;
@@ -1046,7 +1046,8 @@ public class FightScreen extends BaseScreen {
      * Clear the previous element`s answers from the "answer" arraylist.
      * It mixes the answer in the arraylist to be randomized on the screen.
      * In the end, it makes uiTable visible again.
-     * @param startTime2
+     * @param startTime2 time that is compared inside deleteTrivia, if the startTime2 is 3.4s difference with current
+     *                   machine time it will execute some code.
      */
     private void deleteTrivia(long startTime2){
 

@@ -238,7 +238,7 @@ public class BaseActor extends Group
     /**
      *  Checks if animation is complete: if play mode is normal (not looping)
      *      and elapsed time is greater than time corresponding to last frame.
-     *  @return 
+     *  @return true if animation is finished, false if not.
      */
     public boolean isAnimationFinished()
     {

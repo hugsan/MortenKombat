@@ -77,7 +77,9 @@ public class WarriorOne extends Champion {
 
     /**
      * Deals 3-15 Damage. If the champion kills the target, he heals for 20% of his life.
-     * @param fighterOne
+     * @param fighterOne target if our attack.
+     * @param fighterTwo fighter object can be null, wont do anything to this argument.
+     * @param fighterThree  fighter object can be null, wont do anything to this artument.
      * @return True if the attack can be done, false if the attack can not be done.
      */
     @Override
