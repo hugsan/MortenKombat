@@ -92,7 +92,7 @@ public class ExploringScreen extends BaseScreen {
         createMapObjects(tma, "Torch");
         createMapObjects(tma, "Chest");
         createMapObjects(tma, "Zombie");
-        createMapObjects(tma, "Troll");
+        createMapObjects(tma, "Goblin");
         createMapObjects(tma, "Medic");
         createMapObjects(tma, "Morten" );
         createMapObjects(tma, "Johan" );
@@ -175,7 +175,7 @@ public class ExploringScreen extends BaseScreen {
         actorObjectInteraction("core.actors.exploringactors.Bat");
         actorObjectInteraction("core.actors.exploringactors.Chest");
         actorObjectInteraction("core.actors.exploringactors.Zombie");
-        actorObjectInteraction("core.actors.exploringactors.Troll");
+        actorObjectInteraction("core.actors.exploringactors.Goblin");
         actorObjectInteraction("core.actors.exploringactors.Medic");
         actorObjectInteraction ( "core.actors.exploringactors.Morten" );
         actorObjectInteraction ( "core.actors.exploringactors.Johan" );
@@ -247,8 +247,8 @@ public class ExploringScreen extends BaseScreen {
                 case "Zombie":
                     new Zombie((float) props.get("x"), (float) props.get("y"), mainStage);
                     break;
-                case "Troll":
-                    new Troll((float) props.get("x"), (float) props.get("y"), mainStage);
+                case "Goblin":
+                    new Goblin((float) props.get("x"), (float) props.get("y"), mainStage);
                     break;
                 case "Medic" :
                     new Medic((float) props.get("x"), (float) props.get("y"), mainStage);
@@ -300,7 +300,7 @@ public class ExploringScreen extends BaseScreen {
                         hero.preventOverlap(a);
                     }
                 break;
-                case "core.actors.exploringactors.Troll":
+                case "core.actors.exploringactors.Goblin":
                     for (BaseActor s : BaseActor.getList(mainStage, "core.actors.exploringactors.Solid")) {
                         if (a.overlaps(s)) {
                             a.preventOverlap(s);

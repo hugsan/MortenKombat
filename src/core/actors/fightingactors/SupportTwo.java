@@ -3,7 +3,11 @@ package core.actors.fightingactors;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import core.utils.FighterBalanceVariables;
-
+/**
+ * SpellCaster: SupportTwo.
+ * Used in the fighting screen and represent an allie. The class has a constructor that initializes the actor
+ * with idle, attack and dead animation.
+ */
 public class SupportTwo extends SpellCaster {
 
     private String spellOneName = "Swing";
@@ -38,7 +42,7 @@ public class SupportTwo extends SpellCaster {
      * 6-22 damage and restore 10 mana
      *
      * @param fighter target for the attack
-     * @return
+     * @return true if the attack can be done, false if the attack can not be done
      */
 
     @Override
@@ -76,9 +80,9 @@ public class SupportTwo extends SpellCaster {
 
     /**
      * Heals all our champions for 40 at for exchange of 60 mana.
-     * @param fighterOne
-     * @param fighterTwo
-     * @param fighterThree
+     * @param fighterOne Target for the heal, it parameter null, does nothing
+     * @param fighterTwo Target for the heal, it parameter null, does nothing
+     * @param fighterThree Target for the heal, it parameter null, does nothing
      * @return true if at least one fighter is instance of champion and false if not
      */
 

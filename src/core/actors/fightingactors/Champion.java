@@ -8,6 +8,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import core.framework.BaseGame;
 
+/**
+ * Abstract class that extends Fighter to implement ally fighter.
+ * We create buttons and a extra attackThree abstract method compared to Fighter.
+ */
 public abstract class Champion extends Fighter {
     private TextButton firstButton;
     private TextButton secondButton;
@@ -85,10 +89,12 @@ public abstract class Champion extends Fighter {
     public abstract void updateManaBar();
 
     /**
-     * return 1 if the ability is possible
-     * return -1 if there is missing resources to make the ability
-     * @param Fighter target for the attack
-     * @return 1: if possible; -1: if not possible.
+     * abstract method used for champions. In case that you want to use a single target here only use in the
+     * implementation fightOne
+     * @param fighterOne target for the attack
+     * @param fighterTwo target for the attack
+     * @param fighterThree target for the attack
+     * @return true if the attack can be done, false if the attack can not be done
      */
     public abstract boolean attackThree (Fighter fighterOne, Fighter fighterTwo, Fighter fighterThree );
 

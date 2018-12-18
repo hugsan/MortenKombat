@@ -3,7 +3,11 @@ package core.actors.fightingactors;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import core.utils.FighterBalanceVariables;
-
+/**
+ * SpellCaster: SupportOne.
+ * Used in the fighting screen and represent an allies. The class has a constructor that initializes the actor
+ * with idle, attack and dead animation.
+ */
 public class SupportOne extends SpellCaster{
 
     private String spellOneName = "Light Hit";
@@ -37,8 +41,8 @@ public class SupportOne extends SpellCaster{
 
     /**
      * 3-11 damage and restore 20 mana
-     * @param fighter
-     * @return
+     * @param fighter target of our attack
+     * @return True if the attack can be done, false if the attack can not be done.
      */
     @Override
     public boolean attackOne(Fighter fighter) {
@@ -53,7 +57,7 @@ public class SupportOne extends SpellCaster{
     /**
      * Heals a fighter for 50, spending 30 mana. It checks if the fighter is a champion class. if not it return false
      * @param fighter target that we want to heal
-     * @return 1 if you can cast the spell; -1 if you cannot cast the spell
+     * @return True if the attack can be done, false if the attack can not be done.
      */
     @Override
     public boolean attackTwo(Fighter fighter) {
@@ -69,10 +73,10 @@ public class SupportOne extends SpellCaster{
 
     /**
      *Heals all our champions for 30 at for exchange of 50 mana.
-     * @param fighterOne
-     * @param fighterTwo
-     * @param fighterThree
-     * @return
+     * @param fighterOne Target for the heal, it parameter null, does nothing
+     * @param fighterTwo Target for the heal, it parameter null, does nothing
+     * @param fighterThree Target for the heal, it parameter null, does nothing
+     * @return True if the attack can be done, false if the attack can not be done.
      */
     @Override
     public boolean attackThree(Fighter fighterOne, Fighter fighterTwo, Fighter fighterThree) {

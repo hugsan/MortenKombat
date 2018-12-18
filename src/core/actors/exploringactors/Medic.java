@@ -9,6 +9,12 @@ import core.framework.BaseActor;
 
 public class Medic extends BaseActor
 {
+    /**
+     * Constructor that initialize Medic with the animations and default animation.
+     * @param x X coordinates where the actor is created
+     * @param y Y coordinates where the actor is created
+     * @param s Stage where the actor is created
+     */
     public Medic(float x, float y, Stage s)
     {
         super(x,y,s);

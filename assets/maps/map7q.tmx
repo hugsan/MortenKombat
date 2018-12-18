@@ -662,12 +662,12 @@
   <object id="90" x="-153.333" y="977.333"/>
   <object id="94" x="1037.88" y="1753.03" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Goblin"/>
    </properties>
   </object>
   <object id="97" x="722.727" y="346.97" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Goblin"/>
    </properties>
   </object>
   <object id="102" x="733.333" y="1881.82" width="57.5758" height="51.5152">

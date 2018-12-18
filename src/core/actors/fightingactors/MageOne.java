@@ -4,6 +4,11 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import core.utils.FighterBalanceVariables;
 
+/**
+ * SpellCaster: MageOne.
+ * Used in the fighting screen and represent an ally. The class has a constructor that initializes the actor
+ * with idle, attack and dead animation.
+ */
 public class MageOne extends SpellCaster {
 
     private String spellOneName = "Mana Torrent";
@@ -38,7 +43,8 @@ public class MageOne extends SpellCaster {
 
     /**
      * Attack for 10-18 damage, and restore 15 mana
-     * @param fighter
+     * @param fighter target of our attack
+     * @return true if tha attack can be done, false if the attack can not be done.
      */
     @Override
     public boolean attackOne(Fighter fighter)
@@ -54,7 +60,8 @@ public class MageOne extends SpellCaster {
 
     /**
      * Attack 50 and decrease mana 55
-     * @param fighter
+     * @param fighter target of our spell
+     * @return true if the attack can be done, false if the attack can not be done.
      */
     @Override
     public boolean attackTwo(Fighter fighter)
@@ -75,9 +82,9 @@ public class MageOne extends SpellCaster {
 
     /**
      * Deas 20 damage to all enemies for 35 mana
-     * @param fighterOne deals damage to fighterOne
-     * @param fighterTwo deals damage to fighterTwo
-     * @param fighterThree deals damage to fighterThree
+     * @param fighterOne deals damage to fighterOne, does not use the argument in case of null.
+     * @param fighterTwo deals damage to fighterTwo, does not use the argument in case of null.
+     * @param fighterThree deals damage to fighterThree, does not use the argument in case of null.
      * @return true if ability can be used, false if can not.
      */
     @Override

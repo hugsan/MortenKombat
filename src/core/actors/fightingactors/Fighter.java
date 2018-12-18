@@ -14,6 +14,11 @@ import com.badlogic.gdx.utils.compression.lzma.Base;
 import core.framework.BaseActor;
 import core.framework.BaseGame;
 
+/**
+ * Abstract class that represent the fighters in the FightScreen. Fighters has HP, maxHP, fighterName, labels and
+ * animation in common.
+ * Also 2 abstract method are implemented to represent the attack that they can do.
+ */
 public abstract class Fighter extends BaseActor {
 
     private String fighterName;
@@ -43,14 +48,25 @@ public abstract class Fighter extends BaseActor {
         namePlate.setFontScale(0.5f);
 
     }
+
     /**
-     * return 1 if the ability is possible
-     * return -1 if there is missing resources to make the ability
-     * @param fighter target for the attack
-     * @return 1: if possible; -1: if not possible.
+     * Abstract method that should be implemented in the classes that extends Fighter. Those attack will
+     * be used in the FightScreen.
+     * @param fighter target for our attack
+     * @return True if you can deal with the ability, false if you cannot deal the ability.
      */
     abstract public boolean attackOne (Fighter fighter);
+    /**
+     * Abstract method that should be implemented in the classes that extends Fighter. Those attack will
+     * be used in the FightScreen.
+     * @param fighter target for our attack
+     * @return True if you can deal with the ability, false if you cannot deal the ability.
+     */
     abstract public boolean attackTwo (Fighter fighter);
+
+    /**
+     * Abstract method that will implement the update on the manaBar.
+     */
     abstract public void updateManaBar();
 
     public Label getFighterNamePlate() {
@@ -68,16 +84,27 @@ public abstract class Fighter extends BaseActor {
     }
     public Label getHPBar() { return health;  }
 
+    /**
+     * Method that updates the HP label with the HP values from the fighters.
+     */
     public void updateHPBar() {
         health.setText(getHP() +"/" + getMaxHP());
         if (getHP ()<0)
             health.setText ( "0/" + getMaxHP () );
         health.setSize(110,20);
     }
+
+    /**
+     * Method that updates the NamePlate of the fighters and set the color to White
+     */
     public void updateNamePlate() {
         namePlate.setText("" + getFighterName());
         namePlate.setColor( Color.WHITE );
     }
+
+    /**
+     * Method that changes the NAmePlate color to Green.
+     */
     public void updateNameColor() {
         namePlate.setColor( Color.GREEN );
     }

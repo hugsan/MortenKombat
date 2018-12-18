@@ -2,7 +2,11 @@ package core.actors.fightingactors;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import core.utils.FighterBalanceVariables;
-
+/**
+ * EnemyFighter: JohanFighter.
+ * Used in the fighting screen and represent an enemy. The class has a constructor that initializes the actor
+ * with idle, attack and dead animation.
+ */
 public class JohanFighter extends EnemyFighters {
     //initialize variables for HP and MaxHP
     //variables used to code the abilities of the fighter
@@ -25,6 +29,7 @@ public class JohanFighter extends EnemyFighters {
     /**
      * Attack one makes 30 damage, and increased the next attack one by 10.
      * @param fighter target fighter we will attack.
+     * @return always return true.
      */
     @Override
     public boolean attackOne(Fighter fighter){
@@ -37,6 +42,7 @@ public class JohanFighter extends EnemyFighters {
     /**
      * heals himself for 40 HP.
      * @param fighter target fighter we will attack. (not been used)
+     * @return always return true.
      */
     @Override
     public boolean attackTwo(Fighter fighter){

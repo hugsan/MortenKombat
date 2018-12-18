@@ -62,7 +62,7 @@ public class FighterBalanceVariables
     public final static int ZOMBIEHP = 80 ;
     public final static int ZOMBIEMAXHP = 80 ;
 
-    //Troll
+    //Goblin
     public final static int TROLLHP = 70;
     public final static int TROLLMAXHP = 70;
 

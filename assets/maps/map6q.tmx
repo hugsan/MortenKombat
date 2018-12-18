@@ -1181,12 +1181,12 @@
   </object>
   <object id="170" x="592.424" y="1886.36" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Goblin"/>
    </properties>
   </object>
   <object id="173" x="1259.09" y="246.97" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Goblin"/>
    </properties>
   </object>
   <object id="175" x="250.5" y="1191" width="39" height="36">
@@ -1197,17 +1197,17 @@
   </object>
   <object id="176" x="1196.3" y="1271.27" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Goblin"/>
    </properties>
   </object>
   <object id="177" x="352.303" y="627.273" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Goblin"/>
    </properties>
   </object>
   <object id="178" x="1818.3" y="1597.27" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Goblin"/>
    </properties>
   </object>
  </objectgroup>

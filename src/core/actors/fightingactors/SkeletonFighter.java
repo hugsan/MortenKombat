@@ -6,7 +6,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import core.utils.FighterBalanceVariables;
 
 /**
- *
+ * EnemyFighter: SkeletonFighter.
+ * Used in the fighting screen and represent an enemy. The class has a constructor that initializes the actor
+ * with idle, attack and dead animation.
  */
 public class SkeletonFighter extends EnemyFighters {
 
@@ -31,6 +33,7 @@ public class SkeletonFighter extends EnemyFighters {
     /**
      * AttackOne from bat deal 8 to 13 damage to another figther.
      * @param fighter target fighter we will attack.
+     * @return always return true
      */
     @Override
     public boolean attackOne(Fighter fighter) {
@@ -41,6 +44,7 @@ public class SkeletonFighter extends EnemyFighters {
     /**
      * Attack two, makes percentage damage of the target 35% of current
      * @param fighter target fighter we will attack.
+     * @return always return true
      */
     @Override
     public boolean attackTwo(Fighter fighter) {
@@ -49,8 +53,5 @@ public class SkeletonFighter extends EnemyFighters {
 
     }
 
-    /**
-     *
-     */
     public void updateManaBar() {}
 }

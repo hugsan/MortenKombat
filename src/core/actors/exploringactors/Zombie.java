@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.Array;
 import core.framework.BaseActor;
 
 /**
- * Class for the bat actors in the maze.
+ * Class for the Zombie actors in the maze.
  * It should walk in a random direction until it hits a wall, then chance to a new random direction.
  * When the Hero hit the zombie it starts the FightScreen.
  */
@@ -23,6 +23,12 @@ public class Zombie extends BaseActor
     private Animation west;
     private float facingAngle;
 
+    /**
+     * Constructor that initialize Zombie with the animations and default animation.
+     * @param x X coordinates where the actor is created
+     * @param y Y coordinates where the actor is created
+     * @param s Stage where the actor is created
+     */
     public Zombie(float x, float y, Stage s)
     {
         super(x,y,s);

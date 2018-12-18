@@ -8,6 +8,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import core.framework.BaseGame;
 import core.utils.FighterBalanceVariables;
 
+/**
+ * Abstract class that extends Champion. Creates the abstract class SpellCaster.
+ * This Class extends the functionality of Champion to implement all needed for having mana.
+ */
 
 public abstract class SpellCaster extends Champion {
     //configuration variables for SpellCasters

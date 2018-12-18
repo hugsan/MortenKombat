@@ -3,7 +3,11 @@ package core.actors.fightingactors;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import core.utils.FighterBalanceVariables;
-
+/**
+ * SpellCaster: MageTwo.
+ * Used in the fighting screen and represent an ally. The class has a constructor that initializes the actor
+ * with idle, attack and dead animation.
+ */
 public class MageTwo extends SpellCaster {
 
     private String spellOneName = "Mana Zapp";
@@ -37,7 +41,7 @@ public class MageTwo extends SpellCaster {
     /**
      * Attack for 2-5 damage, and restore 50 mana
      * @param fighter target for the attack
-     * @return
+     * @return true if the attack can be done, false if the attack can not be done.
      */
 
     @Override
@@ -53,7 +57,7 @@ public class MageTwo extends SpellCaster {
     /**
      * Deals attack 60 and decrease mana 75
      * @param fighter
-     * @return
+     * @return true if the attack can be done, false if the attack can not be done.
      */
 
     @Override
@@ -74,10 +78,10 @@ public class MageTwo extends SpellCaster {
 
     /**
      * Deals 30 damage to all enemies for 40 mana
-     * @param fighterOne
-     * @param fighterTwo
-     * @param fighterThree
-     * @return
+     * @param fighterOne target of our attack, if null the method wont use the argument.
+     * @param fighterTwo target of our attack, if null the method wont use the argument.
+     * @param fighterThree target of our attack, if null the method wont use the argument.
+     * @return true if the attack can be done, false if it can not be done.
      */
 
 

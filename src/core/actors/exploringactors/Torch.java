@@ -16,6 +16,12 @@ public class Torch extends BaseActor
 {
     private Animation torchAnimation;
 
+    /**
+     * Constructor that initialize torch with the animations and default animation.
+     * @param x X coordinates where the actor is created
+     * @param y Y coordinates where the actor is created
+     * @param s Stage where the actor is created
+     */
     public Torch(float x, float y, Stage s)
     {
         super(x,y,s);

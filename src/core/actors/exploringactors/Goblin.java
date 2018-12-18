@@ -10,12 +10,12 @@ import com.badlogic.gdx.utils.Array;
 import core.framework.BaseActor;
 
 /**
- * Class for the skeleton actors in the maze.
+ * Class for the goblin actors in the maze.
  * It should walk in a random direction until it hits a wall, then chance to a new random direction.
  * When the Hero hit a skeleton it starts the FightScreen.
  */
 
-public class Troll extends BaseActor
+public class Goblin extends BaseActor
 {
     private Animation north;
     private Animation south;
@@ -23,7 +23,13 @@ public class Troll extends BaseActor
     private Animation west;
     private float facingAngle;
 
-    public Troll(float x, float y, Stage s)
+    /**
+     * Constructor that initialize Goblins with the animations and default animation.
+     * @param x X coordinates where the actor is created
+     * @param y Y coordinates where the actor is created
+     * @param s Stage where the actor is created
+     */
+    public Goblin(float x, float y, Stage s)
     {
         super(x,y,s);
         String fileName = "assets/img/Goblin.png";
@@ -60,6 +66,11 @@ public class Troll extends BaseActor
         setSpeed(MathUtils.random(80,110));
         setMotionAngle( MathUtils.random(0,360));
     }
+
+    /**
+     * Method that checks for all the changes at our actor.
+     * @param dt elapsed time (second) since last frame (supplied by Stage act method)
+     */
     public void act(float dt)
     {
         super.act(dt);

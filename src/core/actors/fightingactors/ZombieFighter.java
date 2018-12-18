@@ -4,6 +4,12 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import core.utils.FighterBalanceVariables;
 
+/**
+ * EnemyFighter: Zombi.
+ * Used in the fighting screen and represent an enemy. The class has a constructor that initializes the actor
+ * with idle, attack and dead animation.
+ */
+
 public class ZombieFighter extends EnemyFighters {
 
     public ZombieFighter (Stage s) {

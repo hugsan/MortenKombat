@@ -1187,7 +1187,7 @@
   </object>
   <object id="165" x="125.758" y="834.849" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Goblin"/>
    </properties>
   </object>
   <object id="166" x="886.364" y="546.97" width="39.3939" height="45.4545">
@@ -1197,32 +1197,32 @@
   </object>
   <object id="167" x="1189.4" y="853.031" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Goblin"/>
    </properties>
   </object>
   <object id="168" x="1471.21" y="1186.36" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Goblin"/>
    </properties>
   </object>
   <object id="169" x="1359.09" y="1780.3" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Goblin"/>
    </properties>
   </object>
   <object id="170" x="592.424" y="1886.36" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Goblin"/>
    </properties>
   </object>
   <object id="171" x="1013.64" y="1083.33" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Goblin"/>
    </properties>
   </object>
   <object id="172" x="1843.94" y="1586.36" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Goblin"/>
    </properties>
   </object>
   <object id="173" x="1259.09" y="246.97" width="39.3939" height="45.4545">
@@ -1232,7 +1232,7 @@
   </object>
   <object id="174" x="531.818" y="637.879" width="39.3939" height="45.4545">
    <properties>
-    <property name="name" value="Troll"/>
+    <property name="name" value="Goblin"/>
    </properties>
   </object>
   <object id="175" x="256.5" y="1195" width="39" height="36">

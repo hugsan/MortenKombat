@@ -4,6 +4,11 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import core.utils.FighterBalanceVariables;
+/**
+ * ChampionFighter: WarriorOne.
+ * Used in the fighting screen and represent an ally. The class has a constructor that initializes the actor
+ * with idle, attack and dead animation.
+ */
 
 public class WarriorOne extends Champion {
 
@@ -44,6 +49,7 @@ public class WarriorOne extends Champion {
     /**
      * does 8-23 damage to enemy
      * @param fighter enemy target
+     * @return True if the attack can be done, false if the attack can not be done.
      */
     @Override
     public boolean attackOne(Fighter fighter){
@@ -57,6 +63,7 @@ public class WarriorOne extends Champion {
     /**
      * Makes 30% of target missing life.
      * @param fighter enemy target
+     * @return True if the attack can be done, false if the attack can not be done.
      */
     @Override
     public boolean attackTwo (Fighter fighter){
@@ -71,6 +78,7 @@ public class WarriorOne extends Champion {
     /**
      * Deals 3-15 Damage. If the champion kills the target, he heals for 20% of his life.
      * @param fighterOne
+     * @return True if the attack can be done, false if the attack can not be done.
      */
     @Override
     public boolean attackThree (Fighter fighterOne, Fighter fighterTwo, Fighter fighterThree){

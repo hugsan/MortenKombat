@@ -22,7 +22,12 @@ public class Bat extends BaseActor
     private Animation east;
     private Animation west;
     private float facingAngle;
-
+    /**
+     * Constructor that initialize Bat with the animations and default animation.
+     * @param x X coordinates where the actor is created
+     * @param y Y coordinates where the actor is created
+     * @param s Stage where the actor is created
+     */
     public Bat(float x, float y, Stage s)
     {
         super(x,y,s);
@@ -58,6 +63,11 @@ public class Bat extends BaseActor
         setSpeed(MathUtils.random(120,140));
         setMotionAngle( MathUtils.random(0,360));
     }
+
+    /**
+     * Methos that checks for all the updates that Bat needed.
+     * @param dt elapsed time (second) since last frame (supplied by Stage act method)
+     */
     public void act(float dt)
     {
         super.act(dt);

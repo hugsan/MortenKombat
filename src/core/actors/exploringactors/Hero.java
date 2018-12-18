@@ -27,6 +27,12 @@ public class Hero extends BaseActor
     private Stage s;
     private DarkEffect darkEffect;
 
+    /**
+     * Constructor that initialize Hero with the animations and default animation.
+     * @param x X coordinates where the actor is created
+     * @param y Y coordinates where the actor is created
+     * @param s Stage where the actor is created
+     */
     public Hero(float x, float y, Stage s)
     {
         super(x,y,s);
@@ -102,6 +108,9 @@ public class Hero extends BaseActor
         applyPhysics(dt);
     }
 
+    /**
+     * method that activates the light effect for the hero when exploring maps.
+     */
     public void createLight(){
         darkEffect = new DarkEffect(0,0, this.s);
         addActor(darkEffect);

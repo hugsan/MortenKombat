@@ -2,7 +2,11 @@ package core.actors.fightingactors;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import core.utils.FighterBalanceVariables;
-
+/**
+ * EnemyFighter: LeneFighter.
+ * Used in the fighting screen and represent an enemy. The class has a constructor that initializes the actor
+ * with idle, attack and dead animation.
+ */
 public class LeneFighter extends EnemyFighters {
     public LeneFighter(Stage s){
         super(s);
@@ -20,6 +24,7 @@ public class LeneFighter extends EnemyFighters {
     /**
      * AttackOne from Johan deal 50 to another figther.
      * @param fighter target fighter we will attack.
+     * @return always return true
      */
     @Override
     public boolean attackOne(Fighter fighter){
@@ -31,6 +36,7 @@ public class LeneFighter extends EnemyFighters {
     /**
      * Attack two makes 55% damage of target current HP
      * @param fighter target fighter we will attack.
+     * @return always return true
      */
     @Override
     public boolean attackTwo(Fighter fighter){

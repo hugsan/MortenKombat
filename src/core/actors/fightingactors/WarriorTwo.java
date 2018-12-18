@@ -5,6 +5,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import core.utils.FighterBalanceVariables;
 
+/**
+ * Champion Fighter: WarriorTwo.
+ * Used in the fighting screen and represent an allie. The class has a constructor that initializes the actor
+ * with idle, attack and dead animation.
+ */
 public class WarriorTwo extends Champion{
 
     private String spellOneName = "Heavy Hit";
@@ -42,7 +47,7 @@ public class WarriorTwo extends Champion{
     /**
      * Deals 11 to 20 damage
      * @param fighter target for the attack
-     * @return
+     * @return True if it can deal the attack, false the attack can not be done.
      */
     @Override
     public boolean attackOne(Fighter fighter) {
@@ -56,8 +61,8 @@ public class WarriorTwo extends Champion{
 
     /**
      * If Warrior HP is lower than 100 double damage of attackOne
-     * @param fighter
-     * @return
+     * @param fighter target of our attack
+     * @return True if it can deal the attack, false the attack can not be done.
      */
 
     @Override
@@ -75,6 +80,9 @@ public class WarriorTwo extends Champion{
 
     /**
      * Warrior takes 10% of maxHP in self damage but attacks with 20% of his own currentHP
+     * @param fighterOne Target of our spell.
+     * @param fighterTwo
+     * @param fighterThree
      * @return
      */
     @Override

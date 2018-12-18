@@ -8,10 +8,21 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import core.framework.BaseActor;
 
+/**
+ * Exploring actor used in the exploring map.
+ * The class has a constructor to initialize the class with animation and sets up the default animation to idle.
+ */
+
 public class Johan extends BaseActor{
     private Animation idle;
     private float facingAngle;
 
+    /**
+     * Constructor that initialize Johan with the animations and default animation.
+     * @param x X coordinates where the actor is created
+     * @param y Y coordinates where the actor is created
+     * @param s Stage where the actor is created
+     */
     public Johan (float x, float y, Stage s)
     {
         super(x,y,s);
