@@ -10,7 +10,7 @@ import core.utils.FighterBalanceVariables;
  * with idle, attack and dead animation.
  */
 
-public class ZombieFighter extends EnemyFighters {
+public class ZombieFighter extends EnemyFighters implements Poisonable{
 
     public ZombieFighter (Stage s) {
 

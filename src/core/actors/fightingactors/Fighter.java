@@ -35,6 +35,10 @@ public abstract class Fighter extends BaseActor {
     public Animation iddle;
     public Animation dead;
 
+
+    private boolean isPoison = false;
+    private int isPoisonTurn = 0;
+
     public Fighter( Stage s) {
         super(s);
 
@@ -93,7 +97,20 @@ public abstract class Fighter extends BaseActor {
             health.setText ( "0/" + getMaxHP () );
         health.setSize(110,20);
     }
+    public boolean isPoison() {
+        return isPoison;
+    }
 
+    public void setPoison(boolean poison) {
+        isPoison = poison;
+    }
+    public int getIsPoisonTurn() {
+        return isPoisonTurn;
+    }
+
+    public void setIsPoisonTurn(int isPoisonTurn) {
+        this.isPoisonTurn = isPoisonTurn;
+    }
     /**
      * Method that updates the NamePlate of the fighters and set the color to White
      */
