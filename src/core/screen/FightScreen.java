@@ -18,6 +18,7 @@ import core.framework.BaseActor;
 import core.framework.BaseScreen;
 
 import java.util.ArrayDeque;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import core.utils.ImportQandA;
@@ -585,6 +586,22 @@ public class FightScreen extends BaseScreen {
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
             MortenKombat.setActiveScreen(new PauseScreen(this));
         }
+
+        if (!fightingTurn.isEmpty () && fightingTurn.peek () instanceof Champion ){
+            Champion temporalChampion = (Champion)fightingTurn.peek ();
+
+            if (temporalChampion.stun){
+                temporalChampion.setAnimationPaused ( false );
+                temporalChampion.stun = false;
+                safeFighterStackPop ();
+            }
+            isFightTurnOver ();
+
+        }
+
+
+
+
         //if the turn is over (means there is no more object in the stack), we create a new turn by feeding the stack
         //with alivefighter Arraylist
         caseOfAnswerButton1(isAnswerButton1Pushed);
@@ -645,6 +662,7 @@ public class FightScreen extends BaseScreen {
                 attacker.sizeBy(100);
                 attacker = null;
             }
+
         }
         if (!fightingTurn.isEmpty()){
             if (safeFighterStackPeek() instanceof EnemyFighters){
@@ -1205,9 +1223,11 @@ public class FightScreen extends BaseScreen {
      * Method that check if the stack is empty before making a pop. if not empty return pop of the stack.
      * @return return the pop of fighting turn if it is not empty. If it is empty return null.
      */
-    private Fighter safeFighterStackPop(){
-        if (!fightingTurn.isEmpty())
-            return fightingTurn.pop();
+    private  Fighter safeFighterStackPop(){
+        if (!fightingTurn.isEmpty()){
+           return fightingTurn.pop ();
+
+        }
         return null;
     }
 

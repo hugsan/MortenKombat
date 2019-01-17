@@ -1,6 +1,8 @@
 package core.actors.fightingactors;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import core.utils.FighterBalanceVariables;
 /**
  * EnemyFighter: LeneFighter.
@@ -34,14 +36,19 @@ public class LeneFighter extends EnemyFighters {
     }
 
     /**
-     * Attack two makes 55% damage of target current HP
+     * Attack two makes 15% damage of target current HP and stuns the target for its next turn
      * @param fighter target fighter we will attack.
      * @return always return true
      */
     @Override
     public boolean attackTwo(Fighter fighter){
-        fighter.setHP((fighter.getHP()*(45)/100));
+        fighter.setHP((fighter.getHP()*(85)/100));
+        if(fighter instanceof Champion){
+            ((Champion) fighter).stun = true;
+            fighter.setAnimationPaused ( true );
+        }
         return true;
+
     }
     public void updateManaBar() { }
 }

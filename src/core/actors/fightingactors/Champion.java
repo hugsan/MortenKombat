@@ -21,6 +21,8 @@ public abstract class Champion extends Fighter {
     private String spellTwoText;
     private String spellThreeText;
 
+    public boolean stun = false;
+
     public Sound cantclick = Gdx.audio.newSound(Gdx.files.internal("assets/audio/sound/cantclick.mp3"));
 
     public Champion(Stage s){

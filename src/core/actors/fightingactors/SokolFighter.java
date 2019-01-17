@@ -34,13 +34,17 @@ public class SokolFighter extends EnemyFighters {
     }
 
     /**
-     * Attack two makes 55% damage of target current HP
+     * Attack two makes 55% damage of target current HP + stunning the target for a turn
      * @param fighter target fighter we will attack.
      * @return always return true.
      */
     @Override
     public boolean attackTwo(Fighter fighter){
         fighter.setHP((fighter.getHP()*(45)/100));
+        if(fighter instanceof Champion){
+            ((Champion) fighter).stun = true;
+            fighter.setAnimationPaused ( true );
+        }
         return true;
     }
     public void updateManaBar() { }

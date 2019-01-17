@@ -49,7 +49,7 @@ public class MortenKombat extends BaseGame {
      * Method used to start the ExploringScreen from another screen (for example the menu)
      */
     public static void startGame() {
-            setActiveScreen( layout[0] );
+            setActiveScreen( layout[3] );
             ExploringScreen.musicPlay();
     }
 
