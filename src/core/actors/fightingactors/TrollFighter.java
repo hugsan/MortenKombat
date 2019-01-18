@@ -9,7 +9,7 @@ import core.utils.FighterBalanceVariables;
  * Used in the fighting screen and represent an enemy. The class has a constructor that initializes the actor
  * with idle, attack and dead animation.
  */
-public class TrollFighter extends EnemyFighters {
+public class TrollFighter extends EnemyFighters implements Poisonable{
 
     public TrollFighter(Stage s){
         super(s);

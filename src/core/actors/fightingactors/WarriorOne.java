@@ -76,20 +76,30 @@ public class WarriorOne extends Champion {
     }
 
     /**
-     * Deals 3-15 Damage. If the champion kills the target, he heals for 20% of his life.
-     * @param fighterOne target if our attack.
-     * @param fighterTwo fighter object can be null, wont do anything to this argument.
-     * @param fighterThree  fighter object can be null, wont do anything to this artument.
+     * Deals 3-15 Damage to all enemies, and poison them.
+     * @param fighterOne target for our attack.
+     * @param fighterTwo target for our attack.
+     * @param fighterThree  target for our attack.
      * @return True if the attack can be done, false if the attack can not be done.
      */
     @Override
     public boolean attackThree (Fighter fighterOne, Fighter fighterTwo, Fighter fighterThree){
         if (fighterOne instanceof EnemyFighters){
-            fighterOne.setHP(fighterOne.getHP()-MathUtils.random(3,15));
-            if (fighterOne.getHP()<= 0 ){
-                this.setHP((int)(this.getHP()+ 0.20*this.getMaxHP()));
-                if (this.getHP() >= this.getMaxHP())
-                    this.setHP(this.getMaxHP());
+            int damage = MathUtils.random(3,15);
+            fighterOne.setHP ( fighterOne.getHP () - damage);
+            if (fighterTwo != null)
+                fighterTwo.setHP ( fighterTwo.getHP () - damage);
+            if (fighterThree != null)
+                fighterThree.setHP ( fighterThree.getHP () - damage);
+            if (fighterOne instanceof Poisonable){
+                Poisonable temporalF = (Poisonable)fighterOne;
+                temporalF.poison(3,fighterOne);
+            }if (fighterTwo instanceof Poisonable){
+                Poisonable temporalF = (Poisonable)fighterTwo;
+                temporalF.poison(3,fighterTwo);
+            }if (fighterThree instanceof Poisonable){
+                Poisonable temporalF = (Poisonable)fighterThree;
+                temporalF.poison(3,fighterThree);
             }
             return true;
         }

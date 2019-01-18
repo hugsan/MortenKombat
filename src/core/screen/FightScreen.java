@@ -34,12 +34,14 @@ import java.util.Stack;
  * Is a turn based fight, were each turn has a chance to activate a trivia question.
  */
 public class FightScreen extends BaseScreen {
+    private final int POISON_DAMAGE = 5;
     private final int TRIVIATOBECHECK = -1;
     private final int TRIVIAWAITINGFORANSWER = 0;
     private final int TRIVIAHASBEENANSWER = 1;
     //variable that determine what is the chance to pop a trivia question on each turn.
     //For example if the value is 3 that means that we have a 30% chance to pop the trivia.
     private final int TRIVIACHANCE = 3;
+    private  boolean isBeenPoisoned = false;
     //Turn variables
     private ArrayList<EnemyFighters> enemies;
     private ArrayList<Champion> champions;
@@ -604,6 +606,17 @@ public class FightScreen extends BaseScreen {
                 safeFighterStackPop ();
             }
             isFightTurnOver ();
+
+        }
+        if (!fightingTurn.isEmpty () && fightingTurn.peek ().isPoison () && !isBeenPoisoned){
+            isBeenPoisoned = true;
+            fightingTurn.peek ().setIsPoisonTurn ( fightingTurn.peek ().getIsPoisonTurn () -1 );
+            System.out.println (fightingTurn.peek ().getFighterName () + "missing poisoned turns: "+ fightingTurn.peek ().getIsPoisonTurn () );
+            if (fightingTurn.peek ().getIsPoisonTurn () == 0){
+                fightingTurn.peek ().setColor ( 255,255,255,255 );
+                fightingTurn.peek ().setPoison (false);
+            }
+            fightingTurn.peek ().setHP ( fightingTurn.peek ().getHP () - 5 );
 
         }
 
@@ -1242,6 +1255,7 @@ public class FightScreen extends BaseScreen {
      */
     private  Fighter safeFighterStackPop(){
         if (!fightingTurn.isEmpty()){
+            isBeenPoisoned = false;
            return fightingTurn.pop ();
 
         }

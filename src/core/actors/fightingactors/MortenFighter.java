@@ -40,7 +40,11 @@ public class MortenFighter extends EnemyFighters {
      */
     @Override
     public boolean attackTwo(Fighter fighter){
-        fighter.setHP((fighter.getHP()*(45)/100));
+//        fighter.setHP((fighter.getHP()*(45)/100));
+        if (fighter instanceof Poisonable){
+            Poisonable temporalF = (Poisonable)fighter;
+            temporalF.poison(2,fighter);
+        }
         return true;
     }
     public void updateManaBar() { }

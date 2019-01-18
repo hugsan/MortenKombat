@@ -13,7 +13,7 @@ import core.screen.FightScreen;
  * Abstract class that extends Fighter to implement ally fighter.
  * We create buttons and a extra attackThree abstract method compared to Fighter.
  */
-public abstract class Champion extends Fighter {
+public abstract class Champion extends Fighter implements Poisonable{
     private TextButton firstButton;
     private TextButton secondButton;
     private TextButton thirdButton;
