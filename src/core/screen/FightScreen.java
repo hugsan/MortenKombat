@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import core.utils.FighterBalanceVariables;
 import core.utils.MortenKombat;
 import core.actors.fightingactors.*;
 import core.framework.BaseActor;
@@ -84,6 +85,8 @@ public class FightScreen extends BaseScreen {
     static private int championOneHP= 666;
     static private int championThreeHP = 666;
     static private int championTwoHP = 666;
+
+    private static int totalFightExp = 0;
 
     //animation and action related variables
     private long currentTime;
@@ -236,19 +239,24 @@ public class FightScreen extends BaseScreen {
         if(amountOfEnemies == -1){
             enemyOne =  new LeneFighter ( mainStage );
             enemies.add(enemyOne);
+            totalFightExp = FighterBalanceVariables.LENEKILLEXP;
         }
         if (amountOfEnemies == -2){
             enemyOne =  new JohanFighter ( mainStage);
             enemies.add(enemyOne);
+            totalFightExp = FighterBalanceVariables.JOHANKILLEXP;
         }
         if (amountOfEnemies == -3){
             enemyOne =  new SokolFighter ( mainStage);
             enemies.add(enemyOne);
+            totalFightExp = FighterBalanceVariables.SOKOLKILLEXP;
         }
         if (amountOfEnemies == -4){
             enemyOne =  new MortenFighter ( mainStage);
             enemies.add(enemyOne);
         }
+
+        System.out.println(totalFightExp);
 
         fightingTurn = new ArrayDeque<> ( );
         fightingTurn.addAll ( champions );
@@ -627,6 +635,10 @@ public class FightScreen extends BaseScreen {
             }
         }
         for (Fighter f : aliveFighters){
+            if (f instanceof EnemyFighters)
+                isAllEnemyDead = false;
+            else
+                isAllHeroesDead = false;
             f.updateHPBar();
             f.updateNamePlate();
             f.updateManaBar();
@@ -645,10 +657,6 @@ public class FightScreen extends BaseScreen {
             if (f.getAux () != f.getHP ()){
                 f.getHPBar().addAction( Actions.repeat ( 3, Actions.sequence (Actions.fadeOut (0.20f),Actions.fadeIn ( 0.20f )) ) );
                 f.setAux ( f.getHP () ); }
-            if (f instanceof EnemyFighters)
-                isAllEnemyDead = false;
-            else
-                isAllHeroesDead = false;
             if (!fightingTurn.isEmpty())
                 fightingTurn.peek().updateNameColor();
         }
@@ -745,6 +753,9 @@ public class FightScreen extends BaseScreen {
         if (isAllEnemyDead){//if all enemys are dead go back to exploring map
             //implement HP and MANA exporting of our characters before leaving the screen
             exportHP();
+            for (Champion c : champions){
+                c.gainExp(totalFightExp);
+            }
             battleMusic.stop();
             this.dispose();
             if (amountOfEnemies<0){
@@ -763,7 +774,7 @@ public class FightScreen extends BaseScreen {
                 // Exit to the GameOverScreen
                 this.dispose();
                 MortenKombat.setActiveScreen(new GameOverScreen());
-            }
+        }
 
         //checking if we have killed any fighters
         if (killHim && (System.currentTimeMillis() - deadAnimationStart)/1000 > killingTarget.dead.getAnimationDuration() ){
@@ -1182,12 +1193,18 @@ public class FightScreen extends BaseScreen {
      */
     private EnemyFighters createRandomEnemy(){
         int random = MathUtils.random(1,3);
-        if (random == 1)
+        if (random == 1) {
+            totalFightExp = totalFightExp + FighterBalanceVariables.SKELETONKILLEXP;
             return new SkeletonFighter(mainStage);
-        else if (random == 2)
+        }
+        else if (random == 2) {
+            totalFightExp = totalFightExp + FighterBalanceVariables.ZOMBIEKILLEXP;
             return new ZombieFighter(mainStage);
-        else
+        }
+        else {
+            totalFightExp = totalFightExp + FighterBalanceVariables.TROLLKILLEXP;
             return new TrollFighter(mainStage);
+        }
     }
 
     /**
@@ -1264,5 +1281,8 @@ public class FightScreen extends BaseScreen {
         champion.getSecondButton().setVisible(true);
         champion.getThirdButton().setVisible(true);
 
+    }
+    public static int getTotalFightExp() {
+        return totalFightExp;
     }
 }

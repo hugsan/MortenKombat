@@ -10,17 +10,20 @@ public class FighterBalanceVariables
     public final static int JOHANHP = 160;
     public final static int JOHANMAXHP = 160;
     public final static String JOHANNAME = "Johan";
+    public final static int JOHANKILLEXP = 200;
 
     //Lene
     public final static int LENEHP = 120 ;
     public final static int LENEMAXHP = 120 ;
     public final static String LENENAME = "Lene";
+    public final static int LENEKILLEXP = 200;
 
     //Sokol
     public final static int SOKOLHP = 140;
     public final static int SOKOLMAXHP = 140;
     public final static String SOKOLNAME = "Sokol";
     public final static int SOKOLFIRSTATTACKDAMAGE = 50;
+    public final static int SOKOLKILLEXP = 200;
 
     //Morten
     public final static int MORTENHP = 200 ;
@@ -61,13 +64,16 @@ public class FighterBalanceVariables
     //Skeleton
     public final static int SKELETONHP = 50;
     public final static int SKELETONMAXHP = 50 ;
+    public final static int SKELETONKILLEXP = 50;
 
     //Zombie
     public final static int ZOMBIEHP = 80 ;
     public final static int ZOMBIEMAXHP = 80 ;
+    public final static int ZOMBIEKILLEXP = 80;
 
     //Goblin
     public final static int TROLLHP = 70;
     public final static int TROLLMAXHP = 70;
+    public final static int TROLLKILLEXP = 100;
 
 }

@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import core.framework.BaseGame;
+import core.screen.FightScreen;
 
 /**
  * Abstract class that extends Fighter to implement ally fighter.
@@ -20,6 +21,9 @@ public abstract class Champion extends Fighter {
     private String spellOneText;
     private String spellTwoText;
     private String spellThreeText;
+
+    private int exp = 0;
+    private int level = 1;
 
     public boolean stun = false;
 
@@ -66,7 +70,6 @@ public abstract class Champion extends Fighter {
     public void setSpellThreeText(String spellThreeText) {
         this.spellThreeText = spellThreeText;
     }
-
     public TextButton getFirstButton() {
         return firstButton;
     }
@@ -84,6 +87,14 @@ public abstract class Champion extends Fighter {
     }
     public void setThridButtonName(String name) {
         thirdButton.setText(name);
+    }
+    public void gainExp(int expGained) {
+        exp = exp + expGained;
+        if (exp > 500) {
+            exp = exp - 500;
+            level++;
+        }
+        System.out.println(getFighterName() + " Level:" + level + " Exp:" + exp);
     }
 
     public abstract Label getManaBar();
