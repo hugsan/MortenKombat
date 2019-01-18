@@ -29,8 +29,7 @@ public class ExploringScreen extends BaseScreen {
     public static String mapEffect = "normal";
     private String currentMapEffect;
     private Hero hero;
-    public static Music backgroundMusic;
-    private Label messageDoor;
+    private static Music backgroundMusic;
     private DialogBox dialogBox;
 
     // X Y position of the hero when the hero travels to next map

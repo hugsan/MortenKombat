@@ -259,7 +259,7 @@ public class FightScreen extends BaseScreen {
         }
 
         System.out.println(totalFightExp);
-
+        //this is a thread safe stack
         fightingTurn = new ArrayDeque<> ( );
         fightingTurn.addAll ( champions );
         fightingTurn.addAll ( enemies );
@@ -616,7 +616,7 @@ public class FightScreen extends BaseScreen {
                 fightingTurn.peek ().setColor ( 255,255,255,255 );
                 fightingTurn.peek ().setPoison (false);
             }
-            fightingTurn.peek ().setHP ( fightingTurn.peek ().getHP () - 5 );
+            fightingTurn.peek ().setHP ( fightingTurn.peek ().getHP () - POISON_DAMAGE );
 
         }
 

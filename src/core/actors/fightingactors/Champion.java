@@ -88,6 +88,7 @@ public abstract class Champion extends Fighter implements Poisonable{
     public void setThridButtonName(String name) {
         thirdButton.setText(name);
     }
+
     public void gainExp(int expGained) {
         exp = exp + expGained;
         if (exp > 500) {

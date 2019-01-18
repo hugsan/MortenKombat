@@ -63,8 +63,8 @@ public class MainMenuScreen extends BaseScreen{
                     SelectionScreen charSelect = null;
 
                     charSelect = new SelectionScreen(this);
-                    MortenKombat.createMaps();
                     MortenKombat.setActiveScreen(charSelect);
+                    MortenKombat.createMaps();
                     return true;
                 }
         );

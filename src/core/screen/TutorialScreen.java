@@ -15,7 +15,6 @@ import core.utils.menu.MainMenuScreen;
 
 public class TutorialScreen extends BaseScreen {
 
-    private BaseActor[] screenSlide = new BaseActor[6];
     private int j = 1;
     BaseActor p1, p2, p3, p4, p5, p6, title1;
 
