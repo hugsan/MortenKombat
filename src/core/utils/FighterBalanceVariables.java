@@ -6,6 +6,9 @@ package core.utils;
 
 public class FighterBalanceVariables
 {
+
+    public final static int POISON_DAMAGE = 5;
+
     //johan
     public final static int JOHANHP = 160;
     public final static int JOHANMAXHP = 160;
