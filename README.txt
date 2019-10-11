@@ -1,3 +1,5 @@
+For more documentation check the P1___ITCOM_5.pdf in the files.
+
 This is the product of a 3 month project, we wanted to create an educational game, based on another game called
 'Darkest Dungeon'.
 
